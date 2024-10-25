@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Dosage__c</fullName>
+    <label>Dosage</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>300 mg</fullName>
+                <default>false</default>
+                <label>300 mg</label>
+            </value>
+            <value>
+                <fullName>400 mg</fullName>
+                <default>false</default>
+                <label>400 mg</label>
+            </value>
+            <value>
+                <fullName>30 &amp; 15 mg</fullName>
+                <default>false</default>
+                <label>30 &amp; 15 mg</label>
+            </value>
+            <value>
+                <fullName>45 &amp; 15 mg</fullName>
+                <default>false</default>
+                <label>45 &amp; 15 mg</label>
+            </value>
+            <value>
+                <fullName>60 &amp; 30 mg</fullName>
+                <default>false</default>
+                <label>60 &amp; 30 mg</label>
+            </value>
+            <value>
+                <fullName>90 &amp; 30 mg</fullName>
+                <default>false</default>
+                <label>90 &amp; 30 mg</label>
+            </value>
+            <value>
+                <fullName>15 mg</fullName>
+                <default>false</default>
+                <label>15 mg</label>
+            </value>
+            <value>
+                <fullName>0.25 mg</fullName>
+                <default>false</default>
+                <label>0.25 mg</label>
+            </value>
+            <value>
+                <fullName>0.5 mg</fullName>
+                <default>false</default>
+                <label>0.5 mg</label>
+            </value>
+            <value>
+                <fullName>1 mg</fullName>
+                <default>false</default>
+                <label>1 mg</label>
+            </value>
+            <value>
+                <fullName>2 mg</fullName>
+                <default>false</default>
+                <label>2 mg</label>
+            </value>
+            <value>
+                <fullName>3 mg</fullName>
+                <default>false</default>
+                <label>3 mg</label>
+            </value>
+            <value>
+                <fullName>4 mg</fullName>
+                <default>false</default>
+                <label>4 mg</label>
+            </value>
+            <value>
+                <fullName>30 mg</fullName>
+                <default>false</default>
+                <label>30 mg</label>
+            </value>
+            <value>
+                <fullName>720 mg</fullName>
+                <default>false</default>
+                <label>720 mg</label>
+            </value>
+            <value>
+                <fullName>960 mg</fullName>
+                <default>false</default>
+                <label>960 mg</label>
+            </value>
+            <value>
+                <fullName>PO QDx7/PO Q12H</fullName>
+                <default>false</default>
+                <label>PO QDx7/PO Q12H</label>
+            </value>
+            <value>
+                <fullName>PO Q12H</fullName>
+                <default>false</default>
+                <label>PO Q12H</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

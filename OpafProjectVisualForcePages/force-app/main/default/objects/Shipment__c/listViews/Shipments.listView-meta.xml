@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Shipments</fullName>
+    <columns>NAME</columns>
+    <columns>Patient__c</columns>
+    <columns>Product__c</columns>
+    <columns>Shipment_Status__c</columns>
+    <columns>Tracking_Number__c</columns>
+    <columns>Order_Date__c</columns>
+    <columns>Shipment_Date__c</columns>
+    <columns>Ship_Address_Line_1__c</columns>
+    <columns>Ship_Address_Line_2__c</columns>
+    <columns>Ship_Address_Line_3__c</columns>
+    <columns>Ship_City__c</columns>
+    <columns>Ship_State__c</columns>
+    <columns>Ship_Postal_Code__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Case__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <label>Shipments</label>
+</ListView>

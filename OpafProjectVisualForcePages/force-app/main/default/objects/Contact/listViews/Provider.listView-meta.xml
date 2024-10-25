@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Provider</fullName>
+    <booleanFilter>1 OR 2</booleanFilter>
+    <columns>Is_Primary__c</columns>
+    <columns>FULL_NAME</columns>
+    <columns>CONTACT.EMAIL</columns>
+    <columns>State_License__c</columns>
+    <columns>State_of_License__c</columns>
+    <columns>NPI__c</columns>
+    <columns>DEA__c</columns>
+    <columns>CONTACT.PHONE1</columns>
+    <columns>CONTACT.PHONE2</columns>
+    <columns>CONTACT.LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CONTACT.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Contact.Provider</value>
+    </filters>
+    <filters>
+        <field>ACCOUNT.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>PersonAccount.PersonAccount</value>
+    </filters>
+    <label>Prescriber</label>
+</ListView>

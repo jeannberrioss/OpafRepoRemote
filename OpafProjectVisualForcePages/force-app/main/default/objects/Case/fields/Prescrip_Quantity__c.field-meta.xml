@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Prescrip_Quantity__c</fullName>
+    <description>Formula field from Prescription record</description>
+    <externalId>false</externalId>
+    <formula>Text(Prescription1__r.Quantity__c)</formula>
+    <inlineHelpText>Formula field from Prescription record</inlineHelpText>
+    <label>Prescrip Quantity</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

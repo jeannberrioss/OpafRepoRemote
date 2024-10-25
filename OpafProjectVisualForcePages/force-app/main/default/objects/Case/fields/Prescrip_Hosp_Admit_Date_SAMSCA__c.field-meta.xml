@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Prescrip_Hosp_Admit_Date_SAMSCA__c</fullName>
+    <description>Formula field from Prescription</description>
+    <formula>Prescription1__r.Hospital_Admission_Date__c</formula>
+    <inlineHelpText>Formula field from Prescription</inlineHelpText>
+    <label>Prescrip Hosp Admit Date (SAMSCA)</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

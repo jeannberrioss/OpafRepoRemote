@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>In_Complete_Opaf_Applications</fullName>
+    <columns>CASES.CASE_NUMBER</columns>
+    <columns>Patient__c</columns>
+    <columns>Prescriber__c</columns>
+    <columns>Facility__c</columns>
+    <columns>Product__c</columns>
+    <columns>Enrollment_Status__c</columns>
+    <columns>CASES.LAST_UPDATE_DATE_ONLY</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Enrollment_Status__c</field>
+        <operation>equals</operation>
+        <value>Saved to Complete Later</value>
+    </filters>
+    <label>Incomplete OPAF Applications</label>
+</ListView>

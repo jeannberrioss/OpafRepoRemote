@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Consent_Type__c</fullName>
+    <label>Consent Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>New Consent</fullName>
+                <default>false</default>
+                <label>New Consent</label>
+            </value>
+            <value>
+                <fullName>Re-Enrollment</fullName>
+                <default>false</default>
+                <label>Re-Enrollment</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Legal_Representative_signing_on_behalf__c</fullName>
+    <externalId>false</externalId>
+    <formula>If(TEXT(Patient__r.Legal_Rep_Condition_Check__c) ==&apos;true&apos;, &apos;Yes&apos;,&apos;No&apos;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Legal Representative signing on behalf</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

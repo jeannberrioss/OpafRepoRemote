@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Description__c</fullName>
+    <externalId>false</externalId>
+    <formula>&apos;The following items are missing from the OPAF application: &apos;+
+If( Date_Of_Hospital_Admission__c ==&apos;Y&apos;  , &apos;Date Of Hospital Admission,&apos; ,&apos;&apos;)+
+If( Date_of_Hospital_Discharge__c ==&apos;Y&apos;  , &apos;Date of Hospital Discharge,&apos; ,&apos;&apos;)+
+If( Demographics__c ==&apos;Y&apos;  , &apos;Demographics,&apos; ,&apos;&apos;)+
+If( Diagnosis__c ==&apos;Y&apos;  , &apos;Diagnosis,&apos; ,&apos;&apos;)+
+If( Dosage__c ==&apos;Y&apos;  , &apos;Dosage,&apos; ,&apos;&apos;)+
+If( Dosage_Strength__c ==&apos;Y&apos;  , &apos;Dosage Strength,&apos; ,&apos;&apos;)+
+If( Dr_Signature_Date__c ==&apos;Y&apos;  , &apos;Dr Signature Date,&apos; ,&apos;&apos;)+
+If( Expenses__c ==&apos;Y&apos;  , &apos;Expenses,&apos; ,&apos;&apos;)+
+If( Frequency_Days_supply__c ==&apos;Y&apos;  , &apos;Frequency/Days supply,&apos; ,&apos;&apos;)+
+If( HIPAA_Authorization__c ==&apos;Y&apos;  , &apos;HIPAA Authorization,&apos; ,&apos;&apos;)+
+If( Household_Size__c ==&apos;Y&apos;  , &apos;Household Size,&apos; ,&apos;&apos;)+
+If( Income_Amount__c ==&apos;Y&apos;  , &apos;Income Amount,&apos; ,&apos;&apos;)+
+If( Income_Documentation__c ==&apos;Y&apos;  , &apos;Income Documentation,&apos; ,&apos;&apos;)+
+If( Income_Expenses__c ==&apos;Y&apos;  , &apos;Income Expenses,&apos; ,&apos;&apos;)+
+If( Insurance__c ==&apos;Y&apos;  , &apos;Insurance,&apos; ,&apos;&apos;)+
+If( Insurance_Denial_Letter__c ==&apos;Y&apos;  , &apos;Insurance Denial Letter,&apos; ,&apos;&apos;)+
+If( Insurance_Termination_Letter__c ==&apos;Y&apos;  , &apos;Insurance Termination Letter,&apos; ,&apos;&apos;)+
+If( Medicaid_Denial_Letter__c ==&apos;Y&apos;  , &apos;Medicaid Denial Letter,&apos; ,&apos;&apos;)+
+If( Medicare_Part_D_Card__c ==&apos;Y&apos;  , &apos;Medicare Part D Card,&apos; ,&apos;&apos;)+
+If( No_Prescription_Form__c ==&apos;Y&apos;  , &apos;No Prescription Form,&apos; ,&apos;&apos;)+
+If( No_Quantity_Indicated__c ==&apos;Y&apos;  , &apos;No Quantity Indicated,&apos; ,&apos;&apos;)+
+If( NPI_Number__c ==&apos;Y&apos;  , &apos;NPI Number,&apos; ,&apos;&apos;)+
+If( Number_of_Refills__c ==&apos;Y&apos;  , &apos;Number of Refills,&apos; ,&apos;&apos;)+
+If( Number_of_Vials__c ==&apos;Y&apos;  , &apos;Number of Vials,&apos; ,&apos;&apos;)+
+If( Patient_Signature__c ==&apos;Y&apos;  , &apos;Patient Signature,&apos; ,&apos;&apos;)+
+If( Patient_Signature_Date__c ==&apos;Y&apos;  , &apos;Patient Signature Date,&apos; ,&apos;&apos;)+
+If( Prescriber_DEA__c ==&apos;Y&apos;  , &apos;Prescriber DEA,&apos; ,&apos;&apos;)+
+If( Prescriber_Signature__c ==&apos;Y&apos;  , &apos;Prescriber Signature,&apos; ,&apos;&apos;)+
+If( Prescriber_SLN__c ==&apos;Y&apos;  , &apos;Prescriber SLN,&apos; ,&apos;&apos;)+
+If( Provider_Income_Attestation__c ==&apos;Y&apos;  , &apos;Provider Income Attestation&apos; ,&apos;&apos;)+
+If( Provider_Insurance_Attestation__c ==&apos;Y&apos;  , &apos;Provider Insurance Attestation,&apos; ,&apos;&apos;)+
+If( Provider_Signature__c ==&apos;Y&apos;  , &apos;Provider Signature,&apos; ,&apos;&apos;)+
+If( Reenrollment_Request__c ==&apos;Y&apos;  , &apos;Reenrollment Request,&apos; ,&apos;&apos;)+
+If( REMS_Enrollment__c ==&apos;Y&apos;  , &apos;REMS Enrollment,&apos; ,&apos;&apos;)+
+If( Residency__c ==&apos;Y&apos;  , &apos;Residency,&apos; ,&apos;&apos;)+
+If( Underinsured_Policy__c ==&apos;Y&apos;  , &apos;Underinsured Policy,&apos; ,&apos;&apos;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Description</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

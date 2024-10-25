@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Due_For_Re_Enrollment</fullName>
+    <columns>Re_Enrollment__c</columns>
+    <columns>CASES.CASE_NUMBER</columns>
+    <columns>External_Case_Number__c</columns>
+    <columns>Patient__c</columns>
+    <columns>Prescriber__c</columns>
+    <columns>Facility__c</columns>
+    <columns>Product__c</columns>
+    <columns>Enrollment_Status__c</columns>
+    <columns>Enrollment_End_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Is_Due_For_Re_Enrollment__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>Enrollment_Status__c</field>
+        <operation>equals</operation>
+        <value>Enrolled</value>
+    </filters>
+    <filters>
+        <field>Is_Enrolled__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <label>Due For Re-Enrollment</label>
+</ListView>

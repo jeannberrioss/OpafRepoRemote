@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>My_Patient_Consents</fullName>
+    <columns>NAME</columns>
+    <columns>Provider__c</columns>
+    <columns>Patient__c</columns>
+    <columns>Patient_Date_Of_Birth__c</columns>
+    <columns>Status__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>My Patient Consents</label>
+</ListView>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Deca1XTI000000optl2AA</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <linkType>url</linkType>
+    <masterLabel>Patient Consent</masterLabel>
+    <openType>replace</openType>
+    <protected>false</protected>
+    <url>{!URLFOR(IF($Site.Prefix == &apos;/s&apos;, $Site.Prefix + &apos;/apex/dfsle__embeddedsigning&apos;, &apos;/apex/dfsle__embeddedsigning&apos;), null, [sId = Contact.Id, sendingExperience = &apos;null&apos;, isEmbedded = true, templateId = &apos;a1XTI000000optl2AA&apos;, recordId = Contact.Id, title = &apos;Patient Consent&apos;])}</url>
+</WebLink>

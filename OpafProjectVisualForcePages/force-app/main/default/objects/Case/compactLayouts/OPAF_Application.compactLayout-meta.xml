@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OPAF_Application</fullName>
+    <fields>CaseNumber</fields>
+    <fields>Patient__c</fields>
+    <fields>Prescriber__c</fields>
+    <fields>Product__c</fields>
+    <fields>Status</fields>
+    <fields>Enrollment_Status__c</fields>
+    <fields>CreatedDate</fields>
+    <label>OPAF Application</label>
+</CompactLayout>
