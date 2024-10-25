@@ -1,0 +1,177 @@
+<apex:page standardController="Case" extensions="eFaxCoverSheetController" standardStylesheets="false" applyHtmlTag="false" showHeader="false" renderAs="PDF">
+    
+    <head> 
+        <style type="text/css" media="print">
+            
+            @page {
+            
+            @bottom-left {
+            content: element(footer);
+            }
+            }
+            div.footer {
+            display: block;
+            padding: 5px;
+            height:200px;
+            position: running(footer);
+            }
+            .pagenumber:before {
+            content: counter(page);
+            }
+            .pagecount:before {
+            content: counter(pages);
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div style="font-family: Muli,sans-serif;font-size:30px;padding-top:40px;"><b> OPAF Portal eFax Coversheet</b></div>
+        <table style="font-family: Muli,sans-serif;margin-top:50px; width:100%;font-size:18px; border: 1px solid #000;border-collapse : collapse;" class="table-bordered">
+            
+            <tbody>
+                
+                <tr>
+                    <td style="padding:10px 5px 10px 5px;border: 1px solid black;width:50%">  
+                       <b> <apex:outputText value="Salesforce Case #"/></b>
+                    </td>
+                    <td style="font-family: Tahoma;padding:10px 5px 10px 5px;border: 1px solid black;width:50%">      
+                        <apex:outputText value="{!Case.CaseNumber}"/>
+                    </td>
+                    
+                </tr>
+                
+                <tr >
+                    <td style="padding:10px 5px 10px 5px;border: 1px solid black;width:50%">
+                       <b> <apex:outputText value="Submitted By"/></b>
+                    </td>
+                    <td style="font-family: Tahoma;padding:10px 5px 10px 5px;border: 1px solid black;width:50%">
+                        <apex:outputText value="{!Case.User_Type__c}"/>
+                    </td>
+                    
+                </tr>
+                <tr >
+                    <td style="padding:10px 5px 10px 5px;border: 1px solid black;">
+                        <b><apex:outputText value="Salesforce Patient ID "/></b>
+                    </td>
+                    <td style="font-family: Tahoma;padding:10px 5px 10px 5px;border: 1px solid black;">
+                        <apex:outputText value="{!Case.Patient__c}"/>
+                    </td>
+                    
+                </tr>
+
+                <tr >
+                    <td style="padding:10px 5px 10px 5px;border: 1px solid black;">
+                       <b> <apex:outputText value="Hub Patient ID"/></b>
+                    </td>
+                    <td style="font-family: Tahoma;padding:10px 5px 10px 5px;border: 1px solid black;">
+                        <apex:outputText value="{!Case.Hub_Patient_ID__c}"/>
+                    </td>
+                    
+                </tr>
+
+                <tr >
+                    <td style="padding:10px 5px 10px 5px;border: 1px solid black;">
+                      <b>  <apex:outputText value="Salesforce Requestor ID"/></b>
+                    </td>
+                    <td style="font-family: Tahoma;padding:10px 5px 10px 5px;border: 1px solid black;">
+                        <apex:outputText value="{!SalesforceRequestorID}"/>
+                    </td>
+                    
+                </tr>
+                
+                <tr >
+                    <td style="padding:10px 5px 10px 5px;border: 1px solid black;">
+                       <b> <apex:outputText value="Hub Requestor ID"/></b>
+                    </td>
+                    <td style="font-family: Tahoma;padding:10px 5px 10px 5px;border: 1px solid black;">
+                        <apex:outputText value="{!portalUserDetails.Legacy_User_Id__c}"/>
+                    </td>
+                    
+                </tr>
+
+                <tr >
+                    <td style="padding:10px 5px 10px 5px;border: 1px solid black;">
+                       <b> <apex:outputText value="Salesforce Provider ID"/></b>
+                    </td >
+                    <td style="font-family: Tahoma;padding:10px 5px 10px 5px;border: 1px solid black;">
+                        <apex:outputText value="{!Case.Prescriber__c}"/>
+                    </td>
+                    
+                </tr>
+                
+                <tr >
+                    <td style="padding:10px 5px 10px 5px;border: 1px solid black;">
+                        <b><apex:outputText value="Hub Provider ID"/></b>
+                    </td>
+                    <td style="font-family: Tahoma;padding:10px 5px 10px 5px;border: 1px solid black;">
+                        <apex:outputText value="{!Case.Hub_Provider_ID__c}"/>
+                    </td>
+                    
+                </tr>
+                
+                <tr>
+                    <td style="padding:10px 5px 10px 5px;border: 1px solid black;">
+                        <b><apex:outputText value="Salesforce Facility ID"/></b>
+                    </td>
+                    <td style="font-family: Tahoma;padding:10px 5px 10px 5px;border: 1px solid black;">
+                        <apex:outputText value="{!Case.Facility__c}"/>
+                    </td>
+                    
+                </tr>
+                
+                <tr >
+                    <td style="padding:10px 5px 10px 5px;border: 1px solid black;">
+                        <b><apex:outputText value="Hub Facility ID "/></b>
+                    </td>
+                    <td style="font-family: Tahoma;padding:10px 5px 10px 5px;border: 1px solid black;">
+                        <apex:outputText value="{!Case.Hub_Facility_ID__c}"/>
+                    </td>
+                    
+                </tr>
+                 <tr >
+                    <td style="padding:10px 5px 10px 5px;border: 1px solid black;">
+                        <b><apex:outputText value="Product "/></b>
+                    </td>
+                    <td style="font-family: Tahoma;padding:10px 5px 10px 5px;border: 1px solid black;">
+                        <apex:outputText value="{!Case.Product__c}"/>
+                    </td>
+                    
+                </tr>
+                <tr >
+                    <td style="padding:10px 5px 10px 5px;border: 1px solid black;">
+                       <b> <apex:outputText value="Rx Faxed to CovanceRx"/></b>
+                    </td>
+                    <td style="font-family: Tahoma;padding:10px 5px 10px 5px;border: 1px solid black;">
+                        <!--<apex:outputText value=" {0,date, MM/dd/yyy h:mm:ss a}"> 
+                            <apex:param value="{!Case.Rx_Fax_Timestamp__c}" />
+                        </apex:outputText> -->
+                        <apex:outputText value="{!Case.Rx_Fax_Timestamp__c}" rendered="false"/>
+                         {!ESTTime}
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </body>
+    
+    <apex:image url="{!$Resource.Covanceimage}" style="height:40%;width:30%;padding-top:220px;"/>     
+    <div class="footer">
+        <div>
+            <table style="font-family: Muli,sans-serif;font-size:12px;width:100%">
+                
+                <tr>
+                    <td> ©2021 Otsuka Patient Assistance Foundation, Inc. </td>
+                    <td> All Rights Reserved.</td> 
+                    <td>June 2021</td>
+                    <td> <apex:outputPanel rendered="{!IF(case.User_Type__c=='Patient', true, false)}">
+                        {!$Label.Patient_Veeva_Code}
+                        </apex:outputPanel>
+                    <apex:outputPanel rendered="{!IF(case.User_Type__c=='Prescriber', true, false)}">
+                        {!$Label.Provider_Veeva_Code}
+                        </apex:outputPanel></td>
+                </tr>
+            </table>
+            
+        </div>
+    </div> 
+</apex:page>

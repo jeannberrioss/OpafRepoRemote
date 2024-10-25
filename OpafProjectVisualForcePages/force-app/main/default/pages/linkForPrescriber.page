@@ -1,0 +1,7 @@
+<apex:page >
+  <script type="text/javascript">
+
+window.top.location="https://partial-opaf.cs201.force.com/Prescriber/s/my-workspace"
+
+</script>
+</apex:page>

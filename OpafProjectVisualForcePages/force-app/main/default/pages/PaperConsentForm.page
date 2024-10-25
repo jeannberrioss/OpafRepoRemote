@@ -1,0 +1,205 @@
+<apex:page renderAs="pdf" sidebar="false"  cache="false" showHeader="false" applyBodyTag="false" controller="PaperConsentFormController" >
+    <head>
+        <style> 
+            body { font-family: Muli,sans-serif; }
+            @page {
+             
+            counter-increment: pages;
+            @bottom-left { 
+            content: element(footer);
+            }
+            }
+            
+            div.footer {
+            width: 100%;
+           	padding:10px;
+            position: running(footer);
+            
+            }
+            
+        </style>
+    </head>
+    <body>
+        <table style="font-family: Muli,sans-serif;" width="100%">
+            <tr style="color:#407cc9">
+                <td>
+                    <apex:outputText value="OTSUKA PATIENT ASSISTANCE FOUNDATION, INC. CONSENT LANGUAGE"/>
+                </td>
+                
+            </tr>
+        </table>
+        <hr style="size:10px;color:#407cc9;margin-top:-2px;margin-bottom:15px;"/>
+        <table  style="border:1px solid #8B0000; padding-left:20px;font-family: Muli,sans-serif;Font-size:14px;" width="95%">
+            <tr style="color:#8B0000">
+                <td>
+                    <apex:outputText value="To be completed by the patient or legal authorized representative:patient authorization for use" />
+                </td>
+            </tr>
+            <tr>
+                <td style="color:#8B0000">
+                    <apex:outputText value="and disclosure of health information and financial information for application determination" />
+                    
+                </td>
+            </tr>
+        </table> <br/>
+        <table  style="font-family: Muli,sans-serif;" width="100%">
+            <tr style="color:#407cc9">
+                <td>
+                    <apex:outputText value="PATIENT AGREEMENT & CONSENT" />
+                </td>
+                
+            </tr>
+        </table>
+        <hr style="size:10px;color:#407cc9;margin-top:-2px;"/>
+        
+        <table  style="font-family: Muli,sans-serif;Font-size:12px;color:#404040;margin-top:-20px;" width="100%">
+            <tr style="color:#404040">
+                <td>
+                    <p>
+                        I authorize that my personal health information can be sent to Otsuka Patient Assistance Foundation, Inc. (hereafter referred to as OPAF). I give permission for OPAF to disclose my personal health information (hereafter, referred to as PHI) to my health care providers, pharmacies, health insurer(s),caregivers,and other third-party contractors or service providers for the sole purpose of reviewing my applicationin formation and application determination. In addition, OPAF may use my de-identified PHI for internal data collection, reporting of national insurance coverage trends, cost-share and payer trends for OPAF operational purposes. OPAF, designated third party authorized representatives, healthcare professionals, pharmacies, health insurer(s), third party contractors, and service providers will utilize the information listed below for application determination and internal data collection as described above:
+                    </p>
+                </td>
+            </tr>
+            <tr style="margin-top:-10px;">
+                <td >
+                    <apex:outputText value="•	information provided on this form;" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <apex:outputText value="•	my healthcare records related to my treatment;" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <apex:outputText value="•	payer-related information received from my health insurer;"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <apex:outputText value="•	prescription and/or prescription status from pharmacies or other relevant sites of care;and"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <apex:outputText value=" •	hospitalization details and information to help support my transition of care."/>
+                </td>
+            </tr>
+        </table>
+        <br/>
+        <table  style="font-family: Muli,sans-serif;color:#407cc9" width="100%">
+            <tr style="color:#407cc9">
+                <td>
+                    <apex:outputText value="FINANCIAL INFORMATION AND FAIR CREDIT REPORTING ACT (FCRA) AUTHORIZATION"/>
+                </td>
+                
+            </tr>
+        </table>
+        <hr style="size:10px;color:#407cc9;margin-top:-2px;"/>  
+        <br/>
+        <table  style="font-family: Muli,sans-serif;Font-size:12px;color:#404040;margin-top:-40px;" width="100%">
+            <tr style="color:#404040">
+                <td>
+                    <p>
+                        I acknowledge that OPAF will utilize my household income and the number of people in my household listed on my application for determination of eligibility. I attest that I have been accurately reported on this application to the best of my ability and knowledge. In the event I am unable to provide financial documentation, I authorize the use of my Social Security number and/or additional demographic information to access my credit information and information derived from public and other sources to estimate my income to determine eligibility. I understand that I am providing “written instructions”authorizing OPAF and its vendor,under the FCRA,to obtain in formation from my credit profile or other information from the vendor,solel for the purpose of determining financial qualifications for eligibility determination by OPAF. I understand that I must affirmatively agree to these terms in order to proceed in this financial screening process.
+                    </p>
+                </td>
+                
+            </tr>
+        </table>
+        
+        <table style="font-family:Muli,sans-serif;Font-size:14px;color:#407cc9"  width="100%">
+            <tr style="color:#407cc9">
+                <td>
+                    <apex:outputText value="PATIENT OR LEGAL REPRESENTATIVE CONSENT"/>
+                </td>
+            </tr>
+        </table>
+        <hr style="size:12px;color:#407cc9;margin-top:-2px;"/>  
+        <br/>
+        <table  style="font-family:Muli,sans-serif;Font-size:12px;color:#404040;margin-top:-40px;" width="100%">
+            <tr style="color:#404040">
+                <td>
+                    <p>
+                        By signing this consent, I agree to the terms listed above. Applicant’s PHI and financial authorization and notice of release will remain in effect for (1) one year from the date of my signature. I understand that I may be requested to provide my written consent on an annual basis in an effort to support continued access to my medication. Signing this consent form is voluntary. I understand I can refuse to sign this form and it will not affect the start, continuation, or quality of my treatment from my healthcare provider. Additionally, my ability to enroll in a health plan, my eligibility for benefits and payment for services by my health insurer will not be affected if I do not sign this form.I understand that I may revoke(i.e.takeback)this authorization at any time, except to the extent my healthcare provider or insurer has taken action in reliance on my authorization. After I have signed this consent, I may withdraw it by calling OPAF at 1-855-727-6274 or by sending a written notice to OPAF at Otsuka Patient Assistance Foundation Inc., PO Box 3640, Gaithersburg, MD 20885-3640. If I choose not to sign this authorization or I withdraw it after signing this form, I understand that OPAF will no longer be able to provide support after the date of my revocation.
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <table  style="font-family:Muli,sans-serif;Font-size:12px;color:#404040;line-height:1.6;" width="100%">
+            <tr style="color:#404040">
+                <td>
+                    <b>Patient first and lastname:</b>&nbsp;{!pName} 
+                    
+                </td>
+                
+                <td>
+                    <b><apex:outputText value="Date of birth(mm/dd/yyyy):"/></b>&nbsp;{!pDOB}
+                </td>
+                
+            </tr>
+            
+            <tr style="color:#404040">
+                <td>
+                    <b><apex:outputText value="Patient signature:"/></b>
+                </td>
+                
+                <td>
+                   <b> <apex:outputText value="Date(mm/dd/yyyy):"/></b>&nbsp;{!cDate}
+                </td>
+                
+            </tr>
+            
+            <tr style="color:#404040">
+                <td colspan="2">
+                   <b> <apex:outputText value="Legal representative first and lastname:"/></b>&nbsp;{!lName}
+                </td>
+                
+            </tr>
+            <tr style="color:#404040">
+                <td>
+                    <b><apex:outputText value="Legal representative signature:"/></b>
+                </td>
+                
+                <td>
+                    <b><apex:outputText value="Date(mm/dd/yyyy):"/></b>&nbsp;{!cDate}
+                </td>
+                
+            </tr>
+            <tr>
+                <td style="font-family: Muli,sans-serif;Font-size:11px;" colspan="2">
+                    <p>
+                        **When legal representative is signing on behalf of a patient, please include legal representative documentation with this application.
+                    </p>
+                </td>
+            </tr>
+            
+        </table>
+        
+    </body>
+    <div class="footer" >
+        
+        <div style="height:2px;background-color:#ad1d35;"></div>
+        <table style="font-family:Muli,sans-serif;Font-size:10px;color:#404040;margin-top:5px;margin-bottom:10px;" width="100%">
+            
+            <tr>
+            <td>
+             ©2021 Otsuka Patient Assistance Foundation, Inc.   		   
+             </td>
+                
+                <td>
+                Confidential – Protected Health Information	
+                </td>
+                
+                <td>
+                January 2021
+                </td>
+                
+                <td>
+                PAUS21EUC0004
+                </td>
+            </tr>
+        </table>
+        
+    </div>
+</apex:page>

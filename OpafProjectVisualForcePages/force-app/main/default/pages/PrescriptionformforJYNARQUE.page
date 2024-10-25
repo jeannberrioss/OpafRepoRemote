@@ -1,0 +1,70 @@
+<apex:page standardController="Case"  extensions="OPAF_NeuroscienceEnrollmentController" renderas="pdf" standardStylesheets="false" applyBodyTag="false" >
+        <head>
+                <style type="text/css" media="print">
+                       @page {
+                               
+                                margin:0px 10px 60px 0px; 
+                                 @top-center {
+                                       content: element(header);
+                               }
+                               @bottom-left {
+                                     content: element(footer);
+                               }
+                            }
+                                     div.header {
+                                      
+                                      position: running(header);
+                    				
+                           }
+                       div.footer {
+                                display: block;
+                             padding: 5px;
+                               position: running(footer);
+                      }
+                                     .pagenumber:before {
+                                        content: counter(page);
+                       }
+                                   .pagecount:before {
+                             content: counter(pages);
+                        }
+                     div.subfooter {
+                display: inline-block;
+            }
+
+            div.right {
+                float: right;
+            }
+            div.content {
+                    padding:0px 30px 10px 50px;
+                    font-family: Muli,sans-serif;
+                    }
+                    
+                     span.sp1{
+                      display: inline-block;
+                      }
+                    </style>
+              </head>
+           <div class="header" > 
+              <div style="float: right;"> <apex:image value="{!URLFOR($Resource.otsukalogo)}" height="65px" width="80px"/></div>
+           </div>
+           <div class="footer">
+                 <div style="height:2px;background-color:#B00000;"></div>              
+                 <center><span style="color:#282828;font-family: Muli,sans-serif;font-weight:400;font-size:11px"><b>Confidential - Protected Health Information</b></span></center>
+            <table style="font-family: Muli,sans-serif;font-size:11px;width:100%">
+                <tr><td></td></tr>
+               
+                <tr><td></td></tr>
+                <tr>
+                    <td style="font-family: Muli,sans-serif;font-size:11px;wdith:60%">©2021 Otsuka Patient Assistance Foundation, Inc. All Rights Reserved.   </td>
+                    <td style="font-family: Muli,sans-serif;font-size:11px;wdith:20%"><apex:outputText value="May 2021" style="color:#707070"/></td>
+                    <td style="font-family: Muli,sans-serif;font-size:11px;wdith:20%"> <apex:outputText value="PAUS21EBP0006" style="color:#707070"></apex:outputText></td>
+                </tr>
+            </table>
+            <br/>
+        <div class="subfooter right" > <span style="font-family: Muli,sans-serif;font-size:12px;" class="pagenumber"/></div>
+          </div>
+          <div class="content">
+              
+              <c:PrescriptionformforJYNARQUEcmp CaseRec="{!CaseRecId}"/>
+          </div>
+</apex:page>
