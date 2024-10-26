@@ -1,0 +1,102 @@
+<template>
+    <lightning-record-view-form record-id={recordId} object-api-name="Case">
+        <div class={sectionOne} id="prescriptionInfo">
+            <h3 class="slds-text-heading_small slds-truncate" title="Prescription Information for ABILIFY MAINTENA">Case Information</h3>            
+            <lightning-layout class="slds-grid slds-col slds-wrap" size="12">
+                <lightning-layout-item size="6" padding="around-small">
+                    <div class="slds-border_bottom">
+                        <label class="slds-form-element__label">Portal Number</label>
+                        <lightning-output-field field-name="CaseNumber" variant="label-hidden"></lightning-output-field>
+                    </div>
+                </lightning-layout-item> 
+                <lightning-layout-item size="6" padding="around-small">
+                    <div class="slds-border_bottom">
+                        <label class="slds-form-element__label">Case Number</label>
+                        <lightning-output-field field-name="External_Case_Number__c" variant="label-hidden"></lightning-output-field>
+                    </div>
+                </lightning-layout-item> 
+                <lightning-layout-item size="6" padding="around-small">
+                    <div class="slds-border_bottom">
+                        <label class="slds-form-element__label">Status</label>
+                        <lightning-output-field field-name="Status" variant="label-hidden"></lightning-output-field>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item size="6" padding="around-small">
+                    <div class="slds-border_bottom">
+                        <label class="slds-form-element__label">Enrollment Status</label>
+                        <lightning-output-field field-name="Enrollment_Status__c" variant="label-hidden"></lightning-output-field>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item size="6" padding="around-small">
+                    <div class="slds-border_bottom">
+                        <label class="slds-form-element__label">Product</label>
+                        <lightning-output-field field-name="Product__c" variant="label-hidden"></lightning-output-field>
+                    </div>
+                </lightning-layout-item> 
+                <lightning-layout-item size="6" padding="around-small">
+                    <div class="slds-border_bottom">
+                        <label class="slds-form-element__label">Enrollment Start Date</label>
+                        <lightning-output-field field-name="Enrollment_Start_Date__c" variant="label-hidden"></lightning-output-field>
+                    </div>
+                </lightning-layout-item> 
+                <lightning-layout-item size="6" padding="around-small">
+                    <div class="slds-border_bottom">
+                        <label class="slds-form-element__label">Patient</label>
+                        <lightning-output-field field-name="Patient__c" variant="label-hidden"></lightning-output-field>
+                    </div>
+                </lightning-layout-item> 
+                <lightning-layout-item size="6" padding="around-small">
+                    <div class="slds-border_bottom">
+                        <label class="slds-form-element__label">Enrollment End Date</label>
+                        <lightning-output-field field-name="Enrollment_End_Date__c" variant="label-hidden"></lightning-output-field>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item size="6" padding="around-small">
+                    <div class="slds-border_bottom">
+                        <label class="slds-form-element__label">Prescriber</label>
+                        <lightning-output-field field-name="Prescriber__c" variant="label-hidden"></lightning-output-field>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item size="6" padding="around-small">
+                    <div class="slds-border_bottom">
+                        <label class="slds-form-element__label">Missing Info</label>
+                        <lightning-output-field field-name="Missing_Info__c" variant="label-hidden"></lightning-output-field>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item size="6" padding="around-small">
+                    
+                </lightning-layout-item> 
+                <lightning-layout-item size="6" padding="around-small">
+                        <div class="slds-border_bottom">
+                                <label class="slds-form-element__label">Missing Info Last Updated</label>
+                                <lightning-output-field field-name="Missing_Info_Last_Updated__c" variant="label-hidden"></lightning-output-field>
+                        </div>
+                    
+                </lightning-layout-item>   
+            </lightning-layout>
+        </div>
+        <div class={sectionOne1} id="prescriptionInfo1">
+            <h3 class="slds-text-heading_small slds-truncate" title="Prescription Information for ABILIFY MAINTENA">System Information</h3>
+                    
+            <lightning-layout class="slds-grid slds-col slds-wrap" size="12">
+                    <lightning-layout-item size="6" padding="around-small">
+                            <div class="slds-border_bottom">
+                                    <label class="slds-form-element__label">Created By</label>
+                                    <lightning-output-field field-name="CreatedById" variant="label-hidden"></lightning-output-field>
+                                    <lightning-output-field field-name="CreatedDate" variant="label-hidden"></lightning-output-field>
+                            </div>
+                        
+                    </lightning-layout-item>  
+                    <lightning-layout-item size="6" padding="around-small">
+                            <div class="slds-border_bottom">
+                                    <label class="slds-form-element__label">Last Modified By</label>
+                                    <lightning-output-field field-name="LastModifiedById" variant="label-hidden"></lightning-output-field>
+                                    <lightning-output-field field-name="LastModifiedDate" variant="label-hidden"></lightning-output-field>
+                            
+                            </div>
+                        
+                    </lightning-layout-item>  
+            </lightning-layout>
+        </div>
+    </lightning-record-view-form>  
+</template>

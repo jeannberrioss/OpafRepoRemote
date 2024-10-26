@@ -1,0 +1,647 @@
+<template>
+    <div class="pageTop">
+        <hr>
+        <lightning-progress-indicator current-step={currentStep} type="path" variant="base">
+            <lightning-progress-step label="Step 1" value="1"></lightning-progress-step>
+            <lightning-progress-step label="Step 2" value="2"></lightning-progress-step>
+            <lightning-progress-step label="Step 3" value="3"></lightning-progress-step>
+            <lightning-progress-step label="Step 4" value="4"></lightning-progress-step>
+            <lightning-progress-step label="Step 5" value="5"></lightning-progress-step>
+            <lightning-progress-step label="Step 6" value="6"></lightning-progress-step>
+        </lightning-progress-indicator>            
+        <h2 class="slds-text-heading_medium slds-p-vertical_xx-large">OPAF Application</h2>
+    
+
+        <template if:true={loaded}>
+            <div class="exampleHolder">
+                <lightning-spinner alternativetext="Loading" size="medium" ></lightning-spinner>
+            </div>
+        </template>
+
+        <template if:true={saveAndCompletePopUp}>
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <h2 id="modal-heading-02" class="slds-modal__title slds-hyphenate">Success!</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
+                    <p>Your information has been saved. Please select OK to continue.</p>
+                </div>
+                <footer class="slds-modal__footer">
+                    <lightning-button variant="destructive" data-name="screen6" label="OK" title="OK"  class="slds-m-left_x-small" onclick={goToScreen1}></lightning-button>
+                </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>
+
+
+        <div class="stepOne step1">
+            <h3 class="slds-text-heading_small">Product Information</h3>
+            <lightning-layout class="slds-grid slds-col slds-wrap" size="12">
+                <lightning-layout-item size="12" padding="around-small">
+                    <lightning-combobox
+                        name="Product__c"
+                        label="Product"
+                        placeholder="Please select a product"
+                        options={productoptions}
+                        data-name="Product__c"
+                        value={getCaseData.Product__c}
+                        class="screen1" required
+                        read-only={checkReadOnly}
+                        onchange={changeProduct}>
+                    </lightning-combobox>
+                </lightning-layout-item>
+            </lightning-layout>
+            <h3 class="slds-text-heading_small">Patient Information</h3>
+            <lightning-layout multiple-rows>
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                    <lightning-input type="text" label="Patient First Name"  aria-labelledby="tab-default-1__item" id="tab-default-1__item" class="screen1" required data-name="FirstName" value={getData.FirstName} onchange={fieldTracking}></lightning-input><br/>
+                    <lightning-input type="text" label="Patient Last Name" class="screen1" aria-labelledby="tab-default-2__item" id="tab-default-2__item" required data-name="LastName" value={getData.LastName} onchange={fieldTracking}></lightning-input><br/>
+                    <lightning-input type="email" label="Patient Email Address" class="screen1" required data-name="Email" value={getData.Email} onchange={fieldTracking}></lightning-input><br/>
+                    <lightning-input type="date" message-when-value-missing="" date-style="short" label="Patient Date of Birth" onblur={dateValidation} class="screen1" required data-name="Birthdate" value={getData.Birthdate} onchange={fieldTracking}></lightning-input><br/>
+                    <lightning-input pattern="^(0|[1-9][0-9]*)$" label="Patient SSN" data-name="SSN__c" value={getData.SSN__c} onchange={fieldTracking}></lightning-input><br/>
+                    <lightning-combobox
+                        name="HealthCloudGA__Gender__c"
+                        label="Patient Gender"
+                        placeholder="Patient Select Gender"
+                        options={genderOptions}
+                        data-name="HealthCloudGA__Gender__c"  
+                        value={getData.HealthCloudGA__Gender__c} onchange={fieldTracking}>
+                    </lightning-combobox>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                    <lightning-input type="text" label="Patient Street Address" required data-name="Street_Address__c" value={getData.Street_Address__c} onchange={fieldTracking}></lightning-input><br/>
+                    <lightning-input type="text" label="Patient Address Line 2" class="screen1" data-name="Address_Line_2__c" value={getData.Address_Line_2__c} onchange={fieldTracking}></lightning-input><br/>
+                    <lightning-input type="text" label="Patient City" class="screen1" required data-name="City__c" value={getData.City__c} onchange={fieldTracking}></lightning-input><br/>
+                    <lightning-combobox
+                        name="MailingState"
+                        label="Patient State"
+                        placeholder="select Patient State"
+                        class="screen1" required
+                        options={stateOptions}
+                        data-name="State__c" value={getData.State__c} onchange={fieldTracking}>
+                    </lightning-combobox>
+                    <lightning-input type="text" label="Patient Zip Code" class="screen1" required data-name="Zip_Code__c" value={getData.Zip_Code__c} onchange={fieldTracking}></lightning-input><br/>
+                    <lightning-input type="text" label="Patient Daytime Phone" class="screen1" required data-name="HomePhone" value={getData.HomePhone} onchange={fieldTracking}></lightning-input><br/>
+                </lightning-layout-item>
+            </lightning-layout>
+            <lightning-layout horizontal-align="spread" class="slds-p-vertical_xx-large" multiple-rows>
+                <lightning-layout-item size="auto">
+                    <lightning-button class="opaf-lightning-button--brand" variant="brand" icon-name="utility:back" data-name="screen1" label="CANCEL" title="CANCEL" onclick={goToPreviousStep}></lightning-button>
+                </lightning-layout-item>
+                <lightning-layout-item size="auto">
+                    <lightning-button class="opaf-lightning-button--outline-brand slds-m-horizontal_medium" variant="brand-outline" data-name="screen1" data-location="Prescriber Application Step One" label="SAVE & COMPLETE LATER" title="SAVE & COMPLETE LATER" onclick={goToNextStep}></lightning-button>
+                    <lightning-button  class="opaf-lightning-button--brand" icon-name="utility:forward" icon-position="right" variant="brand" data-name="screen1" data-location="Prescriber Application Step Two" label="NEXT" title="NEXT" onclick={goToNextStep}></lightning-button>                  
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+
+        <div class="stepTwo step2 slds-hide">
+            <h3 class="slds-text-heading_small">Insurance Information</h3>
+            <lightning-layout class="slds-grid slds-col slds-wrap">
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                    <lightning-input type="checkbox" label="I DO NOT have insurance" data-name="Has_No_Insurance__c" checked={getCaseData.Has_No_Insurance__c} onchange={insuranceCaseTracking}></lightning-input>
+                </lightning-layout-item>
+            </lightning-layout>
+            <lightning-layout class="slds-grid slds-col slds-wrap">
+                <template if:true={openMedicalCard}>
+                    <lightning-layout-item size="12" medium-device-size="6" padding="around-small">                        
+                        <span class="opaf-red"> <strong>MEDICAL CARD</strong></span>
+                        <br/>
+                        <lightning-file-upload        
+                                                label="Upload a copy of the front and back of the Medical Card here"
+                                                name="fileUploader"
+                                                record-id={getCaseData.Id}
+                                                onuploadfinished={handleUploadFinished}
+                                                multiple
+                                                data-name="MEDICAL CARD">
+                                                </lightning-file-upload>
+                        <div class="opaf-ref">{medicalCard}</div>
+                        <template if:true={medicalCardDetailsChecking}>
+                            <table class="slds-table slds-table--bordered tableBordersScreen2 slds-m-top_large">
+                                <thead>
+                                    <tr class="slds-text-heading--label ">
+                                        <th class="" scope="col">Title</th>
+                                        <th class="" scope="col">Action</th>
+                                    </tr>  
+                                </thead>
+                                <tbody>
+                                    <template for:each={medicalCardDetails} for:item="row" for:index="index">
+                                        <tr class="slds-hint-parent" key={row.index}>
+                                            <td class="" data-label="Title" >
+                                                <a onclick={downloadAttachment} data-id={row.Id}>{row.Title}</a> 
+                                            </td>
+                                            <td class="" data-label="Document Type" >
+                                                <lightning-button-icon data-label="medicalCardDetails" size="small" name={row.ContentDocument.Id} icon-name="utility:delete" alternative-text="Delete" class="slds-m-left_xx-small" title="Delete" onclick={deleteUploadedFile}></lightning-button-icon>
+                                            </td>
+                                        </tr>
+                                    </template>
+                                </tbody>
+                            </table> 
+                        </template>   
+                        <template if:true={requiredAbilifyMaintena}>
+                            <div class="slds-m-top_large">
+                                <h4><strong>OR </strong> provide the Medical Card information in the fields below:</h4>
+                                <br/><br/>
+                                <lightning-input type="text" label="Medical Plan Name" class="screen2" required={requiredAbilifyMaintena} data-name="Medical_Plan_Name__c" value={getCaseData.Medical_Plan_Name__c} onchange={fieldCaseTracking}></lightning-input>
+                                <lightning-input type="text" label="Medical Phone" class="screen2" required={requiredAbilifyMaintena} data-name="Medical_Plan_Phone__c" value={getCaseData.Medical_Plan_Phone__c} onchange={fieldCaseTracking}></lightning-input>
+                                <lightning-input type="text" label="Medical Policyholder Name" class="screen2" required={requiredAbilifyMaintena} data-name="Medical_Policyholder_Name__c" value={getCaseData.Medical_Policyholder_Name__c} onchange={fieldCaseTracking}></lightning-input>
+                                <lightning-input type="date" date-style="short" label="Medical Policyholder DOB (mm/dd/yyyy)" data-name="Medical_Policyholder_DOB__c" value={getCaseData.Medical_Policyholder_DOB__c} onchange={fieldCaseTracking}></lightning-input>
+                                <lightning-input type="text" label="Medical Member ID" class="screen2" required={requiredAbilifyMaintena} data-name="Medical_Policyholder_Member_ID__c" value={getCaseData.Medical_Policyholder_Member_ID__c} onchange={fieldCaseTracking}></lightning-input>
+                                <lightning-input type="text" label="Medical Group #" class="screen2" required={requiredAbilifyMaintena} data-name="MedicalGroupNumber__c" value={getCaseData.MedicalGroupNumber__c} onchange={fieldCaseTracking}></lightning-input>
+                            </div>
+                        </template>
+                </lightning-layout-item>
+                </template>
+                <template if:true={openPharmacyCard}>
+                    <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                        <span class="opaf-red"><strong>PHARMACY CARD</strong></span>
+                        <br/>
+                        <lightning-file-upload       
+                                label="Upload a copy of the front and back of the Pharmacy Card here"
+                                name="fileUploader"
+                                record-id={getCaseData.Id}
+                                onuploadfinished={handleUploadFinished}
+                                multiple
+                                data-name="PHARMACY CARD">
+                                </lightning-file-upload>
+                        <div class="opaf-ref">{pharmacyCard}</div>
+                        <template if:true={pharmacyCardDetailsChecking}>
+                            <table class="slds-table slds-table--bordered tableBordersScreen2 slds-m-top_large">
+                                <thead>
+                                    <tr class="slds-text-heading--label ">
+                                        <th class="" scope="col">Title</th>
+                                        <th class="" scope="col">Action</th>
+                                    </tr>  
+                                </thead>
+                                <tbody>
+                                    <template for:each={pharmacyCardDetails} for:item="row" for:index="index">
+                                        <tr class="slds-hint-parent" key={row.index}>
+                                            <td class="" data-label="Title" >
+                                                <a onclick={downloadAttachment} data-id={row.Id}>{row.Title}</a> 
+                                            </td>
+                                            <td class="" data-label="Document Type" >
+                                                <lightning-button-icon data-label="pharmacyCardDetails" name={row.ContentDocument.Id} icon-name="utility:delete" size="small" alternative-text="Delete" class="slds-m-left_xx-small" title="Delete" onclick={deleteUploadedFile}></lightning-button-icon>
+                                            </td>
+                                        </tr>
+                                    </template>
+                                </tbody>
+                            </table> 
+                        </template>
+                            <template if:true={required}>
+                                <div class="slds-m-top_large">
+                                    <h4><strong>OR </strong>provide the Pharmacy Card information in the fields below:</h4>
+                                    <lightning-input type="text" label="Pharmacy Plan Name" class="screen2" data-id="pharmaScreen" required={required} data-name="Pharmacy_Plan_Name__c" value={getCaseData.Pharmacy_Plan_Name__c} onchange={fieldCaseTracking}></lightning-input>
+                                    <lightning-input type="text" label="Pharmacy Phone" class="screen2" data-id="pharmaScreen" required={required} data-name="Pharmacy_Plan_Phone__c" value={getCaseData.Pharmacy_Plan_Phone__c} onchange={fieldCaseTracking}></lightning-input>
+                                    <lightning-input type="text" label="Pharmacy Policyholder Name" class="screen2" data-id="pharmaScreen" required={required} data-name="Pharmacy_Policyholder_Name__c" value={getCaseData.Pharmacy_Policyholder_Name__c} onchange={fieldCaseTracking}></lightning-input>
+                                    <lightning-input type="date" date-style="short" label="Pharmacy Policyholder DOB (mm/dd/yyyy)" data-id="pharmaScreen" data-name="Pharmacy_Policyholder_DOB__c" value={getCaseData.Pharmacy_Policyholder_DOB__c} onchange={fieldCaseTracking}></lightning-input>
+                                    <lightning-input type="text" label="Pharmacy Rx BIN" class="screen2" data-id="pharmaScreen" required={required} data-name="Pharmacy_Rx_BIN__c" value={getCaseData.Pharmacy_Rx_BIN__c} onchange={fieldCaseTracking}></lightning-input>
+                                    <lightning-input type="text" label="Pharmacy Rx PCN" class="screen2" data-id="pharmaScreen" required={required} data-name="Pharmacy_Rx_PCN__c" value={getCaseData.Pharmacy_Rx_PCN__c} onchange={fieldCaseTracking}></lightning-input>
+                                </div>
+                            </template> 
+                    </lightning-layout-item>
+                </template>
+            </lightning-layout>
+            <lightning-layout horizontal-align="spread" class="slds-p-vertical_xx-large" multiple-rows>
+                <lightning-layout-item size="auto">
+                    <lightning-button class="opaf-lightning-button--brand" variant="brand" icon-name="utility:back" data-name="screen2" label="PREVIOUS" title="PREVIOUS" onclick={goToPreviousStep}></lightning-button>
+                </lightning-layout-item>
+                <lightning-layout-item size="auto">
+                    <lightning-button class="opaf-lightning-button--outline-brand slds-m-horizontal_medium" variant="brand-outline" data-name="screen2" data-location="Prescriber Application Step Two" label="SAVE & COMPLETE LATER" title="SAVE & COMPLETE LATER" onclick={goToNextStep}></lightning-button>
+                    <lightning-button  class="opaf-lightning-button--brand" icon-name="utility:forward" icon-position="right" variant="brand"  data-name="screen2" data-location="Prescriber Application Step Three" label="NEXT" title="NEXT" onclick={goToNextStep}></lightning-button>                  
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+
+        <div class="stepThree step3 slds-hide">
+            <h3 class="slds-text-heading_small slds-truncate" title="Patient Insurance Eligibility & Income Verification Check">Patient Insurance Eligibility & Income Verification Check</h3>
+            <lightning-layout class="slds-grid slds-col slds-wrap">
+                <lightning-layout-item size="12" padding="around-small">
+                    <p class="slds-text-title_caps">
+                        Please complete this section in its entirety. 
+                        <span class="opaf-red">Documentation is required with this section to avoid processing delays.</span>
+                    </p>                            
+                </lightning-layout-item>
+                <lightning-layout-item size="12" padding="around-small">
+                    <lightning-input type="text" label="Estimated Annual Household Income" class="screen3" required data-name="Estimated_Annual_Household_Income__c" value={getCaseData.Estimated_Annual_Household_Income__c} onchange={fieldCaseTracking}></lightning-input><br/>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" padding="around-small">
+                    <lightning-input type="text" label="Estimated Household Size" class="screen3" required data-name="Estimated_Household_Size__c" value={getCaseData.Estimated_Household_Size__c} onchange={fieldCaseTracking}></lightning-input><br/>
+                </lightning-layout-item>                    
+                <!-- <lightning-layout-item size="12" padding="around-small">
+                    <lightning-radio-group style="cursor: pointer;" name="Please select the Consent Type:"
+                                    label="Do you live in the United States?"
+                                    options={radioOptions}
+                                    type="radio"
+                                    required = "true"
+                                    class="screen3"
+                                    data-name="Does_the_patient_live_in_United_States__c"
+                                    value={getCaseData.Does_the_patient_live_in_United_States__c} onchange={fieldCaseTracking}>
+                    </lightning-radio-group>                           
+                </lightning-layout-item> -->
+            </lightning-layout>
+            <template if:true={showPopup}>
+                <!-- Modal/Popup Box starts here-->
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                        <!-- Modal/Popup Box Header Starts here-->
+                        <header class="slds-modal__header">
+                            <lightning-button-icon icon-name="utility:close"
+                                                onclick={closePopup}
+                                                alternative-text="close"
+                                                variant="bare-inverse"
+                                                class="slds-modal__close"></lightning-button-icon>
+                            <h2 id="modal-heading-03" class="slds-text-heading_medium slds-hyphenate"></h2>
+                        </header>
+                        <!--Modal/Popup Box Body Starts here-->
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-3">
+                            <p>
+                                Unfortunately, the application process has been stopped. In order to qualify you must live in the United States or  US territories.  Please contact an OPAF Dedicated Patient Case Coordinator at <span style="color: rgb(139, 0, 0);">1-855-727-6274</span> at your earliest convenience
+                            </p>
+                        </div>
+                        <!--Modal/Popup Box Footer Starts here-->
+                        <footer class="slds-modal__footer">
+                            <lightning-button label="OK"
+                                            title="OK"
+                                            variant="destructive"
+                                            onclick={navigateToHomePage}></lightning-button>
+                        </footer>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </template>
+            <!-- <br/> -->
+
+            <lightning-layout class="slds-grid slds-col slds-wrap">
+                <lightning-layout-item size="12" padding="around-small">
+                    <p class="slds-p-vertical_x-large slds-text-heading_small opaf-red">Proof of Income Documentation</p>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" padding="around-small">
+                    <p>Applicant must include  proof of income for all contributing members of the household with the application submission. Please submit a copy of <strong>ONE</strong> of the following:</p>
+                    <ul class="slds-list_dotted">
+                        <li>Federal Income Tax Return (1040, etc.)</li>
+                        <li>Social Security award letter</li>
+                        <li>W-2 from previous tax year</li>
+                        <li>Disability income information</li>
+                        <li>1099-MISC form</li>
+                        <li>Unemployment benefits letter</li>
+                        <li>2 most recent paystubs</li>
+                        <li>Letter from employer on company letterhead</li>
+                        <li>Income attestation letter from provider</li>
+                    </ul>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" padding="around-small">
+                    <lightning-file-upload 
+                                                label="Proof of Income Documents"
+                                                name="fileUploader"
+                                                record-id={getCaseData.Id}
+                                                onuploadfinished={handleUploadFinished}
+                                                multiple
+                                                data-name="INCOME DOCUMENT">
+                                                </lightning-file-upload>
+                    <!--<lightning-input type="file" multiple data-name="Proof of Income Documents" label="Proof of Income Documents" onchange={openfileUpload}></lightning-input>-->
+                    <div class="opaf-ref">{proofofIncomeDocuments}</div>
+                    <br/>
+                    <template if:true={proofofIncomeDocumentsDetailsChecking}>
+                    <table class="slds-table slds-table--bordered tableBorders">
+                        <thead>
+                            <tr class="slds-text-heading--label ">
+                                <th class="" scope="col">Title</th>
+                                <th class="" scope="col">Action</th>
+                            </tr>  
+                        </thead>
+                        <tbody>
+                            <template for:each={proofofIncomeDocumentsDetails} for:item="row" for:index="index">
+                                <tr class="slds-hint-parent" key={row.index}>
+                                    <td class="" data-label="Title" >
+                                        <a onclick={downloadAttachment} data-id={row.Id}>{row.Title}</a> 
+                                    </td>
+                                    <td class="" data-label="Document Type" >
+                                        <lightning-button-icon data-label="proofofIncomeDocumentsDetails" size="small" name={row.ContentDocument.Id} icon-name="utility:delete" alternative-text="Delete" class="slds-m-left_xx-small" title="Delete" onclick={deleteUploadedFile}></lightning-button-icon>
+                                    </td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table> 
+                </template>
+                </lightning-layout-item>
+            </lightning-layout>
+            <lightning-layout class="slds-grid slds-col slds-wrap">
+                <lightning-layout-item size="12" padding="around-small">
+                    <p class="slds-p-vertical_x-large slds-text-heading_small opaf-red">US Address Documentation</p>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" padding="around-small">
+                    <p>Applicant must include proof of US address with the application submission. Please submit a copy of <strong>ONE</strong> of the following:</p>
+                    <ul class="slds-list_dotted">
+                        <li>Mortgage statement or rental agreement</li>
+                        <li>Two (2) utility bills</li>
+                        <li>State Driver's License or State ID (with current home address)</li>
+                        <li>US Address attestation letter from provider</li>
+                        <li>Attestation letter from residential facility (if applicant is transient)</li>
+                    </ul>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" padding="around-small">
+                    <lightning-file-upload 
+                                                label="US Address Documentation"
+                                                name="fileUploader"
+                                                record-id={getCaseData.Id}
+                                                onuploadfinished={handleUploadFinished}
+                                                multiple
+                                                data-name="RESIDENTIAL DOCUMENT">
+                                                </lightning-file-upload>
+                    <!--<lightning-input type="file" multiple data-name="Residency Documents" label="Residency Documents" onchange={openfileUpload}></lightning-input> -->
+                    <div class="opaf-ref">{residencyDocuments}</div>
+                    <br/>
+                    <template if:true={residencyDocumentsDetailsChecking}>
+                    <table class="slds-table slds-table--bordered tableBorders">
+                        <thead>
+                            <tr class="slds-text-heading--label ">
+                                <th class="" scope="col">Title</th>
+                                <th class="" scope="col">Action</th>
+                            </tr>  
+                        </thead>
+                        <tbody>
+                            <template for:each={residencyDocumentsDetails} for:item="row" for:index="index">
+                                <tr class="slds-hint-parent" key={row.index}>
+                                    <td class="" data-label="Title" >
+                                        <a onclick={downloadAttachment} data-id={row.Id}>{row.Title}</a>
+                                    </td>
+                                    <td class="" data-label="Document Type" >
+                                        <lightning-button-icon size="small" data-label="residencyDocumentsDetails" name={row.ContentDocument.Id} icon-name="utility:delete" alternative-text="Delete" class="slds-m-left_xx-small" title="Delete" onclick={deleteUploadedFile}></lightning-button-icon>
+                                    </td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table> 
+                </template>
+                </lightning-layout-item>
+            </lightning-layout>
+
+            <lightning-layout class="slds-grid slds-col slds-wrap">
+                <lightning-layout-item size="12" padding="around-small">
+                    <p class="slds-p-vertical_x-large slds-text-heading_small opaf-red">Insurance Denial Documentation</p>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" padding="around-small">
+                    <p>Applicant must include insurance denial documentation with the application submission. Please submit a copy of <strong>ONE</strong> of the following:</p>
+                    <ul class="slds-list_dotted">
+                        <li>Explanation of Benefits</li>
+                        <li>Insurance Statement</li>
+                        <li>Prior Authorization Denial Letter</li>
+                    </ul>
+                </lightning-layout-item>
+                
+                <lightning-layout-item size="12" padding="around-small">
+                    <lightning-file-upload 
+                                                label="Insurance Denial Documents"
+                                                name="fileUploader"
+                                                record-id={getCaseData.Id}
+                                                onuploadfinished={handleUploadFinished}
+                                                multiple
+                                                data-name="INSURANCE DOCUMENT">
+                                                </lightning-file-upload>
+                    
+                    <div class="opaf-ref">{insuranceDenialDocuments}</div>
+                    <br/>
+                    <template if:true={insuranceDenialDocumentsDetailsChecking}>
+                    <table class="slds-table slds-table--bordered tableBorders">
+                        <thead>
+                            <tr class="slds-text-heading--label ">
+                                <th class="" scope="col">Title</th>
+                                <th class="" scope="col">Action</th>
+                            </tr>  
+                        </thead>
+                        <tbody>
+                            <template for:each={insuranceDenialDocumentsDetails} for:item="row" for:index="index">
+                                <tr class="slds-hint-parent" key={row.index}>
+
+                                    <td class="" data-label="Title" >
+                                        <a onclick={downloadAttachment} data-id={row.Id}>{row.Title}</a> 
+                                    </td>
+                                    <td class="" data-label="Document Type" >
+                                        <lightning-button-icon size="small" data-label="insuranceDenialDocumentsDetails" name={row.ContentDocument.Id} icon-name="utility:delete" alternative-text="Delete" class="slds-m-left_xx-small" title="Delete" onclick={deleteUploadedFile}></lightning-button-icon>
+                                    </td>
+                                    
+                                    
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table> 
+                </template>
+                </lightning-layout-item>
+            </lightning-layout>
+
+            <lightning-layout horizontal-align="spread" class="slds-p-vertical_xx-large" multiple-rows>
+                <lightning-layout-item size="auto">
+                    <lightning-button class="opaf-lightning-button--brand" variant="neutral" icon-name="utility:back" data-name="screen3" label="PREVIOUS" title="PREVIOUS" onclick={goToPreviousStep} ></lightning-button>
+                </lightning-layout-item>                
+                <lightning-layout-item size="auto">    
+                    <lightning-button class="opaf-lightning-button--outline-brand slds-m-horizontal_medium" variant="brand-outline" data-name="screen3" data-location="Prescriber Application Step Three" label="SAVE & COMPLETE LATER" title="SAVE & COMPLETE LATER" onclick={goToNextStep}></lightning-button>
+                    <lightning-button class="opaf-lightning-button--brand" icon-name="utility:forward" icon-position="right" variant="brand" data-name="screen3" data-location="Prescriber Application Step Four" label="NEXT" title="NEXT"  onclick={goToNextStep}></lightning-button>
+                </lightning-layout-item>                
+            </lightning-layout>
+        </div>
+
+        <div class="stepFour step4 slds-hide">
+            <h3 class="slds-text-heading_small slds-truncate" title="Prescriber Information">Prescriber Information</h3>
+            <lightning-layout class="slds-grid slds-col slds-wrap">
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                    <lightning-combobox
+                        name="Salutation__c"
+                        label="Prescriber Salutation"
+                        placeholder="Prescriber Salutation"
+                        options={prescriberSalutationoptions}
+                        data-name="Salutation__c" value={getNewContactData.Salutation__c} onchange={fieldTrackingNewContact}>
+                    </lightning-combobox><br/>
+                    <lightning-input type="text" label="Prescriber First Name" class="screen4" required data-name="FirstName" value={getNewContactData.FirstName} onchange={fieldTrackingNewContact}></lightning-input><br/>
+                    <lightning-input type="text" label="Prescriber Last Name" class="screen4" required data-name="LastName" value={getNewContactData.LastName} onchange={fieldTrackingNewContact}></lightning-input><br/>
+                    <lightning-input type="email" label="Prescriber Email" data-name="Email" value={getNewContactData.Email} onchange={fieldTrackingNewContact}></lightning-input><br/>
+                    <lightning-input type="text" label="Prescriber Phone" class="screen4" required data-name="Phone" value={getNewContactData.Phone} onchange={fieldTrackingNewContact}></lightning-input><br/>
+                    <lightning-input type="text" label="Prescriber Phone Extension" data-name="Phone_Extension__c" value={getNewContactData.Phone_Extension__c} onchange={fieldTrackingNewContact}></lightning-input><br/>
+                    <lightning-input type="text" label="Prescriber Fax" data-name="Fax" value={getNewContactData.Fax} onchange={fieldTrackingNewContact}></lightning-input><br/>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                    <lightning-input type="text" label="Prescriber Address Line 1" class="screen4" required data-name="Street_Address__c" value={getNewContactData.Street_Address__c} onchange={fieldTrackingNewContact}></lightning-input><br/>
+                    <lightning-input type="text" label="Prescriber Address Line 2" class="screen4" data-name="Address_Line_2__c" value={getNewContactData.Address_Line_2__c} onchange={fieldTrackingNewContact}></lightning-input><br/>
+                    <lightning-input type="text" label="Prescriber City" class="screen4" required data-name="City__c" value={getNewContactData.City__c} onchange={fieldTrackingNewContact}></lightning-input><br/>
+                    <lightning-combobox
+                        name="MailingState"
+                        label="Prescriber State"
+                        placeholder="Please select Prescriber State"
+                        options={stateOptions}
+                        data-name="State__c" value={getNewContactData.State__c} onchange={fieldTrackingNewContact}>
+                    </lightning-combobox><br/>
+                    <lightning-input type="text" label="Prescriber Zip Code" class="screen4" required data-name="Zip_Code__c" value={getNewContactData.Zip_Code__c} onchange={fieldTrackingNewContact}></lightning-input><br/>
+                    <lightning-input type="text" label="Prescriber Medical Assistant Name" data-name="Medical_Assistant_Name__c" value={getNewContactData.Medical_Assistant_Name__c} onchange={fieldTrackingNewContact}></lightning-input><br/>
+                    <lightning-input type="text" label="Prescriber Medical Assistant Phone" data-name="Medical_Assistant_Phone__c" value={getNewContactData.Medical_Assistant_Phone__c} onchange={fieldTrackingNewContact}></lightning-input><br/>
+                </lightning-layout-item>                                                                                  
+            </lightning-layout>
+
+            <lightning-layout horizontal-align="spread" class="slds-p-vertical_xx-large" multiple-rows>
+                <lightning-layout-item size="auto">
+                    <lightning-button class="opaf-lightning-button--brand" variant="neutral" icon-name="utility:back" data-name="screen4" label="PREVIOUS" title="PREVIOUS" onclick={goToPreviousStep}></lightning-button>
+                </lightning-layout-item>                    
+                <lightning-layout-item size="auto">
+                    <lightning-button class="opaf-lightning-button--outline-brand slds-m-horizontal_medium" variant="brand-outline" data-name="screen4" data-location="Prescriber Application Step Four" label="SAVE & COMPLETE LATER" title="SAVE & COMPLETE LATER" onclick={goToNextStep}></lightning-button>
+                    <lightning-button class="opaf-lightning-button--brand" icon-name="utility:forward" icon-position="right" variant="brand" data-name="screen4" data-location="Prescriber Application Step Five" label="NEXT" title="NEXT" onclick={goToNextStep}></lightning-button>
+                </lightning-layout-item>
+             </lightning-layout>
+        </div>
+        
+        <div class="stepFive step5 slds-hide">
+                
+            <h3 class="slds-p-vertical_medium slds-text-heading_small slds-text-align_center opaf-red">Confirm Details</h3>
+            <p class="slds-p-vertical_medium">
+                OPAF will contact your provider to request additional information to complete your application. Please confirm all details provided are correct before selecting SUBMIT.
+            </p>
+            <h3 class="slds-p-vertical_medium slds-text-heading_small">Product Information </h3>
+            <lightning-layout class="slds-grid slds-col slds-wrap" size="12">
+                <lightning-layout-item size="12" padding="around-small">
+                    <lightning-input type="text" placeholder="Product Name" value={getCaseData.Product__c} disabled read-only label="Product" data-name="Product__c"></lightning-input>
+                </lightning-layout-item>
+            </lightning-layout>
+            <h3 class="slds-p-vertical_medium slds-text-heading_small">Patient Information</h3>
+
+            <lightning-layout class="slds-grid slds-col slds-wrap ">
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                    <lightning-input type="text" label="Patient First Name" required value={getData.FirstName} disabled read-only data-name="FirstName"></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                    <lightning-input type="text" label="Patient Street Address" required value={getData.Street_Address__c} disabled read-only data-name="MailingStreet"></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                    <lightning-input type="text" label="Patient Last Name" value={getData.LastName} required disabled read-only data-name="LastName"></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                    <lightning-input type="text" label="Patient Address Line 2" value={getData.Address_Line_2__c} disabled read-only data-name="Mailing_Address_Line_2__c"></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                    <lightning-input type="email" label="Patient Email Address" required value={getData.Email} disabled read-only data-name="Email"></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                    <lightning-input type="text" label="Patient City" required value={getData.City__c} disabled read-only data-name="MailingCity"></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                    <lightning-input type="date"  date-style="short" label="Patient Date of Birth" required value={getData.Birthdate} disabled read-only data-name="Birthdate"></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                    <lightning-input type="text" label="Patient State" required value={getData.State__c} disabled read-only data-name="MailingState"></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                    <lightning-input type="text" label="Patient SSN" value={getData.SSN__c} disabled read-only data-name="SSN__c"></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                    <lightning-input type="text" label="Patient Zip Code" required value={getData.Zip_Code__c} disabled read-only data-name="Zip_Code__c"></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                    <lightning-input type="text" label="Patient Gender" value={getData.HealthCloudGA__Gender__c} disabled read-only data-name="HealthCloudGA__Gender__c"></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                    <lightning-input type="text" label="Patient Daytime Phone" value={getData.HomePhone} required disabled read-only data-name="DaytimePhone"></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                    <lightning-input type="text" label="Estimated Annual Household Income" value={getCaseData.Estimated_Annual_Household_Income__c} required disabled read-only data-name="AnnualHouseholdIncome"></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                    <lightning-input type="text" label="Estimated Household Size" value={getCaseData.Estimated_Household_Size__c} required disabled read-only data-name="Household"></lightning-input>
+                </lightning-layout-item>
+            </lightning-layout>
+
+            <h3 class="slds-p-vertical_medium slds-text-heading_small">Prescriber Information</h3>
+
+            <lightning-layout class="slds-grid slds-col slds-wrap">
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                    <lightning-input type="text" label="Prescriber Salutation" value={getNewContactData.Salutation__c} disabled read-only data-name="Salutation__c"></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                    <lightning-input type="text" label="Prescriber Address Line 1" required value={getNewContactData.Street_Address__c} disabled read-only data-name="MailingStreet"></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                    <lightning-input type="text" label="Prescriber First Name" required value={getNewContactData.FirstName} disabled read-only data-name="FirstName"></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                    <lightning-input type="text" label="Prescriber Address Line 2" value={getNewContactData.Address_Line_2__c} disabled read-only data-name="Mailing_Address_Line_2__c"></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                    <lightning-input type="email" label="Prescriber Last Name" required value={getNewContactData.LastName} disabled read-only data-name="LastName"></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                    <lightning-input type="text" label="Prescriber City" required value={getNewContactData.City__c} disabled read-only data-name="MailingCity"></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                    <lightning-input type="date" label="Prescriber Email" value={getNewContactData.Email} disabled read-only data-name="Email"></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                    <lightning-input type="text" label="Prescriber State" required value={getNewContactData.State__c} disabled read-only data-name="MailingState"></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                    <lightning-input type="text" label="Prescriber Phone" value={getNewContactData.Phone} required disabled read-only data-name="SSN"></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                    <lightning-input type="text" label="Prescriber Zip Code" value={getNewContactData.Zip_Code__c} required disabled read-only data-name="ZipCode"></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                    <lightning-input type="text" label="Prescriber Phone Extension" value={getNewContactData.Phone_Extension__c} disabled read-only data-name="Gender"></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                    <lightning-input type="text" label="Prescriber Medical Assistant Name" value={getNewContactData.Medical_Assistant_Name__c} disabled read-only data-name="Medical_Assistant_Name__c"></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                    <lightning-input type="text" label="Prescriber Fax" value={getNewContactData.Fax} disabled read-only data-name="Fax"></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                    <lightning-input type="text" label="Prescriber Medical Assistant Phone" value={getNewContactData.Medical_Assistant_Phone__c} disabled read-only data-name="Medical_Assistant_Phone__c"></lightning-input>
+                </lightning-layout-item>                                                                                  
+            </lightning-layout>
+
+            <template if:true={finalPage}>
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Submission Confirmation</h2>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <p>Are you sure you want to submit this application?</p>
+                    </div>
+                    <footer class="slds-modal__footer">
+                        <lightning-button  data-name="screen5" label="YES" title="YES"  class="slds-m-left_x-small" onclick={goToNextStep}></lightning-button>
+                        <lightning-button  data-name="screen5" label="NO" title="NO"  class="slds-m-left_x-small" onclick={goToNextStep}></lightning-button>
+                    </footer>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </template>
+
+            <lightning-layout horizontal-align="spread" class="slds-p-vertical_xx-large" multiple-rows>
+                <lightning-layout-item size="auto">
+                    <lightning-button class="opaf-lightning-button--brand" variant="neutral" icon-name="utility:back" data-name="screen5" label="PREVIOUS" title="PREVIOUS" onclick={goToPreviousStep}></lightning-button>
+                </lightning-layout-item>
+                <lightning-layout-item size="auto">
+                    <lightning-button class="opaf-lightning-button--brand" icon-name="utility:forward" icon-position="right" variant="brand" data-name="screen5" label="SUBMIT APPLICATION" title="SUBMIT APPLICATION" onclick={goToNextStep}></lightning-button>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+
+
+        <div class="stepSix step6 slds-hide">
+            <lightning-layout class="slds-grid slds-col slds-wrap">
+                <lightning-layout-item size="12" padding="around-small">
+                    <h3 class="slds-p-vertical_large slds-text-heading_small">
+                        Thank you for submitting your OPAF application.                            
+                    </h3>  
+                    <div  class="opaf-box">
+                        <p class="slds-p-vertical_medium"> 
+                            If you have any questions about this process, or need to contact us, please call OPAF at
+                            <br>
+                            <span class="opaf-red">1-855-727-6274.</span> 
+                        </p>               
+                    </div>                          
+                </lightning-layout-item>
+                <lightning-layout-item size="12" padding="around-small">
+                    <lightning-button class="opaf-lightning-button--brand" icon-name="utility:forward" icon-position="right" variant="brand" data-name="screen7" label="RETURN TO MY WORKSPACE" title="RETURN TO MY WORKSPACE"  onclick={goToNextStep}></lightning-button>
+                </lightning-layout-item>                
+            </lightning-layout>
+        </div>
+    </div>
+</template>

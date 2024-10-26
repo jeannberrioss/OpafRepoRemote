@@ -1,0 +1,163 @@
+<aura:component controller="LoginController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    
+    <!-- REQUIRED SLDS CSS -->
+    <ltng:require styles="/resource/SLDS24/styles/salesforce-lightning-design-system.css"/>
+    <!-- Username and Password -->
+    <aura:attribute name="Username" type="String" />
+    <aura:attribute name="Password" type="String" /> 
+    <aura:attribute name="ResetUsername" type="String" />
+    <aura:attribute name="mylabel" type="String"/>
+    <aura:attribute name="mylabel1" type="String"/>
+    <aura:handler event="aura:waiting" action="{!c.showSpinner}"/>
+    <aura:handler event="aura:doneWaiting" action="{!c.hideSpinner}"/>
+    <!--create a component attributs -->
+    <aura:attribute name="Spinner" type="boolean" default="false"/>
+    <aura:attribute name="isVisible" type="boolean" default="true"/>
+    <!--loading spinner start... style=Brand Medium (blue dots)-->
+    <aura:attribute name="backgroundImageURL" type="string" default=""/>
+    <aura:attribute name="communitySelfRegisterUrl" type="String" access="private"/>
+    <aura:attribute name="isSelfRegistrationEnabled" type="Boolean" access="private"/>
+    <aura:attribute name="selfRegisterUrl" type="String" required="false" default="SelfRegister"/>
+    <aura:attribute name="communityForgotPasswordUrl" type="String" access="private"/>
+    <aura:attribute name="forgotPasswordUrl" type="String" required="false" default="ForgotPassword"/>
+    <aura:attribute name="communityHeader" type="String" required="false" default="OPAF Care Connect"/>
+    <aura:attribute name="communityFooter" type="String" required="false" default="OPAF Care Connect"/>
+    <aura:attribute name="isPatient" type="Boolean" required="false" default="false"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:if isTrue="{!v.Spinner}">
+        <div aura:id="spinnerId" class="slds-spinner_container">
+            <div class="slds-spinner--brand slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                <span class="slds-assistive-text">Loading</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>
+    </aura:if>
+    <!-- Loading spinner end-->
+    
+    
+    <!-- PAGE HEADER -->
+    <div style="{!'position: relative; background:' + ' url(' + v.backgroundImageURL +') no-repeat;background-position: unset;background-size: cover;'}">
+        <!-- / PAGE HEADER -->
+        <!-- NEW FORM -->
+        <lightning:layout multipleRows="true">
+            <lightning:layoutItem class="slds-p-horizontal_x-large"  size="6" smallDeviceSize="6" mediumDeviceSize="6">
+                <h1 class="slds-text-heading_medium slds-m-vertical_xx-large">{!v.communityHeader}</h1>
+            </lightning:layoutItem>
+            <lightning:layoutItem class="slds-p-horizontal_x-large"  size="6" smallDeviceSize="6" mediumDeviceSize="6">
+            </lightning:layoutItem>
+            <lightning:layoutItem  class="slds-p-horizontal_x-large" size="6" smallDeviceSize="12" mediumDeviceSize="6" >
+                <p class="slds-text-body_regular">
+                    <aura:if isTrue="{!v.isPatient}">
+                        If you have been prescribed an Otsuka medication and are  uninsured or under insured, you can apply online for assistance from the Otsuka Patient Assistance Foundation, Inc. (OPAF). 
+                        <br/>Once approved you can track your medication shipments and re-apply annually once your enrollment has expired. <br/><br/> 
+                        For an optimal user experience, please use a laptop or desktop with this site.
+                    </aura:if>
+                    <aura:if isTrue="{!!v.isPatient}">
+                        If your patient has been prescribed an Otsuka medication and they are uninsured or under insured, you can apply online for assistance from the Otsuka Patient Assistance Foundation, Inc. (OPAF), on their behalf. <br/> Once approved you can track their medication shipments and re-apply once their enrollment has expired.<br/><br/> 
+                                    For an optimal user experience, please use a laptop or desktop with this site.
+                    </aura:if>
+                </p>
+            </lightning:layoutItem>
+        </lightning:layout>
+        <lightning:layout multipleRows="true">
+            <lightning:layoutItem class="slds-p-horizontal_x-large slds-p-vertical_medium" size="6" smallDeviceSize="12" mediumDeviceSize="12">
+                <h2 class="slds-text-heading_small opaf-blue">LOG IN</h2>
+            </lightning:layoutItem>
+            <lightning:layoutItem class="slds-p-horizontal_x-large" size="6" smallDeviceSize="12" mediumDeviceSize="6" >
+                <aura:if isTrue="{!v.isVisible}">
+                    <div id="error">
+                        <ui:outputRichText class="errortext" value="{!v.mylabel}"/>
+                    </div>
+                    <!-- CREATE NEW FORM -->
+                    <lightning:layout>
+                        <lightning:layoutItem size="6" smallDeviceSize="12" mediumDeviceSize="8">
+                            <lightning:input aura:id="FormVal" label="User Name"
+                                             name="Username"
+                                             type="email"
+                                             value="{!v.Username}"/>
+                            
+                        </lightning:layoutItem>
+                    </lightning:layout>
+                    <lightning:layout>
+                        <lightning:layoutItem size="6" smallDeviceSize="12" mediumDeviceSize="8">
+                           <lightning:input aura:id="FormVal" label="Password"
+                                     name="password"
+                                     type="password"
+                                     value="{!v.Password}"
+                                     />
+                            
+                        </lightning:layoutItem>
+                    </lightning:layout>
+                        <lightning:layoutItem size="6" smallDeviceSize="12" mediumDeviceSize="8">
+                    
+                            <lightning:button label="LOG IN"
+                                class="slds-m-vertical--medium opaf-button--brand"
+                                variant="brand"
+                                onclick="{!c.getInput}" />
+                            
+                        </lightning:layoutItem>
+                    <lightning:layout>
+                    
+                    </lightning:layout>
+                    
+                    
+                    
+                    <!-- / CREATE NEW FORM -->
+                    <aura:set attribute="else">
+                        <!-- Else Part Start-->
+                        <!-- CREATE NEW FORM -->
+                        <form class="slds-form--stacked">
+                            <!-- Reset Password code -->
+                            <div id="error1">
+                            <ui:outputRichText value="{!v.mylabel1}"/></div>
+                            <lightning:input aura:id="FormReset" label="Username"
+                                             name="Username"
+                                             type="email"
+                                             placeholder="Enter your Username"
+                                             value="{!v.ResetUsername}"
+                                             required="true" />
+                            <lightning:button label="Reset"
+                                              class="slds-m-top--medium"
+                                              variant="brand"
+                                              onclick="{!c.submitresetPass}"/>
+                            <lightning:button label="Cancel"
+                                              class="slds-m-top--medium opaf-button--brand"
+                                              variant="brand"
+                                              onclick="{!c.CancelReset}"/>
+                        </form>
+                    </aura:set>
+                    <!-- Else Part End -->
+                </aura:if>
+            </lightning:layoutItem>
+            <lightning:layoutItem  size="6" smallDeviceSize="12" mediumDeviceSize="6" >
+                
+            </lightning:layoutItem>
+            <lightning:layoutItem class="slds-m-horizontal_x-large slds-p-around_x-large  solid-bg-light-blue" size="6" smallDeviceSize="12" mediumDeviceSize="6" >
+                <p> If you have forgotten your password, please click  <a href="{!if(v.communityForgotPasswordUrl == null, v.forgotPasswordUrl, v.communityForgotPasswordUrl)}">here</a><br/>
+                     or call OPAF at <span class="slds-text-title_bold opaf-red"> {!$Label.c.Password_Reset_Phone}
+                    </span> for assistance</p>  
+            </lightning:layoutItem>
+            <lightning:layoutItem class="slds-p-around_x-large" size="6" smallDeviceSize="12" mediumDeviceSize="12" >
+                <lightning:layout> 
+                    <lightning:layoutItem >
+                        <div class="slds-p-around_x-large solid-bg-light-blue" onclick="{!c.createNewUser}" > 
+                            <p class="iconClass">
+                                <img src="{!$Resource.CreateUser}" style="height: 50px;" />
+                            	<!--<lightning:icon iconName="action:user" alternativeText="Approved" title="Approved" size="medium"/>-->
+                            </p>
+                            <p class="slds-text-body_regular" onclick="{!c.createNewUser}" style="cursor: pointer;">
+                                <span class ="slds-text-title_bold opaf-blue">Need to create an account?</span><br/>
+                                <span class="opaf-blue">Create now</span>
+                                <span>
+                                    to access {!v.communityFooter}
+                                </span>
+                            </p>
+                        </div>
+                    </lightning:layoutItem>
+                </lightning:layout>
+            </lightning:layoutItem>
+        </lightning:layout>
+    </div>
+    <!-- / NEW FORM -->
+</aura:component>

@@ -1,0 +1,47 @@
+<template>
+    <lightning-accordion active-section-name="B">
+        
+        <lightning-accordion-section name="A" label="Patient Information">
+            <lightning-layout class="slds-grid slds-col slds-wrap" size="12">
+            <lightning-layout-item size="6" padding="around-small">
+                <lightning-input type="text" label="Patient First Name"></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="6" padding="around-small">
+                <lightning-input type="text" label="Patient Email Address"></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="6" padding="around-small">
+                <lightning-input type="text" label="Patient Last Name"></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="6" padding="around-small">
+                <lightning-input type="date" label="Patient Date of Birth"></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="12" padding="around-small">
+                <lightning-radio-group name="radioGroup"
+                          label="Is a Legal Representative signing on behalf of the Patient?"
+                          options={options}
+                          value={value}
+                          type="radio"
+                          onclick={handleOnSelect}></lightning-radio-group>
+            </lightning-layout-item>
+            </lightning-layout>
+        </lightning-accordion-section>
+        <template if:false={showSection}>
+        <lightning-accordion-section name="B" label="Legal Representative Information (only display if above question = Yes)">
+            <lightning-layout class="slds-grid slds-col slds-wrap" size="12">
+        <lightning-layout-item size="6" padding="around-small">
+            <lightning-input type="text" label="Legal Representative First Name"></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="6" padding="around-small">
+            <lightning-input type="text" label="Type of Legal Representative/Relationship to Patient"></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="6" padding="around-small">
+            <lightning-input type="text" label="Legal Representative Last Name"></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="6" padding="around-small">
+            <lightning-input type="date" label="Legal Representative Phone Number"></lightning-input>
+        </lightning-layout-item>
+        </lightning-layout>
+        </lightning-accordion-section>
+        </template>
+      </lightning-accordion>
+</template>

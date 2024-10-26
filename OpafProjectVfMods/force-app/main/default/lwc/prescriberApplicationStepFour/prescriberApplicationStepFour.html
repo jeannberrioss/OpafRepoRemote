@@ -1,0 +1,933 @@
+<template>
+    <lightning-layout>
+        <lightning-layout-item size="12" padding="around-small"> 
+            <lightning-radio-group name="How would you like to send the Prescription?"
+                            label="How would you like to send the Prescription?"
+                            options={radioOptions}
+                            type="radio"
+                            data-name="Rx_Send_Method__c"
+                            value={caseData.Rx_Send_Method__c}
+                            onchange={caseDataTracking}
+                            required="true" data-id="inputId">
+            </lightning-radio-group>                 
+        </lightning-layout-item> 
+    </lightning-layout>
+    <template if:true={isEScribe}>
+        <div class={sectionOne} id="eScribeInfo">
+            <h3 class="slds-text-heading_small slds-truncate" title="eScribe">eScribe</h3>
+            <lightning-layout>
+                <lightning-layout-item padding="around-small" size="12">
+                    <p>
+                        PLEASE SUBMIT PRESCRIPTIONS BY ESCRIPT IF MANDATED BY INDIVIDUAL STATE LAWS. THE PRESCRIBER MUST COMPLY WITH STATE LAWS REGARDING E-PRESCRIBING, STATE-SPECIFIC PRESCRIPTION FORM, OR WRITTEN PRESCRIPTION.
+                        <lightning-input type="checkbox" data-id="inputId" data-name="eScribe_Rx__c" checked={caseData.eScribe_Rx__c} onchange={caseDataTracking} label="I agree to submit an electronic prescription using my own eScribing platform" required="true"></lightning-input><br/>
+                        The OPAF dispensing pharmacy information is listed below:<br/><br/>
+                        Eversana Life Science Services, LLC<br/>
+                        17877 Chesterfield Airport Rd<br/>
+                        Chesterfield, MO 63005<br/>
+                        NPI: 1548264591
+                    </p>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div> 
+    </template>
+    <template if:true={isDownload}>
+        <template if:true={isAbilify}>
+            <div class={sectionOne} id="prescriptionInfo">
+                <h3 class="slds-text-heading_small slds-truncate" title="Prescription Information for ABILIFY MAINTENA">
+                    Prescription Information for ABILIFY MAINTENA
+                </h3>
+                <lightning-layout multiple-rows>
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6">
+                        <lightning-input type="text" label="Patient First Name" data-name="Patient_First_Name__c" value={caseData.Patient_First_Name__c} onchange={caseDataTracking} required="true" data-id="inputId"></lightning-input>    
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6">
+                        <lightning-combobox
+                            name="Number of Refills"
+                            label="Number of Refills"
+                            placeholder=""
+                            options={refillOptions}
+                            data-name="Number_of_Refills__c"
+                            value={prescriptionData.Number_of_Refills__c}
+                            onchange={prescriptionDataTracking}
+                            required="true" data-id="inputId"></lightning-combobox>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small"  size="12" medium-device-size="6">
+                        <lightning-input type="text" label="Patient Last Name" data-name="Patient_Last_Name__c" value={caseData.Patient_Last_Name__c} onchange={caseDataTracking} required="true" data-id="inputId"></lightning-input>    
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small"  size="12" medium-device-size="6">
+                        <lightning-combobox
+                                            name="Administration Method"
+                                            label="Administration Method"
+                                            placeholder=""
+                                            options={adminOptions}
+                                            data-name="Administration_Method__c"
+                                            value={prescriptionData.Administration_Method__c}
+                                            onchange={prescriptionDataTracking}
+                                            required="true" data-id="inputId"></lightning-combobox>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small"  size="12" medium-device-size="6">
+                        <lightning-input type="date" label="Patient Date of Birth" data-name="Birthdate" value={contactData.Birthdate} onchange={contactDataTracking} required="true" data-id="inputId"></lightning-input><br/>    
+                        <lightning-input type="text" 
+                                            name="Product Name"
+                                            label="Product Name"
+                                            placeholder=""
+                                            options={productoptions}
+                                            data-name="Product__c"
+                                            value={caseData.Product__c}
+                                            disabled
+                                            required="true" data-id="inputId"></lightning-input>
+                        <!--<lightning-combobox
+                                            name="Product Name"
+                                            label="Product Name"
+                                            placeholder=""
+                                            options={productoptions}
+                                            data-name="Product__c"
+                                            value={caseData.Product__c}
+                                            onchange={caseDataTracking}
+                                            required="true" data-id="inputId"></lightning-combobox>--><br/>
+                        <lightning-combobox
+                                            name="Dosage"
+                                            label="Dosage"
+                                            placeholder=""
+                                            options={dosageOptions}
+                                            data-name="Dosage__c"
+                                            value={prescriptionData.Dosage__c}
+                                            onchange={prescriptionDataTracking}
+                                            required="true" data-id="inputId"></lightning-combobox><br/>
+                                
+                        <lightning-input type="text" value={prescriptionData.Quantity__c} name="Quantity" label="Quantity" required="true" disabled read-only></lightning-input><br/>                
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6">
+                        <lightning-textarea label="Directions" data-name="Directions__c" value={prescriptionData.Directions__c} onchange={prescriptionDataTracking} required="true" data-id="inputId"></lightning-textarea> <br/>   
+                        <lightning-textarea label="Titration Directions" data-name="Titration_Directions__c" value={prescriptionData.Titration_Directions__c} onchange={prescriptionDataTracking}></lightning-textarea>  <br/>
+                        <lightning-input type="checkbox" label="Dispense as Written" data-name="Dispense_as_Written__c" checked={prescriptionData.Dispense_as_Written__c} onchange={prescriptionDataTracking} ></lightning-input> 
+                        <div class="slds-m-top_small">
+                            <lightning-button label="DOWNLOAD OPAF Rx TEMPLATE" variant="destructive" onclick={downloadConsent}></lightning-button>
+                        </div>
+                        <div class="slds-m-bottom_small">
+                            <lightning-file-upload
+                                    class="opaf-dropdown"
+                                    label="Upload a copy of the completed Rx Template here"
+                                    name="fileUploader"
+                                    record-id={caseData.Id}
+                                    onuploadfinished={handleUploadFinished}
+                                    multiple
+                                    accept={acceptedFormats}
+                                    data-type="ABILIFY RxDocument">
+                            </lightning-file-upload>
+                            <!--<lightning-input type="file" data-name="ABILIFY RxDocument" multiple="true" label="" onchange={rxDocumentsUpload}></lightning-input>-->
+                            <div class="slds-text-body_small slds-text-color_error" style="display:inline;">
+                                {rxFileUploads}
+                            </div><br/>
+                            <template if:true={abilifyRxCardDetails}>
+                                <table class="slds-table slds-table--bordered tableBordersScreen4">
+                                    <thead>
+                                        <tr class="slds-text-heading--label ">
+                                            <th class="" scope="col">Title</th>
+                                            <th class="" scope="col">Action</th>
+                                        </tr>  
+                                    </thead>
+                                    <tbody>
+                                        <template for:each={abilifyExistingRxFiles} for:item="row" for:index="index">
+                                            <tr class="slds-hint-parent" key={row.Id}>
+                                                <td class="" data-label="Title" >
+                                                    <a href="" onclick={downloadAttachment} data-id={row.Id}>{row.Title}</a>
+                                                </td>
+                                                <td class="" data-label="Document Type" >
+                                                    <lightning-button-icon data-label="abilify rxDocumentDetails" name={row.ContentDocument.Id} data-parent={row.FirstPublishLocationId} icon-name="utility:delete" size="small" alternative-text="Delete" class="slds-m-left_xx-small" title="Delete" onclick={deleteUploadedFile}></lightning-button-icon>
+                                                </td>
+                                            </tr>
+                                        </template>
+                                    </tbody>
+                                </table> 
+                            </template>
+                        </div>
+                        <div class="slds-m-bottom_small">
+                            <!--<lightning-button label="SUBMIT THIS Rx" variant="destructive" onclick={submitRxDocuments} disabled={disableAbilifySubmitButton}></lightning-button>-->
+                        </div>
+                        <div>
+                            <label class="slds-form-element_label">
+                                Rx Fax Timestamp
+                            </label><br/>
+                            <lightning-formatted-text value={currentDate}></lightning-formatted-text>
+                            <!--<lightning-formatted-text value={currentDate}></lightning-formatted-text>-->   
+                        </div>  
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div> 
+        </template>
+        <template if:true={isAbilifyAsimtufii}>
+            <div class={sectionOne} id="prescriptionAbilifyAsimtufiiInfo">
+                <h3 class="slds-text-heading_small slds-truncate" title="Prescription Information for ABILIFY ASIMTUFII">
+                    Prescription Information for ABILIFY ASIMTUFII
+                </h3>
+                <lightning-layout multiple-rows>
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6">
+                        <lightning-input type="text" label="Patient First Name" data-name="Patient_First_Name__c" value={caseData.Patient_First_Name__c} onchange={caseDataTracking} required="true" data-id="inputId"></lightning-input>    
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6">
+                        <lightning-combobox
+                            name="Number of Refills"
+                            label="Number of Refills"
+                            placeholder=""
+                            options={refillOptions}
+                            data-name="Number_of_Refills__c"
+                            value={prescriptionData.Number_of_Refills__c}
+                            onchange={prescriptionDataTracking}
+                            required="true" data-id="inputId"></lightning-combobox>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small"  size="12" medium-device-size="6">
+                        <lightning-input type="text" label="Patient Last Name" data-name="Patient_Last_Name__c" value={caseData.Patient_Last_Name__c} onchange={caseDataTracking} required="true" data-id="inputId"></lightning-input>    
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small"  size="12" medium-device-size="6">
+                        <lightning-combobox
+                                            name="Administration Method"
+                                            label="Administration Method"
+                                            placeholder=""
+                                            options={adminOptions}
+                                            data-name="Administration_Method__c"
+                                            value={prescriptionData.Administration_Method__c}
+                                            onchange={prescriptionDataTracking}
+                                            required="true" data-id="inputId"></lightning-combobox>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small"  size="12" medium-device-size="6">
+                        <lightning-input type="date" label="Patient Date of Birth" data-name="Birthdate" value={contactData.Birthdate} onchange={contactDataTracking} required="true" data-id="inputId"></lightning-input><br/>    
+                        <lightning-input type="text" 
+                                            name="Product Name"
+                                            label="Product Name"
+                                            placeholder=""
+                                            options={productoptions}
+                                            data-name="Product__c"
+                                            value={caseData.Product__c}
+                                            disabled
+                                            required="true" data-id="inputId"></lightning-input>
+                        <!--<lightning-combobox
+                                            name="Product Name"
+                                            label="Product Name"
+                                            placeholder=""
+                                            options={productoptions}
+                                            data-name="Product__c"
+                                            value={caseData.Product__c}
+                                            onchange={caseDataTracking}
+                                            required="true" data-id="inputId"></lightning-combobox>--><br/>
+                        <lightning-combobox
+                                            name="Dosage"
+                                            label="Dosage"
+                                            placeholder=""
+                                            options={dosageOptions}
+                                            data-name="Dosage__c"
+                                            value={prescriptionData.Dosage__c}
+                                            onchange={prescriptionDataTracking}
+                                            required="true" data-id="inputId"></lightning-combobox><br/>
+                                
+                        <lightning-input type="text" value={prescriptionData.Quantity__c} name="Quantity" label="Quantity" required="true" disabled read-only></lightning-input><br/>                
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6">
+                        <lightning-textarea label="Directions" data-name="Directions__c" value={prescriptionData.Directions__c} onchange={prescriptionDataTracking} required="true" data-id="inputId"></lightning-textarea> <br/>   
+                        <lightning-textarea label="Titration Directions" data-name="Titration_Directions__c" value={prescriptionData.Titration_Directions__c} onchange={prescriptionDataTracking}></lightning-textarea>  <br/>
+                        <lightning-input type="checkbox" label="Dispense as Written" data-name="Dispense_as_Written__c" checked={prescriptionData.Dispense_as_Written__c} onchange={prescriptionDataTracking} ></lightning-input> 
+                        <div class="slds-m-top_small">
+                            <lightning-button label="DOWNLOAD OPAF Rx TEMPLATE" variant="destructive" onclick={downloadConsent}></lightning-button>
+                        </div>
+                        <div class="slds-m-bottom_small">
+                            <lightning-file-upload
+                                    class="opaf-dropdown"
+                                    label="Upload a copy of the completed Rx Template here"
+                                    name="fileUploader"
+                                    record-id={caseData.Id}
+                                    onuploadfinished={handleUploadFinished}
+                                    multiple
+                                    accept={acceptedFormats}
+                                    data-type="ABILIFY ASIMTUFII RxDocument">
+                            </lightning-file-upload>
+                            <!--<lightning-input type="file" data-name="ABILIFY ASIMTUFII RxDocument" multiple="true" label="" onchange={rxDocumentsUpload}></lightning-input>-->
+                            <div class="slds-text-body_small slds-text-color_error" style="display:inline;">
+                                {rxFileUploads}
+                            </div><br/>
+                            <template if:true={abilifyAsimtufiiRxCardDetails}>
+                                <table class="slds-table slds-table--bordered tableBordersScreen4">
+                                    <thead>
+                                        <tr class="slds-text-heading--label ">
+                                            <th class="" scope="col">Title</th>
+                                            <th class="" scope="col">Action</th>
+                                        </tr>  
+                                    </thead>
+                                    <tbody>
+                                        <template for:each={abilifyAsimtufiiExistingRxFiles} for:item="row" for:index="index">
+                                            <tr class="slds-hint-parent" key={row.Id}>
+                                                <td class="" data-label="Title" >
+                                                    <a href="" onclick={downloadAttachment} data-id={row.Id}>{row.Title}</a>
+                                                </td>
+                                                <td class="" data-label="Document Type" >
+                                                    <lightning-button-icon data-label="abilify asimtufii rxDocumentDetails" name={row.ContentDocument.Id} data-parent={row.FirstPublishLocationId} icon-name="utility:delete" size="small" alternative-text="Delete" class="slds-m-left_xx-small" title="Delete" onclick={deleteUploadedFile}></lightning-button-icon>
+                                                </td>
+                                            </tr>
+                                        </template>
+                                    </tbody>
+                                </table> 
+                            </template>
+                        </div>
+                        <div>
+                            <label class="slds-form-element_label">
+                                Rx Fax Timestamp
+                            </label><br/>
+                            <lightning-formatted-text value={currentDate}></lightning-formatted-text>
+                            <!--<lightning-formatted-text value={currentDate}></lightning-formatted-text>-->   
+                        </div>  
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div> 
+        </template>
+        <template if:true={isNUEDEXTA}>
+            <div class={sectionOne} id="prescriptionNuedextaInfo">
+                <h3 class="slds-text-heading_small slds-truncate" title="Prescription Information for NUEDEXTA">
+                    Prescription Information for NUEDEXTA
+                </h3>
+                <lightning-layout multiple-rows>
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6">
+                        <lightning-input type="text" label="Patient First Name" data-name="Patient_First_Name__c" value={caseData.Patient_First_Name__c} onchange={caseDataTracking} required="true" data-id="inputId"></lightning-input>    
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small"  size="12" medium-device-size="6">
+                        <lightning-input type="text" label="Patient Last Name" data-name="Patient_Last_Name__c" value={caseData.Patient_Last_Name__c} onchange={caseDataTracking} required="true" data-id="inputId"></lightning-input>    
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small"  size="12" medium-device-size="6">
+                        <lightning-input type="date" label="Patient Date of Birth" data-name="Birthdate" value={contactData.Birthdate} onchange={contactDataTracking} required="true" data-id="inputId"></lightning-input>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6">
+                        <lightning-input type="text" 
+                                            name="Product Name"
+                                            label="Product Name"
+                                            placeholder=""
+                                            options={productoptions}
+                                            data-name="Product__c"
+                                            value={caseData.Product__c}
+                                            disabled
+                                            required="true" data-id="inputId"></lightning-input>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6">
+                        <lightning-combobox
+                                            name="Dosage"
+                                            label="Dosage"
+                                            placeholder=""
+                                            options={dosageOptions}
+                                            data-name="Dosage__c"
+                                            value={prescriptionData.Dosage__c}
+                                            onchange={prescriptionDataTracking}
+                                            required="true" data-id="inputId"></lightning-combobox>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6">
+                        <lightning-combobox
+                            name="Number of Refills"
+                            label="Number of Refills"
+                            placeholder=""
+                            options={refillOptions}
+                            data-name="Number_of_Refills__c"
+                            value={prescriptionData.Number_of_Refills__c}
+                            onchange={prescriptionDataTracking}
+                            required="true" data-id="inputId"></lightning-combobox>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6">
+                        <lightning-combobox
+                            name="Quantity"
+                            label="Quantity"
+                            placeholder=""
+                            options={quantityOptions}
+                            data-name="Quantity__c"
+                            value={prescriptionData.Quantity__c}
+                            onchange={prescriptionDataTracking}
+                            required="true" data-id="inputId"></lightning-combobox>
+                    </lightning-layout-item>
+                    
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="12">
+                        <lightning-textarea label="Other/Clinical Notes" data-name="Directions__c" value={prescriptionData.Directions__c} onchange={prescriptionDataTracking} required="true" data-id="inputId"></lightning-textarea>
+                    </lightning-layout-item>
+                    
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6">
+                        
+                        <lightning-input type="checkbox" label="Dispense as Written" data-name="Dispense_as_Written__c" checked={prescriptionData.Dispense_as_Written__c} onchange={prescriptionDataTracking} ></lightning-input>  
+                    </lightning-layout-item>
+                    
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6">
+                        <div class="slds-m-top_small">
+                            <lightning-button label="DOWNLOAD OPAF Rx TEMPLATE" variant="destructive" onclick={downloadConsent}></lightning-button>
+                        </div>
+                        <div class="slds-m-bottom_small">
+                            <lightning-file-upload
+                                    class="opaf-dropdown"
+                                    label="Upload a copy of the completed Rx Template here"
+                                    name="fileUploader"
+                                    record-id={caseData.Id}
+                                    onuploadfinished={handleUploadFinished}
+                                    multiple
+                                    accept={acceptedFormats}
+                                    data-type="NUEDEXTA RxDocument">
+                            </lightning-file-upload>
+                            <!--<lightning-input type="file" data-name="NUEDEXTA RxDocument" multiple="true" label="" onchange={rxDocumentsUpload}></lightning-input>-->
+                            <div class="slds-text-body_small slds-text-color_error" style="display:inline;">
+                                {rxFileUploads}
+                            </div><br/>
+                            <template if:true={nuedextaRxCardDetails}>
+                                <table class="slds-table slds-table--bordered tableBordersScreen4">
+                                    <thead>
+                                        <tr class="slds-text-heading--label ">
+                                            <th class="" scope="col">Title</th>
+                                            <th class="" scope="col">Action</th>
+                                        </tr>  
+                                    </thead>
+                                    <tbody>
+                                        <template for:each={nuedextaExistingRxFiles} for:item="row" for:index="index">
+                                            <tr class="slds-hint-parent" key={row.Id}>
+                                                <td class="" data-label="Title" >
+                                                    <a href="" onclick={downloadAttachment} data-id={row.Id}>{row.Title}</a>
+                                                </td>
+                                                <td class="" data-label="Document Type" >
+                                                    <lightning-button-icon data-label="nuedexta rxDocumentDetails" name={row.ContentDocument.Id} data-parent={row.FirstPublishLocationId} icon-name="utility:delete" size="small" alternative-text="Delete" class="slds-m-left_xx-small" title="Delete" onclick={deleteUploadedFile}></lightning-button-icon>
+                                                </td>
+                                            </tr>
+                                        </template>
+                                    </tbody>
+                                </table> 
+                            </template>
+                        </div>
+                        <div>
+                            <label class="slds-form-element_label">
+                                Rx Fax Timestamp
+                            </label><br/>
+                            <lightning-formatted-text value={currentDate}></lightning-formatted-text>
+                            <!--<lightning-formatted-text value={currentDate}></lightning-formatted-text>-->   
+                        </div>  
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div> 
+        </template>
+        <template if:true={isJYNARQUE}>
+            <div class={sectionOne} id="prescriptionJYNARQUEInfo">
+                <h3 class="slds-text-heading_small slds-truncate"  title="Prescription Information for JYNARQUE">
+                    Prescription Information for JYNARQUE
+                </h3>
+                <lightning-layout multiple-rows>
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6">
+                        <lightning-input type="text" label="Patient First Name" data-name="Patient_First_Name__c" value={caseData.Patient_First_Name__c} onchange={caseDataTracking} required="true" data-id="inputId"></lightning-input>    
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6">
+                        <lightning-combobox
+                                            name="Dosage"
+                                            label="Dosage"
+                                            placeholder=""
+                                            options={dosageOptions}
+                                            data-name="Dosage__c"
+                                            value={prescriptionData.Dosage__c}
+                                            onchange={prescriptionDataTracking}
+                                            required="true" data-id="inputId"></lightning-combobox>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6">
+                        <lightning-input type="text" label="Patient Last Name" data-name="Patient_Last_Name__c" value={caseData.Patient_Last_Name__c} onchange={caseDataTracking} required="true" data-id="inputId"></lightning-input>    
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6">
+                        <lightning-combobox
+                                            name="Quantity"
+                                            label="Quantity"
+                                            placeholder=""
+                                            options={quantityOptions}
+                                            data-name="Quantity__c"
+                                            value={prescriptionData.Quantity__c}
+                                            onchange={prescriptionDataTracking}
+                                            required="true" data-id="inputId"></lightning-combobox>
+                    </lightning-layout-item> 
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6">
+                        <lightning-input type="date" date-style="short" label="Patient Date of Birth" data-name="Birthdate" value={contactData.Birthdate} onchange={contactDataTracking} required="true" data-id="inputId"></lightning-input>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6">
+                        <lightning-combobox
+                                            name="Number of Refills"
+                                            label="Number of Refills"
+                                            placeholder=""
+                                            options={refillOptions}
+                                            data-name="Number_of_Refills__c"
+                                            value={prescriptionData.Number_of_Refills__c}
+                                            onchange={prescriptionDataTracking}
+                                            required="true" data-id="inputId"></lightning-combobox>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6">
+                        <lightning-input type="text" 
+                                            name="Product Name"
+                                            label="Product Name"
+                                            placeholder=""
+                                            options={productoptions}
+                                            data-name="Product__c"
+                                            value={caseData.Product__c}
+                                            disabled
+                                            required="true" data-id="inputId"></lightning-input>
+                        <!--<lightning-combobox
+                                            name="Product Name"
+                                            label="Product Name"
+                                            placeholder=""
+                                            options={productoptions}
+                                            data-name="Product__c"
+                                            value={caseData.Product__c}
+                                            onchange={caseDataTracking}
+                                            required="true" data-id="inputId"></lightning-combobox>-->
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6">
+                        <lightning-textarea label="Directions" data-name="Directions__c" value={prescriptionData.Directions__c} onchange={prescriptionDataTracking} required="true" data-id="inputId"></lightning-textarea>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6">
+    
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6">
+                        <lightning-textarea label="Titration Directions" data-name="Titration_Directions__c" value={prescriptionData.Titration_Directions__c} onchange={prescriptionDataTracking}></lightning-textarea>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6">
+                        
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6">
+                        <lightning-input type="checkbox" label="Dispense as Written" data-name="Dispense_as_Written__c" checked={prescriptionData.Dispense_as_Written__c} onchange={prescriptionDataTracking} ></lightning-input> 
+                        <div class="slds-m-top_small">
+                            <lightning-button label="DOWNLOAD OPAF Rx TEMPLATE" variant="destructive" onclick={downloadConsent}></lightning-button>
+                        </div>
+                        <div class="slds-m-bottom_small">
+                            <lightning-file-upload
+                                                        label="Upload a copy of the completed Rx Template here"
+                                                        name="fileUploader"
+                                                        record-id={caseData.Id}
+                                                        onuploadfinished={handleUploadFinished}
+                                                        multiple
+                                                        accept={acceptedFormats}
+                                                        data-type="JYNARQUE RxDocument">
+                                                </lightning-file-upload>
+                            <!--<lightning-input type="file" data-name="JYNARQUE RxDocument" multiple="true" label="Attachment" onchange={rxDocumentsUpload}></lightning-input>-->
+                            <div class="slds-text-body_small slds-text-color_error" style="display:inline;">
+                                {rxFileUploads}
+                            </div><br/>
+                            <template if:true={jynarqueRxCardDetails}>
+                                <table class="slds-table slds-table--bordered tableBordersScreen4">
+                                    <thead>
+                                        <tr class="slds-text-heading--label ">
+                                            <th class="" scope="col">Title</th>
+                                            <th class="" scope="col">Action</th>
+                                        </tr>  
+                                    </thead>
+                                    <tbody>
+                                        <template for:each={jynarqueExistingRxFiles} for:item="row" for:index="index">
+                                            <tr class="slds-hint-parent" key={row.Id}>
+                                                <td class="" data-label="Title" >
+                                                    <a href="" onclick={downloadAttachment} data-id={row.Id}>{row.Title}</a>
+                                                </td>
+                                                <td class="" data-label="Document Type" >
+                                                    <lightning-button-icon data-label="jynarque rxDocumentDetails" name={row.ContentDocument.Id} data-parent={row.FirstPublishLocationId} icon-name="utility:delete" size="small" alternative-text="Delete" class="slds-m-left_xx-small" title="Delete" onclick={deleteUploadedFile}></lightning-button-icon>
+                                                </td>
+                                            </tr>
+                                        </template>
+                                    </tbody>
+                                </table> 
+                            </template>
+                        </div>
+                        <div class="slds-m-bottom_small">
+                            <!--<lightning-button label="SUBMIT THIS Rx" variant="destructive" onclick={submitRxDocuments} disabled={disableJynarqueSubmitButton}></lightning-button>-->
+                        </div>
+                        <div>
+                            <label class="slds-form-element_label">
+                                Rx Fax Timestamp
+                            </label><br/>
+                            <lightning-formatted-text value={currentDate}></lightning-formatted-text>
+                        </div>  
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div> 
+        </template>
+        <template if:true={isREXULTI}>
+            <div class={sectionOne} id="prescriptionREXULTIInfo">
+                <h3 class="slds-text-heading_small slds-truncate" title="Prescription Information for REXULTI">
+                    Prescription Information for REXULTI
+                </h3>
+                <lightning-layout multiple-rows>
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6">
+                        <lightning-input type="text" label="Patient First Name" data-name="Patient_First_Name__c" value={caseData.Patient_First_Name__c} onchange={caseDataTracking} required="true" data-id="inputId"></lightning-input>    
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6">
+                        <lightning-combobox
+                                            name="Number of Refills"
+                                            label="Number of Refills"
+                                            placeholder=""
+                                            options={refillOptions}
+                                            data-name="Number_of_Refills__c"
+                                            value={prescriptionData.Number_of_Refills__c}
+                                            onchange={prescriptionDataTracking}
+                                            required="true" data-id="inputId"></lightning-combobox>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6">
+                        <lightning-input type="text" label="Patient Last Name" data-name="Patient_Last_Name__c" value={caseData.Patient_Last_Name__c} onchange={caseDataTracking} required="true" data-id="inputId"></lightning-input>    
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6">
+                        <lightning-textarea label="Directions" data-name="Directions__c" value={prescriptionData.Directions__c} onchange={prescriptionDataTracking} required="true" data-id="inputId"></lightning-textarea>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6">
+                        <lightning-input type="date" label="Patient Date of Birth" data-name="Birthdate" value={contactData.Birthdate} onchange={contactDataTracking} required="true" data-id="inputId"></lightning-input>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6">
+                        <lightning-textarea label="Titration Directions" data-name="Titration_Directions__c" value={prescriptionData.Titration_Directions__c} onchange={prescriptionDataTracking}></lightning-textarea>
+                    </lightning-layout-item> 
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6">
+                        <lightning-input type="text" 
+                                            name="Product Name"
+                                            label="Product Name"
+                                            placeholder=""
+                                            options={productoptions}
+                                            data-name="Product__c"
+                                            value={caseData.Product__c}
+                                            disabled
+                                            required="true" data-id="inputId"></lightning-input>
+                        <!--<lightning-combobox
+                                            name="Product Name"
+                                            label="Product Name"
+                                            placeholder=""
+                                            options={productoptions}
+                                            data-name="Product__c"
+                                            value={caseData.Product__c}
+                                            onchange={caseDataTracking}
+                                            required="true" data-id="inputId"></lightning-combobox>-->
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6">
+                        <lightning-input type="checkbox" label="Dispense as Written" data-name="Dispense_as_Written__c" checked={prescriptionData.Dispense_as_Written__c} onchange={prescriptionDataTracking} ></lightning-input> <br/>
+                        <lightning-button label="DOWNLOAD OPAF Rx TEMPLATE" variant="destructive" onclick={downloadConsent}></lightning-button> 
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6">
+                        <lightning-combobox
+                                            name="Dosage"
+                                            label="Dosage"
+                                            placeholder=""
+                                            options={dosageOptions}
+                                            data-name="Dosage__c"
+                                            value={prescriptionData.Dosage__c}
+                                            onchange={prescriptionDataTracking}
+                                            required="true" data-id="inputId"></lightning-combobox>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6">
+                        <lightning-file-upload
+                                                        label="Upload a copy of the completed Rx Template here"
+                                                        name="fileUploader"
+                                                        record-id={caseData.Id}
+                                                        onuploadfinished={handleUploadFinished}
+                                                        multiple
+                                                        accept={acceptedFormats}
+                                                        data-type="REXULTI RxDocument">
+                                                </lightning-file-upload>
+                        <!--<lightning-input type="file" data-name="REXULTI RxDocument" multiple="true" label="Attachment" onchange={rxDocumentsUpload}></lightning-input>-->
+                        <div class="slds-text-body_small slds-text-color_error" style="display:inline;">
+                            {rxFileUploads}
+                        </div><br/>
+                        <template if:true={rexultiRxCardDetails}>
+                            <table class="slds-table slds-table--bordered tableBordersScreen4">
+                                <thead>
+                                    <tr class="slds-text-heading--label ">
+                                        <th class="" scope="col">Title</th>
+                                        <th class="" scope="col">Action</th>
+                                    </tr>  
+                                </thead>
+                                <tbody>
+                                    <template for:each={rexultiExistingRxFiles} for:item="row" for:index="index">
+                                        <tr class="slds-hint-parent" key={row.Id}>
+                                            <td class="" data-label="Title" >
+                                                <a href="" onclick={downloadAttachment} data-id={row.Id}>{row.Title}</a>
+                                            </td>
+                                            <td class="" data-label="Document Type" >
+                                                <lightning-button-icon data-label="rexulti rxDocumentDetails" name={row.ContentDocument.Id} data-parent={row.FirstPublishLocationId} icon-name="utility:delete" size="small" alternative-text="Delete" class="slds-m-left_xx-small" title="Delete" onclick={deleteUploadedFile}></lightning-button-icon>
+                                            </td>
+                                        </tr>
+                                    </template>
+                                </tbody>
+                            </table> 
+                        </template>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6"> 
+                        <lightning-combobox
+                                            name="Quantity"
+                                            label="Quantity"
+                                            placeholder=""
+                                            options={quantityOptions}
+                                            data-name="Quantity__c"
+                                            value={prescriptionData.Quantity__c}
+                                            onchange={prescriptionDataTracking}
+                                            required="true" data-id="inputId"></lightning-combobox>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6">
+                        <div class="slds-m-bottom_small">
+                            <!--<lightning-button label="SUBMIT THIS Rx" variant="destructive" onclick={submitRxDocuments} disabled={disableRexultiSubmitButton}></lightning-button>-->
+                        </div>
+                        <div>
+                            <label class="slds-form-element_label">
+                                Rx Fax Timestamp
+                            </label><br/>
+                            <lightning-formatted-text value={currentDate}></lightning-formatted-text>
+                        </div> 
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div> 
+        </template>
+        <template if:true={isSAMSCA}>
+            <div class={sectionOne} id="prescriptionSAMSCAInfo">
+                <h3 class="slds-text-heading_small slds-truncate" title="Prescription Information for SAMSCA">
+                    Prescription Information for SAMSCA
+                </h3>
+                <lightning-layout multiple-rows>
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6">
+                        <lightning-input type="text" label="Patient First Name" data-name="Patient_First_Name__c" value={caseData.Patient_First_Name__c} onchange={caseDataTracking} required="true" data-id="inputId"></lightning-input>    
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6">
+                        <lightning-combobox
+                                            name="Dosage"
+                                            label="Dosage"
+                                            placeholder=""
+                                            options={dosageOptions}
+                                            data-name="Dosage__c"
+                                            value={prescriptionData.Dosage__c}
+                                            onchange={prescriptionDataTracking}
+                                            required="true" data-id="inputId"></lightning-combobox>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6">
+                        <lightning-input type="text" label="Patient Last Name" data-name="Patient_Last_Name__c" value={caseData.Patient_Last_Name__c} onchange={caseDataTracking} required="true" data-id="inputId"></lightning-input>    
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6">
+                        <lightning-combobox
+                                            name="Quantity"
+                                            label="Quantity"
+                                            placeholder=""
+                                            options={quantityOptions}
+                                            data-name="Quantity__c"
+                                            value={prescriptionData.Quantity__c}
+                                            onchange={prescriptionDataTracking}
+                                            required="true" data-id="inputId"></lightning-combobox>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6">
+                        <lightning-input type="date" label="Patient Date of Birth" data-name="Birthdate" value={contactData.Birthdate} onchange={contactDataTracking} required="true" data-id="inputId"></lightning-input>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6">
+                        <lightning-textarea label="Directions" data-name="Directions__c" value={prescriptionData.Directions__c} onchange={prescriptionDataTracking} required="true" data-id="inputId"></lightning-textarea>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6">
+                        <lightning-input type="text" 
+                                            name="Product Name"
+                                            label="Product Name"
+                                            placeholder=""
+                                            options={productoptions}
+                                            data-name="Product__c"
+                                            value={caseData.Product__c}
+                                            disabled
+                                            required="true" data-id="inputId"></lightning-input>
+                        <!--<lightning-combobox
+                                            name="Product Name"
+                                            label="Product Name"
+                                            placeholder=""
+                                            options={productoptions}
+                                            data-name="Product__c"
+                                            value={caseData.Product__c}
+                                            onchange={caseDataTracking}
+                                            required="true" data-id="inputId"></lightning-combobox>-->
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6">
+                        <lightning-textarea label="Titration Directions" data-name="Titration_Directions__c" value={prescriptionData.Titration_Directions__c} onchange={prescriptionDataTracking}></lightning-textarea>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6">
+                        
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="12" medium-device-size="6">
+                        <lightning-input type="checkbox" label="Dispense as Written" data-name="Dispense_as_Written__c" checked={prescriptionData.Dispense_as_Written__c} onchange={prescriptionDataTracking} ></lightning-input> 
+                        <div class="slds-m-top_small">
+                            <lightning-button label="DOWNLOAD OPAF Rx TEMPLATE" variant="destructive" onclick={downloadConsent}></lightning-button>
+                        </div>
+                        <div class="slds-m-bottom_small">
+                            <lightning-file-upload
+                                                        label="Upload a copy of the completed Rx Template here"
+                                                        name="fileUploader"
+                                                        record-id={caseData.Id}
+                                                        onuploadfinished={handleUploadFinished}
+                                                        multiple
+                                                        accept={acceptedFormats}
+                                                        data-type="SAMSCA RxDocument">
+                                                </lightning-file-upload>
+                            <!--<lightning-input type="file" data-name="SAMSCA RxDocument" multiple="true" label="Attachment" onchange={rxDocumentsUpload}></lightning-input>-->
+                            <div class="slds-text-body_small slds-text-color_error" style="display:inline;">
+                                {rxFileUploads}
+                            </div><br/>
+                            <template if:true={samscaRxCardDetails}>
+                                <table class="slds-table slds-table--bordered tableBordersScreen4">
+                                    <thead>
+                                        <tr class="slds-text-heading--label ">
+                                            <th class="" scope="col">Title</th>
+                                            <th class="" scope="col">Action</th>
+                                        </tr>  
+                                    </thead>
+                                    <tbody>
+                                        <template for:each={samscaExistingRxFiles} for:item="row" for:index="index">
+                                            <tr class="slds-hint-parent" key={row.Id}>
+                                                <td class="" data-label="Title" >
+                                                    <a href="" onclick={downloadAttachment} data-id={row.Id}>{row.Title}</a>
+                                                </td>
+                                                <td class="" data-label="Document Type" >
+                                                    <lightning-button-icon data-label="samsca rxDocumentDetails" name={row.ContentDocument.Id} data-parent={row.FirstPublishLocationId} icon-name="utility:delete" size="small" alternative-text="Delete" class="slds-m-left_xx-small" title="Delete" onclick={deleteUploadedFile}></lightning-button-icon>
+                                                </td>
+                                            </tr>
+                                        </template>
+                                    </tbody>
+                                </table> 
+                            </template>
+                        </div>    
+                        <div class="slds-m-bottom_small">
+                            <!--<lightning-button label="SUBMIT THIS Rx" variant="destructive" onclick={submitRxDocuments} disabled={disableSamscaSubmitButton}></lightning-button>-->
+                        </div>
+                        <div>
+                            <label class="slds-form-element_label">
+                                Rx Fax Timestamp
+                            </label><br/>
+                            <lightning-formatted-text value={currentDate}></lightning-formatted-text>
+                        </div>  
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
+        </template>
+    </template>
+    <template if:true={isUpload}>
+        <div class={sectionOne} id="uploadRxInfo">
+            <h3 class="slds-text-heading_small slds-truncate" title="Upload your Rx">Upload your Rx</h3>
+            <lightning-layout multiple-rows>
+                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                    <lightning-file-upload
+                            label="Upload a copy of the completed Rx Template here"
+                            name="fileUploader"
+                            record-id={caseData.Id}
+                            onuploadfinished={handleUploadFinished}
+                            multiple
+                            accept={acceptedFormats}
+                            data-type="RxDocument">
+                    </lightning-file-upload>
+                    <!--<lightning-input type="file" data-name="RxDocument" multiple="true" label="Please click the Upload Files button or drop your files to upload your own Rx" onchange={rxDocumentsUpload}></lightning-input>-->
+                    <div class="slds-text-body_small slds-text-color_error" style="display:inline;">
+                        {rxFileUploads}
+                    </div><br/>
+                    <template if:true={uploadRxCardDetails}>
+                        <br/>
+                        <table class="slds-table slds-table--bordered tableBordersScreen4">
+                            <thead>
+                                <tr class="slds-text-heading--label ">
+                                    <th class="" scope="col">Title</th>
+                                    <th class="" scope="col">Action</th>
+                                </tr>  
+                            </thead>
+                            <tbody>
+                                <template for:each={uploadExistingRxFiles} for:item="row" for:index="index">
+                                    <tr class="slds-hint-parent" key={row.Id}>
+                                        <td class="" data-label="Title" >
+                                            <a href="" onclick={downloadAttachment} data-id={row.Id}>{row.Title}</a>
+                                        </td>
+                                        <td class="" data-label="Document Type" >
+                                            <lightning-button-icon data-label="upload rxDocumentDetails" name={row.ContentDocument.Id} data-parent={row.FirstPublishLocationId} icon-name="utility:delete" size="small" alternative-text="Delete" class="slds-m-left_xx-small" title="Delete" onclick={deleteUploadedFile}></lightning-button-icon>
+                                        </td>
+                                    </tr>
+                                </template>
+                            </tbody>
+                        </table> 
+                    </template>
+                </lightning-layout-item> 
+                <lightning-layout-item size="3" padding="around-small">
+                    <div class="slds-box slds-box_xx-small">
+                        <!--<lightning-button label="SUBMIT THIS Rx" variant="destructive" onclick={submitRxDocuments} disabled={disableRxSubmitButton}></lightning-button><br/>-->
+                        <label>
+                            Rx Fax Timestamp<br/>
+                            <lightning-formatted-text value={currentDate}></lightning-formatted-text>
+                        </label>
+                    </div>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+    </template>
+    <lightning-layout horizontal-align="spread" class="slds-p-vertical_xx-large" multiple-rows>
+        <lightning-layout-item size="auto">
+            <lightning-button class="opaf-lightning-button--brand" variant="neutral" icon-name="utility:back" data-name="screen4" label="PREVIOUS" title="PREVIOUS" onclick={navigateToPreviousStep}></lightning-button>
+        </lightning-layout-item>
+        <lightning-layout-item size="auto">
+            <lightning-button class="opaf-lightning-button--outline-brand slds-m-horizontal_medium" variant="brand-outline" data-name="SAVE & COMPLETE LATER" label="SAVE & COMPLETE LATER" title="SAVE & COMPLETE LATER" onclick={saveAndCompleteLater}></lightning-button>
+            <template if:true={isDownload}>
+                <lightning-button class="opaf-lightning-button--brand" icon-name="utility:forward" icon-position="right" variant="brand" data-name="screen4" label="SUBMIT Rx AND CONTINUE" title="SUBMIT Rx AND CONTINUE" onclick={navigateToStepFour}></lightning-button>
+            </template>
+            <template if:true={isUpload}>
+                <lightning-button class="opaf-lightning-button--brand" icon-name="utility:forward" icon-position="right" variant="brand" data-name="screen4" label="SUBMIT Rx AND CONTINUE" title="SUBMIT Rx AND CONTINUE" onclick={navigateToStepFour}></lightning-button>
+            </template>
+            <template if:true={isEScribe}>
+                <lightning-button class="opaf-lightning-button--brand" icon-name="utility:forward" icon-position="right" variant="brand" data-name="screen4" label="NEXT" title="NEXT" onclick={navigateToStepFour}></lightning-button>
+            </template>
+        </lightning-layout-item>
+    </lightning-layout>
+    <template if:true={displaySavePopup}>
+        <!-- Modal/Popup Box starts here-->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box Header Starts here-->
+                <header class="slds-modal__header">
+                    <lightning-button-icon icon-name="utility:close"
+                        onclick={closeModel}
+                        alternative-text="close"
+                        variant="bare-inverse"
+                        class="slds-modal__close"></lightning-button-icon>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Success!</h2>
+                </header>
+                <!--Modal/Popup Box Body Starts here-->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <p>
+                        Your information has been saved. Please select OK to continue.
+                    </p>
+                </div>
+                <!--Modal/Popup Box Footer Starts here-->
+                <footer class="slds-modal__footer">
+                    <lightning-button label="OK"
+                        title="OK"
+                        variant="destructive"
+                        onclick={submitDetails}></lightning-button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+    <template if:true={showSubmitPopup}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <lightning-button-icon icon-name="utility:close"
+                        onclick={closeRxModel}
+                        alternative-text="close"
+                        variant="bare-inverse"
+                        class="slds-modal__close"></lightning-button-icon>
+                    <h2 id="modal-heading-02" class="slds-text-heading_medium slds-hyphenate">Success!</h2>
+                </header>
+                <!--Modal/Popup Box Body Starts here-->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
+                    <p>
+                        Fax is already sent. Do you want to send it again?
+                    </p>
+                </div>
+                <!--Modal/Popup Box Footer Starts here-->
+                <footer class="slds-modal__footer">
+                    <lightning-button label="NO"
+                        title="NO"
+                        variant="destructive"
+                        onclick={closeRxModel}></lightning-button>&nbsp;
+                    <lightning-button label="YES"
+                        title="YES"
+                        variant="destructive"
+                        onclick={sendRxDetails}></lightning-button> 
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+    <span class={cssDisplay}>
+        <div id="spinnerDiv" class="demo-only demo--inverse" style="height: 10rem">
+            <div class="slds-spinner_container">
+                <div role="status" class="slds-spinner slds-spinner_medium">
+                    <span class="slds-assistive-text">Loading</span>
+                    <div class="slds-spinner__dot-a"></div>
+                    <div class="slds-spinner__dot-b"></div>
+                </div>
+            </div>
+        </div>
+    </span>
+</template>

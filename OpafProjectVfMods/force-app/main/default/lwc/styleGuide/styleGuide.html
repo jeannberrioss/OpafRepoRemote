@@ -1,0 +1,263 @@
+<template>
+
+  <h1 class="slds-text-heading_large slds-p-vertical_largee slds-m-top_xx-large">HTML Styleguide</h1>
+  <hr>
+  <section>
+    <!-- Typography -->
+    <h2 class="slds-text-heading_medium slds-p-vertical_large">Typography</h2>
+    <hr>
+    <h1 class="slds-text-heading_large">
+      Heading Large - The quick brown fox jumped over the lazy dog.
+    </h1>
+    <hr>
+    <h1 class="slds-text-heading_large">
+      Heading Large - Museo Sans / 500 / 2.5rem
+    </h1>
+    <hr>
+    <h2 class="slds-text-heading_medium">Heading Medium - The quick brown fox jumped over the lazy dog.</h2>
+    <hr>
+    <h2 class="slds-text-heading_medium">Heading Medium - Museo Sans / 500 / 2.5rem</h2>
+    <hr>
+    <h3 class="slds-text-heading_small">Heading Small - The quick brown fox jumped over the lazy dog.</h3>
+    <hr>
+    <h3 class="slds-text-heading_small">Heading Small - Museo Sans / 500 / 2.5rem</h3>
+    <hr>
+    <p class="slds-text-body_regular"> Body Text Regular: The quick brown fox jumps over the lazy dog.</p>
+    <hr>
+    <p class="slds-text-body_small"> Body Text Small: The quick brown fox jumps over the lazy dog.</p>
+    <hr>
+    <div class="slds-p-vertical_large slds-text-longform">
+      <ul>
+        <li>The quick brown fox jumps over the lazy dog.</li>
+        <li>The quick brown fox jumps over the lazy dog.
+          <ul>
+            <li>The quick brown fox jumps over the lazy dog.</li>
+            <li>The quick brown fox jumps over the lazy dog.
+              <ul>
+                <li>The quick brown fox jumps over the lazy dog.</li>
+                <li>The quick brown fox jumps over the lazy dog.</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p><a href="#">Link</a></p>
+      <p><a href="#">Link with longer text</a></p>
+
+
+<!-- TODO: render in Custom HTML component -->
+
+<!-- <h1 class="slds-text-heading_large slds-p-vertical_xx-large">OPAF Applications</h1>
+<h2 class="slds-text-heading_medium slds-p-vertical_xx-large">OPAF Applications</h2>
+<h4 class="slds-text-heading_small slds-p-vertical_xx-large">OPAF Applications</h4> -->
+
+    </div>
+    
+    <!-- Colors -->
+    <hr>
+    <section class="colors-container"></section>
+    <h2 class="slds-text-heading_medium slds-p-vertical_large">Colors</h2>
+    <table class="color-table">
+      <tr class="colors">
+        <th><div class="bg-opaf-red"></div></th>
+        <th><div class="bg-opaf-blue"></div></th>
+        <th><div class="bg-opaf-light-blue"></div></th>
+        <th><div class="bg-opaf-ink"></div></th>
+        <th><div class="bg-opaf-white"></div></th>
+      </tr>
+      <tr class="colors">
+        <td>OPAF Red</td>
+        <td>OPAF Blue</td>
+        <td>OPAF Light blue</td>
+        <td>OPAF Ink</td>
+        <td>OPAF White</td>
+      </tr>
+      <tr class="colors">
+        <td class="opaf-red">#B01C2E</td>
+        <td class="opaf-blue">#426BBA</td>
+        <td class="opaf-light-blue">#B4C9EA</td>
+        <td class="opaf-ink">#373D42</td>
+        <td>#FFFFFF</td>
+      </tr>
+    </table>
+
+    <!-- Buttons -->
+    <hr>
+    <h2 class="slds-text-heading_medium slds-p-vertical_large">Buttons</h2>
+    <hr>
+    <h2 class="slds-text-heading_small slds-p-vertical_large">Buttons</h2>
+    <hr>
+    <button class="slds-button slds-button_neutral">Neutral Button</button>
+    <hr>
+    <button class="slds-button slds-button_brand">Brand Button</button>
+    <hr>
+    <button class="slds-button slds-button_outline-brand">Outline Brand Button</button>
+    <hr>
+    <button class="slds-button slds-button_destructive">Destructive Button</button>
+    <hr>
+    <button class="slds-button slds-button_success">Success Button</button>
+    <hr>
+    <h2 class="slds-text-heading_small slds-p-vertical_large">OPAF Buttons</h2>
+    <hr>
+    <button class="slds-button slds-button_neutral opaf-button--neutral">Neutral Button</button>
+    <hr>
+    <button class="slds-button slds-button_brand opaf-button--brand">Brand Button</button>
+    <hr>
+    <button class="slds-button slds-button_outline-brand opaf-button--outline-brand">Outline Brand Button</button>
+    <hr>
+    <h2 class="slds-text-heading_small slds-p-vertical_large">OPAF Buttons - Small</h2>
+    <hr>
+    <button class="slds-button slds-button_neutral opaf-button--neutral opaf-button_small">Neutral Button</button>
+    <hr>
+    <button class="slds-button slds-button_brand opaf-button--brand opaf-button_small">Brand Button</button>
+    <hr>
+    <button class="slds-button slds-button_outline-brand opaf-button--outline-brand opaf-button_small">Outline Brand Button</button>
+    <hr>
+    <h2 class="slds-text-heading_small slds-p-vertical_large">OPAF Buttons - Disabled</h2>
+    <hr>
+    <button class="slds-button slds-button_neutral opaf-button--neutral" disabled>Neutral Button</button>
+    <hr>
+    <button class="slds-button slds-button_brand opaf-button--brand" disabled>Brand Button</button>
+    <hr>
+    <button class="slds-button slds-button_outline-brand opaf-button--outline-brand" disabled>Outline Brand Button</button>
+    <hr>
+    <h2 class="slds-text-heading_small slds-p-vertical_large">Lightning Buttons</h2>
+    <lightning-button
+        variant="neutral"
+        label="Neutral Lightning Button"
+        title="Neutral Lightning Button"
+    >
+    </lightning-button>
+    <hr>
+    <lightning-button
+        variant="brand"
+        label="Brand Lightning Button"
+        title="Brand Lightning Button"
+    >
+    </lightning-button>
+    <hr>
+    <lightning-button
+        variant="outline-brand"
+        label="Brand Outline Lightning Button"
+        title="Brand Outline Lightning Button"
+    >
+    </lightning-button>
+    <hr>
+    <lightning-button
+        variant="destructive"
+        label="Destructive Lightning Button"
+        title="Destructive Button"
+    >
+    </lightning-button>
+    <hr>
+    <lightning-button
+        variant="success"
+        label="Success Lightning Button"
+        title="Success Button"
+    >
+    </lightning-button>
+    <hr>
+    <h2 class="slds-text-heading_small slds-p-vertical_large">OPAF Lightning Buttons</h2>
+    <lightning-button
+        class="opaf-lightning-button--neutral"
+        variant="neutral"
+        label="Neutral Lightning Button"
+        title="Neutral Lightning Button"
+    >
+    </lightning-button>
+    <hr>
+    <lightning-button
+        class="opaf-lightning-button--brand"
+        variant="brand"
+        label="Brand Lightning Button"
+        title="Brand Lightning Button"
+    >
+    </lightning-button>
+    <hr>
+    <lightning-button
+        class="opaf-lightning-button--outline-brand"
+        variant="outline-brand"
+        label="Brand Outline Lightning Button"
+        title="Brand Outline Lightning Button"
+    >
+    </lightning-button>
+    <hr>
+    <h2 class="slds-text-heading_small slds-p-vertical_large">OPAF Lightning Buttons - Small</h2>
+    <hr>
+    <lightning-button
+        class="opaf-lightning-button--neutral opaf-lightning-button_small"
+        variant="neutral"
+        label="Neutral Lightning Button"
+        title="Neutral Lightning Button"
+    >
+    </lightning-button>
+    <hr>
+    <lightning-button
+        class="opaf-lightning-button--brand opaf-lightning-button_small"
+        variant="brand"
+        label="Brand Lightning Button"
+        title="Brand Lightning Button"
+    >
+    </lightning-button>
+    <hr>
+    <lightning-button
+        class="opaf-lightning-button--outline-brand opaf-lightning-button_small"
+        variant="outline-brand"
+        label="Brand Outline Lightning Button"
+        title="Brand Outline Lightning Button"
+    >
+    </lightning-button>
+    <hr>
+    <h2 class="slds-text-heading_small slds-p-vertical_large">OPAF Lightning Buttons - Disabled</h2>
+    <hr>
+    <lightning-button
+        class="opaf-lightning-button--neutral"
+        variant="neutral"
+        label="Neutral Lightning Button"
+        title="Neutral Lightning Button"
+        disabled
+    >
+    </lightning-button>
+    <hr>
+    <lightning-button
+        class="opaf-lightning-button--brand"
+        variant="brand"
+        label="Brand Lightning Button"
+        title="Brand Lightning Button"
+        disabled
+    >
+    </lightning-button>
+    <hr>
+    <lightning-button
+        class="opaf-lightning-button--outline-brand"
+        variant="outline-brand"
+        label="Brand Outline Lightning Button"
+        title="Brand Outline Lightning Button"
+        disabled
+    >
+    </lightning-button>
+    <hr>
+
+
+    <lightning-layout class="slds-p-vertical_xx-large" horizontal-align="center">
+      <lightning-layout-item flexibility="auto" class="slds-p-horizontal_x-large">
+          <lightning-button class="opaf-lightning-button--brand" icon-name="utility:back" variant="brand" data-name="CANCEL" label="CANCEL" title="CANCEL" onclick={navigateToHomePage} ></lightning-button>
+      </lightning-layout-item>
+      <lightning-layout-item flexibility="auto" class="slds-p-horizontal_x-large">
+          <lightning-button class="opaf-lightning-button--brand" icon-name="utility:forward" icon-position="right" variant="brand" data-name="NEXTFIRST" label="NEXT" title="NEXT" onclick={handleClicks} disabled={disableOnline}></lightning-button>
+      </lightning-layout-item>
+    </lightning-layout>
+
+
+    <lightning-layout class="slds-p-vertical_xx-large" horizontal-align="center">
+      <lightning-layout-item flexibility="auto" class="slds-p-horizontal_x-large">
+        <button class="slds-button slds-button_brand opaf-button--brand opaf-button_prev-icon">Go Back</button>
+      </lightning-layout-item>
+      <lightning-layout-item flexibility="auto" class="slds-p-horizontal_x-large">
+        <button class="slds-button slds-button_brand opaf-button--brand opaf-button_next-icon">Next</button>
+      </lightning-layout-item>
+    </lightning-layout>
+    
+  </section>
+
+</template>

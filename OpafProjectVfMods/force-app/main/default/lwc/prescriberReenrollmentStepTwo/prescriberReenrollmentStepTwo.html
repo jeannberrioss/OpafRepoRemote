@@ -1,0 +1,453 @@
+<template>
+    <lightning-layout multiple-rows>
+        <lightning-layout-item size="12" padding="around-small">
+            <h3 class="slds-text-heading_small slds-truncate" title="Product Information">Product Information</h3>
+        </lightning-layout-item>    
+        <lightning-layout-item size="12" padding="around-small">
+            <lightning-combobox
+                name="Product"
+                label="Product Name"
+                placeholder="Please select a product"
+                options={productoptions}
+                data-name="Product__c"
+                value={caseData.Product__c}
+                onchange={caseFieldsChangeHandler}
+                required="true"
+                disabled="true">
+            </lightning-combobox>
+        </lightning-layout-item>
+        <lightning-layout-item size="12" padding="around-small">
+            <h3 class="slds-text-heading_small slds-truncate" title="Insurance Information">Insurance Information</h3>
+        </lightning-layout-item> 
+        <lightning-layout-item size="12" padding="around-small">
+            <lightning-input type="checkbox" label="I DO NOT have insurance" data-name="Has_No_Insurance__c" checked={caseData.Has_No_Insurance__c} onchange={caseFieldsChangeHandler}></lightning-input>
+        </lightning-layout-item>
+        <template if:false={doNotChecked}>
+            <lightning-layout-item size="6" padding="around-small"> 
+                <div class="opaf-box opaf-box_small">
+                    <p class="slds-p-vertical_x-large slds-text-heading_small opaf-red">PHARMACY CARD</p>
+                    <lightning-file-upload
+                            label="Upload a copy of the front and back of the Pharmacy Card here"
+                            name="fileUploader"
+                            record-id={caseData.Id}
+                            onuploadfinished={handleUploadFinished}
+                            multiple
+                            accept={acceptedFormats}
+                            data-type="PHARMACY CARD">
+                    </lightning-file-upload>
+                    <template if:true={pharmacyCardDetails}>
+                        <table class="slds-table slds-table--bordered tableBordersScreen2">
+                            <thead>
+                                <tr class="slds-text-heading--label ">
+                                    <th class="" scope="col">Title</th>
+                                    <th class="" scope="col">Action</th>
+                                </tr>  
+                            </thead>
+                            <tbody>
+                                <template for:each={existingPrimaryCardFiles} for:item="row" for:index="index">
+                                    <tr class="slds-hint-parent" key={row.Id}>
+                                        <td class="" data-label="Title" >
+                                            <a onclick={downloadAttachment} data-id={row.Id}>{row.Title}</a>
+                                        </td>
+                                        <td class="" data-label="Document Type" >
+                                            <lightning-button-icon data-label="pharmacyCardDetails" name={row.ContentDocument.Id} data-parent={row.FirstPublishLocationId} icon-name="utility:delete" size="small" alternative-text="Delete" class="slds-m-left_xx-small" title="Delete" onclick={deleteUploadedFile}></lightning-button-icon>
+                                        </td>
+                                    </tr>
+                                </template>
+                            </tbody>
+                        </table> 
+                    </template> 
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item size="6" padding="around-small">
+                <template if:true={isAbilify}>
+                    <div class="opaf-box opaf-box_small">
+                    
+                        <p class="slds-p-vertical_x-large slds-text-heading_small opaf-red">MEDICAL CARD (ABILIFY MAINTENA only)</p>
+                        
+                        <lightning-file-upload
+                                label="Upload a copy of the front and back of the Medical Card here"
+                                name="fileUploader"
+                                record-id={caseData.Id}
+                                onuploadfinished={handleUploadFinished}
+                                multiple
+                                accept={acceptedFormats}
+                                data-type="MEDICAL CARD">
+                        </lightning-file-upload>
+                        <template if:true={medicalCardDetails}>
+                            <table class="slds-table slds-table--bordered tableBordersScreen2">
+                                <thead>
+                                    <tr class="slds-text-heading--label ">
+                                        <th class="" scope="col">Title</th>
+                                        <th class="" scope="col">Action</th>
+                                    </tr>  
+                                </thead>
+                                <tbody>
+                                    <template for:each={existingMedicalCardFiles} for:item="row" for:index="index">
+                                        <tr class="slds-hint-parent" key={row.Id}>
+                                            <td class="" data-label="Title" >
+                                                <a href="" onclick={downloadAttachment} data-id={row.Id}>{row.Title}</a>
+                                            </td>
+                                            <td class="" data-label="Document Type" >
+                                                <lightning-button-icon data-label="medicalCardDetails" name={row.ContentDocument.Id} data-parent={row.FirstPublishLocationId} icon-name="utility:delete" size="small" alternative-text="Delete" class="slds-m-left_xx-small" title="Delete" onclick={deleteUploadedFile}></lightning-button-icon>
+                                            </td>
+                                        </tr>
+                                    </template>
+                                </tbody>
+                            </table> 
+                        </template>
+                    </div>
+                </template>    
+            </lightning-layout-item>
+            <lightning-layout-item size="6" padding="around-small">
+                <template if:true={isPharmacyRequired}>
+                    <span style="font-size:12px;"><strong>OR </strong>provide the Pharmacy Card information in the fields below:</span>
+                    <br/>
+                    <br/>
+                    <lightning-input type="text" label="Pharmacy Plan Name" required={isPharmacyRequired} data-name="Pharmacy_Plan_Name__c" value={caseData.Pharmacy_Plan_Name__c} onchange={caseFieldsChangeHandler}></lightning-input>
+                    <lightning-input type="tel" label="Pharmacy Phone" required={isPharmacyRequired} data-name="Pharmacy_Plan_Phone__c" value={caseData.Pharmacy_Plan_Phone__c} onchange={caseFieldsChangeHandler}></lightning-input>
+                    <lightning-input type="text" label="Pharmacy Policyholder Name" required={isPharmacyRequired} data-name="Pharmacy_Policyholder_Name__c" value={caseData.Pharmacy_Policyholder_Name__c} onchange={caseFieldsChangeHandler}></lightning-input>
+                    <lightning-input type="date" date-style="short" label="Pharmacy Policyholder DOB (mm/dd/yyyy)" data-name="Pharmacy_Policyholder_DOB__c" value={caseData.Pharmacy_Policyholder_DOB__c} onchange={caseFieldsChangeHandler}></lightning-input>
+                    <lightning-input type="text" label="Pharmacy Rx BIN" required={isPharmacyRequired} data-name="Pharmacy_Rx_BIN__c" value={caseData.Pharmacy_Rx_BIN__c} onchange={caseFieldsChangeHandler}></lightning-input>
+                    <lightning-input type="text" label="Pharmacy Rx PCN" required={isPharmacyRequired} data-name="Pharmacy_Rx_PCN__c" value={caseData.Pharmacy_Rx_PCN__c} onchange={caseFieldsChangeHandler}></lightning-input>
+                </template> 
+            </lightning-layout-item>
+            <template if:true={isAbilify}>
+                <lightning-layout-item size="6" padding="around-small">
+                    <template if:true={isRequired}>
+                        <span style="font-size:12px;"><strong>OR </strong> provide the Medical Card information in the fields below (ABILIFY MAINTENA only):</span>
+                        <br/><br/>
+                        <lightning-input type="text" label="Medical Plan Name" required={isRequired} data-name="Medical_Plan_Name__c" value={caseData.Medical_Plan_Name__c} onchange={caseFieldsChangeHandler}></lightning-input>
+                        <lightning-input type="tel" label="Medical Phone" required={isRequired} data-name="Medical_Plan_Phone__c" value={caseData.Medical_Plan_Phone__c} onchange={caseFieldsChangeHandler}></lightning-input>
+                        <lightning-input type="text" label="Medical Policyholder Name" required={isRequired} data-name="Medical_Policyholder_Name__c" value={caseData.Medical_Policyholder_Name__c} onchange={caseFieldsChangeHandler}></lightning-input>
+                        <lightning-input type="date" date-style="short" label="Medical Policyholder DOB (mm/dd/yyyy)" data-name="Medical_Policyholder_DOB__c" value={caseData.Medical_Policyholder_DOB__c} onchange={caseFieldsChangeHandler}></lightning-input>
+                        <lightning-input type="text" label="Medical Member ID" required={isRequired} data-name="Medical_Policyholder_Member_ID__c" value={caseData.Medical_Policyholder_Member_ID__c} onchange={caseFieldsChangeHandler}></lightning-input>
+                        <lightning-input type="text" label="Medical Group #" required={isRequired} data-name="MedicalGroupNumber__c" value={caseData.MedicalGroupNumber__c} onchange={caseFieldsChangeHandler}></lightning-input>
+                    </template>
+                </lightning-layout-item> 
+            </template> 
+        </template>
+        
+    </lightning-layout>
+    <template if:true={showInsuranceSection}>
+        <lightning-layout multiple-rows>
+            <lightning-layout-item size="12" padding="around-small">
+                <h3 class="slds-text-heading_small slds-truncate" title="Insurance Eligibility Information">Insurance Eligibility Information</h3>
+            </lightning-layout-item>    
+            <lightning-layout-item size="12" padding="around-small">
+            </lightning-layout-item>
+            <template if:true={isAbilify}>
+                <lightning-layout-item size="12" padding="around-small">
+                    <lightning-radio-group  name="If approved for assistance, will this be the Patient's first administration of ABILIFY MAINTENA (aripiprazole) ?"
+                        label="If approved for assistance, will this be the Patient's first administration of ABILIFY MAINTENA (aripiprazole) ?"
+                        options={radioOptions}
+                        type="radio"
+                        data-name="ABILIFY_MAINTENA_First_Administration__c"
+                        value={caseData.ABILIFY_MAINTENA_First_Administration__c} 
+                        onchange={caseFieldsChangeHandler}
+                        required="true">
+                    </lightning-radio-group> 
+                </lightning-layout-item>
+            </template>
+            <template if:true={isJynrque}>
+                <lightning-layout-item size="12" padding="around-small">
+                    <lightning-radio-group name="Are you applying for Temporary Patient Assistance while your insurance makes a benefit determination?"
+                        label="Are you applying for Temporary Patient Assistance while your insurance makes a benefit determination?"
+                        options={radioOptions}
+                        value={caseData.Temportary_Patient_Assistance__c}
+                        data-name="Temportary_Patient_Assistance__c"
+                        onchange={caseFieldsChangeHandler}
+                        type="radio"
+                        required="true"></lightning-radio-group>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" padding="around-small">
+                    <lightning-radio-group name="If you are new to JYNARQUE (tolvaptan), would you like a JYNARQUE Starter Kit that provides educational and support information?"
+                        label="If you are new to JYNARQUE (tolvaptan), would you like a JYNARQUE Starter Kit that provides educational and support information?"
+                        options={radioOptions}
+                        type="radio"
+                        data-name="JYNARQUE_Starter_Kit__c"
+                        value={caseData.JYNARQUE_Starter_Kit__c} 
+                        onchange={caseFieldsChangeHandler}
+                        required="true">
+                    </lightning-radio-group>
+                </lightning-layout-item>
+            </template>
+        </lightning-layout>
+    </template>
+    <div class="stepTwoSection3">
+        <lightning-layout multiple-rows>
+            <lightning-layout-item size="12" padding="around-small">
+                <h3 class="slds-text-heading_small slds-truncate" title="Financial Eligibility">Financial Eligibility</h3>
+            </lightning-layout-item>            
+            <lightning-layout-item size="12" padding="around-small">
+                <p class="slds-text-title_caps">
+                    Please complete this section in its entirety. 
+                    <span class="opaf-red">Documentation is required with this section to avoid processing delays.</span>
+                </p>                            
+            </lightning-layout-item>
+
+            <lightning-layout-item size="12" padding="around-small">
+                <lightning-input type="number" formatter="currency" step="0.01" label="Estimated Annual Household Income" required="true" data-name="Estimated_Annual_Household_Income__c" value={caseData.Estimated_Annual_Household_Income__c} onchange={caseFieldsChangeHandler}></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="12" padding="around-small">
+                <lightning-input type="number" label="Estimated Household Size" required="true" data-name="Estimated_Household_Size__c" value={caseData.Estimated_Household_Size__c} onchange={caseFieldsChangeHandler}></lightning-input>
+            </lightning-layout-item>
+            <!-- <lightning-layout-item size="12" padding="around-small">
+                <lightning-radio-group  name="Do you live in the United States?"
+                                label="Do you live in the United States?"
+                                options={radioOptions}
+                                type="radio"
+                                data-name="Does_the_patient_live_in_United_States__c"
+                                value={caseData.Does_the_patient_live_in_United_States__c} 
+                                onchange={caseFieldsChangeHandler}
+                                required="true">
+                </lightning-radio-group>                          
+            </lightning-layout-item> -->
+            <lightning-layout-item size="12" padding="around-small">
+                <p><strong><u>Proof of Income Documentation</u></strong></p>
+            </lightning-layout-item>
+            <lightning-layout-item size="12" padding="around-small" class="slds-text-longform">
+                <p>Applicant must include  proof of income for all contributing members of the household with the application submission. Please submit a copy of <strong>ONE</strong> of the following:</p>
+                <ul>
+                    <li>Federal Income Tax Return (1040, etc.)</li>
+                    <li>Social Security award letter</li>
+                    <li>W-2 from previous tax year</li>
+                    <li>Disability income information</li>
+                    <li>1099-MISC form</li>
+                    <li>Unemployment benefits letter</li>
+                    <li>2 most recent paystubs</li>
+                    <li>Letter from employer on company letterhead</li>
+                    <li>Income attestation letter from provider</li>
+                </ul>
+            </lightning-layout-item>
+            <lightning-layout-item size="12" padding="around-small">
+                <div style="display:inline-block;width:auto; height:auto">
+                    <div style="display:inline;">
+                        <lightning-file-upload
+                                                label="Proof of Income Documents"
+                                                name="fileUploader"
+                                                record-id={caseData.Id}
+                                                onuploadfinished={handleUploadFinished}
+                                                multiple
+                                                accept={acceptedFormats}
+                                                data-type="INCOME DOCUMENT">
+                                        </lightning-file-upload>
+                        <!--<lightning-input type="file" multiple="true" label="Proof of Income Documents" onchange={incomeDocumentsUpload}></lightning-input>-->
+                    </div>
+                    <!--<div class="slds-text-body_small slds-text-color_error" style="display:inline;">
+                        {incomeFileName}
+                    </div>-->
+                </div>  
+                <br/>
+                <template if:true={incomeProofDetails}>
+                    <table class="slds-table slds-table--bordered tableBordersScreen2">
+                        <thead>
+                            <tr class="slds-text-heading--label ">
+                                <th class="" scope="col">Title</th>
+                                <th class="" scope="col">Action</th>
+                            </tr>  
+                        </thead>
+                        <tbody>
+                            <template for:each={existingProofOfIncomeFiles} for:item="row" for:index="index">
+                                <tr class="slds-hint-parent" key={row.Id}>
+                                    <td class="" data-label="Title" >
+                                        <a href="" onclick={downloadAttachment} data-id={row.Id}>{row.Title}</a>
+                                    </td>
+                                    <td class="" data-label="Document Type" >
+                                        <lightning-button-icon data-label="proofofIncomeDocumentsDetails" name={row.ContentDocument.Id} data-parent={row.FirstPublishLocationId} icon-name="utility:delete" size="small" alternative-text="Delete" class="slds-m-left_xx-small" title="Delete" onclick={deleteUploadedFile}></lightning-button-icon>
+                                    </td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table> 
+                </template>
+            </lightning-layout-item>
+            <lightning-layout-item size="12" padding="around-small">
+                <p><strong><u>US Address Documentation</u></strong></p>
+            </lightning-layout-item>
+            <lightning-layout-item size="12" padding="around-small" class="slds-text-longform">
+                <p>Applicant must include proof of US Address with the application submission. Please submit a copy of <strong>ONE</strong> of the following:</p>
+                <ul>
+                    <li>Mortgage statement or rental agreement</li>
+                    <li>Two (2) utility bills</li>
+                    <li>State Driver's License or State ID (with current home address)</li>
+                    <li>US Address attestation letter from provider</li>
+                    <li>Attestation letter from residential facility (if applicant is transient)</li>
+                </ul>
+            </lightning-layout-item>
+            <lightning-layout-item size="12" padding="around-small">
+                <div style="display:inline-block;width:auto; height:auto">
+                    <div style="display:inline;">
+                        <lightning-file-upload
+                                                label="US Address Documents"
+                                                name="fileUploader"
+                                                record-id={caseData.Id}
+                                                onuploadfinished={handleUploadFinished}
+                                                multiple
+                                                accept={acceptedFormats}
+                                                data-type="RESIDENTIAL DOCUMENT">
+                                        </lightning-file-upload>
+                        <!--<lightning-input type="file" multiple="true" label="Residency Documents" onchange={residentialDocumentsUpload}></lightning-input>-->
+                    </div>
+                    <!--<div class="slds-text-body_small slds-text-color_error" style="display:inline;">
+                        {residentialFileName}
+                    </div>-->
+                </div> 
+                <br/>
+                <template if:true={residentialCardDetails}>
+                    <table class="slds-table slds-table--bordered tableBordersScreen2">
+                        <thead>
+                            <tr class="slds-text-heading--label ">
+                                <th class="" scope="col">Title</th>
+                                <th class="" scope="col">Action</th>
+                            </tr>  
+                        </thead>
+                        <tbody>
+                            <template for:each={existingResidentialFiles} for:item="row" for:index="index">
+                                <tr class="slds-hint-parent" key={row.Id}>
+                                    <td class="" data-label="Title" >
+                                        <a href="" onclick={downloadAttachment} data-id={row.Id}>{row.Title}</a>
+                                    </td>
+                                    <td class="" data-label="Document Type" >
+                                        <lightning-button-icon data-label="residencyDocumentsDetails" name={row.ContentDocument.Id} data-parent={row.FirstPublishLocationId} icon-name="utility:delete" size="small" alternative-text="Delete" class="slds-m-left_xx-small" title="Delete" onclick={deleteUploadedFile}></lightning-button-icon>
+                                    </td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table> 
+                </template>
+            </lightning-layout-item>
+            <!-- <lightning-layout-item size="12" padding="around-small">
+                <p><strong><u>Insurance Denial Documentation</u></strong></p>
+            </lightning-layout-item>
+            <lightning-layout-item size="12" padding="around-small" class="slds-text-longform">
+                <p>Applicant must include insurance denial documentation with the application submission. Please submit a copy of <strong>ONE</strong> of the following:</p>
+                <ul>
+                    <li>Explanation of Benefits</li>
+                    <li>Insurance Statement</li>
+                    <li>Prior Authorization Denial Letter</li>
+                </ul>
+            </lightning-layout-item>
+                    
+            <lightning-layout-item size="12" padding="around-small">
+                <div style="display:inline-block;width:auto; height:auto">
+                    <div style="display:inline;">
+                        <lightning-file-upload
+                                                label="Insurance Denial Documents"
+                                                name="fileUploader"
+                                                record-id={caseData.Id}
+                                                onuploadfinished={handleUploadFinished}
+                                                multiple
+                                                accept={acceptedFormats}
+                                                data-type="INSURANCE DOCUMENT">
+                                        </lightning-file-upload>
+                    </div>
+                </div>  
+                <br/>
+                <template if:true={insuranceCardDetails}>
+                    <table class="slds-table slds-table--bordered tableBordersScreen2">
+                        <thead>
+                            <tr class="slds-text-heading--label ">
+                                <th class="" scope="col">Title</th>
+                                <th class="" scope="col">Action</th>
+                            </tr>  
+                        </thead>
+                        <tbody>
+                            <template for:each={existingInsuranceFiles} for:item="row" for:index="index">
+                                <tr class="slds-hint-parent" key={row.Id}>
+                                    <td class="" data-label="Title" >
+                                        <a href="" onclick={downloadAttachment} data-id={row.Id}>{row.Title}</a>
+                                    </td>
+                                    <td class="" data-label="Document Type" >
+                                        <lightning-button-icon data-label="insuranceDenialDocumentsDetails" name={row.ContentDocument.Id} data-parent={row.FirstPublishLocationId} icon-name="utility:delete" size="small" alternative-text="Delete" class="slds-m-left_xx-small" title="Delete" onclick={deleteUploadedFile}></lightning-button-icon>
+                                    </td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table> 
+                </template>
+            </lightning-layout-item> -->
+            
+        </lightning-layout>
+        <lightning-layout horizontal-align="spread" class="slds-p-vertical_xx-large" multiple-rows>
+            <lightning-layout-item size="auto">
+                <lightning-button class="opaf-lightning-button--brand" variant="neutral" icon-name="utility:back" data-name="screen3" label="PREVIOUS" title="PREVIOUS" onclick={navigateToPreviousStep}></lightning-button>
+            </lightning-layout-item>
+            <lightning-layout-item size="auto">
+                <lightning-button class="opaf-lightning-button--outline-brand slds-m-horizontal_medium" variant="brand-outline" data-name="SAVE & COMPLETE LATER" label="SAVE & COMPLETE LATER" title="SAVE & COMPLETE LATER" onclick={saveAndCompleteLater}></lightning-button>
+                <lightning-button class="opaf-lightning-button--brand" icon-name="utility:forward" icon-position="right" variant="brand" data-name="screen3" label="NEXT" title="NEXT" onclick={navigateToStepThree}></lightning-button>
+           </lightning-layout-item>
+        </lightning-layout>
+    </div>
+    <template if:true={displaySavePopup}>
+        <!-- Modal/Popup Box starts here-->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box Header Starts here-->
+                <header class="slds-modal__header">
+                    <lightning-button-icon icon-name="utility:close"
+                                        onclick={closeModel}
+                                        alternative-text="close"
+                                        variant="bare-inverse"
+                                        class="slds-modal__close"></lightning-button-icon>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Success!</h2>
+                </header>
+                <!--Modal/Popup Box Body Starts here-->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <p>
+                        Your information has been saved. Please select OK to continue.
+                    </p>
+                </div>
+                <!--Modal/Popup Box Footer Starts here-->
+                <footer class="slds-modal__footer">
+                    <lightning-button label="OK"
+                                    title="OK"
+                                    variant="destructive"
+                                    onclick={submitDetails}></lightning-button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+    <template if:true={showPopup}>
+        <!-- Modal/Popup Box starts here-->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box Header Starts here-->
+                <header class="slds-modal__header">
+                    <lightning-button-icon icon-name="utility:close"
+                                        onclick={closePopup}
+                                        alternative-text="close"
+                                        variant="bare-inverse"
+                                        class="slds-modal__close"></lightning-button-icon>
+                    <h2 id="modal-heading-02" class="slds-text-heading_medium slds-hyphenate"></h2>
+                </header>
+                <!--Modal/Popup Box Body Starts here-->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
+                    <p>
+                        Unfortunately, the application process has been stopped. In order to qualify you must live in the United States or  US territories.  Please contact an OPAF Dedicated Patient Case Coordinator at <span style="color: rgb(139, 0, 0);">1-855-727-6274</span> at your earliest convenience
+                    </p>
+                </div>
+                <!--Modal/Popup Box Footer Starts here-->
+                <footer class="slds-modal__footer">
+                    <lightning-button label="OK"
+                                    title="OK"
+                                    variant="destructive"
+                                    onclick={navigateToHomePage}></lightning-button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+    <span class={cssDisplay}>
+        <div id="spinnerDiv" class="demo-only demo--inverse" style="height: 10rem">
+        <div class="slds-spinner_container">
+            <div role="status" class="slds-spinner slds-spinner_medium">
+                <span class="slds-assistive-text">Loading</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>
+        </div>
+    </span>
+</template>

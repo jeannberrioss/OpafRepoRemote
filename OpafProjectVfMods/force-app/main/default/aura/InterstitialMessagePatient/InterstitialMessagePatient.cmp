@@ -1,0 +1,51 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <!-- Modal popup -->
+    <div aura:id="myModal" role="dialog" tabindex="-1" aria-labelledby="header53" aria-modal="true"
+         class="slds-modal slds-fade-in-open slds-modal_medium ">
+        
+        <div class="slds-modal__container"> 
+            
+            
+            <div class="slds-modal__content slds-p-around_medium Top">
+                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="{!c.closeModal}">
+                    <lightning:icon iconName="utility:close" alternativeText="Close" class="my-icon"  />
+                </button> <br></br>
+                <img class="slds-align_absolute-center" src="{!$Resource.OpafLogo}" width="83" height="56"/>
+                <br/>
+                <h1 id="header53" class="slds-text-heading_medium"><B>Welcome to the OPAF Care Connect Patient Portal</B></h1>
+                <p class="H1">The OPAF Care Connect Patient Portal is a simple, electronic application process for submitting your application. Patients who have been prescribed any of the Otsuka medications from the list below, may submit an application via this portal:</p>
+            </div>
+            <div class="slds-modal__content slds-p-around_medium">
+                <P class="slds-align_absolute-center"><b>ABILIFY MAINTENA®(aripiprazole) extended-release injectable suspension</b></P>
+                <P class="slds-align_absolute-center"><b>JYNARQUE®(tolvaptan) tablets</b></P>
+                <p class="slds-align_absolute-center"><b>REXULTI®(brexpiprazole) tablets</b></p>
+                <p class="slds-align_absolute-center"><b>SAMSCA®(tolvaptan) tablets</b></p>
+                <br></br>
+                <br></br>
+                <br></br>
+                
+                <p>Read U.S. FULL PRESCRIBING INFORMATION, including <b>BOXED WARNING</b> for <b><a class="H3" href="https://www.otsuka-us.com/sites/g/files/qhldwo6696/files/media/static/Abilify-M-PI.pdf">ABILIFY MAINTENA</a>, <a class="H3" href="https://www.otsuka-us.com/sites/g/files/qhldwo6696/files/media/static/JYNARQUE-PI.pdf">JYNARQUE</a>, <a class="H3" href="https://otsuka-us.com/sites/g/files/qhldwo6696/files/media/static/Rexulti-PI.pdf">REXULTI</a>,</b> and 
+                    <b><a class="H3" href="https://www.otsuka-us.com/sites/g/files/qhldwo6696/files/media/static/Samsca-PI.pdf">SAMSCA.</a></b>
+                </p>
+                <p class="H4">Read MEDICATION GUIDES for <b><a class="H3" href="https://www.otsuka-us.com/sites/g/files/qhldwo6696/files/media/static/AbilifyM-MedGuide.pdf">ABILIFY MAINTENA</a>, <a class="H3" href="https://www.otsuka-us.com/sites/g/files/qhldwo6696/files/media/static/JYNARQUE-Medguide.pdf">JYNARQUE</a>, <a class="H3" href="https://otsuka-us.com/sites/g/files/qhldwo6696/files/media/static/Rexulti-Medguide.pdf">REXULTI</a>,</b> and 
+                    <b><a class="H3" href="https://www.otsuka-us.com/sites/g/files/qhldwo6696/files/media/static/Samsca-Medguide.pdf">SAMSCA.</a></b></p>
+                <br></br>
+                
+                <div class="slds-modal__content slds-p-around_medium">
+                    <div class="slds-grid slds-grid_align-end">
+                        <div class="slds-col">
+                            <p>April 2023</p>
+                        </div>
+                        <div class="slds-col slds-grow-none slds-m-left_small">
+                            <p>PAUS23EXC0001</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Backdrop -->
+    <div aura:id="myModalBackdrop" class="slds-backdrop slds-backdrop_open"></div>
+</aura:component>

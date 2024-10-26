@@ -1,0 +1,150 @@
+<template>
+    <template if:false={hideSection}>
+            <lightning-layout class="slds-grid slds-col slds-wrap">
+                <lightning-layout-item size="12" padding="around-small">
+                    <template if:true={isInitial}>
+                        <p>
+                            Thank you for submitting the Prescriber Consent. Please click Submit to complete the application.
+                            <!--<span style="color: rgb(0, 25, 112);font-size: 1.25rem;">Document is Signed successfully</span> -->
+                        </p>
+                    </template>
+                    <template if:false={isInitial}>
+                        <template if:true={isSigned}>
+                            <p>
+                                Thank you for submitting the Prescriber Consent. Please click Submit to complete the application.                                    
+                                <!--<span style="color: rgb(0, 25, 112);font-size: 1.25rem;">Document is already Signed</span>-->
+                            </p>
+                        </template>
+                        <template if:false={isSigned}>
+                            <p>
+                               Document is not Signed
+                            </p>
+                        </template>
+                    </template>
+                    
+                </lightning-layout-item>    
+            </lightning-layout> 
+                <!--         
+            <lightning-layout class="slds-grid slds-col slds-wrap">
+                <lightning-layout-item size="12" padding="around-small">
+                    <p>
+                        <span style="color: rgb(0, 25, 112);font-size: 1.25rem;">Prescriber Consent for OPAF Patient Application</span>
+                    </p>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" padding="around-small">
+                    <span style="font-size: 16px;">
+                        The information listed below is based on the patient's previous enrollment in the Otsuka Patient Assistance Foundation, Inc. (OPAF) for the Otsuka product requested. Please review the following patient information and update the information as necessary.
+                    </span>
+                </lightning-layout-item> 
+                <lightning-layout-item size="12" padding="around-small">
+                    <p>
+                        <span style="font-size: 1.50rem;">Please Review & Act on these Documents</span>
+                        <br/>
+                        <span style="font-size: 1.50rem;">
+                            Docusign
+                        </span>
+                    </p>    
+                </lightning-layout-item>
+                <lightning-layout-item size="12" padding="around-small">
+                    <p>
+                        <span style="font-size: 1.25rem;">OPAF Care Connect</span>
+                    </p>    
+                </lightning-layout-item>
+                <lightning-layout-item size="12" padding="around-small">
+                    <p style="color: rgb(255, 255, 255); background-color: rgb(0, 95, 178);line-height: 2.5">
+                        <span style="font-size: 13px;">Please read the Electronic Record and Signature Disclosure</span>
+                    </p>    
+                </lightning-layout-item>
+                <lightning-layout-item size="12" padding="around-small">
+                    <lightning-input type="checkbox" label="I agree to use electronic records and signatures" checked="true"></lightning-input>    
+                    <hr/>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" padding="around-small">
+                    <p>
+                        <span>Otsuka Patient Assistance Foundation, Inc. Prescriber Consent</span>
+                    </p>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" padding="around-small">
+                    <p>
+                        <span>I appoint the Otsuka Patient Assistance Foundation, Inc. (hereafter, referred to as OPAF) to convey this prescription to the dispensing pharmacy.  I certify that therapy with the above-mentioned product is medically necessary for this patient and I have reviewed the current Prescribing Information for the prescribed product. I attest that I am not on the HHS/OIG List of Excluded Individuals and Entities and that I am presently authorized under state law to prescribe this medication. I authorize and appoint OPAF to convey on my behalf any prescription information delivered to the dispensing pharmacy. For the purposes of transmitting this prescription, I authorize OPAF and its affiliates as my agent for these limited purposes to forward this prescription electronically, or via fax, or via mail to the dispensing pharmacy. I certify that any medication received will be used only for the patient named on this application and will not be offered for sale, trade, or barter. I acknowledge that OPAF is a free goods, non-profit program that assists patients that have been approved for assistance by meeting specific criteria. I acknowledge, that at any time, I can change or withdraw this prescription on the patient’s behalf due to the medical needs of the patient by calling 1-855-727-6274 or by sending a written notice to OPAF at Otsuka Patient Assistance Foundation Inc., PO Box 3640, Gaithersburg, MD 20885-3640. I understand that OPAF may revise, change, or terminate programs at any time. </span>
+                    </p>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" padding="around-small">
+                    <div>
+                        <p><br/></p>
+                        <p>Presciber First and Last Name: &nbsp;Gee Donnarzi &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
+                        <p><br/></p>
+                        <p><br/></p>
+                        <p>Prescriber Signature: &nbsp;_______________________________________________________________________ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Date &nbsp;(XX/XX/XXXX): &nbsp; &nbsp;5/03/2021</p>
+                        <p><br/></p>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" padding="around-small">
+                    <div class="slds-text-align_right">
+                        <p><strong><span data-contrast="none" lang="EN-US" style="margin: 0px; padding: 0px; user-select: text; -webkit-user-drag: none; -webkit-tap-highlight-color: transparent; outline: transparent solid 1px; font-variant-ligatures: none !important; color: rgb(0, 0, 0); font-size: 9pt; font-style: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: right; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; background-color: rgb(255, 255, 255); line-height: 14px; font-family: Arial, Arial_EmbeddedFont, Arial_MSFontService, sans-serif;"><span data-ccp-parastyle="footer" style="margin: 0px; padding: 0px; user-select: text; -webkit-user-drag: none; -webkit-tap-highlight-color: transparent;">&nbsp;20</span></span><span data-contrast="none" lang="EN-US" style="margin: 0px; padding: 0px; user-select: text; -webkit-user-drag: none; -webkit-tap-highlight-color: transparent; outline: transparent solid 1px; font-variant-ligatures: none !important; color: rgb(0, 0, 0); font-size: 9pt; font-style: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: right; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; background-color: rgb(255, 255, 255); line-height: 14px; font-family: Arial, Arial_EmbeddedFont, Arial_MSFontService, sans-serif;"><span data-ccp-parastyle="footer" style="margin: 0px; padding: 0px; user-select: text; -webkit-user-drag: none; -webkit-tap-highlight-color: transparent;">21 Otsuka Patient Assistance Foundation</span></span><span data-contrast="none" lang="EN-US" style="margin: 0px; padding: 0px; user-select: text; -webkit-user-drag: none; -webkit-tap-highlight-color: transparent; outline: transparent solid 1px; font-variant-ligatures: none !important; color: rgb(0, 0, 0); font-size: 9pt; font-style: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: right; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; background-color: rgb(255, 255, 255); line-height: 14px; font-family: Arial, Arial_EmbeddedFont, Arial_MSFontService, sans-serif;"><span data-ccp-parastyle="footer" style="margin: 0px; padding: 0px; user-select: text; -webkit-user-drag: none; -webkit-tap-highlight-color: transparent;">, Inc. All Rights Reserved. &nbsp;</span></span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong>        &nbsp;</p>
+                    </div>
+                </lightning-layout-item>
+            </lightning-layout>
+        -->
+        <template if:true={displaySavePopup}>
+            <!-- Modal/Popup Box starts here-->
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <!-- Modal/Popup Box Header Starts here-->
+                    <header class="slds-modal__header">
+                        <lightning-button-icon icon-name="utility:close"
+                                            onclick={closeModel}
+                                            alternative-text="close"
+                                            variant="bare-inverse"
+                                            class="slds-modal__close"></lightning-button-icon>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">
+                            Confirm Application Submission
+                        </h2>
+                    </header>
+                    <!--Modal/Popup Box Body Starts here-->
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <p>
+                                Are you sure you want to submit this application?
+                        </p>
+                    </div>
+                    <!--Modal/Popup Box Footer Starts here-->
+                    <footer class="slds-modal__footer">
+                        <lightning-button label="SUBMIT"
+                                        title="SUBMIT"
+                                        variant="destructive"
+                                        onclick={submitDetails}></lightning-button>&nbsp;
+                        <lightning-button label="CANCEL"
+                                        title="CANCEL"
+                                        variant="destructive"
+                                        onclick={closeModel}></lightning-button>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </template> 
+        <lightning-layout horizontal-align="spread" class="slds-p-vertical_xx-large" multiple-rows>
+            <lightning-layout-item size="auto">
+                <lightning-button class="opaf-lightning-button--brand" variant="brand" icon-name="utility:back" data-name="screen4" label="PREVIOUS" title="PREVIOUS" onclick={navigateToPreviousStep}></lightning-button>
+            </lightning-layout-item>
+            <lightning-layout-item size="auto">
+                <template if:false={isSigned}>
+                    <lightning-button class="opaf-lightning-button--brand slds-m-horizontal_medium" variant="brand" data-name="screen4" label="CLICK To SIGN" title="CLICK To SIGN"  onclick={generateDocusign}></lightning-button> 
+                </template>                
+                <lightning-button class="opaf-lightning-button--brand" icon-name="utility:forward" icon-position="right" variant="brand" data-name="screen4" label="SUBMIT" title="SUBMIT" disabled={isDisabled} onclick={submitForm}></lightning-button> 
+            </lightning-layout-item>
+        </lightning-layout>
+        <span class={cssDisplay}>
+            <div id="spinnerDiv" class="demo-only demo--inverse" style="height: 10rem">
+            <div class="slds-spinner_container">
+                <div role="status" class="slds-spinner slds-spinner_medium">
+                    <span class="slds-assistive-text">Loading</span>
+                    <div class="slds-spinner__dot-a"></div>
+                    <div class="slds-spinner__dot-b"></div>
+                </div>
+            </div>
+            </div>
+        </span>  
+    </template>
+</template>

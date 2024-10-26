@@ -1,0 +1,210 @@
+<apex:component >
+    <div>
+         <table style="font-family: Muli,sans-serif;" width="100%">
+            <tr style="color:#426bba">
+                <td>
+                    <apex:outputText value="HOW TO APPLY TO OTSUKA PATIENT ASSISTANCE"/>
+                </td>
+                
+            </tr>
+        </table>
+        <hr style="size:10px;color:#426bba;"/>
+        <table  style="font-family: Muli,sans-serif;Font-size:11px;color:#404040;margin-top:-15px;" width="100%">
+            <tr>
+                <td>
+                    <p style="font-family: Muli,sans-serif;">
+                        To expedite the application process, healthcare professionals may fill out and submit an application with all requested documentation online via the 
+                        OPAF Care Connect portal at <a href="https://www.otsukapatientassistance.com">www.otsukapatientassistance.com.</a> Eligibility determination may take up to 48 hours upon submission of the application 
+                        and all requested documentation.
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td >
+                    <center><b>OR</b></center>                    
+                </td>
+            </tr>
+             <tr>
+                <td >
+                    <p>
+                        Healthcare professionals may submit a completed paper application including all requested documentation via fax at 1-844-727-6274 or by mailing 
+                        the application to Otsuka Patient Assistance Foundation, Inc., PO Box 3640, Gaithersburg, MD 20885-3640. Eligibility determination may take
+                        up to 5 business days upon receipt of this application and all requested documentation.
+                    </p>                   
+                </td>
+            </tr>
+        </table> 
+        <table  style="font-family: Muli,sans-serif;" width="100%">
+            <tr style="color:#426bba">
+                <td>
+                    <apex:outputText value="PATIENTS OR LEGAL AUTHORIZED REPRESENTATIVE" />
+                </td>
+                
+            </tr>
+        </table>
+        <hr style="size:10px;color:#426bba;"/>
+        
+        <table  style="font-family: Muli,sans-serif;Font-size:11px;color:#404040;margin-top:-3px;" width="100%">
+            
+            <tr >
+                <td colspan="2">
+                    •&nbsp;&nbsp;&nbsp; Read and sign the patient authorization page 2
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    •&nbsp;&nbsp;&nbsp; Fill out page 3
+                </td>
+            </tr>
+            
+            <tr>
+            <td colspan="2">
+               <p style="font-family: Muli,sans-serif;Font-size:13.5px;">
+                   <b>Applicant must include proof of income for all contributing members of the household with the 
+                   application submission. Please submit ONE of the following for each contributing members:
+                   </b>
+                </p> 
+             </td>
+            </tr>
+            
+            <tr >
+            <td width="50%;" style="padding:0px 0px 0px 20px;">
+                •&nbsp;&nbsp;&nbsp; Federal Income Tax Return (1040, etc)
+
+                </td>
+                <td width="50%;">
+                •&nbsp;&nbsp;&nbsp; Social Security award letter
+                </td>
+            </tr>
+            
+            <tr>
+            <td width="50%;" style="padding:0px 0px 0px 20px;">
+               •&nbsp;&nbsp;&nbsp;  W-2 from previous tax year
+
+                </td>
+                <td width="50%;">
+                •&nbsp;&nbsp;&nbsp; Disability income information
+                </td>
+            </tr>
+            
+            <tr>
+            <td width="50%;" style="padding:0px 0px 0px 20px;">
+                    •&nbsp;&nbsp;&nbsp; 1099-MISC form
+                </td>
+                <td width="50%;">
+                •&nbsp;&nbsp;&nbsp; Unemployment benefits letter
+                </td>
+            </tr>
+            
+            <tr>
+            <td style="padding:0px 0px 0px 20px;">
+               •&nbsp;&nbsp;&nbsp; 2 most recent paystubs
+
+                </td>
+                <td>
+                •&nbsp;&nbsp;&nbsp; Letter from employer on companyletterhead
+                </td>
+            </tr>
+            
+            <tr>
+            <td colspan="2">
+               <p style="font-family: Muli,sans-serif;Font-size:13.5px;">
+                   <b>Applicant must include proof of residency with the application submission. Please submit ONE of the following:
+                   </b>
+                </p> 
+             </td>
+            </tr>
+            
+            <tr >
+            <td width="50%;" style="padding:0px 0px 0px 20px;">
+                •&nbsp;&nbsp;&nbsp; Social Security number
+
+                </td>
+                <td width="50%;">
+                •&nbsp;&nbsp;&nbsp; Foreign passport with US visa
+                </td>
+            </tr>
+            
+            <tr>
+            <td width="50%;" style="padding:0px 0px 0px 20px;">
+               •&nbsp;&nbsp;&nbsp; State driver’s license
+
+                </td>
+                <td width="50%;">
+                •&nbsp;&nbsp;&nbsp; I-94 form with photograph
+                </td>
+            </tr>
+            
+            <tr>
+            <td width="50%;" style="padding:0px 0px 0px 20px;">
+                    •&nbsp;&nbsp;&nbsp; US birth certificate
+                </td>
+                <td width="50%;">
+                •&nbsp;&nbsp;&nbsp; US military ID
+
+                </td>
+            </tr>
+            
+            <tr>
+            <td style="padding:0px 0px 0px 20px;">
+               •&nbsp;&nbsp;&nbsp; US passport
+
+                </td>
+                <td>
+                •&nbsp;&nbsp;&nbsp; US certificate of naturalization or citizenship
+                </td>
+            </tr>
+        </table>
+        <br/>
+        <table  style="font-family: Muli,sans-serif;color:#407cc9" width="100%">
+            <tr style="color:#426bba">
+                <td>
+                    <apex:outputText value="HEALTHCARE PROVIDERS"/>
+                </td>
+                
+            </tr>
+        </table>
+        <hr style="size:10px;color:#426bba;"/>  
+        
+        <table  style="font-family: Muli,sans-serif;Font-size:11px;color:#404040;margin-top:-5px;" width="100%">
+             <tr >
+                <td>
+                    •&nbsp;&nbsp;&nbsp; Complete page 4 including prescription with Prescriber’s signature
+                </td>
+            </tr>
+            <tr>
+                <td >
+                    •&nbsp;&nbsp;&nbsp; NY, NJ, IA physicians must supply a prescription per state regulations
+                </td>
+            </tr>
+        </table>
+            <br/>
+        <table style="font-family:Muli,sans-serif;color:#407cc9"  width="100%">
+            <tr style="color:#426bba">
+                <td>
+                    <apex:outputText value="HOW TO SUBMIT THE FORM AND DOCUMENTATION"/>
+                </td>
+            </tr>
+        </table>
+        <hr style="size:12px;color:#426bba;"/>  
+        
+        <table  style="font-family:Muli,sans-serif;Font-size:11px;color:#404040;margin-top:-5px;" width="100%">
+            <tr >
+                <td>
+                    •&nbsp;&nbsp;&nbsp; Go to <a href="https://www.otsukapatientassistance.com">www.otsukapatientassistance.com</a> and apply online via the Care Connect Portal
+                </td>
+            </tr>
+            <tr>
+                <td >
+                   •&nbsp;&nbsp;&nbsp;  Fax paper application to 1-844-727-6274
+                </td>
+            </tr>
+            <tr>
+                <td >
+                    •&nbsp;&nbsp;&nbsp; Mail paper application to Otsuka Patient Assistance Foundation, Inc., PO Box 3640, Gaithersburg, MD 20885-3640
+                </td>
+            </tr>
+        </table>
+
+        </div>
+</apex:component>

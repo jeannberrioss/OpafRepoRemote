@@ -1,0 +1,544 @@
+<apex:component controller="OPAF_NeuroscienceEnrollmentVfComponent" access="global" >
+        <apex:attribute name="CaseRec" type="Id" description="Id of the Case" assignTo="{!CaseRecId}" />
+
+    <table style="font-family: Muli,sans-serif;margin-top:20px;" width="100%">
+            <tr style="color:#426bba">
+                <td>
+                    <apex:outputText value="OTSUKA PATIENT ASSISTANCE PROGRAM APPLICATION FORM (CONT’D)"/>
+                </td>
+                
+            </tr>
+        </table>
+    <hr style="size:10px;color:#407cc9;margin-top:-2px;margin-bottom:10px;"/>
+   
+    <table style="font-family: Muli,sans-serif;font-size:10px;" width="100%">
+        <tr>
+        <td style="width:50%;font-size:12px;font-family: Muli,sans-serif;text-align: center;color:white;background-color:#b01c2c;padding:2px 2px 2px 2px;">
+            <b> SECTION 5: PROVIDER INFORMATION </b>
+          </td>
+            <td style="width:50%;color:#b01c2c;font-size:11.5px;padding-left:20px;">
+                <b> For SAMSCA® (tolvaptan) ONLY </b>
+            </td>
+        </tr>
+         <tr>
+             <td style="width:50%;">
+                 
+             <table style="font-family: Muli,sans-serif;width:95%;font-size:9px;margin-top:-70px;"> 
+                 <tr>
+                 <td style="width:90%">
+                     First name
+                  </td>
+                 </tr>
+                 <tr>
+                 <td  style="width:90%;border:1px solid black;height:19px;Padding-left:5px;">
+                     {!caserecord.Prescriber_First_Name2__c}
+                  </td>
+                 </tr>
+                 <tr>
+                 <td  style="width:90%">
+                     Last Name
+                  </td>
+                 </tr>
+                 <tr>
+                 <td  style="width:90%;border:1px solid black;height:19px;Padding-left:5px;">
+                     {!caserecord.Prescriber_Last_Name2__c} 
+                  </td>
+                 </tr>
+                 <tr >
+                     <td style="width:90%">
+                     <table style="width: 100%;">
+                         <tr>
+                             <td   style="width:40%">State license # </td>
+                            <td   style="width:30%">DEA #</td>
+                            <td    style="width:30%">NPI #</td></tr>
+                         </table>
+                     </td>
+                 
+                 </tr>
+                 <tr>
+                 <td  style="width:90%">
+                  <table class="slds-scope" style="height:18px;border-collapse: collapse;width:100%;">
+                        <tr>
+                            <td style="width:40%;border:1px solid black;height:18px;Padding-left:5px;">
+                            {!caserecord.Prescriber__r.State_License__c}
+                            </td>
+                            <td style="width:30%;border:1px solid black;height:18px;Padding-left:5px;">
+                            {!caserecord.Prescriber__r.DEA__c}
+                            </td>
+                            <td style="width:30%;border:1px solid black;height:18px;Padding-left:5px;">
+                            {!caserecord.Prescriber__r.NPI__c}
+                            </td>
+                        
+                        </tr>
+                    </table>   
+                  </td>
+                 </tr>
+                 
+                   <tr >
+                     <td style="width:90%">
+                     <table style="width: 100%;">
+                         <tr>
+                             <td   style="width:50%">Tax ID # </td>
+                            <td   style="width:50%">Facility type </td>
+                         </tr>
+                         </table>
+                     </td>
+                 
+                 </tr>
+                 <tr>
+                 <td  style="width:90%">
+                  <table class="slds-scope" style="height:18px;border-collapse: collapse;width:100%;">
+                        <tr>
+                            <td style="width:50%;border:1px solid black;height:18px;Padding-left:5px;">
+                            {!caserecord.Prescriber__r.Tax_Id__c}
+                            </td>
+                            <td style="width:50%;border:1px solid black;height:18px;Padding-left:5px;">
+                           {!caserecord.Facility__r.Facility_Type__c}
+                            </td>
+                            
+                        
+                        </tr>
+                    </table>   
+                  </td>
+                 </tr>
+                 <tr>
+                 <td  style="width:90%">
+                     Facility name
+                  </td>
+                 </tr>
+                 <tr>
+                 <td  style="width:90%;border:1px solid black;height:19px;Padding-left:5px;">
+                     {!caserecord.Facility__r.Name}
+                     
+                  </td>
+                 </tr>
+                  <tr>
+                 <td  style="width:90%">
+                     Address
+                  </td>
+                 </tr>
+                 <tr>
+                 <td  style="width:90%;border:1px solid black;height:19px;Padding-left:5px;">
+                     {!caserecord.Facility__r.Street_Address__c} &nbsp; {!caserecord.Facility__r.Address_Line_2__c}
+                  </td>
+                 </tr>
+                 <tr >
+                     <td style="width:90%">
+                     <table style="width: 100%;">
+                         <tr>
+                             <td   style="width:60%">City </td>
+                            <td   style="width:20%">State</td>
+                            <td    style="width:20%">Zip</td></tr>
+                         </table>
+                     </td>
+                 
+                 </tr>
+                 <tr>
+                 <td  style="width:90%">
+                  <table class="slds-scope" style="height:18px;border-collapse: collapse;width:100%;">
+                        <tr>
+                            <td style="width:60%;border:1px solid black;height:18px;Padding-left:5px;">
+                            {!caserecord.Facility__r.City__c}
+                            </td>
+                            <td style="width:20%;border:1px solid black;height:18px;Padding-left:5px;">
+                            {!caserecord.Facility__r.State__c}
+                            </td>
+                            <td style="width:20%;border:1px solid black;height:18px;Padding-left:5px;">
+                            {!caserecord.Facility__r.Zip_Code__c }
+                            </td>
+                        
+                        </tr>
+                    </table>   
+                  </td>
+                 </tr>
+                 <tr><td style="width:100%;color:#b01c2c;font-size:11.5px;"><b>PRIMARY CONTACT</b></td></tr>
+                  <tr >
+                     <td style="width:90%">
+                     <table style="width: 100%;">
+                         <tr>
+                             <td   style="width:50%">First Name</td>
+                            <td   style="width:50%">Last Name </td>
+                         </tr>
+                         </table>
+                     </td>
+                 
+                 </tr>
+                 <tr>
+                 <td  style="width:90%">
+                  <table class="slds-scope" style="height:18px;border-collapse: collapse;width:100%;">
+                        <tr>
+                            <td style="width:50%;border:1px solid black;height:18px;Padding-left:5px;">
+                             <apex:outputText value="{! IF((currentuser.contactId == null), ' ', currentuser.contact.FirstName) }"/>
+                            </td>
+                            <td style="width:50%;border:1px solid black;height:18px;Padding-left:5px;">
+                             <apex:outputText value="{! IF((currentuser.contactId == null), ' ', currentuser.contact.LastName) }"/>
+                            </td>
+                            
+                        
+                        </tr>
+                    </table>   
+                  </td>
+                 </tr>
+                   
+                 <tr >
+                     <td style="width:100%">
+                     <table style="width: 100%;">
+                         <tr>
+                             <td   style="width:40%">Phone </td>
+                            <td   style="width:20%">Ext</td>
+                            <td    style="width:40%">Fax</td></tr>
+                         </table>
+                     </td>
+                 
+                 </tr>
+                 <tr>
+                 <td  style="width:90%">
+                  <table class="slds-scope" style="height:18px;border-collapse: collapse;width:100%;">
+                        <tr>
+                            <td style="width:40%;border:1px solid black;height:18px;Padding-left:5px;">
+                                <apex:outputText value="{! IF((currentuser.contactId == null), ' ',phoneNumber ) }"/>
+                            </td>
+                            <td style="width:20%;border:1px solid black;height:18px;Padding-left:5px;">
+                                <apex:outputText value="{! IF((currentuser.contactId == null), ' ', currentuser.contact.Phone_Extension__c) }"/>
+                            </td>
+                            <td style="width:40%;border:1px solid black;height:18px;Padding-left:5px;">
+                                <apex:outputText value="{! IF((currentuser.contactId == null), ' ', currentuser.contact.Fax) }"/>
+                            </td>
+                        
+                        </tr>
+                    </table>   
+                  </td>
+                 </tr>
+                 <tr><td></td></tr>
+                  <tr>
+                 <td style="width:90%">
+                     Email
+                  </td>
+                 </tr>
+                 <tr>
+                 <td  style="width:90%;border:1px solid black;height:19px;Padding-left:5px;">
+                     <apex:outputText value="{! IF((currentuser.contactId == null), ' ', currentuser.contact.Email) }"/>
+                  </td>
+                 </tr>
+                 <tr><td></td></tr>
+                 <tr><td></td></tr>
+                 <tr>
+                  <td style="font-size:12px;font-family: Muli,sans-serif;text-align: center;color:white;background-color:#b01c2c;padding:2px 2px 2px 2px;">
+                   <b> SECTION 6: PRESCRIPTION INFORMATION</b>
+                  </td>
+                 </tr>
+                 <tr><td></td></tr>
+                    <tr>
+                     <td style="width:100%;font-style:italic;font-size:10px;">
+                        <b> NY, NJ, IA physicians must supply a prescription per state regulations</b>
+                     </td>
+                 </tr>
+                 <tr><td></td></tr>
+                 <tr><td style="width:100%">Patient first name</td></tr>
+                 <tr><td style="width:100%;Padding-left:5px;border:1px solid black;height:19px;"></td></tr>
+                 <tr><td></td></tr>
+                  <tr><td style="width:100%">Patient last name</td></tr>
+                 <tr><td style="width:100%;Padding-left:5px;border:1px solid black;height:19px;"></td></tr>
+                 <tr><td></td></tr>
+                 <tr><td style="width:100%;" >Patient ICD-10 code :</td></tr>
+                 <tr><td style="width:100%;Padding-left:5px;border:1px solid black;height:19px;" ></td></tr>
+                 <tr><td style="width:50%;"  >Patient DOB (mm/dd/yyyy):</td></tr>
+                 <tr><td style="width:100%;Padding-left:5px;border:1px solid black;height:19px;"></td></tr>
+            
+                 <tr><td></td></tr>
+                 
+              </table>
+             </td>
+             
+             
+             
+             <td style="width:50%">
+             <table style="font-family: Muli,sans-serif;width:100%;font-size:9px;margin-top:-3px;">
+              <tr >
+                     <td style="width:100%">
+                     <table style="width: 100%;">
+                         <tr>
+                             <td   style="width:50%">Date of patient's hospital admission</td>
+                            <td   style="width:50%">Date of patient's hospital discharge or expected discharge:  </td>
+                         </tr>
+                         </table>
+                     </td>
+                 
+                 </tr>
+                 <tr>
+                 <td  style="width:100%">
+                  <table class="slds-scope" style="height:18px;border-collapse: collapse;width:100%;">
+                        <tr>
+                            <td style="width:50%;border:1px solid black;height:18px;padding-left:5px;">
+                            <span> </span>
+                            </td>
+                            <td style="width:50%;border:1px solid black;height:18px;padding-left:5px;">
+                            <span> </span>
+                            </td>
+                            
+                        
+                        </tr>
+                    </table>   
+                  </td>
+                 </tr>
+                 
+                   <tr >
+                     <td style="width:100%">
+                     <table style="width: 100%;border-collapse: collapse;">
+                         <tr>
+                             <td   style="width:80%">Number of SAMSCA tablets administered during the hospital stay:</td>
+                            <td   style="width:20%;border:1px solid black;height:18px;padding-left:5px;"> </td>
+                         </tr>
+                         </table>
+                     </td>
+                 
+                 </tr>
+                 <tr>
+                 <td  style="width:100%">
+                  <table class="slds-scope" style="border-collapse: collapse;width:100%;">
+                        <tr>
+                            <td style="width:80%;">
+                            Number of SAMSCA tablets dispensed at hospital discharge:
+                            </td>
+                            <td style="width:20%;border:1px solid black;height:18px;padding-left:5px;">
+                            
+                            </td>
+                            
+                        
+                        </tr>
+                    </table>   
+                  </td>
+                 </tr>
+                 
+                 
+                 <tr><td style="width:100%;">
+                     <table style="width:100%;">
+                         <tr>
+                         <td style="width:60%;">
+                             Dosage (mg):
+                           </td>
+                             <td style="width:20%;">
+                             Quantity
+                           </td>
+                             <td style="width:20%;">
+                             
+                           </td>
+                         </tr>
+                     </table>
+                     </td>
+                 
+                 </tr>
+                  <tr><td style="width:100%;">
+                    <table class="slds-scope" style="height:18px;border-collapse: collapse;width:100%;">
+                        <tr>
+                            <td style="width:60%;border:1px solid black;height:18px;padding-left:5px;">
+                            <span> </span>
+                            </td>
+                            <td style="width:20%;border:1px solid black;height:18px;padding-left:5px;">
+                            <span> </span>
+                            </td>
+                            <td style="width:20%;height:18px;padding-left:5px;">
+                            <span> </span>
+                            </td>
+                            
+                        
+                        </tr>
+                    </table> 
+                     </td>
+                 
+                 </tr>
+                  
+                 <tr><td style="width:100%">Directions</td></tr>
+                 <tr><td style="width:100%"><div style="border:1px solid black;height:18px;" /></td></tr>
+                 
+                  <tr><td style="width:100%">Titration directions, if needed</td></tr>
+                 <tr><td style="width:100%;"><div style="border:1px solid black;height:18px;" /></td></tr>
+                 <tr><td></td></tr>
+                 <tr><td></td></tr>
+                 <tr><td style="width:100%;color:#b01c2c;font-size:11.5px;"><b>For JYNARQUE® (tolvaptan) ONLY</b></td></tr>
+                 <tr><td style="width:100%;">Is the patient enrolled in the REMS program for JYNARQUE?</td></tr>
+               
+                   <tr>
+                     <td style="width:100%;">
+                         <table  style="width:100%;">
+                             <tr>
+                                 <td >
+                                 
+                                 </td>
+                                 <td >
+                                 
+                                 </td>
+                                 <td >
+                                 
+                                 </td>
+                                 <td >
+                                 
+                                 </td>
+                                 <td style="width:60%;">
+                                  REMS ID
+                                 </td>
+                                 
+                             </tr>
+                         </table>
+                     </td>
+                 </tr>
+                  <tr>
+                     <td style="width:100%;">
+                         <table  style="width:100%;margin-top:-5px;">
+                             <tr>
+                                 <td >
+                                 <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px"   />
+                                 </td>
+                                 <td >
+                                  <span style="float:left">Yes</span>
+                                 </td>
+                                 <td >
+                                 <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px"   />
+                                 </td>
+                                 <td >
+                                 <span style="float:left">No</span>
+                                 </td>
+                                 <td style="width:60%;">
+                                  <div style="border:1px solid black;height:18px;" />
+                                 </td>
+                                 
+                             </tr>
+                         </table>
+                     </td>
+                 </tr>
+                 
+                 <tr><td style="width:100%;">
+                     <table style="width:100%;">
+                         <tr>
+                         <td style="width:40%;">
+                             Dosage (mg)
+                           </td>
+                             <td style="width:30%;">
+                             Quantity 
+                           </td>
+                             <td style="width:30%;">
+                             Number of refills
+                           </td>
+                         </tr>
+                     </table>
+                     </td>
+                 
+                 </tr>
+                 <tr><td style="width:100%;">
+                     <table class="slds-scope" style="height:18px;border-collapse: collapse;width:100%;">
+                        <tr>
+                            <td style="width:40%;border:1px solid black;height:18px;padding-left:5px;">
+                            <span> </span>
+                            </td>
+                            <td style="width:30%;border:1px solid black;height:18px;padding-left:5px;">
+                            </td>
+                           <td style="width:30%;border:1px solid black;height:18px;padding-left:5px;">
+                            </td>
+                        </tr>
+                    </table> 
+                     </td>
+                 
+                 </tr>
+                 <tr><td style="width:100%">Directions</td></tr>
+                 <tr><td style="width:100%"><div style="border:1px solid black;height:18px;" /></td></tr>
+                  <tr><td style="width:100%">Titration directions, if needed</td></tr>
+                 <tr><td style="width:100%"><div style="border:1px solid black;height:18px;" /></td></tr>
+                 
+                 <tr><td style="width:100%;">
+                     <p style="font-size:8px;">
+                         I appoint the Otsuka Patient Assistance Foundation, Inc. (hereafter, referred to as 
+                            OPAF) to convey this prescription to the dispensing pharmacy. I certify that therapy with 
+                            the above-mentioned product is medically necessary for this patient and I have reviewed 
+                            the current Prescribing Information for the prescribed product. I attest that I am not on the 
+                            HHS/OIG List of Excluded Individuals and Entities and that I am presently authorized 
+                            under state law to prescribe this medication. I authorize and appoint OPAF to convey 
+                            on my behalf any prescription information delivered to the dispensing pharmacy. For 
+                            the purposes of transmitting this prescription, I authorize OPAF and its affiliates as my 
+                            agent for these limited purposes to forward this prescription electronically, or via fax, or via 
+                            mail to the dispensing pharmacy. I certify that any medication received will be used only for 
+                            the patient named on this application and will not be offered for sale, trade, or barter. I 
+                            acknowledge that OPAF is a free goods, non-profit program that assists patients that have 
+                            been approved for assistance by meeting specific criteria. I acknowledge, that at any time, I 
+                            can change or withdraw this prescription on the patient’s behalf due to the medical needs of 
+                            the patient by calling 1-855-727-6274 or by sending a written notice to OPAF at Otsuka 
+                            Patient Assistance Foundation Inc., PO Box 3640, Gaithersburg, MD 20885-3640. I 
+                            understand that OPAF may revise, change, or terminate programs at any time. 
+                     </p>
+                     </td>
+                 </tr>
+                 
+                 <tr>
+                 <td style="width:100%">
+                     <table style="width:100%;margin-top:-10px;">
+                         <tr>
+                             <td style="width:10%"><apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px"   /> </td>
+                         <td><b>Dispense as written</b></td>
+                         </tr>
+                     </table>
+                  </td>
+                 </tr>
+                 
+                  <tr><td style="width:100%">Prescriber’s Name</td></tr>
+                 <tr><td style="width:100%"><div style="border:1px solid black;height:18px;" /></td></tr>
+                 
+                 <tr><td style="width:100%;">
+                     <table style="width:100%;">
+                         <tr>
+                         <td style="width:70%;">
+                             Prescriber’s Signature 
+                           </td>
+                             <td style="width:30%;">
+                             Date (mm/dd/yyyy)
+                           </td>
+                             
+                         </tr>
+                     </table>
+                     </td>
+                 </tr>
+                 <tr><td style="width:100%;">
+                     <table class="slds-scope" style="height:30px;border-collapse: collapse;width:100%;">
+                        <tr>
+                            <td style="width:70%;border:1px solid black;height:30px;padding-left:5px;">
+                            <span> </span>
+                            </td>
+                            <td style="width:40%;border:1px solid black;height:30px;padding-left:5px;">
+                            <span> </span>
+                            </td>
+                           
+                        </tr>
+                    </table>   
+                     </td>
+                 </tr>
+                 
+                 
+                 </table>
+             
+             </td>
+        </tr>
+    </table>
+     <table style="font-family: Muli,sans-serif;font-size:12px;" width="100%">
+            <tr>
+            <td >
+                <apex:image value="{!URLFOR($Resource.OPAFNephrologyJYNARQUE)}"  style="width:100px;float:right;padding:5px 0px 0px 0px;"  /> 
+                </td>
+                <td >
+                <apex:image value="{!URLFOR($Resource.OPAFNephrologySamsca)}"   style="width:100px;float:left;padding:5px 0px 0px 10px;" /> 
+                </td>
+            </tr>
+            <tr><td></td></tr>
+            <tr>
+           <td style="text-align:center;font-size:13px;" colspan="2">
+                <span style="text-align:center;font-size:12px;margin-left:30px;">Please see FULL PRESCRIBING INFORMATION, including <b>BOXED WARNING</b> and MEDICATION </span>
+
+                </td>
+                
+            </tr>
+            <tr>
+             <td style="text-align:center;" colspan="2">
+               <span style="text-align:center;margin-left:40px;font-size:13px;">
+                   GUIDE for <a href="https://www.otsuka-us.com/sites/g/files/qhldwo3326/files/media/static/JYNARQUE-PI.pdf">JYNARQUE </a> and <a href="https://www.otsuka-us.com/sites/g/files/qhldwo3326/files/media/static/Samsca-PI.pdf"> SAMSCA </a> at,<a href="www.jynarque.com">www.jynarque.com</a>, <a href=" www.samsca.com"> www.samsca.com </a> or call 1-800-441-6763.
+                </span> 
+                </td>
+            </tr>
+    </table>
+</apex:component>

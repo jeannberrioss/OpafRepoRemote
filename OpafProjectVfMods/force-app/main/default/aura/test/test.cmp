@@ -1,0 +1,7 @@
+<aura:component extends="forceCommunity:navigationMenuBase" implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes,force:appHostable,force:lightningQuickAction,forceCommunity:themeLayout" access="global" description="PublicCommTheme">
+
+<span class="counterLabelContainer" aura:id="divNotificationCount">
+     
+        <span class="counterLabel"></span>
+    </span>            
+</aura:component>

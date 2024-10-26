@@ -1,0 +1,328 @@
+:host {
+    --lwc-fontSize9: 1.875rem;
+    --lwc-spacingMedium: 1.25rem;
+    --lwc-fontSize4: 1.125rem;
+    --lwc-varFontSize4: 1.125rem;
+}
+.opaf-footer {
+    max-width: 1024px;
+    margin: 0 auto;
+}
+/*
+:host {
+  --slds-c-button-text-color: var(--slds-g-color-neutral-base-80, #C9C9C9);
+}
+*/
+
+.intro {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    margin-bottom: 4.5rem;
+    font-weight: 400;
+    color: #434343; /* TODO: find slds equivelant */
+}
+.brands {
+    max-width: 896px;
+    margin: 0 auto;
+}
+.product-logo-img{
+    max-width: 160px;
+    width: auto;
+}
+.footer-main {
+    background-color:#434343; 
+}
+.logo-container,
+.notice,
+.legal {
+    color: var(--lwc-colorTextButtonInverse);
+    padding: 3.6875rem 1rem 4rem;
+    margin: 0 auto;
+    max-width: 60rem;
+}
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 0;
+}
+.footer-links {
+    text-align: center;
+    padding-top: 3.75rem;
+}
+.notice {
+    padding-top: 3rem;
+    padding-bottom: 0;
+    font-size: 0.7rem;
+    line-height: 1.1;
+    text-align: center;
+}
+.legal {
+    padding-top: 2.25rem;
+    display: flex;
+    font-size: 1rem;
+    text-align: center;
+    flex-direction: column;
+    max-width: 20rem;
+}
+.legal p:first-child {
+    padding-bottom: 2rem;
+}
+.disclaimer-text,
+.reporting-text {
+    font-size: 1rem; /* TODO: find slds equivelant */
+    line-height: 1.6; /* TODO: find slds equivelant */
+    color: #717171; /* TODO: find slds equivelant */
+}
+.footer-links  a {
+    color: #FFFFFF;
+}
+.footer-links  a:hover {
+    color: #FFFFFF;
+}
+.disclaimer-text a{
+    text-decoration: underline;
+    font-weight: 700;
+    color: #717171;
+}
+.disclaimer-text a:hover {
+    color: var(--lwc-colorBrand);
+}
+.reporting-text a{
+    color: var(--lwc-colorBrand);
+}
+.reporting-text a:hover {
+    color: var(--lwc-colorTextLinkHover);
+}
+@media(min-width: 480px) { /* small */ 
+    
+}
+@media(min-width: 768px) { /* medium */ 
+    :host {
+        --lwc-fontSize9: 2.5rem;
+    }
+    .product-logo-img{
+        max-width: 90%;
+    }
+    .logo-container,
+    .notice,
+    .legal {
+        /* padding: 5.625rem 2.5rem; */
+    }
+    .legal p:first-child {
+        padding-bottom: 0;
+    }
+    .logo-container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+        padding-bottom: 0;
+    }
+    .notice {
+        text-align: left;
+        padding-bottom: 0;
+        padding-top: 3rem;
+    }
+    .legal {
+        max-width: auto;
+        padding-top: 2.25rem;
+        justify-content: space-between;
+        align-items: flex-end;
+        text-align: left;
+        flex-direction: row;
+        max-width: 60rem;
+    }
+    .footer-links {
+        text-align: right;
+        padding-top: 0;
+    }
+
+}
+@media(min-width: 1024px) { /* large */ 
+}
+
+
+/* .supportedMedication{
+    padding-top: 2.5rem;
+    line-height: 1.2;
+    font-size: 2.5rem;
+    margin-bottom: 1.25rem; 
+    font-family: "Museo Sans", sans-serif;
+}
+
+.description-section{
+    text-align: center;
+    margin: auto;
+}
+
+.instruction{
+    padding-top: 6px;
+    text-align: center;
+    font-size: 18px;
+    letter-spacing: normal;
+    font-family: museo sans;
+    line-height: 28.8px;
+    color: #434343;
+}
+
+.footer-text{
+    padding: 0 20%;
+    font-family: Muli,sans-serif;
+    font-weight: 600;
+    color: #000;
+}
+.para{
+    text-align: center;
+    width: 100%;
+    margin: auto;
+    font-family: "Museo sans";
+    font-size: 16px;
+    line-height: 25.6px;
+    letter-spacing: normal;
+    color: #717171;
+    
+}
+
+.single{
+    width: 132%;
+    margin-left: -9rem !important;
+}
+
+.single1{
+    width: 132%;
+    margin-left: -9rem !important;
+    color: #434343;
+    font-size: 18px;
+    line-height: 28.8px;
+    letter-spacing: normal;
+    font-family: "Museo sans";
+
+} 
+.Pipe{
+    color:#ffffff;
+    padding: 10px;
+}
+
+.opaf-red{
+color: #B01C2E!important
+
+}
+.space-pre{
+    white-space: pre;
+}
+
+.font{
+    font-weight: 600 !important;
+}
+.underline{
+    color: #000!important;
+    text-decoration: underline;
+    color: #212529;
+    
+    font-family: "museo sans";
+    font-size: 18px;
+    line-height: 28.8px;
+    text-align: start;
+    letter-spacing: normal;
+}
+.underline:hover{
+    color: #ba202e;
+}
+
+
+.footer-main{
+    background-color:#434343; 
+    padding: 64px;
+    padding-bottom: 30px;
+    
+}
+.link-section{
+    max-width: 850px;
+    margin: auto;
+}
+
+.logo-container{
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    
+}   
+.footer-link {
+    display: flex;
+    align-items: center;
+    padding: 25px;
+}
+
+.footer-logo img{
+ 
+        display: block;
+        height: 70px;
+        max-width: 100%;
+        font-family: "museo sans",sans-serif;
+        font-size: 11px;
+        line-height: 13px;
+        letter-spacing: normal;
+        color: #ffffff;
+    
+}
+.content{
+    font-size: 11px;
+    line-height: 13px;
+    text-align: left;
+    margin: auto;
+    color: #ffffff;
+    font-family: museo sans, sans-serif;
+    letter-spacing: normal;
+    
+}
+
+.content1{
+    font-size: 14px;
+    font-family: "museo sans", sans-serif;
+    line-height: 7;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+}
+
+.content2{
+   font-family: "museo sans",sans-serif;
+   font-size: 16px;
+   line-height: 7px;
+   letter-spacing: normal;
+   text-align: right;
+   color: #ffffff;
+   margin-left: 130px;
+   
+}
+
+
+.footerline{
+    color: #ffffff!important;
+    font-family: "museo sans", sans-serif;
+    font-size: 14px;
+    line-height: 17.0001px;
+    text-align: right;
+    letter-spacing:normal ;
+    
+}
+
+.footer-text {
+    font-weight: 500;
+    font-family: sans-serif;
+    font-size: initial;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25.33%;
+    padding: 20px;
+    box-sizing: border-box;
+} */

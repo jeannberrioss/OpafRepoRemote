@@ -1,0 +1,12 @@
+.buttonCLass {
+    display:inline-block;
+    color: white;
+    border:1px solid rgb(176, 28, 46);
+    background:rgb(176, 28, 46);
+    box-shadow: 0 0 5px -1px rgba(0,0,0,0.2);
+    cursor:pointer;
+    vertical-align:middle;
+    text-align: center;
+    border-radius: .125rem;
+    padding: 14px;
+}

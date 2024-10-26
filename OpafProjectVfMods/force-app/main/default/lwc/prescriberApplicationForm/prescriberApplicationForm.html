@@ -1,0 +1,153 @@
+<template>
+    <div class="pageTop">
+        <template if:true={showRibbon}>
+            <lightning-layout>
+                <lightning-layout-item size="12">
+                        <div class="slds-m-vertical_medium opaf-white bg-opaf-blue slds-p-around_small">
+                            <p class="slds-body-text_small">
+                                <template if:true={isConsentReceived}>
+                                    Patient Consent: Received
+                                </template>
+                                <template if:false={isConsentReceived}>
+                                    Patient Consent: Pending
+                                </template>    
+                            </p>
+                        </div>
+                </lightning-layout-item>
+            </lightning-layout>
+        </template>
+        <div>
+            <div class="slds">
+                <lightning-progress-indicator current-step={currentStep} type="path" variant="base">
+                    <lightning-progress-step label="Step1" value="1"></lightning-progress-step>
+                    <lightning-progress-step label="Step2" value="2"></lightning-progress-step>
+                    <lightning-progress-step label="Step3" value="3"></lightning-progress-step>
+                    <lightning-progress-step label="Step4" value="4"></lightning-progress-step>
+                    <lightning-progress-step label="Step5" value="5"></lightning-progress-step>
+                    <lightning-progress-step label="Step6" value="6"></lightning-progress-step>
+                    <lightning-progress-step label="Step7" value="7"></lightning-progress-step>
+                    <lightning-progress-step label="Step8" value="8"></lightning-progress-step>
+                    <lightning-progress-step label="Step9" value="9"></lightning-progress-step>
+                </lightning-progress-indicator>
+                <br/>
+                <h2 class="slds-text-heading_medium slds-m-vertical_xx-large">
+                    OPAF Application
+                </h2>
+            </div>
+            <br/>
+            <template if:true={step1}>
+                <c-prescriber-application-step-patient-info 
+                    onnextstep={navigateToNextStep} 
+                    case-id={caseRecordId}
+                    patient-record={patientRecordId}
+                    prescriber-id={prescriberId}
+                    account-record-id={accountId}
+                    prescription-id={prescriptionId}
+                    shipment-id={shipmentId}
+                    ></c-prescriber-application-step-patient-info>
+            </template>
+            <template if:true={step2}>
+                <c-prescriber-application-step-eligibility-docs 
+                    onpreviousstep={navigateToPreviousStep} 
+                    is-initial={isInitial}
+                    case-record={caseRecordId} 
+                    patient-record={patientRecordId}
+                    prescriber-id={prescriberId}
+                    account-record-id={accountId}
+                    prescription-id={prescriptionId}
+                    shipment-id={shipmentId}
+                    onnextstep={navigateToNextStep}
+                    ></c-prescriber-application-step-eligibility-docs>
+            </template>
+            <template if:true={step3}>
+                <c-prescriber-application-step-prescriber-info 
+                    onpreviousstep={navigateToPreviousStep}
+                    onnextstep={navigateToNextStep} 
+                    case-record-id={caseRecordId} 
+                    patient-id={patientRecordId}
+                    prescriber-id={prescriberId}
+                    account-record-id={accountId}
+                    prescription-id={prescriptionId}
+                    shipment-id={shipmentId}
+                    ></c-prescriber-application-step-prescriber-info>
+            </template>
+            <template if:true={step4}> 
+                <c-prescriber-application-step-prescription 
+                    onpreviousstep={navigateToPreviousStep}
+                    onnextstep={navigateToNextStep} 
+                    case-record-id={caseRecordId} 
+                    patient-id={patientRecordId}
+                    prescriber-id={prescriberId}
+                    account-record-id={accountId}
+                    prescription-id={prescriptionId}
+                    shipment-id={shipmentId}
+                    ></c-prescriber-application-step-prescription>
+            </template>
+            <template if:true={step5}>
+                <c-prescriber-application-step-vitamin 
+                    step="5"
+                    onpreviousstep={navigateToPreviousStep}
+                    onnextstep={navigateToNextStep} 
+                    case-record-id={caseRecordId} 
+                    patient-id={patientRecordId}
+                    prescriber-id={prescriberId}
+                    account-record-id={accountId}
+                    prescription-id={prescriptionId}
+                    shipment-id={shipmentId}
+                    ></c-prescriber-application-step-vitamin>
+            </template>
+            <template if:true={step6}>
+                <c-prescriber-application-step-sign 
+                    step="6"
+                    onpreviousstep={navigateToPreviousStep}
+                    onnextstep={navigateToNextStep} 
+                    case-record-id={caseRecordId} 
+                    patient-id={patientRecordId}
+                    prescriber-id={prescriberId}
+                    account-record-id={accountId}
+                    prescription-id={prescriptionId}
+                    shipment-id={shipmentId}
+                    ></c-prescriber-application-step-sign>
+            </template>
+            <template if:true={step7}> 
+                <c-prescriber-application-step-review 
+                    step="7"
+                    onpreviousstep={navigateToPreviousStep}
+                    onnextstep={navigateToNextStep} 
+                    case-record-id={caseRecordId} 
+                    patient-id={patientRecordId}
+                    prescriber-id={prescriberId}
+                    account-record-id={accountId}
+                    prescription-id={prescriptionId}
+                    shipment-id={shipmentId}
+                    ></c-prescriber-application-step-review>
+            </template>
+            <template if:true={step8}> 
+                <c-prescriber-application-step-submit 
+                    onpreviousstep={navigateToPreviousStep}
+                    onnextstep={navigateToNextStep} 
+                    case-record-id={caseRecordId} 
+                    patient-id={patientRecordId}
+                    prescriber-id={prescriberId}
+                    account-record-id={accountId}
+                    prescription-id={prescriptionId}
+                    shipment-id={shipmentId}
+                    ></c-prescriber-application-step-submit>
+            </template>
+            <template if:true={step9}> 
+                <c-prescriber-application-step-confirmation case-record-id={caseRecordId}></c-prescriber-application-step-confirmation>  
+            </template>
+        </div>
+    </div>
+    <span class={cssDisplay}>
+        <div id="spinnerDiv" class="demo-only demo--inverse" style="height: 10rem">
+        <div class="slds-spinner_container">
+            <div role="status" class="slds-spinner slds-spinner_medium">
+                <span class="slds-assistive-text">Loading</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>
+        </div>
+    </span> 
+</template>

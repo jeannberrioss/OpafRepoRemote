@@ -1,0 +1,96 @@
+:host {
+  /* --lwc-buttonBorderRadius: 100px; */
+
+  /* --slds-c-button-brand-radius-border: 100px;
+  --slds-c-button-brand-spacing-inline-start: 2.5rem;
+  --slds-c-button-brand-spacing-inline-end: 2.5rem;
+  --slds-c-button-brand-spacing-block-start: 1.4rem;
+  --slds-c-button-brand-spacing-block-end: 1.4rem; */
+
+  /* --slds-c-button-brand-color-size: 1.5rem;
+  --slds-c-button-brand-lineheight: 1; */
+
+  /* --slds-c-button-spacing-inline-start: 2.5rem;
+  --slds-c-button-spacing-inline-end: 2.5rem;
+  --slds-c-button-spacing-block-start: 1.4rem;
+  --slds-c-button-spacing-block-end: 1.4rem; */
+
+  --slds-g-color-brand-base-50: #B01C2E;
+  --lwc-spacingMedium: 1.4rem;
+  --lwc-fontSize9: 4rem;
+  --lwc-fontSize7: 2.5rem;
+  --lwc-fontSize5: 1.5rem;
+  --lwc-lineHeightHeading: 1;
+  --opaf-light-blue: #B4C9EA;
+  --opaf-red: var(--slds-g-color-brand-base-50, #B01C2E);
+  --opaf-blue:  var(--lwc-brandTextLink, #426BBA);
+  --opaf-black: var(--lwc-colorTextDefault, #373D42);
+  --opaf-white: #ffffff;
+
+  --opaf-light-blue-100: #F8FBFD;
+  --opaf-light-blue-200: #EAF1F5;
+}
+
+.linear-bg-light-blue {
+  background: -webkit-linear-gradient(-67deg, #F8FBFD 68%, #EAF1F5 0%);
+  background-position: 0 0;
+}
+
+.rounded-bg-light-blue {
+  background-image: url('data:image/svg+xml,<svg style="background-color:%23EAF1F5;" width="1440" height="1327" viewBox="0 0 1440 1327" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M-377.909 476.013C-87.2289 43.2332 300.581 -100.657 947.181 69.9032C1510.48 217.293 2296.62 661.663 2491.54 854.263C2779.01 1140.84 2874.42 1427.49 2825.41 1875.36C2785.67 2239.71 2693.41 2542.51 2520.83 2882.5C2265.85 3382.59 1911.07 3687.77 1444.07 3697.04C977.361 3706.31 -0.489014 3596.11 -556.899 3348.91C-1112.96 3102.96 -1180.57 2510.01 -992.899 1871.86C-820.849 1289.36 -629.679 850.823 -377.909 476.013Z" fill="white"/></svg>');
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+.solid-bg-light-blue {
+  background: #eaf1f5;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.colors-container {
+  background-color: var(--opaf-light-blue-100);
+}
+.color-table {
+  padding: 4rem 2rem;
+}
+
+
+article {
+    padding: 1em;
+    display: flex;
+}
+
+article > main {
+  flex-basis: 50%;
+}
+article > aside {
+  flex-basis: 50%;
+  margin-right: 4rem;
+}
+article > main > p {
+  text-align: right;
+  color: var(--lwc-colorBrand);
+}
+.colors > td,
+.colors > th {
+  padding: 1em;
+}
+.colors > th > div {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%; 
+}
+
+pre {
+    font-family: "Courier New", Courier, monospace;
+    line-height: 1.5;
+    letter-spacing: normal;
+    color: #EEE;
+    padding: 1em;
+    white-space: wrap;
+    background-color: #717171;
+    margin-right: 4rem;
+    text-align: right;
+}

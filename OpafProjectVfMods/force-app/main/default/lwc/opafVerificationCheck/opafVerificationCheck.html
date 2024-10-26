@@ -1,0 +1,79 @@
+<template>
+    <div>
+    <p><br/></p>
+    <p><strong><span style="font-size: 18px; color: rgb(0, 25, 112);">OPAF Application</span></strong></p>
+    <p><br/></p>
+</div>
+<div class="slds-section slds-is-open">
+    <h3 class="slds-section__title">
+        <lightning-button class="slds-theme_base slds-section__title-action" icon-position="left" variant="base" label="Patient Insurance Eligibility &amp; Income Verification Check" icon-name="utility:switch"></lightning-button>
+    </h3>
+    <div class="slds-section__content">
+        <div>
+            <p><br/></p>
+            <p><span style="font-size: 14px;">In order to qualify for the Otsuka Patient Assistance Foundation, Inc. (OPAF), a patient must meet certain criteria set forth for each OPAF product. Insurance and income information are two of the requirements used to evaluate a patient's eligibility.</span></p>
+            <p><br/></p>
+            <p><span>Based on our eligibility criteria, your patient must provide proof of income, US Address, and insurance denial documentation.</span></p>
+            <p><br/></p>
+            <p>You may attach supporting documentation (e.g., income statements, US Address documentation, and/or insurance denial information) to support your patient's eligibility for OPAF Assistance. Please provide:</p>
+            <p><br/></p>
+        </div>
+        <lightning-radio-group label="Do you live in the United States?" options={options} type="radio"></lightning-radio-group>
+    </div>
+</div>
+<div>
+    <p><strong><u>US Address Documentation</u></strong></p>
+    <p><br/></p>
+    <p>Applicant must include proof of US Address with the application submission. Please submit a copy of <strong>ONE</strong> of the following:</p>
+    <p><br/></p>
+    <p>- Social Security Number</p>
+    <p>- State driver's license</p>
+    <p>- US birth certificate</p>
+    <p>- US passport</p>
+    <p>- Foreign passport with US visa</p>
+    <p>- I-94 form with photograph</p>
+    <p>- US military ID</p>
+    <p>- US certificate of naturalization or citizenship </p>
+    <p><br/></p>
+</div>
+<lightning-file-upload label="US Address Documents" record-id=""></lightning-file-upload>
+<div>
+    <p style="text-align: left;"><br/></p>
+    <p style="text-align: left;"><b style="box-sizing: border-box; font-weight: bolder;"><u style="box-sizing: border-box;">Insurance Denial Documentation</u></b></p>
+    <p>Applicant must include insurance denial documentation with the application submission. Please submit a copy of <b style="box-sizing: border-box; font-weight: bolder;">ONE&nbsp;</b>of the following:</p>
+    <ul style="box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; margin-left: -25px;">
+        <li style="box-sizing: border-box; text-align: left; margin-left: 40px;">- Explanation of Benefits</li>
+        <li style="box-sizing: border-box; text-align: left; margin-left: 40px;">- Insurance Statement</li>
+        <li style="box-sizing: border-box; text-align: left; margin-left: 40px;">- Prior Authorization Denial Letter</li>
+    </ul>
+    <p style="text-align: left;"><br/></p>
+</div>
+<lightning-file-upload title="rere" label="Insurance Denial Documents" record-id=""></lightning-file-upload>
+<div>
+    <p><br/></p>
+    <p style="text-align: left;"><b style="box-sizing: border-box; font-weight: bolder;"><u style="box-sizing: border-box;">Proof of Income Documentation</u></b></p>
+    <p>Applicant must include proof of income for all contributing members of the household with the application submission. Please submit a copy of <b style="box-sizing: border-box; font-weight: bolder;">ONE&nbsp;</b>of the following for each contributing
+        member:</p>
+    <ul style="box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; margin-left: -25px; text-align: justify;">
+        <li style="box-sizing: border-box; text-align: left; margin-left: 40px;">- Federal Income Tax Return (1040, etc.)</li>
+        <li style="box-sizing: border-box; text-align: left; margin-left: 40px;">- Social Security award letter</li>
+        <li style="box-sizing: border-box; text-align: left; margin-left: 40px;">- W-2 from previous tax year</li>
+        <li style="box-sizing: border-box; text-align: left; margin-left: 40px;">- Disability income information</li>
+        <li style="box-sizing: border-box; text-align: left; margin-left: 40px;">- 1099-MISC form</li>
+        <li style="box-sizing: border-box; text-align: left; margin-left: 40px;">- Unemployment benefits letter</li>
+        <li style="box-sizing: border-box; text-align: left; margin-left: 40px;">- 2 most recent paystubs</li>
+        <li style="box-sizing: border-box; text-align: left; margin-left: 40px;"><span>- Letter from employer on company letterhead</span></li>
+        <li style="box-sizing: border-box; text-align: left; margin-left: 40px;"><br/></li>
+    </ul>
+</div>
+<lightning-file-upload title="Income Documentation" label="Proof of Income Documents" record-id=""></lightning-file-upload>
+<div>
+    <p><br/></p>
+    <p>&nbsp;</p>
+</div>
+<div class="slds-align_absolute-center">
+<lightning-button class="slds-theme_brand slds-button_outline-brand" variant="brand" label="PREVIOUS" onclick={handleOnPrevious}></lightning-button>
+<lightning-button class="slds-theme_brand slds-button_outline-brand" variant="brand" label="SAVE &amp; COMPLETE LATER"></lightning-button>
+<lightning-button class="slds-theme_brand slds-button_outline-brand" variant="brand" label="NEXT" onclick={handleOnNext}></lightning-button>
+</div>
+</template>

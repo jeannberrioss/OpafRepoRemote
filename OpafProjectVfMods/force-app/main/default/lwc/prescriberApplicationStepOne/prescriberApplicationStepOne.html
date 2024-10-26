@@ -1,0 +1,216 @@
+<template>
+    <div>
+        <lightning-layout>
+            
+        </lightning-layout>
+    </div>
+    <div class={sectionClass} id="patientInformation">
+        <h3 class="slds-text-heading_small">
+            Patient Information
+        </h3>
+        <div >
+            <lightning-layout class="slds-grid slds-col slds-wrap">
+                <lightning-layout-item size="6" padding="around-small">
+                    <lightning-record-edit-form object-api-name="Case">
+                    <template if:false={patientRecord}>
+                        <c-custom-lookup-lwc icon-name="standard:contact"
+                                                s-object-api-name="contact"
+                                                label="Select Patient"
+                                                record-type-name="Individual"
+                                                onlookupupdate={patientLookupRecord}
+                                                current-user="true"
+                                                placeholder="Search Patient"></c-custom-lookup-lwc>
+                    </template>
+                    <template if:true={patientRecord}>
+                        <lightning-input type="search" label="Select Patient" value={selectedPatientName} onchange={clearSelectedValue}></lightning-input>
+                    </template>
+                </lightning-record-edit-form>
+                </lightning-layout-item>
+                <lightning-layout-item size="6" padding="around-small">
+                </lightning-layout-item>
+                <lightning-layout-item size="6" padding="around-small">
+                    <lightning-input type="text" label="Patient First Name" data-name="FirstName" required="true" data-id="inputId" value={contactData.FirstName} onchange={contactFieldsChange}></lightning-input><br/>
+                    <lightning-input type="text" label="Patient Last Name" data-name="LastName" required="true" data-id="inputId" value={contactData.LastName} onchange={contactFieldsChange}></lightning-input><br/>
+                    <lightning-input type="email" label="Patient Email Address" data-name="Email" required="true" data-id="inputId" value={contactData.Email} onchange={contactFieldsChange}></lightning-input><br/>
+                    <lightning-input type="date" date-style="short" label="Patient Date of Birth" data-name="Birthdate" required="true" data-id="inputId" value={contactData.Birthdate} onchange={contactFieldsChange}></lightning-input><br/>
+                    <lightning-input pattern="^(0|[1-9][0-9]*)$" label="Patient SSN" data-name="SSN__c" data-id="inputId" value={contactData.SSN__c} onchange={contactFieldsChange}></lightning-input><br/>
+                    <lightning-combobox
+                                        name="Gender"
+                                        label="Patient Gender"
+                                        placeholder=""
+                                        options={genderOptions}
+                                        data-name="HealthCloudGA__Gender__c"
+                                        value={contactData.HealthCloudGA__Gender__c}
+                                        onchange={contactFieldsChange}>
+                                    </lightning-combobox>
+                </lightning-layout-item>
+                <lightning-layout-item size="6" padding="around-small">
+                    <lightning-input type="text" label="Patient Street Address" data-name="Street_Address__c" required="true" data-id="inputId" value={contactData.Street_Address__c} onchange={contactFieldsChange}></lightning-input><br/>
+                    <lightning-input type="text" label="Patient Address Line 2" data-name="Address_Line_2__c" data-id="inputId" value={contactData.Address_Line_2__c} onchange={contactFieldsChange}></lightning-input><br/>
+                    <lightning-input type="text" label="Patient City" data-name="City__c" required="true" data-id="inputId" value={contactData.City__c} onchange={contactFieldsChange}></lightning-input><br/>
+                    <lightning-combobox
+                                        name="Patient State"
+                                        label="Patient State"
+                                        placeholder="Select State"
+                                        options={stateOpts}
+                                        data-name="State__c"
+                                        value={contactData.State__c}
+                                        onchange={contactFieldsChange}
+                                        required="true">
+                                    </lightning-combobox><br/>
+                    <lightning-input type="text" label="Patient Zip Code" data-name="Zip_Code__c" required="true" data-id="inputId" value={contactData.Zip_Code__c} onchange={contactFieldsChange}></lightning-input><br/>
+                    <lightning-input type="text" label="Patient Daytime Phone" data-name="HomePhone" required="true" data-id="inputId" value={contactData.HomePhone} onchange={contactFieldsChange}></lightning-input>
+                </lightning-layout-item>
+                <!--<lightning-layout-item size="6" padding="around-small">
+                    <lightning-input type="text" label="Patient First Name" data-name="FirstName" required="true" data-id="inputId" value={contactData.FirstName} onchange={contactFieldsChange}></lightning-input>
+                </lightning-layout-item>-->
+                <!--<lightning-layout-item size="6" padding="around-small">
+                    <lightning-input type="text" label="Patient Street Address" data-name="Street_Address__c" required="true" data-id="inputId" value={contactData.Street_Address__c} onchange={contactFieldsChange}></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="6" padding="around-small">
+                    <lightning-input type="text" label="Patient Last Name" data-name="LastName" required="true" data-id="inputId" value={contactData.LastName} onchange={contactFieldsChange}></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="6" padding="around-small">
+                    <lightning-input type="text" label="Patient Address Line 2" data-name="Address_Line_2__c" data-id="inputId" value={contactData.Address_Line_2__c} onchange={contactFieldsChange}></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="6" padding="around-small">
+                    <lightning-input type="email" label="Patient Email Address" data-name="Email" required="true" data-id="inputId" value={contactData.Email} onchange={contactFieldsChange}></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="6" padding="around-small">
+                    <lightning-input type="text" label="Patient City" data-name="City__c" required="true" data-id="inputId" value={contactData.City__c} onchange={contactFieldsChange}></lightning-input>
+                </lightning-layout-item>-->
+                <!--<lightning-layout-item size="6" padding="around-small">
+                    <lightning-input type="date" date-style="short" label="Patient Date of Birth" data-name="Birthdate" required="true" data-id="inputId" value={contactData.Birthdate} onchange={contactFieldsChange}></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="6" padding="around-small">
+                    <lightning-combobox
+                                        name="Patient State"
+                                        label="Patient State"
+                                        placeholder="Select State"
+                                        options={stateOpts}
+                                        data-name="State__c"
+                                        value={contactData.State__c}
+                                        onchange={contactFieldsChange}
+                                        required="true">
+                                    </lightning-combobox>
+                </lightning-layout-item>
+                <lightning-layout-item size="6" padding="around-small">
+                    <lightning-input type="number" label="Patient SSN" data-name="SSN__c" data-id="inputId" value={contactData.SSN__c} onchange={contactFieldsChange}></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="6" padding="around-small">
+                    <lightning-input type="text" label="Patient Zip Code" data-name="Zip_Code__c" required="true" data-id="inputId" value={contactData.Zip_Code__c} onchange={contactFieldsChange}></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="6" padding="around-small">
+                    <lightning-combobox
+                                        name="Gender"
+                                        label="Patient Gender"
+                                        placeholder=""
+                                        options={genderOptions}
+                                        data-name="HealthCloudGA__Gender__c"
+                                        value={contactData.HealthCloudGA__Gender__c}
+                                        onchange={contactFieldsChange}>
+                                    </lightning-combobox>
+                </lightning-layout-item>
+                <lightning-layout-item size="6" padding="around-small">
+                    <lightning-input type="text" label="Patient Daytime Phone" data-name="Phone" required="true" data-id="inputId" value={contactData.Phone} onchange={contactFieldsChange}></lightning-input>
+                </lightning-layout-item> -->                                                            
+            </lightning-layout>
+        </div> 
+    </div>
+    <template if:true={displaySavePopup}>
+        <!-- Modal/Popup Box starts here-->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box Header Starts here-->
+                <header class="slds-modal__header">
+                    <lightning-button-icon icon-name="utility:close"
+                                        onclick={closeModel}
+                                        alternative-text="close"
+                                        variant="bare-inverse"
+                                        class="slds-modal__close"></lightning-button-icon>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Success!</h2>
+                </header>
+                <!--Modal/Popup Box Body Starts here-->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <p>
+                        Your information has been saved. Please select OK to continue.
+                    </p>
+                </div>
+                <!--Modal/Popup Box Footer Starts here-->
+                <footer class="slds-modal__footer">
+                    <lightning-button label="OK"
+                                    title="OK"
+                                    variant="destructive"
+                                    onclick={submitDetails}></lightning-button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>   
+    <template if:true={showContinue}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-02" aria-modal="true" aria-describedby="modal-content-id-2" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box Header Starts here-->
+                <header class="slds-modal__header">
+                    <lightning-button-icon icon-name="utility:close"
+                                        onclick={closeContinueModel}
+                                        alternative-text="close"
+                                        variant="bare-inverse"
+                                        class="slds-modal__close"></lightning-button-icon>
+                    <h2 id="modal-heading-02" class="slds-text-heading_medium slds-hyphenate"></h2>
+                </header>
+                <!--Modal/Popup Box Body Starts here-->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
+                    <p>
+                        <template if:true={isConsentReceived}>
+                            <p class="slds-text-heading_small slds-m-bottom_medium opaf-blue">Patient Consent has been received</p>
+                            The patient you have selected for OPAF has valid Consent on file.<br/>
+                            Select CONTINUE to complete the patient's application<br/><br/>
+                        </template>
+                        <template if:true={isConsentRequested}>
+                            <p class="slds-text-heading_small slds-m-bottom_medium opaf-blue">Patient Consent is pending</p>
+                            The patient you have selected for OPAF does not have a valid Consent on file. However, an eConsent has been emailed to your patient and is pending submission. The Patient Application will not be processed until Patient Consent has been received by OPAF.<br/>
+                            Select CONTINUE to complete the patient's application<br/><br/>
+                        </template>
+                        <template if:true={createNewConsent}>
+                            <p class="slds-text-heading_small slds-m-bottom_medium opaf-blue">Patient Consent not initiated</p>
+                            The patient you have selected for OPAF does not have a valid Consent on file. The Patient Consent process has not been initiated. The Patient Application will not be processed until Patient Consent has been received by OPAF. <br/>
+                            Select CONTINUE to begin the Patient Consent process.<br/><br/>
+                        </template>
+                        <lightning-button 
+                            class="opaf-lightning-button--brand" 
+                            variant="brand"
+                            label="Continue"
+                            title="Continue"
+                            onclick={onContinue}></lightning-button>
+                    </p>
+                </div>
+                <!--Modal/Popup Box Footer Starts here-->
+                <footer class="slds-modal__footer">
+                    
+                </footer> 
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+    <div class="slds-p-vertical_xx-large  slds-grid  slds-wrap slds-grid_align-spread">
+        <div class="slds-col">
+            <lightning-button class="opaf-lightning-button--brand" variant="neutral" label="Cancel" onclick={navigateToHomePage}></lightning-button>
+        </div>
+        <div class="slds-col">
+            <lightning-button class="opaf-lightning-button--outline-brand slds-m-horizontal_medium"  label="Save &amp; Complete Later" variant="brand-outline" onclick={saveAndCompleteLater}></lightning-button>
+            <lightning-button class="opaf-lightning-button--brand" label="Next" variant="brand" onclick={navigateToNextPage}></lightning-button>
+        </div>
+    </div>
+    <span class={cssDisplay}>
+        <div id="spinnerDiv" class="demo-only demo--inverse" style="height: 10rem">
+        <div class="slds-spinner_container">
+            <div role="status" class="slds-spinner slds-spinner_medium">
+                <span class="slds-assistive-text">Loading</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>
+        </div>
+    </span>
+</template>

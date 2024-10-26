@@ -1,0 +1,10 @@
+.tableBorders{
+    width: 60%;
+    border-left: 1px solid darkgrey;
+    border-right: 1px solid darkgrey;
+}
+
+.tableBordersScreen4{
+    border-left: 1px solid darkgrey;
+    border-right: 1px solid darkgrey;
+}

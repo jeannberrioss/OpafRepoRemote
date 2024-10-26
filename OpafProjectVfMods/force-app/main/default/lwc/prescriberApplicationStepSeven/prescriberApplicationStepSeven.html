@@ -1,0 +1,23 @@
+<template>               
+    <lightning-layout class="slds-grid slds-col slds-wrap">
+        <lightning-layout-item size="12" medium-device-size="8" padding="around-small">
+            <h2 class="slds-p-vertical_large slds-text-heading_medium">OPAF Application Confirmation</h2>
+            <h3 class="slds-p-vertical_large slds-text-heading_small">
+                Thank you for providing the application details. Your patient's portal number is provided below:                            
+            </h3>                    
+            <div  class="opaf-box">
+                <p class="slds-p-vertical_medium slds-text-heading_small opaf-red" >Portal Number: <strong>{caseNumber}</strong></p>
+            
+                <p class="slds-p-vertical_medium">
+                    If you have any questions about this process, or need to contact us, please call OPAF at 
+                    <br>
+                    <span class="opaf-red">1-855-727-6274.</span> 
+                </p>                           
+            </div>
+        </lightning-layout-item>
+        <lightning-layout-item size="12" medium-device-size="4" padding="around-small">
+            <lightning-button class="opaf-lightning-button--brand" icon-name="utility:forward" icon-position="right" variant="brand" data-name="screen6" label="RETURN TO MY WORKSPACE" title="RETURN TO MY WORKSPACE" onclick={navigateToHomePage}></lightning-button>
+        </lightning-layout-item>
+        
+    </lightning-layout>
+</template>

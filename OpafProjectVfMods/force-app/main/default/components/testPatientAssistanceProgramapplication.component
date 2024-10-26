@@ -1,0 +1,788 @@
+<apex:component >
+   
+     <table style="font-family: Muli,sans-serif;margin-top:10px;" width="100%">
+            <tr style="color:#426bba">
+                <td>
+                    <apex:outputText value="OTSUKA PATIENT ASSISTANCE PROGRAM APPLICATION FORM"/>
+                </td>
+                
+            </tr>
+        </table>
+    <hr style="size:10px;color:#426bba;margin-top:-2px;margin-bottom:15px;"/>
+    
+        <table style="font-family: Muli,sans-serif;font-size:9px;margin-top:-5px;font-color:#404040;" width="100%">
+           <tr>
+            <td style="font-size:12px;font-family: Muli,sans-serif;text-align: center;color:white;background-color:#b01c2c;padding:2px 2px 2px 2px;">
+               <b> SECTION 1: PATIENT INFORMATION</b>
+              </td>
+                <td style="font-size:12px;font-family: Muli,sans-serif;text-align: center;color:white;background-color:#b01c2c;padding:2px 2px 2px 2px;">
+               <b> SECTION 3: INSURANCE ELIGIBILITY</b>
+                </td>
+            </tr>
+            
+            <tr>
+                <!---left side pannel----------------------------->
+                
+            <td style="width:50%;">
+                <table style="width:95%;"> 
+                    <tr>
+                        <td>
+                            First name
+                        </td>
+                    </tr>
+                    <tr>
+                        <td >
+                                
+                               <div style="border:1px solid black;height:18px;width:100%;"> </div>
+                               
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                           Last name
+                        </td>
+                    </tr>
+                    <tr>
+                        <td >
+                           <div style="border:1px solid black;height:18px;width:100%;"> </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Address
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                             <div style="border:1px solid black;height:18px;width:100%;"> </div>
+                        </td>
+                    </tr>
+                    <tr >
+                     <td style="width:90%">
+                     <table style="width: 100%;">
+                         <tr>
+                             <td   style="width:60%">City </td>
+                            <td   style="width:20%">State</td>
+                            <td    style="width:20%">Zip</td></tr>
+                         </table>
+                     </td>
+                 </tr>
+                 <tr>
+                 <td  style="width:90%">
+                  <table class="slds-scope" style="height:18px;border-collapse: collapse;width:100%;">
+                        <tr>
+                            <td style="width:60%;border:1px solid black;height:18px;">
+                            <span> </span>
+                            </td>
+                            <td style="width:20%;border:1px solid black;height:18px;">
+                            <span> </span>
+                            </td>
+                            <td style="width:20%;border:1px solid black;height:18px;">
+                            <span> </span>
+                            </td>
+                        
+                        </tr>
+                    </table>   
+                  </td>
+                 </tr>
+                    <tr>
+                        <td style="width:50%">
+                    <table class="slds-scope" width="100%;">
+                        <tr>
+                            <td style="width:30%">
+                            <span>Gender</span>
+                            </td>
+                            <td style="width:30%">
+                            <span>SSN</span>
+                            </td>
+                            <td style="width:40%">
+                            <span>DOB (mm/dd/yyyy)</span>
+                            </td>
+                        
+                        </tr>
+                    </table>
+                   </td>
+                  </tr>
+                    <tr>
+                        <td>
+                            <table class="slds-scope" style="width:100%;height:18px;border-collapse: collapse;">
+                        <tr>
+                            <td style="width:30%;">
+                           
+                                <table style="margin-top: -8px;width:100%"> 
+                                    <tr>
+                                    <td >
+                                        <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px" />
+                                        </td>
+                                        <td>
+                                        M
+                                        </td>
+                                        <td>
+                                            <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px" />
+                                        </td>
+                                        <td>
+                                        F
+                                        </td>
+                                    </tr>
+                                </table>
+                              
+                            </td>
+                            <td style="width:30%;border:1px solid black;height:18px;border-top:1px solid light black">
+                            <span> </span>
+                            </td>
+                            <td style="width:40%;border:1px solid black;height:18px;border-top:1px solid lightblack">
+                            <span> </span>
+                            </td>
+                        
+                        </tr>
+                    </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Phone
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div style="border:1px solid black;height:18px;width:100%;"> </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Email
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div style="border:1px solid black;height:18px;width:100%;"> </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-style: italic;">
+                            <b>  Complete if there is a primary caregiver or an alternate contact</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                           Caregiver/alternate contact name
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div style="border:1px solid black;height:18px;width:100%;"> </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table style="width:100%">
+                                <tr>
+                                    <td style="width:50%">
+                                        Relationship 
+                                    </td>
+                                    <td style="width:50%">
+                                        Phone
+                                    </td>
+                                </tr>
+                             </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table class="slds-scope" style="height:18px;border-collapse: collapse;width:100%;">
+                        <tr>
+                            <td style="width:50%;border:1px solid black;height:18px;">
+                            <span> </span>
+                            </td>
+                            <td style="width:50%;border:1px solid black;height:18px;">
+                            <span> </span>
+                            </td>
+                        </tr>
+                    </table>   
+                        </td>
+                    </tr>
+                    <tr>
+                    <td></td>
+                    </tr>
+                    <tr>
+                        <td style="background-color:#b01c2c;font-size:12px;font-family: Muli,sans-serif;text-align: center;color:white;padding:2px 2px 2px 2px;width:100%;">
+                           <b> SECTION 2: INSURANCE INFORMATION</b>
+                        </td>
+                    </tr>
+                    
+                   
+                    <tr>
+                        <td>
+                            <table >
+                        <tr>
+                        <td>
+                            <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px"   /> 
+                            </td>
+                            <td>
+                            <b>  I DO NOT have insurance (do not fill out Section 2)</b>
+                            </td>
+                        </tr>
+                    </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <table style="width:100%;margin-top:-3px;">
+                        <tr>
+                        <td>
+                            <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px"   /> 
+                            </td>
+                            <td>
+                           <b> I am attaching copies of both medical and pharmacy cards (do not fill out Sections 2)</b>
+                            </td>
+                        </tr>
+                    </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <span style="color:#b01c2c;font-size:11.5px;"> <b>MEDICAL CARD</b> </span> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <table style="width:100%;">
+                        <tr>
+                            <td style="width:50%;">
+                             Payer name
+                            </td>
+                            <td style="width:50%;">
+                             Plan name 
+                            </td>
+                        
+                        </tr>
+                    </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <table class="slds-scope" style="width:100%;height:18px;border-collapse: collapse;">
+                        <tr>
+                            <td style="width:50%;border:1px solid black;height:18px;border-top:1px solid light black">
+                            
+                            </td>
+                            <td style="width:50%;border:1px solid black;height:18px;border-top:1px solid lightblack">
+                            
+                            </td>
+                        
+                        </tr>
+                    </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <table style="width:100%;">
+                        <tr>
+                            <td style="width:50%;">
+                             Phone
+                            </td>
+                            <td style="width:50%;">
+                             Policyholder name
+                            </td>
+                        
+                        </tr>
+                    </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <table class="slds-scope" style="width:100%;height:18px;border-collapse: collapse;">
+                        <tr>
+                            <td style="width:50%;border:1px solid black;height:18px;border-top:1px solid light black">
+                            
+                            </td>
+                            <td style="width:50%;border:1px solid black;height:18px;border-top:1px solid lightblack">
+                            
+                            </td>
+                        
+                        </tr>
+                    </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                             <table style="width:100%;">
+                        <tr>
+                            <td style="width:45%;">
+                            <span> Member ID</span>
+                            </td>
+                            <td style="width:25%;">
+                            <span>Group # </span>
+                            </td>
+                            <td style="width:30%;">
+                            <span>DOB (mm/dd/yyyy) </span>
+                            </td>
+                        </tr>
+                    </table>                        
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <table class="slds-scope" style="width:100%;height:18px;border-collapse: collapse;;">
+                        <tr>
+                            <td style="width:45%;border:1px solid black;height:18px;border-top:1px solid light black">
+                            <span> </span>
+                            </td>
+                            <td style="width:25%;border:1px solid black;height:18px;border-top:1px solid light black">
+                            <span> </span>
+                            </td>
+                            <td style="width:35%;border:1px solid black;height:15px;border-top:1px solid light black">
+                            <span> </span>
+                            </td>
+                        </tr>
+                    </table>
+                        </td>
+                    </tr>
+                    <tr><td></td></tr>
+                    <tr>
+                        <td>
+                            <span style="color:#b01c2c;font-size:11.5px;"> <b>PHARMACY CARD</b>  </span> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <table style="width:100%;">
+                        <tr>
+                            <td style="width:50%;">
+                             Payer name
+                            </td>
+                            <td style="width:50%;">
+                             Plan name 
+                            </td>
+                        
+                        </tr>
+                    </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <table class="slds-scope" style="width:100%;height:18px;border-collapse: collapse;">
+                        <tr>
+                            <td style="width:50%;border:1px solid black;height:18px;border-top:1px solid light black">
+                            
+                            </td>
+                            <td style="width:50%;border:1px solid black;height:18px;border-top:1px solid lightblack">
+                            
+                            </td>
+                        
+                        </tr>
+                    </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Phone
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div style="border:1px solid black;height:18px;width:100%;"> </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <table style="width:100%;margin-top:-1px;">
+                        <tr>
+                            <td style="width:50%;">
+                             RxBIN
+                            </td>
+                            <td style="width:50%;">
+                             RX PCN 
+                            </td>
+                        
+                        </tr>
+                    </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <table class="slds-scope" style="width:100%;height:18px;border-collapse: collapse;">
+                        <tr>
+                            <td style="width:50%;border:1px solid black;height:18px;border-top:1px solid light black">
+                            
+                            </td>
+                            <td style="width:50%;border:1px solid black;height:18px;border-top:1px solid lightblack">
+                            
+                            </td>
+                        
+                        </tr>
+                    </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+                
+                <!---right side pannel----------------------------->
+             <td style="width:50%;">
+                    <table style="width:100%;margin-top:-40px;">
+                        <tr>
+                        <td style="font-size:11px;">
+                           <b> Have you been denied coverage by an insurance provider?</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table>
+                            <tr>
+                            <td>
+                                <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px"   /> 
+                             </td>
+                               <td>
+                                Yes
+                               </td>
+                              <td>
+                                <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px"   /> 
+                             </td>
+                             <td>
+                                No
+                             </td>
+                            </tr>
+                     </table>
+                        </td>
+                    </tr>
+                   
+                    <tr>
+                        <td style="font-size:11px;">
+                          <b>  Are you enrolled in Medicare, Medicaid, Veterans Affairs, or TRICARE?</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                             <table>
+                                <tr>
+                                <td>
+                                    <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px"   /> 
+                                 </td>
+                                   <td>
+                                    Yes
+                                   </td>
+                                  <td>
+                                    <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px"   /> 
+                                 </td>
+                                 <td>
+                                    No
+                                 </td>
+                                </tr>
+                         </table>
+                        </td>
+                    </tr>
+                  
+                    <tr>
+                        <td style="font-size:11px;">
+                          <b>Have you been denied Medicaid?</b>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                             <table>
+                                <tr>
+                                <td>
+                                    <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px"   /> 
+                                 </td>
+                                   <td>
+                                    Yes
+                                   </td>
+                                  <td>
+                                    <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px"   /> 
+                                 </td>
+                                 <td>
+                                    No
+                                 </td>
+                                </tr>
+                         </table>
+                        </td>
+                    </tr>
+                        
+                   <!--  <tr>
+                        <td>
+                             ----------------------------------------------------
+                        </td>
+                    </tr> -->
+                        <tr>
+                        <td style="font-size:11px;">
+                          <b>  Are you in the process of enrolling in Medicare Part D? </b>
+                        </td>
+                    </tr>
+                        
+                     <tr>
+                        <td>
+                             <table>
+                                <tr>
+                                <td>
+                                    <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px"   /> 
+                                 </td>
+                                   <td>
+                                    Yes
+                                   </td>
+                                  <td>
+                                    <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px"   /> 
+                                 </td>
+                                 <td>
+                                    No
+                                 </td>
+                                </tr>
+                         </table>
+                        </td>
+                    </tr>
+                     <!--   <tr>
+                        <td>
+                            ------------------------------------------------
+                        </td>
+                    </tr> -->
+                        
+                     <tr>
+                        <td style="font-size:11px;">
+                            <b> Do you live in the United States? </b>
+                        </td>
+                    </tr>
+                        <tr>
+                        <td>
+                             <table>
+                                <tr>
+                                <td>
+                                    <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px"   /> 
+                                 </td>
+                                   <td>
+                                    Yes
+                                   </td>
+                                  <td>
+                                    <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px"   /> 
+                                 </td>
+                                 <td>
+                                    No
+                                 </td>
+                                </tr>
+                         </table>
+                        </td>
+                    </tr>
+                        
+                  <!--   <tr>
+                        <td>
+                             ------------------------------------------------------------
+                        </td>
+                    </tr> -->
+                        <tr>
+                        <td style="font-size:11px;">
+                            
+                              <b>   For ABILIFY MAINTENA®
+                                 (aripiprazole) APPLICANTS ONLY: 
+                                 If approved for assistance, will this be the patient's first 
+                                 administration of ABILIFY MAINTENA? </b>
+                            
+                        </td>
+                    </tr>
+                        
+                     <tr>
+                        <td>
+                             <table>
+                                <tr>
+                                <td>
+                                    <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px"   /> 
+                                 </td>
+                                   <td>
+                                    Yes
+                                   </td>
+                                  <td>
+                                    <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px"   /> 
+                                 </td>
+                                 <td>
+                                    No
+                                 </td>
+                                </tr>
+                         </table>
+                        </td>
+                    </tr>
+                        <tr>
+                        <td>
+                             
+                        </td>
+                    </tr>
+                        
+                     <tr>
+                        <td style="background-color:#b01c2c;font-size:12px;font-family: Muli,sans-serif;text-align: center;color:white;padding:2px 2px 2px 2px;width:100%;">         
+                            <b>SECTION 4: FINANCIAL ELIGIBILITY</b>
+                        </td>
+                    </tr>
+                        <tr><td></td></tr>
+                        <tr>
+                        <td style="font-style:italic">
+                           <b>  Please complete the information below for income and house-hold size.</b>
+                        </td>
+                    </tr>
+                        
+                     <tr>
+                        <td>
+                            <table style="width:100%;">
+                                <tr>
+                        <td style="width:50%;">
+                            <span>Annual household</span>
+                           </td>
+                            <td style="width:50%;">
+                            <span>Number of persons living in</span>
+                           </td>
+                        </tr>
+                                <tr>
+                        <td style="width:50%;">
+                            <span>income before taxes*</span>
+                           </td>
+                            <td style="width:50%;">
+                            <span>household, including yourself</span>
+                           </td>
+                        </tr>
+                            </table>
+                        </td>
+                    </tr>
+                        
+                     <tr>
+                        <td>
+                         <table class="slds-scope" style="width:100%;height:18px;border-collapse: collapse;">
+                        <tr>
+                            <td style="width:50%;border:1px solid black;height:18px;border-top:1px solid light black">
+                            <span> </span>
+                            </td>
+                            <td style="width:50%;border:1px solid black;height:18px;border-top:1px solid lightblack">
+                            <span> </span>
+                            </td>
+                        </tr>
+                    </table>
+                        </td>  
+                      </tr>
+                      
+                        <tr>
+                        <td style="font-style: italic;">
+                         <b>Applicant must include proof of income for all contributing members of the 
+                            household with the application submission. Please submit ONE of the 
+                            following for each contributing member:
+                            </b>
+                        </td>  
+                      </tr>
+                        <tr>
+                    <td></td>
+                    </tr>
+                       <tr>
+                        <td>
+                         •&nbsp;&nbsp;&nbsp; Federal Income Tax Return (1040, etc)
+                        </td>  
+                      </tr>
+                      <tr>
+                        <td>
+                         •&nbsp;&nbsp;&nbsp; Social Security award letter
+                        </td>  
+                      </tr>
+                      <tr>
+                        <td>
+                         •&nbsp;&nbsp;&nbsp; W-2 from previous tax year
+                        </td>  
+                      </tr>
+                      <tr>
+                        <td>
+                         •&nbsp;&nbsp;&nbsp; Disability income information
+                        </td>  
+                      </tr>
+                      <tr>
+                        <td>
+                         •&nbsp;&nbsp;&nbsp; 1099-MISC form
+                        </td>  
+                      </tr>
+                      <tr>
+                        <td>
+                         •&nbsp;&nbsp;&nbsp; Unemployment benefits letter
+                        </td>  
+                      </tr>
+                      <tr>
+                        <td>
+                         •&nbsp;&nbsp;&nbsp; 2 most recent paystubs
+                        </td>  
+                      </tr>
+                      <tr>
+                        <td>
+                         •&nbsp;&nbsp;&nbsp; Letter from employer on company letterhead
+                        </td>  
+                      </tr>
+                        <tr><td></td></tr>
+                      <tr>
+                        <td style="font-style: italic;">
+                        <b> The Applicant must provide proof of residency documentation. Please submit 
+                            ONE of the following documents with this application:</b>
+                        </td>  
+                      </tr>
+                        <tr><td></td></tr>
+                      <tr>
+                        <td>
+                         •&nbsp;&nbsp;&nbsp; Social Security number
+                        </td>  
+                      </tr>
+                      <tr>
+                        <td>
+                         •&nbsp;&nbsp;&nbsp; State driver’s license
+                        </td>  
+                      </tr>
+                      <tr>
+                        <td>
+                         •&nbsp;&nbsp;&nbsp; US birth certificate
+                        </td>  
+                      </tr>
+                      <tr>
+                        <td>
+                         •&nbsp;&nbsp;&nbsp; US passport
+                        </td>  
+                      </tr>
+                      <tr>
+                        <td>
+                         •&nbsp;&nbsp;&nbsp; Foreign passport with US visa
+                        </td>  
+                      </tr>
+                      <tr>
+                        <td>
+                         •&nbsp;&nbsp;&nbsp; I-94 form with photograph
+
+                        </td>  
+                      </tr>
+                      <tr>
+                        <td>
+                         •&nbsp;&nbsp;&nbsp; US military ID
+                        </td>  
+                      </tr>
+                      <tr>
+                        <td>
+                         •&nbsp;&nbsp;&nbsp; US certificate of naturalization or citizenship
+                        </td>  
+                      </tr>
+                      
+                  </table>                
+              </td>
+                
+            </tr>
+    </table>
+            <table style="font-family: Muli,sans-serif;font-size:12px;" width="100%">
+            <tr>
+            <td style="width:50%">
+                <apex:image value="{!URLFOR($Resource.Abilify1)}"  style="width:100px;float:right;"  /> 
+                </td>
+                <td style="width:50%">
+                <apex:image value="{!URLFOR($Resource.rexulti)}"   style="width:60px;height:20px;float:left;padding-left:10px;" /> 
+                </td>
+          </tr> 
+        <br/>
+            <tr >
+            <td style="text-align:center;font-size:12px;" colspan="2">
+                <span style="text-align:center;font-size:12px;margin-left:30px;">Please see FULL PRESCRIBING INFORMATION, including <b>BOXED WARNING</b> and MEDICATION GUIDE for</span>
+
+                </td>
+                
+            </tr>
+            <tr>
+            <td style="text-align:center;" colspan="2">
+               <span style="text-align:center;margin-left:40px;font-size:12px;">
+                   <a href="https://www.otsuka-us.com/sites/g/files/qhldwo3326/files/media/static/Abilify-M-PI.pdf">ABILIFY MAINTENA </a> and <a href="https://www.otsuka-us.com/sites/g/files/qhldwo3326/files/media/static/Rexulti-PI.pdf"> REXULTI </a> at <a href=" www.abilifymaintena.com"> www.abilifymaintena.com</a>, <a href="www.rexulti.com">www.rexulti.com </a> or call 1-800-441-6763.
+                </span> 
+                </td>
+            </tr>
+    </table>
+ </apex:component>

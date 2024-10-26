@@ -1,0 +1,130 @@
+<template>
+    <div class="pageTop">
+        <lightning-layout>
+            <lightning-layout-item size="12">
+                <template if:true={showRibbon}>
+                    <div style="color: rgb(255, 255, 255); background-color: rgb(0, 95, 178);line-height: 2">
+                        <span style="font-size: 13px;">
+                            <template if:true={isConsentReceived}>
+                                Patient Consent: Received
+                            </template>
+                            <template if:false={isConsentReceived}>
+                                Patient Consent: Pending
+                            </template>    
+                        </span>
+                    </div>
+                </template>
+            </lightning-layout-item>
+        </lightning-layout>
+        <div class="slds-p-around_medium" style="background: white;">
+            <div class="slds">
+                <template if:false={stepZero}>
+                    <lightning-progress-indicator current-step={currentStep} type="path" variant="base">
+                        <lightning-progress-step label="Step1" value="1"></lightning-progress-step>
+                        <lightning-progress-step label="Step2" value="2"></lightning-progress-step>
+                        <lightning-progress-step label="Step3" value="3"></lightning-progress-step>
+                        <lightning-progress-step label="Step4" value="4"></lightning-progress-step>
+                        <lightning-progress-step label="Step5" value="5"></lightning-progress-step>
+                        <lightning-progress-step label="Step6" value="6"></lightning-progress-step>
+                        <lightning-progress-step label="Step7" value="7"></lightning-progress-step>
+                    </lightning-progress-indicator>
+                    <br/>
+                    <strong>
+                        <span style="font-size: 18px; color: rgb(0, 25, 112);">OPAF Re-Enrollment Application</span>
+                    </strong>
+                </template>
+            </div>
+            <br/>
+            <template if:true={stepZero}>
+                <c-prescriber-reenrollment-initial case-id={caseRecordId} onnextstep={navigateToNextStep}></c-prescriber-reenrollment-initial>
+            </template>
+            <template if:true={stepOne}>
+                <c-prescriber-reenrollment-step-one 
+                                                    onnextstep={navigateToNextStep} 
+                                                    case-record={caseRecord}
+                                                    case-id={caseRecordId}
+                                                    patient-record={patientRecordId}
+                                                    prescriber-id={prescriberId}
+                                                    account-record-id={accountId}
+                                                    prescription-id={prescriptionId}
+                                                    shipment-id={shipmentId}
+                                                    ></c-prescriber-reenrollment-step-one>
+            </template>
+            <template if:true={stepTwo}>
+                <c-prescriber-reenrollment-step-two 
+                                                    onpreviousstep={navigateToPreviousStep} 
+                                                    is-initial={isInitial}
+                                                    case-record={caseRecordId} 
+                                                    patient-record={patientRecordId}
+                                                    prescriber-id={prescriberId}
+                                                    account-record-id={accountId}
+                                                    prescription-id={prescriptionId}
+                                                    shipment-id={shipmentId}
+                                                    onnextstep={navigateToNextStep}
+                                                    ></c-prescriber-reenrollment-step-two>
+            </template>
+            <template if:true={stepThree}>
+                <c-prescriber-reenrollment-step-three 
+                                                    onpreviousstep={navigateToPreviousStep}
+                                                    onnextstep={navigateToNextStep} 
+                                                    case-record-id={caseRecordId} 
+                                                    patient-id={patientRecordId}
+                                                    prescriber-id={prescriberId}
+                                                    account-record-id={accountId}
+                                                    prescription-id={prescriptionId}
+                                                    shipment-id={shipmentId}
+                                                    ></c-prescriber-reenrollment-step-three>
+            </template>
+            <template if:true={stepFour}> 
+                <c-prescriber-reenrollment-step-four 
+                                                    onpreviousstep={navigateToPreviousStep}
+                                                    onnextstep={navigateToNextStep} 
+                                                    case-record-id={caseRecordId} 
+                                                    patient-id={patientRecordId}
+                                                    prescriber-id={prescriberId}
+                                                    account-record-id={accountId}
+                                                    prescription-id={prescriptionId}
+                                                    shipment-id={shipmentId}
+                                                    ></c-prescriber-reenrollment-step-four>
+            </template>
+            <template if:true={stepFive}> 
+                <c-prescriber-reenrollment-step-five 
+                                                    onpreviousstep={navigateToPreviousStep}
+                                                    onnextstep={navigateToNextStep} 
+                                                    case-record-id={caseRecordId} 
+                                                    patient-id={patientRecordId}
+                                                    prescriber-id={prescriberId}
+                                                    account-record-id={accountId}
+                                                    prescription-id={prescriptionId}
+                                                    shipment-id={shipmentId}
+                                                    ></c-prescriber-reenrollment-step-five>
+            </template>
+            <template if:true={stepSix}> 
+                <c-prescriber-reenrollment-step-six 
+                                                    onpreviousstep={navigateToPreviousStep}
+                                                    onnextstep={navigateToNextStep} 
+                                                    case-record-id={caseRecordId} 
+                                                    patient-id={patientRecordId}
+                                                    prescriber-id={prescriberId}
+                                                    account-record-id={accountId}
+                                                    prescription-id={prescriptionId}
+                                                    shipment-id={shipmentId}
+                                                    ></c-prescriber-reenrollment-step-six>
+            </template>
+            <template if:true={stepSeven}> 
+                <c-prescriber-application-step-seven case-record-id={caseRecordId}></c-prescriber-application-step-seven>  
+            </template>
+        </div>
+    </div>
+    <span class={cssDisplay}>
+        <div id="spinnerDiv" class="demo-only demo--inverse" style="height: 10rem">
+        <div class="slds-spinner_container">
+            <div role="status" class="slds-spinner slds-spinner_medium">
+                <span class="slds-assistive-text">Loading</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>
+        </div>
+    </span> 
+</template>

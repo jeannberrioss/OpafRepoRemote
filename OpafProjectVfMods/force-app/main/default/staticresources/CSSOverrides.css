@@ -1,0 +1,314 @@
+/* overrides.css */
+:root {
+  --opaf-light-blue: #B4C9EA;
+  --opaf-red: var(--slds-g-color-brand-base-50, #B01C2E);
+  --opaf-blue:  var(--lwc-brandTextLink, #426BBA);
+  --opaf-black: var(--lwc-colorTextDefault, #373D42);
+  --opaf-white: #ffffff;
+
+  --opaf-gray: #c8d0da;
+  
+  --lwc-buttonBorderRadius: 100px;
+
+  --lwc-inputStaticFontSize: var(--lwc-fontSizeSmall);
+  --lwc-inputReadonlyFontWeight: var(--lwc-fontWeightRegular);
+
+  --slds-g-color-brand-base-50: #B01C2E;
+  --lwc-spacingMedium: 1.4rem;
+  --lwc-fontSize9: 4rem;
+  --lwc-varfontSize9: 4rem;
+  --lwc-fontSizeHeadingLarge: 4rem;
+  --lwc-fontSize7: 2.5rem;
+  --lwc-varfontSize7: 2.5rem;
+  --lwc-fontSizeHeadingMedium: 2.5rem;
+  --lwc-fontSize5: 1.5rem;
+  --lwc-varFontSize5: 1.5rem;
+  --lwc-fontSizeHeadingSmall: 1.5rem;
+  --lwc-fontSize3: 1.125rem;
+  --lwc-varFontSize3: 1.125rem;
+  --lwc-formLabelFontSize: 1rem;
+  --lwc-inputStaticFontSize: 1.25rem;
+  --lwc-lineHeightHeading: 1;
+
+  --slds-c-card-color-background: transparent;
+  --slds-c-card-sizing-border: 0;
+  --slds-c-modal-sizing-border: 1px;
+  --slds-c-modal-color-border: var(--opaf-light-blue-100);
+
+  --lwc-squareIconMediumContentAlt: 1.5rem; 
+
+
+  --opaf-light-blue-100: #F8FBFD;
+  --opaf-light-blue-200: #EAF1F5;
+  --lwc-borderRadiusMedium: .75rem;
+  --lwc-heightInput: 3.5rem;
+}
+
+/* 
+  IMPORTANT: this rule implements an anti-pattern but is necessary in the absence of suitable SLDS provided solutions.
+*/
+/* lightning-datepicker > .slds-form-element__help {
+  display: none;
+}
+lightning-datepicker > .slds-form-element__help.slds-show {
+  display: block;
+} */
+
+.fix-slds-input_faux {
+  line-height: 3 !important;
+}
+
+.cComm_CustomLayout {
+  display: flex;
+  flex-direction: column;
+}
+
+.read-only input[readonly], 
+.read-only textarea[readonly] {
+  background-color: transparent;
+  border-color: transparent;
+  font-size: var(--lwc-fontSize3);
+}
+
+.footer-container {
+  padding-top: 16rem;
+  background-position-y: 12rem;
+  background-color: #eaf1f5;
+}
+
+body {
+  font-size: 1.125rem;
+}
+
+h1 {
+  color: var(--lwc-brandTextLink);
+  font-weight: 100;
+}
+
+h2 {
+  color: var(--lwc-brandTextLink);
+  font-weight: 500;
+}
+
+lightning-combobox button.fix-slds-input-faux {
+  padding-top: var(--lwc-spacingMedium);
+  padding-bottom: var(--lwc-spacingMedium);
+}
+
+/* button {
+  border-radius: var(--slds-c-button-brand-radius-border);
+  padding: var(--slds-c-button-brand-spacing-block-start) var(--slds-c-button-brand-spacing-inline-end) var(--slds-c-button-brand-spacing-block-end) var(--slds-c-button-brand-spacing-inline-start);
+  font-size: var(--slds-c-button-brand-color-size);
+  line-height: var(--slds-c-button-brand-lineheight);
+} */
+
+/* .slds-button_brand {
+  font-size: 1.5rem;
+  padding: 1.4rem 2.5rem;
+  line-height: 1;
+} */
+.solid-bg-light-blue {
+  background: #eaf1f5;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+.rounded-bg-light-blue {
+  background-image: url('data:image/svg+xml,<svg style="background-color:%23EAF1F5;" width="1440" height="1327" viewBox="0 0 1440 1327" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M-377.909 476.013C-87.2289 43.2332 300.581 -100.657 947.181 69.9032C1510.48 217.293 2296.62 661.663 2491.54 854.263C2779.01 1140.84 2874.42 1427.49 2825.41 1875.36C2785.67 2239.71 2693.41 2542.51 2520.83 2882.5C2265.85 3382.59 1911.07 3687.77 1444.07 3697.04C977.361 3706.31 -0.489014 3596.11 -556.899 3348.91C-1112.96 3102.96 -1180.57 2510.01 -992.899 1871.86C-820.849 1289.36 -629.679 850.823 -377.909 476.013Z" fill="white"/></svg>');
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+.opaf-box {
+  position: relative;
+  transition: transform .25s ease-in-out;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: end;
+  padding: 4.0625rem 2.1875rem 3.9375rem;
+  border: 1px solid var(--opaf-gray);
+  text-align: center;
+  min-width: 330px;
+  min-height: 330px;
+  border-radius: 0;
+  flex: 0 0;
+}
+.opaf-box_small {
+  padding: 2.5rem 1.5rem 2.5rem;
+}
+
+.opaf-dropzone lightning-primitive-file-droppable-zone {
+  padding: 2rem .5rem;
+  margin: 2rem auto;
+}
+
+.opaf-lightning-button--brand > button,
+.opaf-lightning-button--outline-brand > button,
+.opaf-button--brand,
+.opaf-button--outline-brand {
+  padding: 1.4375rem 2.5rem 1.3125rem 3.171875rem;
+  margin-top: .75rem;
+  margin-bottom: .75rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: var(--lwc-lineHeightReset, 1);;
+  border-color: var(--opaf-red);
+  justify-content: center;
+  transition: border .15s linear;
+  text-transform: uppercase;
+}
+.opaf-lightning-button--brand > button,
+.opaf-button--brand {
+  color: var(--opaf-white);
+  background-color: var(--opaf-red);
+}
+.opaf-lightning-button--outline-brand > button,
+.opaf-button--outline-brand {
+  color: var(--opaf-red);
+  background-color: var(--opaf-white);
+}
+.opaf-lightning-button--neutral > button,
+.opaf-button--neutral {    
+  justify-content: center;
+  padding: 1.125rem 2.625rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: var(--lwc-lineHeightReset, 1);;
+  color: var(--opaf-blue);
+  border-color: var(--opaf-blue);
+  transition: border .15s linear;
+}
+.opaf-lightning-button_small--brand > button,
+.opaf-button_small {
+  font-size: var(--lwc-fontSize3, 1.125rem)
+}
+
+.opaf-lightning-button--brand.opaf-lightning-button_small > button,
+.opaf-lightning-button--outline-brand.opaf-lightning-button_small > button,
+.opaf-button--brand.opaf-button_small,
+.opaf-button--outline-brand.opaf-button_small {
+  padding: 1.125rem 2.625rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+
+}
+
+.opaf-lightning-button--brand:hover > button,
+.opaf-lightning-button--outline-brand:hover > button,
+.opaf-button--brand:hover,
+.opaf-button--outline-brand:hover {
+  background-color: var(--opaf-black);
+  border-color: var(--opaf-black);
+  color: var(--opaf-white);
+}
+.opaf-lightning-button--neutral:hover > button,
+.opaf-button--neutral:hover {
+  background-color: var(--opaf-white);
+  border-color: var(--opaf-red);
+  color: var(--opaf-red);
+}
+
+.opaf-lightning-button--brand > button:disabled,
+.opaf-lightning-button--outline-brand > button:disabled,
+.opaf-button--brand:disabled,
+.opaf-button--outline-brand:disabled {
+  background-color: var(--opaf-gray);
+  border-color: var(--opaf-gray);
+  color: var(--opaf-white);
+}
+
+.opaf-lightning-button--neutral > button:disabled,
+.opaf-button--neutral:disabled {
+  background-color: var(--opaf-gray);
+  border-color: var(--opaf-gray);
+  color: var(--opaf-white);
+}
+
+
+.opaf-lightning-button_prev-icon button,
+.opaf-button_prev-icon {
+  display: flex;
+  flex-direction: row;
+}
+.opaf-lightning-button_prev-icon button::before,
+.opaf-button_prev-icon::before {
+  content: '';
+  width: 24px;
+  height: 24px;;
+  background-size: contain;
+  transform: rotate(180deg);
+  background-repeat: no-repeat;
+  margin-right: .8125rem;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="23" viewBox="0 0 24 23" fill="none"><path d="M11.9001 0.583374L9.93194 2.5515L17.7207 10.3542H0.733398V13.1459H17.7207L9.93194 20.9486L11.9001 22.9167L23.0667 11.75L11.9001 0.583374Z" fill="white"/></svg>');
+}
+
+.opaf-lightning-button_next-icon button,
+.opaf-button_next-icon {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.opaf-lightning-button_next-icon button::before,
+.opaf-button_next-icon::before {
+  content: '';
+  width: 24px;
+  height: 24px;;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: .8125rem;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="23" viewBox="0 0 24 23" fill="none"><path d="M11.9001 0.583374L9.93194 2.5515L17.7207 10.3542H0.733398V13.1459H17.7207L9.93194 20.9486L11.9001 22.9167L23.0667 11.75L11.9001 0.583374Z" fill="white"/></svg>');
+}
+
+.opaf-primary,
+.opaf-red {
+  color: var(--opaf-red);
+}
+.opaf-secondary,
+.opaf-blue {
+  color: var(--opaf-blue);
+}
+.opaf-accent,
+.opaf-light-blue {
+  color: var(--opaf-light-blue);
+}
+.opafblack,
+.opaf-ink {
+  color: var(--opaf-black);
+}
+.opaf-white {
+  color: var(--opaf-white);
+}
+
+.bg-opaf-red {
+  background-color: var(--opaf-red);
+}
+.bg-opaf-blue {
+  background-color: var(--opaf-blue);
+}
+.bg-opaf-light-blue {
+  background-color: var(--opaf-light-blue);
+}
+.bg-opaf-ink {
+  background-color: var(--opaf-black);
+}
+.bg-opaf-white {
+  background-color: var(--opaf-white);
+}
+
+.border-opaf-red {
+  border-color: var(--opaf-red);
+}
+.border-opaf-blue {
+  border-color: var(--opaf-blue);
+}
+.border-opaf-light-blue {
+  border-color: var(--opaf-light-blue);
+}
+.border-opaf-ink {
+  border-color: var(--opaf-black);
+}
+.border-opaf-white {
+  border-color: var(--opaf-white);
+}

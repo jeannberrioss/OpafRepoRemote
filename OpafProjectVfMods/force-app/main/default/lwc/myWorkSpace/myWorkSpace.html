@@ -1,0 +1,112 @@
+<template>
+    <div class="pageTop">
+        <template if:true={openModel}>
+            <template if:true={loaded}>
+                <div class="exampleHolder">
+                    <lightning-spinner alternativetext="Loading" size="medium" ></lightning-spinner>
+                </div>
+            </template>
+            <lightning-layout class="slds-m-top_none slds-p-around_small"  multiple-rows>
+                <lightning-layout-item size="12"  medium-device-size="8">
+
+                    <h1 class="slds-text-heading_large slds-p-vertical_xx-large"> My OPAF Application</h1>
+                    <div class="slds-form slds-clearfix slds-form_stacked">
+                        <template for:each={cases} for:item="c">
+                            <div class="canvas-element" key={c.Id}>
+                                <div class="slds-grid slds-m-bottom_x-small slds-wrap    ">
+                                    <div class="slds-col slds-clearfix slds-size_12-of-12 slds-medium-size_6-of-12">
+                                        <span>Application #: {parentDetails.parentCasenumber}</span><br/>
+                                        <span>Application Status : <span class="opaf-red"><strong>{parentDetails.parentStatus}</strong></span> </span><br/>
+                                        <span>Enrollment Status : <span class="opaf-red"><strong>{parentDetails.parentEnrollmentStatus}</strong></span> </span><br/>
+                                        
+                                        <span>Enrollment Start Date : <lightning-formatted-date-time
+                                            value={parentDetails.parentStartDate}
+                                            year="numeric"
+                                            month="numeric"
+                                            day="numeric">
+                                            </lightning-formatted-date-time>
+                                        </span><br/>
+                                        <span>Enrollment End Date : <lightning-formatted-date-time
+                                            value={parentDetails.parentEndDate}
+                                            year="numeric"
+                                            month="numeric"
+                                            day="numeric">
+                                            </lightning-formatted-date-time>
+                                        </span><br/>
+                                        <br/>
+                                        <span>Missing Information :<br/><span class="opaf-red"><strong><lightning-formatted-text value={missingInfo} linkify ></lightning-formatted-text></strong></span></span><br/>
+                                        
+                                        <template if:true={areDetailsVisible}>
+                                            <div class="slds-m-vertical_medium">
+                                                <span class="opaf-red">
+                                                    <strong>{label.MissingInfoLabel}</strong>
+                                                </span>
+                                            </div>
+                                        </template>
+                                    </div>
+                                    <div class="slds-col slds-clearfix slds-size_12-of-12 slds-medium-size_6-of-12">
+                                        <span>Product : {parentDetails.parentProduct}</span><br/>
+                                        <template for:each={shipments} for:item="s">
+                                            <div class="canvas-element" key={s.Id}>
+                                                    <span>Shipment Status : {s.Shipment_Status__c}</span><br/>
+                                            </div>
+                                        </template>
+                                        <template if:false={shipments}>
+                                            Shipment Status :
+                                        </template>
+                                        <br/>
+                                        <template if:true={ReEnrolle}>
+                                        <span>ReEnrolled Application # : {c.CaseNumber}</span><br/>
+                                        <span>ReEnrolled Status : <span class="opaf-red"><strong> {c.Enrollment_Status__c}</strong> </span></span>
+                                        </template>
+                                    </div> 
+                                </div>
+                            </div>
+                        </template>
+                        <template if:true={isNoCase}>
+                            <p>No Records to Display</p><br/>
+                        </template> 
+                    </div>
+                    <hr>
+                    <h2 class="slds-text-heading_medium slds-p-vertical_x-large">Portal Resources</h2>
+                    <lightning-layout size="12" multiple-rows="true">
+                        <lightning-layout-item size="12" medium-device-size="6" padding="around-small">                           
+                            <a  class="slds-button opaf-button--neutral" href={pdfDocument}>User Guide</a>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                            <a class="slds-button opaf-button--neutral" href={paperConsent}>Paper Consent</a>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </lightning-layout-item>
+                <lightning-layout-item size="12"  medium-device-size="4" class="slds-p-left_x-large">
+                    <template if:true={buttonDisplayValuenewopaf}>
+                        <div title="" data-name="InitiateNewOPAFButton" onclick={handleOnHide}><button class="slds-button slds-button_brand opaf-button--brand" type="button">INITIATE NEW OPAF APPLICATION</button></div>
+                    </template>
+                    <br/>
+                    <template if:true={buttonDisplayValueReEnrollopf}>
+                        <div title="" data-name="ReEnroll" onclick={handleOnHide}><button class="slds-button slds-button_brand opaf-button--brand" type="button">Begin Re-Enrollment</button></div>
+                    </template>
+                    <br/>
+                    <template if:true={buttonDisplayValueincompleteopf}>
+                        <div title="" data-name="finishIncompleteButton" onclick={handleOnHide}><button class="slds-button slds-button_brand opaf-button--brand" type="button">FINISH INCOMPLETE APPLICATION</button></div>
+                    </template>
+                </lightning-layout-item>
+            </lightning-layout>
+
+        </template>
+    </div>
+
+    <template if:true={openPatientConsent}>
+        <c-patient-Consent checking = {successEvent} envelope-id = {envelopeId} finish-value = {caseIdData} initiative-value = {initiativeValue} onmycustomevent={handleCustomEvent}></c-patient-Consent>
+    </template>
+
+    <template if:true={OPAFAppBoolean}>
+        <c-opaf-Application-Form 
+            step-value={stepValue}
+            prescriber={prescriber} 
+            new-case-id={newCaseId} 
+            initiative-value = {initiativeValue} 
+            oncloseopafapplication={handleCustomEvent2}>
+        </c-opaf-Application-Form>
+    </template>
+</template>

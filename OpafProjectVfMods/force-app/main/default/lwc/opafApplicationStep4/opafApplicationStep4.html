@@ -1,0 +1,134 @@
+<template>
+    <lightning-accordion active-section-name="B">
+        <template if:false={showReadOnly}>
+        <lightning-accordion-section name="A" label="Prescriber Information">
+    
+            <lightning-layout class="slds-grid slds-col slds-wrap" size="12">
+                <lightning-layout-item size="6" padding="around-small">
+                        <lightning-combobox label="Prescriber Salutation"  placeholder="Select an Option" dropdown-alignment="left" variant="standard"></lightning-combobox>
+                        </lightning-layout-item>
+
+                        <lightning-layout-item size="6" padding="around-small">
+                        <lightning-input class="slds-p-right_none slds-p-left_none" label="Prescriber First Name" placeholder="Frank" type="text" variant="standard"></lightning-input>
+                        </lightning-layout-item>
+
+                        <lightning-layout-item size="6" padding="around-small">
+                        <lightning-input class="slds-p-right_none slds-p-left_none" label="Prescriber Last Name" placeholder="Buffay" type="text" variant="standard"></lightning-input>
+                        </lightning-layout-item>
+
+                        <lightning-layout-item size="6" padding="around-small">
+                        <lightning-input class="slds-p-right_none slds-p-left_none" label="Prescriber Email" placeholder="presciber.four@p.com" type="text" variant="standard"></lightning-input>
+                        </lightning-layout-item>
+
+                        <lightning-layout-item size="6" padding="around-small">
+                        <lightning-input class="slds-p-right_none slds-p-left_none" label="Prescriber Phone" placeholder="310-555-4000" type="text" variant="standard"></lightning-input>
+                        </lightning-layout-item>
+
+                        <lightning-layout-item size="6" padding="around-small">
+                        <lightning-input class="slds-p-right_none slds-p-left_none" label="Prescriber Phone Extension" placeholder="x8122" type="text" variant="standard"></lightning-input>
+                        </lightning-layout-item>
+
+                        <lightning-layout-item size="6" padding="around-small">
+                        <lightning-input class="slds-p-right_none slds-p-left_none" label="Prescriber Fax" placeholder="310-555-4400" type="text" variant="standard"></lightning-input>
+                        </lightning-layout-item>
+
+                        <lightning-layout-item size="6" padding="around-small">
+                        <lightning-input class="slds-p-right_none slds-p-left_none" label="Prescriber Address Line 1" placeholder="1 Mass Way" type="text" variant="standard"></lightning-input>
+                        </lightning-layout-item>
+
+                        <lightning-layout-item size="6" padding="around-small">
+                        <lightning-input class="slds-p-right_none slds-p-left_none" label="Prescriber Address Line 2" type="text" variant="standard"></lightning-input>
+                        </lightning-layout-item>
+
+                        <lightning-layout-item size="6" padding="around-small">
+                        <lightning-input class="slds-p-right_none slds-p-left_none" label="Prescriber City" placeholder="Boston" type="text" variant="standard"></lightning-input>
+                        </lightning-layout-item>
+
+                        <lightning-layout-item size="6" padding="around-small">
+                        <lightning-input class="slds-p-right_none slds-p-left_none" label="Prescriber State" placeholder="MA" type="text" variant="standard"></lightning-input>
+                        </lightning-layout-item>
+
+                        <lightning-layout-item size="6" padding="around-small">
+                        <lightning-input class="slds-p-right_none slds-p-left_none" label="Prescriber Zip Code" placeholder="20332" type="text" variant="standard"></lightning-input>
+                        </lightning-layout-item>
+
+                        <lightning-layout-item size="6" padding="around-small">
+                        <lightning-input class="slds-p-right_none slds-p-left_none" label="Prescriber Medical Assistant Name" placeholder="Placeholder Text" type="text" variant="standard"></lightning-input>
+                        </lightning-layout-item>
+
+                        <lightning-layout-item size="6" padding="around-small">
+                        <lightning-input class="slds-p-right_none slds-p-left_none" label="Prescriber Medical Assistant Phone" placeholder="Placeholder Text" type="text" variant="standard"></lightning-input>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                    <div class="slds-align_absolute-center">
+                        <lightning-button class="slds-theme_brand slds-button_outline-brand" variant="brand" label="PREVIOUS" onclick={handleOnPrevious}></lightning-button>
+                        <lightning-button class="slds-theme_brand slds-button_outline-brand" variant="brand" label="SAVE &amp; COMPLETE LATER"></lightning-button>
+                        <lightning-button class="slds-theme_brand slds-button_outline-brand" variant="brand" label="NEXT" onclick={handleOnNext}></lightning-button>
+                    </div>
+                    </lightning-accordion-section>
+                    </template>
+                   <template if:true={showReadOnly}>
+                    <lightning-accordion-section name="A" label="Prescriber Information">
+    
+                        <lightning-layout class="slds-grid slds-col slds-wrap" size="12">
+                            <lightning-layout-item size="6" padding="around-small">
+                                    <lightning-combobox label="Prescriber Salutation"  placeholder="Select an Option" dropdown-alignment="left" variant="standard" readonly></lightning-combobox>
+                                    </lightning-layout-item>
+            
+                                    <lightning-layout-item size="6" padding="around-small">
+                                    <lightning-input class="slds-p-right_none slds-p-left_none" label="Prescriber First Name" placeholder="Frank" type="text" variant="standard" readonly></lightning-input>
+                                    </lightning-layout-item>
+            
+                                    <lightning-layout-item size="6" padding="around-small">
+                                    <lightning-input class="slds-p-right_none slds-p-left_none" label="Prescriber Last Name" placeholder="Buffay" type="text" variant="standard" readonly></lightning-input>
+                                    </lightning-layout-item>
+            
+                                    <lightning-layout-item size="6" padding="around-small">
+                                    <lightning-input class="slds-p-right_none slds-p-left_none" label="Prescriber Email" placeholder="presciber.four@p.com" type="text" variant="standard" readonly></lightning-input>
+                                    </lightning-layout-item>
+            
+                                    <lightning-layout-item size="6" padding="around-small">
+                                    <lightning-input class="slds-p-right_none slds-p-left_none" label="Prescriber Phone" placeholder="310-555-4000" type="text" variant="standard" readonly></lightning-input>
+                                    </lightning-layout-item>
+            
+                                    <lightning-layout-item size="6" padding="around-small">
+                                    <lightning-input class="slds-p-right_none slds-p-left_none" label="Prescriber Phone Extension" placeholder="x8122" type="text" variant="standard" readonly></lightning-input>
+                                    </lightning-layout-item>
+            
+                                    <lightning-layout-item size="6" padding="around-small">
+                                    <lightning-input class="slds-p-right_none slds-p-left_none" label="Prescriber Fax" placeholder="310-555-4400" type="text" variant="standard" readonly></lightning-input>
+                                    </lightning-layout-item>
+            
+                                    <lightning-layout-item size="6" padding="around-small">
+                                    <lightning-input class="slds-p-right_none slds-p-left_none" label="Prescriber Address Line 1" placeholder="1 Mass Way" type="text" variant="standard" readonly></lightning-input>
+                                    </lightning-layout-item>
+            
+                                    <lightning-layout-item size="6" padding="around-small">
+                                    <lightning-input class="slds-p-right_none slds-p-left_none" label="Prescriber Address Line 2" type="text" variant="standard" readonly></lightning-input>
+                                    </lightning-layout-item>
+            
+                                    <lightning-layout-item size="6" padding="around-small">
+                                    <lightning-input class="slds-p-right_none slds-p-left_none" label="Prescriber City" placeholder="Boston" type="text" variant="standard" readonly></lightning-input>
+                                    </lightning-layout-item>
+            
+                                    <lightning-layout-item size="6" padding="around-small">
+                                    <lightning-input class="slds-p-right_none slds-p-left_none" label="Prescriber State" placeholder="MA" type="text" variant="standard" readonly></lightning-input>
+                                    </lightning-layout-item>
+            
+                                    <lightning-layout-item size="6" padding="around-small">
+                                    <lightning-input class="slds-p-right_none slds-p-left_none" label="Prescriber Zip Code" placeholder="20332" type="text" variant="standard" readonly></lightning-input>
+                                    </lightning-layout-item>
+            
+                                    <lightning-layout-item size="6" padding="around-small">
+                                    <lightning-input class="slds-p-right_none slds-p-left_none" label="Prescriber Medical Assistant Name" placeholder="Placeholder Text" type="text" variant="standard" readonly></lightning-input>
+                                    </lightning-layout-item>
+            
+                                    <lightning-layout-item size="6" padding="around-small">
+                                    <lightning-input class="slds-p-right_none slds-p-left_none" label="Prescriber Medical Assistant Phone" placeholder="Placeholder Text" type="text" variant="standard" readonly></lightning-input>
+                                    </lightning-layout-item>
+                                </lightning-layout>
+                                </lightning-accordion-section>
+                                </template>
+                    </lightning-accordion>
+                    
+</template>

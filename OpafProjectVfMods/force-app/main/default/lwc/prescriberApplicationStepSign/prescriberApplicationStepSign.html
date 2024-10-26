@@ -1,0 +1,17 @@
+<template>
+  <lightning-layout>
+    <lightning-layout-item size="12" padding="around-small"> 
+      [TODO]
+    </lightning-layout-item>
+  </lightning-layout>
+  <lightning-layout horizontal-align="spread" class="slds-p-vertical_xx-large" multiple-rows>
+      <lightning-layout-item size="auto">
+          <lightning-button class="opaf-lightning-button--brand" variant="neutral" icon-name="utility:back" data-name="screenVitamin" label="PREVIOUS" title="PREVIOUS" onclick={navigateToPreviousStep} ></lightning-button>
+      </lightning-layout-item>
+      <lightning-layout-item size="auto">
+          <lightning-button class="opaf-lightning-button--outline-brand slds-m-horizontal_medium" variant="brand-outline" data-name="SAVE & COMPLETE LATER" label="SAVE & COMPLETE LATER" title="SAVE & COMPLETE LATER" onclick={saveAndCompleteLater}></lightning-button>
+          <lightning-button class="opaf-lightning-button--brand" icon-name="utility:forward" icon-position="right" variant="brand" data-name="screenVitamin" label="NEXT" title="NEXT" onclick={navigateToNextStep}></lightning-button>
+      </lightning-layout-item>
+  </lightning-layout>
+
+</template>

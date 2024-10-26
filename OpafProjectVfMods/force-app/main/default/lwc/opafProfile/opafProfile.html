@@ -1,0 +1,146 @@
+<template>
+  <lightning-layout class="slds-grid slds-col slds-wrap">
+    <lightning-layout-item size="12" padding="around-small">      
+      <lightning-card if:true={hasContactId}>
+          <h3 slot="title" class="slds-text-heading_large slds-truncate opaf-red slds-m-bottom_large" title="My Profile">
+            My Profile
+          </h3>
+          <lightning-button if:false={showEditForm} slot="actions" class="opaf-lightning-button--outline-brand" variant="brand-outline" type="button" label="Edit" onclick={handleEdit}></lightning-button>
+          
+          <lightning-record-view-form
+            if:false={showEditForm}
+            object-api-name="Contact"
+            record-id={contactId}
+            fields={fields}
+          >
+            <lightning-layout class="slds-grid slds-col slds-wrap">
+              <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="5">
+                <lightning-layout class="slds-grid slds-col slds-wrap">
+                  <lightning-layout-item size="12">
+                    <lightning-output-field field-name="Salutation__c"></lightning-output-field>
+                  </lightning-layout-item>
+                  <lightning-layout-item size="12">
+                    <lightning-output-field field-name="FirstName"></lightning-output-field>
+                  </lightning-layout-item>
+                  <lightning-layout-item size="12">
+                    <lightning-output-field field-name="LastName"></lightning-output-field>
+                  </lightning-layout-item>
+                  <lightning-layout-item size="12">
+                    <lightning-output-field field-name="Suffix"></lightning-output-field>
+                  </lightning-layout-item>
+                  <lightning-layout-item size="12">
+                    <lightning-output-field field-name="Street_Address__c"></lightning-output-field>
+                  </lightning-layout-item>
+                  <lightning-layout-item size="12">
+                    <lightning-output-field field-name="Address_Line_2__c"></lightning-output-field>
+                  </lightning-layout-item>
+                  <lightning-layout-item size="12">
+                    <lightning-output-field field-name="City__c"></lightning-output-field>
+                  </lightning-layout-item>
+                  <lightning-layout-item size="12">
+                    <lightning-output-field field-name="State__c"></lightning-output-field>
+                  </lightning-layout-item>
+                  <lightning-layout-item size="12">
+                    <lightning-output-field field-name="Zip_Code__c"></lightning-output-field>
+                  </lightning-layout-item>
+                </lightning-layout>
+              </lightning-layout-item>
+              <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="1">
+              </lightning-layout-item>
+              <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="6">
+                <lightning-layout class="slds-grid slds-col slds-wrap">
+                  <lightning-layout-item size="12">
+                    <lightning-output-field field-name="Email"></lightning-output-field>
+                  </lightning-layout-item>
+                  <lightning-layout-item size="12">
+                    <lightning-output-field field-name="Phone"></lightning-output-field>
+                  </lightning-layout-item>
+                  <lightning-layout-item size="12">
+                    <lightning-output-field field-name="HomePhone"></lightning-output-field>
+                  </lightning-layout-item>
+                  <lightning-layout-item size="12">
+                    <lightning-output-field field-name="MobilePhone"></lightning-output-field>
+                  </lightning-layout-item>
+                  <lightning-layout-item size="12">
+                    <lightning-output-field field-name="OtherPhone"></lightning-output-field>
+                  </lightning-layout-item>
+                  <lightning-layout-item size="12">
+                    <lightning-output-field field-name="Fax"></lightning-output-field>
+                  </lightning-layout-item>
+                  <lightning-layout-item size="12">
+                    <lightning-output-field field-name="Preferred_Method_of_Contact__c"></lightning-output-field>
+                  </lightning-layout-item>
+                  <lightning-layout-item size="12">
+                    <lightning-output-field field-name="DoNotCall"></lightning-output-field>
+                  </lightning-layout-item>
+                </lightning-layout>
+              </lightning-layout-item>
+              <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="6">
+                <lightning-layout class="slds-grid slds-col slds-wrap">
+                  <lightning-layout-item size="12">
+                    <lightning-output-field field-name="Receive_Shipping_Notifications__c"></lightning-output-field>
+                  </lightning-layout-item>
+                  <lightning-layout-item size="12">
+                    <lightning-output-field field-name="Application_Status_Eligibility_Decision__c"></lightning-output-field>
+                  </lightning-layout-item>
+                  <lightning-layout-item size="12">
+                    <lightning-output-field field-name="Receive_Enrollment_Ending_Notifications__c"></lightning-output-field>
+                  </lightning-layout-item>
+                  <lightning-layout-item size="12">
+                    <lightning-output-field field-name="Receive_All_Communication__c"></lightning-output-field>
+                  </lightning-layout-item>
+                </lightning-layout>
+              </lightning-layout-item>
+            </lightning-layout>
+          </lightning-record-view-form>
+
+          <lightning-record-edit-form
+            if:true={showEditForm}
+            object-api-name="Contact"
+            record-id={contactId}
+            fields={fields}
+            onsuccess={handleSuccess}
+          >
+            <lightning-layout class="slds-grid slds-col slds-wrap">
+              <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="5">
+                <lightning-input-field field-name="Salutation__c"></lightning-input-field>
+                <lightning-input-field field-name="FirstName"></lightning-input-field>
+                <lightning-input-field field-name="LastName"></lightning-input-field>
+                <lightning-input-field field-name="Suffix"></lightning-input-field>
+                <lightning-input-field field-name="Street_Address__c"></lightning-input-field>
+                <lightning-input-field field-name="Address_Line_2__c"></lightning-input-field>
+                <lightning-input-field field-name="City__c"></lightning-input-field>
+                <lightning-input-field field-name="State__c"></lightning-input-field>
+                <lightning-input-field field-name="Zip_Code__c"></lightning-input-field>
+              </lightning-layout-item>
+              <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="1"></lightning-layout-item>
+              <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="6">
+                <lightning-input-field field-name="Email"></lightning-input-field>
+                <lightning-input-field field-name="Phone"></lightning-input-field>
+                <lightning-input-field field-name="HomePhone"></lightning-input-field>
+                <lightning-input-field field-name="MobilePhone"></lightning-input-field>
+                <lightning-input-field field-name="OtherPhone"></lightning-input-field>
+                <lightning-input-field field-name="Fax"></lightning-input-field>
+                <lightning-input-field field-name="Preferred_Method_of_Contact__c"></lightning-input-field>
+                <lightning-input-field field-name="DoNotCall"></lightning-input-field>
+              </lightning-layout-item>
+              <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="6">
+                <lightning-input-field field-name="Receive_Shipping_Notifications__c"></lightning-input-field>
+                <lightning-input-field field-name="Application_Status_Eligibility_Decision__c"></lightning-input-field>
+                <lightning-input-field field-name="Receive_Enrollment_Ending_Notifications__c"></lightning-input-field>
+                <lightning-input-field field-name="Receive_All_Communication__c"></lightning-input-field>
+              </lightning-layout-item>
+              <lightning-layout-item size="12" class="slds-grid slds-grid_reverse" >
+                <div class="slds-grid-item slds-p-around_small">
+                  <lightning-button class="opaf-lightning-button--brand" variant="brand" type="submit" label="Save"></lightning-button>
+                </div>      
+                <div class="slds-grid-item slds-p-around_small">
+                  <lightning-button class="opaf-lightning-button--outline-brand" variant="brand-outline" type="button" label="Cancel" onclick={handleCancel}></lightning-button>
+                </div>            
+              </lightning-layout-item>
+            </lightning-layout>
+          </lightning-record-edit-form>
+        </lightning-card>      
+    </lightning-layout-item>
+  </lightning-layout>
+</template>

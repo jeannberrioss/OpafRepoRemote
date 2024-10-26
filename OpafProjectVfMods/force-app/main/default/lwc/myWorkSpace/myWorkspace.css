@@ -1,0 +1,17 @@
+:host {
+  --slds-c-button-spacing-block-start: 1.5rem;
+  --slds-c-button-spacing-inline-end: 2.5rem;
+  --slds-c-button-spacing-block-end: 1.5rem;
+  --slds-c-button-spacing-inline-start: 2.5rem;
+}
+
+.action-button {
+  /* 1.4375rem 2.5rem 1.3125rem 3.171875rem */
+  --slds-c-button-radius-border: 100px;
+  padding: var(--slds-c-button-spacing-block-start) var(--slds-c-button-spacing-inline-end) var(--slds-c-button-spacing-block-end) var(--slds-c-button-spacing-inline-start);
+  border-radius: var(--slds-c-button-radius-border);
+  font-size: 1.5rem;
+
+}
+
+.section-title { font-size: 3rem; }

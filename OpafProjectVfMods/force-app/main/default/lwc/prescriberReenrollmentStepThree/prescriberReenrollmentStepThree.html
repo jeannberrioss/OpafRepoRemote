@@ -1,0 +1,282 @@
+<template>
+    <lightning-layout multiple-rows>
+        <lightning-layout-item size="12" padding="around-small">
+            <h3 class="slds-text-heading_small slds-truncate" title="Diagnosis and Dispensing Information">Diagnosis and Dispensing Information</h3>
+        </lightning-layout-item>    
+        <lightning-layout-item size="12" padding="around-small">
+        </lightning-layout-item>
+   
+        <lightning-layout-item size="12" padding="around-small">
+            <lightning-input type="text" name="Product Name" label="Product Name" value={caseData.Product__c} required="true" disabled ></lightning-input>
+            <!--<lightning-combobox
+                                name="Product Name"
+                                label="Product Name"
+                                placeholder=""
+                                options={productoptions}
+                                data-name="Product__c"
+                                value={caseData.Product__c}
+                                onchange={caseDataTracking}
+                                required="true"></lightning-combobox>-->
+        </lightning-layout-item>
+        <lightning-layout-item size="12" padding="around-small">
+            <label class="slds-form-element_label"><abbr title="" style="color: rgb(194, 57, 52)">*</abbr>ICD-10 Diagnosis Code</label>
+            <div class="slds-form-element">
+                <div class="slds-form-element__control">
+                    <div class="slds-combobox_container">
+                        <div class={dropDown}
+                                aria-expanded="true" aria-haspopup="listbox" role="combobox">
+                            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+                                <div style="width: 100%">
+                                    <input type="text"
+                                        class="slds-input slds-combobox__input slds-combobox__input-value"
+                                        id="myInput" aria-autocomplete="list" aria-controls="listbox-id-11"
+                                        autocomplete="no" onkeyup={handleKeyUp} role="textbox" onclick={handleClick} placeholder="Please Select"
+                                        value={caseData.ICD_10_Diagnosis_Code__c} onblur={onBlur}>
+                                </div>
+                                
+                            </div>
+                            <div id="listbox-id-11" class="slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid"
+                                    role="listbox" style="width:100%">
+                                <ul id="myUL" class="slds-listbox slds-listbox_vertical" role="presentation">
+                                    <template for:each={icdCodes} for:item="opt">
+                                        <li key={opt} role="presentation" class="slds-listbox__item"
+                                            data-value={opt.value} onclick={optionClickHandler}>
+                                            <div
+                                                    class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small"
+                                                    role="option">
+                                                <span class="slds-media__body">
+                                                    <span class="slds-truncate" title="All Oobjects">
+                                                        <span>{opt.label}</span>
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        </li>
+                                    </template>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p><lightning-formatted-text value="If the ICD 10 Code is not listed above, please type in the Patient's Diagnosis Code" ></lightning-formatted-text></p>
+            </div>
+            <p><lightning-formatted-text data-id="objectId" class="error-text-one" style="display:none" value="Complete this field" ></lightning-formatted-text></p>
+            <!--<lightning-input type="text" data-name="ICD_10_Diagnosis_Code__c" label="ICD-10 Diagnosis Code" value={caseData.ICD_10_Diagnosis_Code__c} onchange={caseDataTracking}></lightning-input>-->
+        </lightning-layout-item>
+        <template if:true={isAbilify}>
+            <lightning-layout-item size="12" padding="around-small">
+                <lightning-input type="date" date-style="short" data-name="Next_Injection__c" label="Next Injection Date" value={prescriptionData.Next_Injection__c} onchange={prescriptionTracking}></lightning-input>
+            </lightning-layout-item>
+        </template>
+        <template if:true={isSAMSCA}>
+            <lightning-layout-item size="12" padding="around-small">
+                <lightning-input type="date" date-style="short" data-name="Hospital_Admission_Date__c" label="Date of Patient's hospital admission" value={prescriptionData.Hospital_Admission_Date__c} onchange={prescriptionTracking}></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="12" padding="around-small">
+                <lightning-input type="date" date-style="short" data-name="HospitalDischarge_Date__c" label="Date of Patient's hospital discharge or expected discharge" value={prescriptionData.HospitalDischarge_Date__c} onchange={prescriptionTracking}></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="12" padding="around-small">
+                <lightning-input pattern="^(0|[1-9][0-9]*)$" data-name="Qty_SAMSCA_During_Stay__c" label="Number of tablets administered during the hospital stay" value={prescriptionData.Qty_SAMSCA_During_Stay__c} onchange={prescriptionTracking}></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="12" padding="around-small">
+                <lightning-input pattern="^(0|[1-9][0-9]*)$" data-name="Qty_SAMSCA_at_Discharge__c" label="Number of tablets dispensed at hospital discharge" value={prescriptionData.Qty_SAMSCA_at_Discharge__c} onchange={prescriptionTracking}></lightning-input>   
+            </lightning-layout-item>
+        </template>
+        <template if:true={isJYNARQUE}>
+            <lightning-layout-item size="12" padding="around-small">
+                <label class="slds-form-element_label">Is the Patient enrolled in the REMS Program for JYNARQUE</label>
+                <lightning-input type="checkbox" data-name="REMS_Program__c" variant="label-hidden" label="Is the Patient enrolled in the REMS Program for JYNARQUE" checked={prescriptionData.REMS_Program__c} onchange={prescriptionTracking}></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="12" padding="around-small">
+                <lightning-input type="text" data-name="REMS_ID_Number__c" label="Patient REMS Id Number" value={prescriptionData.REMS_ID_Number__c} onchange={prescriptionTracking}></lightning-input>
+            </lightning-layout-item>
+        </template>
+    
+        <lightning-layout-item size="12" padding="around-small">
+            <h3 class="slds-text-heading_small slds-truncate" title="Prescriber Information">Prescriber Information</h3>
+        </lightning-layout-item> 
+        <lightning-layout-item size="6" padding="around-small">
+            <lightning-record-edit-form object-api-name="Case">
+                <template if:false={prescriberId}>
+                    <c-custom-lookup-lwc icon-name="standard:contact"
+                                    s-object-api-name="contact"
+                                    label="Select Prescriber"
+                                    record-type-name="Provider"
+                                    current-user="false"
+                                    onlookupupdate={prescriberLookupRecord}
+                                    placeholder="Search Prescriber"></c-custom-lookup-lwc>
+                </template>
+                <template if:true={prescriberId}>
+                    <lightning-input type="search" label="Select Prescriber" value={selectedPrescriberName} onchange={clearSelectedValue}></lightning-input>
+                </template>
+            </lightning-record-edit-form>
+        </lightning-layout-item>
+        <lightning-layout-item size="6" padding="around-small"></lightning-layout-item>
+        <lightning-layout-item size="6" padding="around-small">
+            <lightning-combobox
+                                                name="Prescriber Salutation"
+                                                label="Prescriber Salutation"
+                                                placeholder=""
+                                                options={salutationOptions}
+                                                data-name="Prescriber_Salutation__c"
+                                                value={contactData.Prescriber_Salutation__c}
+                                                onchange={contactDataTracking}>
+                                            </lightning-combobox><br/>
+            <lightning-input type="text" data-name="FirstName" label="Prescriber First Name" value={contactData.FirstName} onchange={contactDataTracking} required="true"></lightning-input><br/>
+            <lightning-input type="text" data-name="LastName" label="Prescriber Last Name" value={contactData.LastName} onchange={contactDataTracking} required="true"></lightning-input><br/>
+            <lightning-input type="email" data-name="Email" label="Prescriber Email" value={contactData.Email} onchange={contactDataTracking} required="true"></lightning-input><br/>
+            <lightning-input type="tel" data-name="Phone" label="Prescriber Phone" value={contactData.Phone} onchange={contactDataTracking} required="true"></lightning-input><br/>
+            <lightning-input type="text" data-name="Phone_Extension__c" label="Prescriber Phone Extension" value={contactData.Phone_Extension__c} onchange={contactDataTracking}></lightning-input><br/>
+            <lightning-input type="tel" data-name="Fax" label="Prescriber Fax" value={contactData.Fax} onchange={contactDataTracking} required="true"></lightning-input>   
+        </lightning-layout-item>
+        <lightning-layout-item size="6" padding="around-small">
+            <lightning-input pattern="^(0|[1-9][0-9]*)$" max-length="9" data-name="Tax_Id__c" label="Prescriber Tax ID Number" value={contactData.Tax_Id__c} onchange={contactDataTracking}></lightning-input><br/>
+            <lightning-input pattern="^(0|[1-9][0-9]*)$" max-length="10" data-name="NPI__c" label="Prescriber NPI Number" value={contactData.NPI__c} onchange={contactDataTracking} onblur={checkNPINumber} required="true"></lightning-input>
+            <p><lightning-formatted-text data-id="npiId" class="error-text-npi" style="display:none" value="Prescriber NPI Number - must have 10 numerical digits" ></lightning-formatted-text></p><br/>
+            <lightning-input type="text" max-length="9" data-name="DEA__c" label="Prescriber DEA Number" value={contactData.DEA__c} onchange={contactDataTracking} onblur={checkDEANumber} required="true"></lightning-input>
+            <p><lightning-formatted-text data-id="deaId" class="error-text-dea" style="display:none" value="Prescriber DEA Number - must have 2 letters followed by 7 numerical digits" ></lightning-formatted-text></p><br/>
+            <lightning-input type="text" data-name="State_License__c" label="Prescriber State License Number" value={contactData.State_License__c} onchange={contactDataTracking} required="true"></lightning-input><br/>
+            <lightning-combobox
+                                                name="Prescriber State of Licensure"
+                                                label="Prescriber State of Licensure"
+                                                placeholder=""
+                                                options={stateOpts}
+                                                data-name="State__c"
+                                                value={contactData.State__c}
+                                                onchange={contactDataTracking}
+                                                required="true">
+                                            </lightning-combobox>
+                                            
+        </lightning-layout-item>
+        <lightning-layout-item size="12" padding="around-small">
+            <h3 class="slds-text-heading_small slds-truncate" title="Facility/Practice Information">Facility/Practice Information</h3>
+        </lightning-layout-item> 
+        <lightning-layout-item size="6" padding="around-small">
+            <lightning-record-edit-form object-api-name="Case">
+                <template if:false={accountRecordId}>
+                    <c-custom-lookup-lwc icon-name="standard:account"
+                                    s-object-api-name="account"
+                                    label="Select Facility"
+                                    record-type-name="Facility"
+                                    current-user="false"
+                                    onlookupupdate={lookupRecord}
+                                    placeholder="Search Account"></c-custom-lookup-lwc>
+                </template>
+                <template if:true={accountRecordId}>
+                    <lightning-input type="text" label="Select Facility" value={selectedAccountName} disabled="true"></lightning-input>
+                    <!--<lightning-input type="search" label="Select Facility" value={selectedAccountName} onchange={clearAccountSelectedValue}></lightning-input>-->
+                </template>
+            </lightning-record-edit-form>
+        </lightning-layout-item>
+        <lightning-layout-item size="6" padding="around-small"></lightning-layout-item>
+        <lightning-layout-item size="6" padding="around-small">
+            <lightning-input type="text" data-name="Facility_Type__c" label="Facility/Practice Type" value={accountData.Facility_Type__c} onchange={accountDataTracking}></lightning-input><br/>
+            <lightning-input type="text" data-name="Name" label="Facility/Practice Name" required="true" value={accountData.Name} onchange={accountDataTracking}></lightning-input><br/>
+            <lightning-input type="text" data-name="Street_Address__c" label="Facility Address Line 1" required="true" value={accountData.Street_Address__c} onchange={accountDataTracking}></lightning-input><br/>
+            <lightning-input type="text" data-name="Address_Line_2__c" label="Facility Address Line 2" value={accountData.Address_Line_2__c} onchange={accountDataTracking}></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="6" padding="around-small">
+            <lightning-input type="text" data-name="City__c" label="Facility City" required="true" value={accountData.City__c} onchange={accountDataTracking}></lightning-input><br/>
+            <lightning-combobox
+                                                name="Facility State"
+                                                label="Facility State"
+                                                placeholder="Select State"
+                                                options={stateOptions}
+                                                data-name="State__c"
+                                                value={accountData.State__c}
+                                                onchange={accountDataTracking}
+                                                required="true"></lightning-combobox><br/>
+                                                
+            <lightning-input type="text" data-name="Zip_Code__c" label="Facility Zip Code" required="true" value={accountData.Zip_Code__c} onchange={accountDataTracking}></lightning-input><br/>
+            <lightning-input type="tel" data-name="Phone" label="Facility Phone" required="true" value={accountData.Phone} onchange={accountDataTracking}></lightning-input><br/>
+            <lightning-input type="tel" data-name="Fax" label="Facility Fax" required="true" value={accountData.Fax} onchange={accountDataTracking}></lightning-input>   
+        </lightning-layout-item>
+        <lightning-layout-item size="12" padding="around-small">
+            <h3 class="slds-text-heading_small slds-truncate" title="Shipping Address Information">Shipping Address Information</h3>
+        </lightning-layout-item> 
+        <lightning-layout-item size="6" padding="around-small"> 
+            <lightning-radio-group name="Please specify where the product will be shipped"
+                                        label="Please specify where the product will be shipped"
+                                        options={radioOptions}
+                                        type="radio"
+                                        data-name="Ship_Type__c"
+                                        required="true"
+                                        value={shipmentType}
+                                        onchange={caseDataTracking}>
+                        </lightning-radio-group>                 
+        </lightning-layout-item>
+        <template if:true={isLoanCare}>
+            <template if:true={isAbilify}>
+                <lightning-layout-item size="6" padding="around-small">
+                    <lightning-input type="text" data-name="Ship_Care_To__c" label="Shipping Care To" required="true" value={caseData.Ship_Care_To__c} onchange={caseDataTracking}></lightning-input>
+                    <lightning-input type="tel" data-name="Ship_Local_Care_Center_Phone__c" label="Local Care Center Phone" value={caseData.Ship_Local_Care_Center_Phone__c} onchange={caseDataTracking} required="true"></lightning-input>
+                    <lightning-input type="text" data-name="Ship_Street_Address__c" label="Shipping Street Address" required="true" value={caseData.Ship_Street_Address__c} onchange={caseDataTracking}></lightning-input>
+                    <lightning-input type="text" data-name="Ship_Address_Line2__c" label="Shipping Street Address Line 2" value={caseData.Ship_Address_Line2__c} onchange={caseDataTracking}></lightning-input>
+                    <lightning-input type="text" data-name="Ship_City__c" label="Shipping City" required="true" value={caseData.Ship_City__c} onchange={caseDataTracking}></lightning-input>
+                    <lightning-combobox
+                                        name="Shipping State"
+                                        label="Shipping State"
+                                        placeholder=""
+                                        options={shipStateOpts}
+                                        data-name="Ship_State__c"
+                                        value={caseData.Ship_State__c}
+                                        onchange={caseDataTracking}
+                                        required="true">
+                                    </lightning-combobox>
+                    <lightning-input type="text" data-name="Ship_Zip__c" label="Shipping Zip Code" required="true" value={caseData.Ship_Zip__c} onchange={caseDataTracking}></lightning-input>
+                    <lightning-input type="tel" data-name="Ship_Phone__c" label="Shipping Phone" value={caseData.Ship_Phone__c} onchange={caseDataTracking} required="true"></lightning-input>
+                    <lightning-input type="text" data-name="Ship_Fax__c" label="Shipping Fax" value={caseData.Ship_Fax__c} onchange={caseDataTracking}></lightning-input>
+                </lightning-layout-item>  
+            </template>
+        </template>
+    </lightning-layout>
+    <lightning-layout horizontal-align="spread" class="slds-p-vertical_xx-large">
+        <lightning-layout-item size="auto">
+            <lightning-button class="opaf-lightning-button--brand" variant="neutral" icon-name="utility:back" data-name="screen3" label="PREVIOUS" title="PREVIOUS" onclick={navigateToPreviousStep}></lightning-button>
+        </lightning-layout-item>
+        <lightning-layout-item size="auto">
+            <lightning-button class="opaf-lightning-button--outline-brand slds-m-horizontal_medium" variant="brand-outline" data-name="SAVE & COMPLETE LATER" label="SAVE & COMPLETE LATER" title="SAVE & COMPLETE LATER" onclick={saveAndCompleteLater}></lightning-button>
+            <lightning-button class="opaf-lightning-button--brand" icon-name="utility:forward" icon-position="right" variant="brand" data-name="screen3" label="NEXT" title="NEXT" onclick={navigateToStepFour}></lightning-button>
+       </lightning-layout-item>
+    </lightning-layout>
+    <template if:true={displaySavePopup}>
+        <!-- Modal/Popup Box starts here-->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box Header Starts here-->
+                <header class="slds-modal__header">
+                    <lightning-button-icon icon-name="utility:close"
+                                        onclick={closeModel}
+                                        alternative-text="close"
+                                        variant="bare-inverse"
+                                        class="slds-modal__close"></lightning-button-icon>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Success!</h2>
+                </header>
+                <!--Modal/Popup Box Body Starts here-->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <p>
+                        Your information has been saved. Please select OK to continue.
+                    </p>
+                </div>
+                <!--Modal/Popup Box Footer Starts here-->
+                <footer class="slds-modal__footer">
+                    <lightning-button label="OK"
+                                    title="OK"
+                                    variant="destructive"
+                                    onclick={submitDetails}></lightning-button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+    <span class={cssDisplay}>
+        <div id="spinnerDiv" class="demo-only demo--inverse" style="height: 10rem">
+        <div class="slds-spinner_container">
+            <div role="status" class="slds-spinner slds-spinner_medium">
+                <span class="slds-assistive-text">Loading</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>
+        </div>
+    </span>
+</template>

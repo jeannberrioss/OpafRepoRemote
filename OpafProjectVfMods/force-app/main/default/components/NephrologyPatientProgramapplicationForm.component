@@ -1,0 +1,877 @@
+<apex:component controller="OPAF_NeuroscienceEnrollmentVfComponent" access="global" >
+    <apex:attribute name="CaseRec" type="Id" description="Id of the Case" assignTo="{!CaseRecId}" />
+     <table style="font-family: Muli,sans-serif;margin-top:10px;" width="100%">
+            <tr style="color:#426bba">
+                <td>
+                    <apex:outputText value="OTSUKA PATIENT ASSISTANCE PROGRAM APPLICATION FORM"/>
+                </td>
+                
+            </tr>
+        </table>
+    <hr style="size:10px;color:#407cc9;margin-top:-2px;margin-bottom:15px;"/>
+    
+        <table style="font-family: Muli,sans-serif;font-size:9px;margin-top:-5px;font-color:#404040;" width="100%">
+           <tr>
+            <td style="font-size:12px;font-family: Muli,sans-serif;text-align: center;color:white;background-color:#b01c2c;padding:2px 2px 2px 2px;">
+               <b> SECTION 1: PATIENT INFORMATION</b>
+              </td>
+                <td style="font-size:12px;font-family: Muli,sans-serif;text-align: center;color:white;background-color:#b01c2c;padding:2px 2px 2px 2px;">
+               <b> SECTION 3: INSURANCE ELIGIBILITY</b>
+                </td>
+            </tr>
+            
+            <tr>
+                <!---left side pannel----------------------------->
+                
+            <td style="width:50%;">
+                <table style="width:95%">
+                    <tr>
+                        <td>
+                            First Name
+                        </td>
+                    </tr>
+                    <tr>
+                       <td style="border:1px solid black;height:19px;width:100%;padding-left:5px;">
+                                
+                                {!caserecord.Patient__r.FirstName}
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                           Last name
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border:1px solid black;height:19px;width:100%;padding-left:5px;">
+                                
+                                {!caserecord.Patient__r.LastName}
+                               
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Address
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border:1px solid black;height:19px;width:100%;padding-left:5px;">
+                              {!caserecord.Patient__r.Street_Address__c} &nbsp;{!caserecord.Patient__r.Address_Line_2__c}
+                        </td>
+                    </tr>
+                    <tr >
+                     <td style="width:90%">
+                     <table style="width: 100%;">
+                         <tr>
+                             <td   style="width:60%">City </td>
+                            <td   style="width:20%">State</td>
+                            <td    style="width:20%">Zip</td></tr>
+                         </table>
+                     </td>
+                 </tr>
+                 <tr>
+                 <td  style="width:90%">
+                  <table class="slds-scope" style="height:18px;border-collapse: collapse;width:100%;">
+                        <tr>
+                            <td style="width:60%;border:1px solid black;height:18px;padding-left:5px;">
+                            {!caserecord.Patient__r.City__c}
+                            </td>
+                            <td style="width:20%;border:1px solid black;height:18px;padding-left:5px;">
+                           {!caserecord.Patient__r.State__c}
+                            </td>
+                            <td style="width:20%;border:1px solid black;height:18px;padding-left:5px;">
+                            {!caserecord.Patient__r.Zip_Code__c}
+                            </td>
+                        
+                        </tr>
+                    </table>   
+                  </td>
+                 </tr>
+                    <tr>
+                        <td style="width:50%">
+                    <table class="slds-scope" width="100%;">
+                        <tr>
+                            <td style="width:30%">
+                            <span>Gender</span>
+                            </td>
+                            <td style="width:30%">
+                            <span>SSN</span>
+                            </td>
+                            <td style="width:40%">
+                            <span>DOB (mm/dd/yyyy)</span>
+                            </td>
+                        
+                        </tr>
+                    </table>
+                   </td>
+                  </tr>
+                    <tr>
+                        <td>
+                            <table class="slds-scope" style="width:100%;border-collapse: collapse;height:18px;">
+                        <tr>
+                            <td style="width:30%;">
+                           
+                                <table style="margin-top: -8px;width:100%"> 
+                                    <tr>
+                                    <td >
+                                        <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px" rendered="{!IF(caserecord.Patient__r.Gender__c == null,true,false)}"/>
+                                        <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px" rendered="{!IF(CONTAINS(caserecord.Patient__r.Gender__c,'Female'),true,false)}"/>
+                                        <apex:image value="{!URLFOR($Resource.OPAFCheckedBox)}" rendered="{!IF(CONTAINS(caserecord.Patient__r.Gender__c,'Male'),true,false)}" width="15px" />
+                                        </td>
+                                        <td>
+                                        M
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            
+                                           <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px" rendered="{!IF(caserecord.Patient__r.Gender__c == null,true,false)}"/>
+                                            <apex:image value="{!URLFOR($Resource.UnCheckBox)}" rendered="{!IF(CONTAINS(caserecord.Patient__r.Gender__c,'Male'),true,false)}" width="15px" />
+                                             <apex:image value="{!URLFOR($Resource.OPAFCheckedBox)}" rendered="{!IF(CONTAINS(caserecord.Patient__r.Gender__c,'Female'),true,false)}" width="15px" />
+
+                                        </td>
+                                        <td>
+                                        F
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                              
+                            </td>
+                            <td style="width:30%;border:1px solid black;height:18px;border-top:1px solid light black;padding-left:5px;">
+                            {!caserecord.Patient__r.SSN__c}
+                            </td>
+                            <td style="width:40%;border:1px solid black;height:18px;border-top:1px solid lightblack;padding-left:5px;">
+                            <apex:outputText value=" {0,date,MM/dd/yyyy}"> 
+                            <apex:param value="{!caserecord.Patient__r.Birthdate}" />
+                        </apex:outputText>
+                            </td>
+                        
+                        </tr>
+                    </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Phone
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border:1px solid black;height:19px;width:100%;padding-left:5px;">
+                            {!caserecord.Patient__r.HomePhone}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Email
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border:1px solid black;height:19px;width:100%;padding-left:5px;">
+                            {!caserecord.Patient__r.Email}
+                           
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-style: italic;">
+                            <b>  Complete if there is a primary caregiver or an alternate contact</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                           Caregiver/alternate contact name
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border:1px solid black;height:19px;width:100%;padding-left:5px;">
+                            {!caserecord.Patient_Legal_Rep_First_Name__c}&nbsp;{!caserecord.Patient_Legal_Rep_Last_Name__c}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table style="width:100%">
+                                <tr>
+                                    <td style="width:50%">
+                                        Relationship 
+                                    </td>
+                                    <td style="width:50%">
+                                        Phone
+                                    </td>
+                                </tr>
+                             </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table class="slds-scope" style="height:18px;border-collapse: collapse;width:100%;">
+                        <tr>
+                            <td style="width:50%;border:1px solid black;height:18px;padding-left:5px;">
+                                <apex:outputPanel rendered="{!caserecord.Patient__r.Legal_RepRelTypec__c =='Other (please specify)'}">
+                                	{!caserecord.Patient__r.Legal_Rep_Rel_Other__c}    
+                                </apex:outputPanel>
+                                <apex:outputPanel rendered="{!caserecord.Patient__r.Legal_RepRelTypec__c !='Other (please specify)'}">
+                                	{!caserecord.Patient__r.Legal_RepRelTypec__c}    
+                                </apex:outputPanel>
+                            
+                            
+                                
+                                
+                            </td>
+                            <td style="width:50%;border:1px solid black;height:18px;padding-left:5px;">
+                            {!caserecord.Patient_Legal_Rep_Phone__c}
+                            </td>
+                        </tr>
+                    </table>   
+                        </td>
+                    </tr>
+                    <tr>
+                    <td></td>
+                    </tr>
+                    <tr>
+                        <td style="background-color:#b01c2c;font-size:12px;font-family: Muli,sans-serif;text-align: center;color:white;padding:2px 2px 2px 2px;width:100%;">
+                           <b> SECTION 2: INSURANCE INFORMATION </b>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <table >
+                        <tr>
+                        <td>
+                             <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px" rendered="{!caserecord.Has_No_Insurance__c == false}" />
+                             <apex:image value="{!URLFOR($Resource.OPAFCheckedBox)}" rendered="{!caserecord.Has_No_Insurance__c == true}"  width="15px" />
+                            </td>
+                            <td>
+                             <b> I DO NOT have insurance (do not fill out Section 2)</b>
+                            </td>
+                        </tr>
+                    </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <table style="width:100%;margin-top:-3px;">
+                        <tr>
+                        <td>
+                            <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px"   /> 
+                            </td>
+                            <td>
+                          <b>  I am attaching copies of both medical and pharmacy cards (do not fill out Sections 2)</b>
+                            </td>
+                        </tr>
+                    </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <span style="color:#b01c2c;font-size:11.5px;"> <b>MEDICAL CARD</b> </span> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <table style="width:100%;height:15px;">
+                        <tr>
+                            <td style="width:50%;">
+                             Payer name
+                            </td>
+                            <td style="width:50%;">
+                             Plan name 
+                            </td>
+                        
+                        </tr>
+                    </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <table class="slds-scope" style="width:100%;height:18px;border-collapse: collapse;">
+                        <tr>
+                            <td style="width:50%;border:1px solid black;height:18px;border-top:1px solid light black;padding-left:5px;">
+                            
+                            </td>
+                            <td style="width:50%;border:1px solid black;height:18px;border-top:1px solid lightblack;padding-left:5px;">
+                            {!caserecord.Medical_Plan_Name__c}
+                            </td>
+                        
+                        </tr>
+                    </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <table style="width:100%;">
+                        <tr>
+                            <td style="width:50%;">
+                             Phone
+                            </td>
+                            <td style="width:50%;">
+                             Policyholder name
+                            </td>
+                        
+                        </tr>
+                    </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <table class="slds-scope" style="width:100%;height:18px;border-collapse: collapse;">
+                        <tr>
+                            <td style="width:50%;border:1px solid black;height:18px;border-top:1px solid light black;padding-left:5px;">
+                            {!caserecord.Medical_Plan_Phone__c}
+                            </td>
+                            <td style="width:50%;border:1px solid black;height:18px;border-top:1px solid lightblack;padding-left:5px;">
+                            {!caserecord.Medical_Policyholder_Name__c}
+                            </td>
+                        
+                        </tr>
+                    </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                             <table style="width:100%;">
+                        <tr>
+                            <td style="width:45%;">
+                            <span> Member ID</span>
+                            </td>
+                            <td style="width:25%;">
+                            <span>Group # </span>
+                            </td>
+                            <td style="width:30%;">
+                            <span>DOB (mm/dd/yyyy) </span>
+                            </td>
+                        </tr>
+                    </table>                        
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <table class="slds-scope" style="width:100%;height:18px;border-collapse: collapse;;">
+                        <tr>
+                            <td style="width:45%;border:1px solid black;height:18px;border-top:1px solid light black;padding-left:5px;">
+                             {!caserecord.Medical_Policyholder_Member_ID__c}
+                            </td>
+                            <td style="width:25%;border:1px solid black;height:18px;border-top:1px solid light black;padding-left:5px;">
+                             {!caserecord.MedicalGroupNumber__c}
+                            </td>
+                            <td style="width:35%;border:1px solid black;height:15px;border-top:1px solid light black;padding-left:5px;">
+                             <apex:outputText value=" {0,date,MM/dd/yyyy}"> 
+                            <apex:param value="{!caserecord.Medical_Policyholder_DOB__c}" />
+                        </apex:outputText>
+                            </td>
+                        </tr>
+                    </table>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <span style="color:#b01c2c;font-size:11.5px;"> <b>PHARMACY CARD</b>  </span> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <table style="width:100%;">
+                        <tr>
+                            <td style="width:50%;">
+                             Payer name
+                            </td>
+                            <td style="width:50%;">
+                             Plan name 
+                            </td>
+                        
+                        </tr>
+                    </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <table class="slds-scope" style="width:100%;height:18px;border-collapse: collapse;">
+                        <tr>
+                            <td style="width:50%;border:1px solid black;height:18px;border-top:1px solid light black;Padding-left:5px;">
+                            
+                            </td>
+                            <td style="width:50%;border:1px solid black;height:18px;border-top:1px solid lightblack;Padding-left:5px;">
+                            {!caserecord.Pharmacy_Plan_Name__c}
+                            </td>
+                        
+                        </tr>
+                    </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Phone
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border:1px solid black;height:19px;width:100%;Padding-left:5px;">
+                            {!caserecord.Pharmacy_Plan_Phone__c}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <table style="width:100%;margin-top:-1px;">
+                        <tr>
+                            <td style="width:50%;">
+                             RxBIN
+                            </td>
+                            <td style="width:50%;">
+                             RX PCN 
+                            </td>
+                        
+                        </tr>
+                    </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <table class="slds-scope" style="width:100%;height:18px;border-collapse: collapse;">
+                        <tr>
+                            <td style="width:50%;border:1px solid black;height:18px;border-top:1px solid light black;Padding-left:5px;">
+                            {!caserecord.Pharmacy_Rx_BIN__c}
+                            </td>
+                            <td style="width:50%;border:1px solid black;height:18px;border-top:1px solid lightblack;Padding-left:5px;">
+                            {!caserecord.Pharmacy_Rx_PCN__c}
+                            </td>
+                        
+                        </tr>
+                    </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+                
+                <!---right side pannel----------------------------->
+             <td style="width:50%;">
+                    <table style="width:100%;margin-top:-10px;">
+                        <tr>
+                        <td style="font-size:11px;">
+                           <b> Have you been denied coverage by an insurance provider?</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table>
+                            <tr>
+                            <td>
+                                <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px"   /> 
+                             </td>
+                               <td>
+                                Yes
+                               </td>
+                              <td>
+                                <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px"   /> 
+                             </td>
+                             <td>
+                                No
+                             </td>
+                            </tr>
+                     </table>
+                        </td>
+                    </tr>
+                   <!-- <tr>
+                        <td>
+                           -----------------------------------------------
+                        </td>
+                    </tr> -->
+                    <tr>
+                        <td style="font-size:11px;">
+                          <b>  Are you enrolled in Medicare, Medicaid, Veterans Affairs, or TRICARE?</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                             <table>
+                                <tr>
+                                <td>
+                                    <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px"   /> 
+                                 </td>
+                                   <td>
+                                    Yes
+                                   </td>
+                                  <td>
+                                    <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px"   /> 
+                                 </td>
+                                 <td>
+                                    No
+                                 </td>
+                                </tr>
+                         </table>
+                        </td>
+                    </tr>
+                  <!--  <tr>
+                        <td>
+                             ---------------------------------------
+                        </td>
+                    </tr> -->
+                    <tr>
+                        <td style="font-size:11px;">
+                          <b>Have you been denied Medicaid?</b>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                             <table>
+                                <tr>
+                                <td>
+                                    <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px"   /> 
+                                 </td>
+                                   <td>
+                                    Yes
+                                   </td>
+                                  <td>
+                                    <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px"   /> 
+                                 </td>
+                                 <td>
+                                    No
+                                 </td>
+                                </tr>
+                         </table>
+                        </td>
+                    </tr>
+                        
+                   <!--  <tr>
+                        <td>
+                             ----------------------------------------------------
+                        </td>
+                    </tr> -->
+                        <tr>
+                        <td style="font-size:11px;">
+                             <b>Are you in the process of enrolling in Medicare Part D?</b>
+                        </td>
+                    </tr>
+                        
+                     <tr>
+                        <td>
+                             <table>
+                                <tr>
+                                <td>
+                                    <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px"   /> 
+                                 </td>
+                                   <td>
+                                    Yes
+                                   </td>
+                                  <td>
+                                    <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px"   /> 
+                                 </td>
+                                 <td>
+                                    No
+                                 </td>
+                                </tr>
+                         </table>
+                        </td>
+                    </tr>
+                     <!--   <tr>
+                        <td>
+                            ------------------------------------------------
+                        </td>
+                    </tr> -->
+                        
+                     <tr>
+                        <td style="font-size:11px;">
+                           <b>  Do you live in the United States?</b>
+                        </td>
+                    </tr>
+                        <tr>
+                        <td>
+                             <table>
+                                <tr>
+                                <td>
+                                   <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px" rendered="{!IF(caserecord.Does_the_patient_live_in_United_States__c == null,true,false)}"/>
+                                        <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px" rendered="{!IF(CONTAINS(caserecord.Does_the_patient_live_in_United_States__c,'No'),true,false)}"/>
+                                        <apex:image value="{!URLFOR($Resource.OPAFCheckedBox)}" rendered="{!IF(CONTAINS(caserecord.Does_the_patient_live_in_United_States__c,'Yes'),true,false)}" width="15px" />
+                                    
+                                 </td>
+                                   <td>
+                                    Yes
+                                   </td>
+                                  <td>
+                                   <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px" rendered="{!IF(caserecord.Does_the_patient_live_in_United_States__c == null,true,false)}"/>
+                                        <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px" rendered="{!IF(CONTAINS(caserecord.Does_the_patient_live_in_United_States__c,'Yes'),true,false)}"/>
+                                        <apex:image value="{!URLFOR($Resource.OPAFCheckedBox)}" rendered="{!IF(CONTAINS(caserecord.Does_the_patient_live_in_United_States__c,'No'),true,false)}" width="15px" />
+                                   
+                                 </td>
+                                 <td>
+                                    No
+                                 </td>
+                                </tr>
+                         </table>
+                        </td>
+                    </tr>
+                        
+                  <!--   <tr>
+                        <td>
+                             ------------------------------------------------------------
+                        </td>
+                    </tr> -->
+                        <tr>
+                        <td style="font-size:11px;">
+                            
+                              <b>   For JYNARQUE®
+                                (tolvaptan) APPLICANTS ONLY: Are you applying 
+                                for Temporary Patient Assistance while your insurance makes a 
+                                benefit determination?
+                                 </b>
+                            
+                        </td>
+                    </tr>
+                        
+                     <tr>
+                        <td>
+                             <table>
+                                <tr>
+                                <td>
+                                    <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px" rendered="{!IF(caserecord.Temportary_Patient_Assistance__c == null,true,false)}"/>
+                                        <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px" rendered="{!IF(CONTAINS(caserecord.Temportary_Patient_Assistance__c,'No'),true,false)}"/>
+                                        <apex:image value="{!URLFOR($Resource.OPAFCheckedBox)}" rendered="{!IF(CONTAINS(caserecord.Temportary_Patient_Assistance__c,'Yes'),true,false)}" width="15px" />
+                        
+                                 </td>
+                                   <td>
+                                    Yes
+                                   </td>
+                                  <td>
+                                                       <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px" rendered="{!IF(caserecord.Temportary_Patient_Assistance__c == null,true,false)}"/>
+                                        <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px" rendered="{!IF(CONTAINS(caserecord.Temportary_Patient_Assistance__c,'Yes'),true,false)}"/>
+                                        <apex:image value="{!URLFOR($Resource.OPAFCheckedBox)}" rendered="{!IF(CONTAINS(caserecord.Temportary_Patient_Assistance__c,'No'),true,false)}" width="15px" />
+                                 </td>
+                                 <td>
+                                    No
+                                 </td>
+                                </tr>
+                         </table>
+                        </td>
+                    </tr>
+                         <tr>
+                        <td style="font-size:11px;">
+                            
+                              <b>   For JYNARQUE®
+                                    (tolvaptan) APPLICANTS ONLY: If you are new to 
+                                    JYNARQUE, would you like a JYNARQUE Starter Kit that provides 
+                                    educational and support information?
+                                 </b>
+                            
+                        </td>
+                    </tr>
+                        
+                     <tr>
+                        <td>
+                             <table>
+                                <tr>
+                                <td>
+                                        <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px" rendered="{!IF(caserecord.JYNARQUE_Starter_Kit__c == null,true,false)}"/>
+                                        <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px" rendered="{!IF(CONTAINS(caserecord.JYNARQUE_Starter_Kit__c,'No'),true,false)}"/>
+                                        <apex:image value="{!URLFOR($Resource.OPAFCheckedBox)}" rendered="{!IF(CONTAINS(caserecord.JYNARQUE_Starter_Kit__c,'Yes'),true,false)}" width="15px" />
+                                    
+								</td>
+                                   <td>
+                                    Yes
+                                   </td>
+                                  <td>
+                                    <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px" rendered="{!IF(caserecord.JYNARQUE_Starter_Kit__c == null,true,false)}"/>
+                                        <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px" rendered="{!IF(CONTAINS(caserecord.JYNARQUE_Starter_Kit__c,'Yes'),true,false)}"/>
+                                        <apex:image value="{!URLFOR($Resource.OPAFCheckedBox)}" rendered="{!IF(CONTAINS(caserecord.JYNARQUE_Starter_Kit__c,'No'),true,false)}" width="15px" />
+								 </td>
+                                 <td>
+                                    No
+                                 </td>
+                                </tr>
+                         </table>
+                        </td>
+                    </tr>
+                        <tr>
+                        <td>
+                             
+                        </td>
+                    </tr>
+                        
+                     <tr>
+                        <td style="background-color:#b01c2c;font-size:12px;font-family: Muli,sans-serif;text-align: center;color:white;padding:2px 2px 2px 2px;width:100%;">         
+                        <b> SECTION 4: FINANCIAL ELIGIBILITY</b>
+                        </td>
+                    </tr>
+                        <tr><td></td></tr>
+                        <tr>
+                        <td style="font-style:italic">
+                           <b> Please complete the information below for income and house-hold size.</b> 
+                        </td>
+                    </tr>
+                        
+                     <tr>
+                        <td>
+                            <table style="width:100%;">
+                                <tr>
+                        <td style="width:50%;">
+                            <span>Annual household</span>
+                           </td>
+                            <td style="width:50%;">
+                            <span>Number of persons living in</span>
+                           </td>
+                        </tr>
+                                <tr>
+                        <td style="width:50%;">
+                            <span>income before taxes*</span>
+                           </td>
+                            <td style="width:50%;">
+                            <span>household, including yourself</span>
+                           </td>
+                        </tr>
+                            </table>
+                        </td>
+                    </tr>
+                        
+                     <tr>
+                        <td>
+                         <table class="slds-scope" style="width:100%;height:18px;border-collapse: collapse;">
+                        <tr>
+                            <td style="width:50%;border:1px solid black;height:18px;border-top:1px solid light black;Padding-left:5px;">
+                            {!caserecord.Estimated_Annual_Household_Income__c}
+                            </td>
+                            <td style="width:50%;border:1px solid black;height:18px;border-top:1px solid lightblack;Padding-left:5px;">
+                            {!caserecord.Estimated_Household_Size__c}
+                            </td>
+                        </tr>
+                    </table>
+                        </td>  
+                      </tr>
+                      
+                        <tr>
+                        <td style="font-style: italic;">
+                         <b>Applicant must include proof of income for all contributing members of the 
+                            household with the application submission. Please submit ONE of the 
+                            following for each contributing member:
+                            </b>
+                        </td>  
+                      </tr>
+                        <tr>
+                    <td></td>
+                    </tr>
+                       <tr>
+                        <td>
+                         •&nbsp;&nbsp;&nbsp; Federal Income Tax Return (1040, etc)
+                        </td>  
+                      </tr>
+                      <tr>
+                        <td>
+                         •&nbsp;&nbsp;&nbsp; Social Security award letter
+                        </td>  
+                      </tr>
+                      <tr>
+                        <td>
+                         •&nbsp;&nbsp;&nbsp; W-2 from previous tax year
+                        </td>  
+                      </tr>
+                      <tr>
+                        <td>
+                         •&nbsp;&nbsp;&nbsp; Disability income information
+                        </td>  
+                      </tr>
+                      <tr>
+                        <td>
+                         •&nbsp;&nbsp;&nbsp; 1099-MISC form
+                        </td>  
+                      </tr>
+                      <tr>
+                        <td>
+                         •&nbsp;&nbsp;&nbsp; Unemployment benefits letter
+                        </td>  
+                      </tr>
+                      <tr>
+                        <td>
+                         •&nbsp;&nbsp;&nbsp; 2 most recent paystubs
+                        </td>  
+                      </tr>
+                      <tr>
+                        <td>
+                         •&nbsp;&nbsp;&nbsp; Letter from employer on company letterhead
+                        </td>  
+                      </tr>
+                        <tr><td></td></tr>
+                      <tr>
+                        <td style="font-style: italic;">
+                        <b> The Applicant must provide proof of residency documentation. Please submit 
+                            ONE of the following documents with this application:</b>
+                        </td>  
+                      </tr>
+                        <tr><td></td></tr>
+                      <tr>
+                        <td style="width:100%">
+                            <table style="width:100%">
+                                <tr>
+                                    <td style="width:38%">•&nbsp;&nbsp;&nbsp; Social Security number</td>
+                                    <td style="width:62%">•&nbsp;&nbsp;&nbsp; Foreign passport with US visa</td>
+                                </tr>
+                            </table>
+                         
+                        </td>  
+                      </tr>
+                     
+                      <tr>
+                        <td style="width:100%">
+                            <table style="width:100%;margin-top:-5px;">
+                                <tr>
+                                    <td style="width:38%">•&nbsp;&nbsp;&nbsp; State driver’s license</td>
+                                    <td style="width:62%"> •&nbsp;&nbsp;&nbsp;  I-94 form with photograph</td>
+                                </tr>
+                            </table>
+                         
+                        </td>  
+                      </tr>
+                      <tr>
+                        <td style="width:100%">
+                            <table style="width:100%;margin-top:-5px;">
+                                <tr>
+                                    <td style="width:38%">•&nbsp;&nbsp;&nbsp;  US birth certificate</td>
+                                    <td style="width:62%"> •&nbsp;&nbsp;&nbsp; US military ID</td>
+                                </tr>
+                            </table>
+                         
+                        </td>  
+                      </tr>
+                      
+                      <tr>
+                        <td style="width:100%">
+                            <table style="width:100%;margin-top:-5px;">
+                                <tr>
+                                    <td style="width:38%">•&nbsp;&nbsp;&nbsp;  US passport</td>
+                                    <td style="width:62%"> •&nbsp;&nbsp;&nbsp;US certificate of naturalization or citizenship</td>
+                                </tr>
+                            </table>
+                         
+                        </td>  
+                      </tr>
+                     
+                      
+                  </table>                
+              </td>
+                
+            </tr>
+    </table>
+            <table style="font-family: Muli,sans-serif;font-size:12px;margin-top:-10px;" width="100%">
+            <tr>
+            <td >
+                <apex:image value="{!URLFOR($Resource.OPAFNephrologyJYNARQUE)}"  style="width:100px;float:right;padding:10px 0px 0px 0px;"  /> 
+                </td>
+                <td >
+                <apex:image value="{!URLFOR($Resource.OPAFNephrologySamsca)}"   style="width:100px;float:left;padding:5px 0px 0px 0px;" /> 
+                </td>
+          </tr> 
+            
+            <tr>
+            <td style="text-align:center;font-size:13px;" colspan="2">
+                <span style="text-align:center;font-size:12px;margin-left:30px;">Please see FULL PRESCRIBING INFORMATION, including <b>BOXED WARNING</b> and MEDICATION </span>
+
+                </td>
+                
+            </tr>
+            <tr>
+            <td style="text-align:center;" colspan="2">
+               <span style="text-align:center;margin-left:40px;font-size:13px;">
+                   GUIDE for <a href="https://www.otsuka-us.com/sites/g/files/qhldwo3326/files/media/static/JYNARQUE-PI.pdf">JYNARQUE </a> and <a href="https://www.otsuka-us.com/sites/g/files/qhldwo3326/files/media/static/Samsca-PI.pdf"> SAMSCA </a> at,<a href="www.jynarque.com">www.jynarque.com</a>, <a href=" www.samsca.com"> www.samsca.com </a> or call 1-800-441-6763.
+                </span> 
+                </td>
+            </tr>
+    </table>
+ </apex:component>

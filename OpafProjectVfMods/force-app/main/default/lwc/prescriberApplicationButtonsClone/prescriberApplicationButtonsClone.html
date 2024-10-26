@@ -1,0 +1,14 @@
+<template>
+    <div class="slds-p-around_medium">
+            <lightning-button label="RETUN TO MY WORKSPACE" variant="destructive" onclick={navigateToHomePage}></lightning-button>&nbsp; 
+            <template if:true={isResumeApp}>
+                <lightning-button label="RESUME OPAF APPLICATION" variant="destructive" onclick={resumeAppication}></lightning-button>&nbsp;
+            </template>
+            <template if:true={isEnrollApp}>
+                <lightning-button label="BEGIN RE-ENROLLMENT" variant="destructive" onclick={beginEnrollment}></lightning-button>
+            </template>
+            
+            
+        </div>
+
+</template>

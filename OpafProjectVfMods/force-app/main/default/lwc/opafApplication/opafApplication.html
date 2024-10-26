@@ -1,0 +1,154 @@
+<template>
+    <template if:true={showFirstStep}>
+    <lightning-accordion active-section-name="B">
+        
+        <lightning-accordion-section name="A" label="Product Information">
+            <lightning-layout class="slds-grid slds-col slds-wrap" size="12">
+            <lightning-layout-item size="12" padding="around-small">
+                <lightning-combobox
+            name="progress"
+            label="Product"
+            value=""
+            placeholder="Select Progress"
+            options={options}
+             ></lightning-combobox>
+            </lightning-layout-item>
+            </lightning-layout>
+        </lightning-accordion-section>
+        <lightning-accordion-section name="B" label="Legal Representative Information (only display if above question = Yes)">
+            <lightning-layout class="slds-grid slds-col slds-wrap" size="12">
+        <lightning-layout-item size="6" padding="around-small">
+            <lightning-input type="text" label="Patient First Name"></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="6" padding="around-small">
+            <lightning-input type="text" label="Patient Street Address"></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="6" padding="around-small">
+            <lightning-input type="text" label="Patient Last Name"></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="6" padding="around-small">
+            <lightning-input type="text" label="Patient Address Line 2"></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="6" padding="around-small">
+            <lightning-input type="text" label="Patient Email Address"></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="6" padding="around-small">
+            <lightning-input type="text" label="Patient City"></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="6" padding="around-small">
+            <lightning-input type="date" label="Patient Date of Birth"></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="6" padding="around-small">
+            <lightning-input type="text" label="Patient State"></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="6" padding="around-small">
+            <lightning-input type="text" label="Patient SSN"></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="6" padding="around-small">
+            <lightning-input type="text" label="Patient Zip Code"></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="6" padding="around-small">
+            <lightning-input type="text" label="Patient Gender"></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="6" padding="around-small">
+            <lightning-input type="date" label="Patient Daytime Phone"></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="6" padding="around-small">
+            <lightning-input type="text" label="Estimated Annual Household Income"></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="6" padding="around-small">
+            <lightning-input type="text" label="Estimated Household Size"></lightning-input>
+        </lightning-layout-item>
+        </lightning-layout>
+        <div class="slds-align_absolute-center">
+            <lightning-button class="slds-theme_brand slds-button_outline-brand" variant="brand" label="CANCEL" onclick={handleOnCancel}></lightning-button>
+            <lightning-button class="slds-theme_brand slds-button_outline-brand" variant="brand" label="NEXT" onclick={handleOnNext}></lightning-button>
+          </div>
+        </lightning-accordion-section>
+      </lightning-accordion>
+      </template>
+
+      <template if:true={showReadOnly}>
+        <lightning-accordion active-section-name="B">
+            
+            <lightning-accordion-section name="A" label="Product Information">
+                <lightning-layout class="slds-grid slds-col slds-wrap" size="12">
+                <lightning-layout-item size="12" padding="around-small">
+                    <lightning-combobox
+                name="progress"
+                label="Product"
+                value=""
+                placeholder="Select Progress"
+                options={options}
+                readonly
+                 ></lightning-combobox>
+                </lightning-layout-item>
+                </lightning-layout>
+            </lightning-accordion-section>
+            <lightning-accordion-section name="B" label="Legal Representative Information (only display if above question = Yes)">
+                <lightning-layout class="slds-grid slds-col slds-wrap" size="12">
+            <lightning-layout-item size="6" padding="around-small">
+                <lightning-input type="text" label="Patient First Name" readonly></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="6" padding="around-small">
+                <lightning-input type="text" label="Patient Street Address" readonly></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="6" padding="around-small">
+                <lightning-input type="text" label="Patient Last Name" readonly></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="6" padding="around-small">
+                <lightning-input type="text" label="Patient Address Line 2" readonly></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="6" padding="around-small">
+                <lightning-input type="text" label="Patient Email Address" readonly></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="6" padding="around-small">
+                <lightning-input type="text" label="Patient City" readonly></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="6" padding="around-small">
+                <lightning-input type="date" label="Patient Date of Birth" readonly></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="6" padding="around-small">
+                <lightning-input type="text" label="Patient State" readonly></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="6" padding="around-small">
+                <lightning-input type="text" label="Patient SSN" readonly></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="6" padding="around-small">
+                <lightning-input type="text" label="Patient Zip Code" readonly></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="6" padding="around-small">
+                <lightning-input type="text" label="Patient Gender" readonly></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="6" padding="around-small">
+                <lightning-input type="date" label="Patient Daytime Phone" readonly></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="6" padding="around-small">
+                <lightning-input type="text" label="Estimated Annual Household Income" readonly></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="6" padding="around-small">
+                <lightning-input type="text" label="Estimated Household Size" readonly></lightning-input>
+            </lightning-layout-item>
+            </lightning-layout>
+            </lightning-accordion-section>
+          </lightning-accordion>
+          </template>
+      <template if:true={shoSecondStep}>
+        <c-opaf-card onnextbutton={handleOnChildNext} oncancelbutton={handleOnChildPrevious}></c-opaf-card>
+      </template>
+      <template if:true={shoVerificatonForm}>
+        <c-opaf-verification-check onchildnextbutton={handleOnChild1Next} onchildcancelbutton={handleOnChild1Previous}></c-opaf-verification-check>
+      </template>
+      <template if:true={shoPrescriber}>
+        <c-opaf-application-step4 onchildnextbutton={handleOnChild2Next} onchildcancelbutton={handleOnChild2Previous}></c-opaf-application-step4>
+      </template>
+      <template if:true={showSubmit}>
+          <c-opaf-submit-form></c-opaf-submit-form>
+      </template>
+      <template if:true={showReadOnly}>
+        <div class="slds-align_absolute-center">
+            <lightning-button class="slds-theme_brand slds-button_outline-brand" variant="brand" label="Previous"></lightning-button>
+            <lightning-button class="slds-theme_brand slds-button_outline-brand" variant="brand" label="Submit Application" onclick={handleOnChild3Previous}></lightning-button>
+          </div>
+      </template>
+</template>

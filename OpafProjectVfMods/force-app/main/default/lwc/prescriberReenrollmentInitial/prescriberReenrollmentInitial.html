@@ -1,0 +1,133 @@
+<template>
+    <lightning-layout class="slds-grid slds-col slds-wrap">
+        <lightning-layout-item size="12" padding="around-small">
+            <h1 class="slds-text-heading_large slds-p-vertical_xx-large">OPAF Re-Enrollment Application</h1>
+            <p class="slds-text-body_regular slds-p-vertical_medium">The information listed below is based on the Patient's previous enrollment in the Otsuka Patient Assistance Foundation, Inc. (OPAF) for the Otsuka product requested. Please review the following patient information and update the information
+                as necessary.
+            </p>
+            <p class="slds-text-body_regular slds-p-vertical_medium">
+                <strong class="slds-text-color_destructive">*</strong>&nbsp;Indicates required field.
+            </p>
+        </lightning-layout-item>
+        <lightning-layout-item size="12" padding="around-small">
+            <lightning-input type="text" value={selectedProduct} label="Product Name" disabled read-only></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="12" padding="around-small">
+            <h3 class="slds-text-heading_small slds-truncate" title="Re-Enrollment Application Questions">
+                Re-Enrollment Application Questions
+            </h3>
+        </lightning-layout-item>
+        <lightning-layout-item size="12" padding="around-small">
+            <p>
+                <em>
+                    <span>
+                        In order to qualify for re-enrollment into the Otsuka Patient Assistance Foundation, Inc. (OPAF), a patient must meet certain criteria set forth for each OPAF product. Insurance and income information are two of the requirements used to evaluate a patient's eligibility.
+                    </span>
+                </em>
+            </p>
+        </lightning-layout-item>
+        <lightning-layout-item size="12" padding="around-small">
+            <p>
+                Please confirm whether the Patient's enrollment information has changed by answering the questions below.
+            </p>
+            <p><strong><span style="font-size: 14px; color: rgb(139, 0, 0);">*</span></strong> Indicates required field.</p>
+            
+        </lightning-layout-item>
+        <lightning-layout-item size="12" padding="around-small">
+            <!-- <label class="slds-form-element_label">
+                Is the Patient still in the Prescriber's care, as indicated below ?
+            </label> -->
+            <lightning-radio-group  name="Is the Patient still in the Prescriber's care, as indicated below ?"
+                                    label={patientName}
+                                    options={radioOptions}
+                                    type="radio"
+                                    data-name="Patient_with_Same_Provider__c"
+                                    value={sameProvider} 
+                                    onchange={caseFieldsChangeHandler}
+                                    required="true"
+                                    class="requiredClass">
+            </lightning-radio-group> 
+        </lightning-layout-item>
+        <lightning-layout-item size="12" padding="around-small">
+            <lightning-radio-group  
+                                    class="requiredClass"
+                                    name="Is the Patient still being prescribed ?"
+                                    label={prescriberLabel}
+                                    options={radioOptions}
+                                    type="radio"
+                                    data-name="Same Prescriber"
+                                    value={samePrescriber} 
+                                    onchange={caseFieldsChangeHandler}
+                                    required="true">
+            </lightning-radio-group> 
+        </lightning-layout-item>
+        <lightning-layout-item size="12" padding="around-small">
+            <!-- <label  class="slds-form-element_label">
+                Is the ICD-10 code the same as last year's application, as indicated below?
+            </label> -->
+            <lightning-radio-group  name="Is the ICD-10 code the same as last year's application, as indicated below?"
+                                    label={icdCode}
+                                    options={radioOptions}
+                                    type="radio"
+                                    data-name="Same_ICD_10__c"
+                                    value={sameIcdCodes} 
+                                    onchange={caseFieldsChangeHandler}
+                                    required="true"
+                                    class="requiredClass">
+            </lightning-radio-group> 
+        </lightning-layout-item>
+        <lightning-layout-item size="12" padding="around-small">
+            <!-- <label  class="slds-form-element_label">
+                Is the product still being shipped to the same address, as indicated below ?
+            </label> -->
+            <lightning-radio-group  name="Is the product still being shipped to the same address, as indicated below ?"
+                                    label={patientAddress}
+                                    options={radioOptions}
+                                    type="radio"
+                                    data-name="Same_Shipping_Address__c"
+                                    value={sameAddress} 
+                                    onchange={caseFieldsChangeHandler}
+                                    required="true"
+                                    class="requiredClass">
+            </lightning-radio-group> 
+        </lightning-layout-item>
+    </lightning-layout>
+    <lightning-layout horizontal-align="spread" class="slds-p-vertical_xx-large">
+        <lightning-layout-item size="auto">
+            <lightning-button class="opaf-lightning-button--brand" variant="neutral" icon-name="utility:back" label="CANCEL" title="CANCEL" onclick={navigateToPreviousPage}></lightning-button>
+        </lightning-layout-item>
+        <lightning-layout-item size="auto">
+            <lightning-button class="opaf-lightning-button--brand" icon-name="utility:forward" icon-position="right" variant="brand" data-name="requiredClass" label="NEXT" title="NEXT" onclick={navigateTonextStep}></lightning-button> 
+        </lightning-layout-item>
+    </lightning-layout>
+    <template if:true={notSamePrescriber}>
+        <!-- Modal/Popup Box starts here-->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box Header Starts here-->
+                <header class="slds-modal__header">
+                    <lightning-button-icon icon-name="utility:close"
+                                        onclick={closePopup}
+                                        alternative-text="close"
+                                        variant="bare-inverse"
+                                        class="slds-modal__close"></lightning-button-icon>
+                    <h2 id="modal-heading-02" class="slds-text-heading_medium slds-hyphenate"></h2>
+                </header>
+                <!--Modal/Popup Box Body Starts here-->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
+                    <p>
+                        Unfortunately, the application process has been stopped. In order to qualify you must live in the United States or  US territories.  Please contact an OPAF Dedicated Patient Case Coordinator at <span style="color: rgb(139, 0, 0);">1-855-727-6274</span> at your earliest convenience
+                    </p>
+                </div>
+                <!--Modal/Popup Box Footer Starts here-->
+                <footer class="slds-modal__footer">
+                    <lightning-button label="OK"
+                                    title="OK"
+                                    variant="destructive"
+                                    onclick={navigateToHomePage}></lightning-button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

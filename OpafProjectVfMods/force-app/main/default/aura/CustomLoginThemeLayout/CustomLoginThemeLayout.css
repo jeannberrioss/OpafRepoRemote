@@ -1,0 +1,14 @@
+.THIS .clsContainer
+{
+    max-width: 1280px;
+    margin: auto;
+}
+
+.THIS .page-header {
+    display: flex;
+    margin: 0 auto;
+    padding: 2.875rem 1rem;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}

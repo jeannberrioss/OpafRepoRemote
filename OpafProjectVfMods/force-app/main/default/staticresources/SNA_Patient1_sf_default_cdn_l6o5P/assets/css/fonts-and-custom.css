@@ -1,0 +1,25 @@
+@import url("/sfsites/c/resource/CSSOverrides");
+
+.comm-navigation__list > li:first-child { /* Hide "HOME" navigation item */
+  display: none;
+  visibility: hidden;
+}
+@font-face {
+    font-family: 'museo-sans';
+    src: url(../resource/MuseoSansFont/MuseoSansFont/MuseoSans-100.otf) format('opentype');
+    font-weight: 100;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'museo-sans';
+    src: url(../resource/MuseoSansFont/MuseoSansFont/MuseoSans-300.otf) format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'museo-sans';
+    src: url(../resource/MuseoSansFont/MuseoSansFont/MuseoSans_700.otf) format('opentype');
+    font-weight: bold;
+    font-style: normal;
+}
+:root { --dxp-c-section-columns-max-width: 1170px; }

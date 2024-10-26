@@ -1,0 +1,88 @@
+<template>
+    <div class="slds-col slds-size_1-of-1">
+        <lightning-accordion active-section-name="B">
+            <h3 class="slds-section__title">
+                <lightning-input type="checkbox" label="I DO NOT have insurance" variant="standard">
+                </lightning-input>
+            </h3>
+            <lightning-accordion-section name="B" label="Insurance Information">
+
+                <lightning-layout class="slds-grid slds-col slds-wrap">
+
+                    <div class="slds-col slds-size_1-of-2 " style="float:left;">
+                        
+                        
+                        <p>PHARMACY CARD</p>
+                        <div>
+                            <lightning-file-upload label="Upload a copy of the front and back of the Pharmacy Card here"
+                                name="fileUploader" accept="" record-id="" multiple></lightning-file-upload>
+                        </div>
+                        <div>
+                            <p><strong>OR</strong> provide the Pharmacy Card information in the fields below:</p>
+                        </div>
+                        <lightning-layout-item size="12" padding="around-small">
+                            <lightning-input type="text" label="Patient First Name"></lightning-input>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="12" padding="around-small">
+                            <lightning-input type="text" label="Patient Street Address"></lightning-input>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="12" padding="around-small">
+                            <lightning-input type="text" label="Patient Last Name"></lightning-input>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="12" padding="around-small">
+                            <lightning-input type="text" label="Patient Address Line 2"></lightning-input>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="12" padding="around-small">
+                            <lightning-input type="text" label="Patient Email Address"></lightning-input>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="12" padding="around-small">
+                            <lightning-input type="text" label="Patient City"></lightning-input>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="12" padding="around-small">
+                            <lightning-input type="date" label="Patient Date of Birth"></lightning-input>
+                        </lightning-layout-item>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2" style="float:left;">
+
+
+                        <p>MEDICAL CARD (ABILIFY MAINTENA only)</p>
+                        <div>
+                            <lightning-file-upload label="Upload a copy of the front and back of the Pharmacy Card here"
+                                name="fileUploader" accept="" record-id="" multiple></lightning-file-upload>
+                        </div>
+                        <div>
+                            <p><strong>OR</strong> provide the Medical Card information in the fields below (ABILIFY
+                                MAINTENA only):</p>
+                        </div>
+                        <lightning-layout-item size="12" padding="around-small">
+                            <lightning-input type="text" label="Patient First Name"></lightning-input>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="12" padding="around-small">
+                            <lightning-input type="text" label="Patient Street Address"></lightning-input>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="12" padding="around-small">
+                            <lightning-input type="text" label="Patient Last Name"></lightning-input>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="12" padding="around-small">
+                            <lightning-input type="text" label="Patient Address Line 2"></lightning-input>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="12" padding="around-small">
+                            <lightning-input type="text" label="Patient Email Address"></lightning-input>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="12" padding="around-small">
+                            <lightning-input type="text" label="Patient City"></lightning-input>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="12" padding="around-small">
+                            <lightning-input type="date" label="Patient Date of Birth"></lightning-input>
+                        </lightning-layout-item>
+
+                    </div>
+                </lightning-layout>
+            </lightning-accordion-section>
+        </lightning-accordion>
+        <div class="slds-align_absolute-center">
+            <lightning-button class="slds-theme_brand slds-button_outline-brand" variant="brand" label="Previous" onclick={handleOnPrevious}></lightning-button>
+            <lightning-button class="slds-theme_brand slds-button_outline-brand" variant="brand" label="NEXT" onclick={handleOnNext}></lightning-button>
+          </div>
+    </div>
+</template>

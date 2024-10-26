@@ -1,0 +1,10 @@
+<aura:component implements="flexipage:availableForAllPageTypes,lightning:hasPageReference,lightning:isUrlAddressable,force:hasRecordId,flexipage:availableForRecordHome" access="global">
+<lightning:recordForm
+        
+        objectApiName="Contact"
+        layoutType="Full"
+        columns="2"
+        mode="Edit" />
+
+
+</aura:component>

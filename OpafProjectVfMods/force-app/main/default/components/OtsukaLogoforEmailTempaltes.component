@@ -1,0 +1,14 @@
+<apex:component access="global" controller="ImageController">
+    <div>
+        <table style="float: right;">
+        <tr>
+            <td>
+                <apex:image id="Logo"  width="100px" height="100px"
+                url="{!strLogoUrl}" />
+            </td>
+        </tr>
+    </table>
+        
+    </div>
+    
+</apex:component>

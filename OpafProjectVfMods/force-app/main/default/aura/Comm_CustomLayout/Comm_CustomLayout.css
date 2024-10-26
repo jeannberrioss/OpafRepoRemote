@@ -1,0 +1,75 @@
+.THIS :root {
+    --lwc-buttonBorderRadius: 50%;
+}
+.THIS {
+    font-family: museo-sans, sans-serif;
+    font-style: normal;
+    font-weight: 100;
+}
+
+.THIS .clsContainer
+{
+    max-width: 1280px;
+    margin: auto;
+}
+
+.THIS .page-header {
+    display: flex;
+    margin: 0 auto;
+    padding: 2.875rem 1rem;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.THIS .navigation {
+    display: flex;
+    align-items: center;
+}
+
+.THIS [data-region-name="navBar"] {
+    padding: 0 2.25rem;
+}
+
+.THIS .comm-navigation__list > li:first-child { /* Hide "HOME" navigation item */
+    display: none;
+    visibility: hidden;
+}
+
+.THIS .forceCommunityGlobalNavigation {
+    background-color: var(--lwc-brandNavigationBarBackgroundColor, rgb(248, 249, 250));
+    background-color: white;
+}
+.THIS .forceCommunityGlobalNavigation {
+    min-height: var(--lwc-navigationMinHeight, 33px);
+    color: var(--lwc-brandNavigationColorText, rgb(33, 37, 41));
+
+    min-height: auto;
+    color: #434343;
+}
+
+.THIS .forceCommunityGlobalNavigation .slds-list__item a {
+    font-size: .9375rem;
+    border-bottom: none;
+    display: inline;
+    font-weight: 600;
+    line-height: 1.93;
+    padding: 1rem 0 .2rem;
+    margin-left: .7rem;
+    margin-right: .7rem;
+    text-transform: none;
+}
+.THIS .forceCommunityGlobalNavigation .slds-list_horizontal>.slds-list__item>.comm-navigation__item>a.slds-is-active,
+.THIS .forceCommunityGlobalNavigation .slds-list_horizontal>.slds-list__item>.comm-navigation__item>a:hover {
+    background-color: transparent;
+}
+.THIS .forceCommunityGlobalNavigation .slds-list__item a:hover {
+    border-bottom: 2px solid #434343;
+    color: #434343;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+.THIS .selfServiceProfileMenuTrigger a {
+    color: var(--lwc-colorTextInverse, #FFFFFF);;
+    color: #434343;
+}

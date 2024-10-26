@@ -1,0 +1,53 @@
+.THIS .slds-modal slds-fade-in-open slds-modal_medium {
+    background-color: white;
+}
+    
+.THIS .H1 {
+    font-size: 12pt;
+}
+    
+.THIS .slds-text-heading_medium{
+        font-family: "sans-serif";
+        color: #b01c2e !important;
+}
+
+.THIS .slds-text-heading_medium1{
+    margin-bottom: 1rem;
+    font-size: 20px;
+    color: #407cc9;
+    font-family: "sans-serif";
+
+    
+}
+.THIS .H2{
+    color: #b01c2e;
+    
+}
+
+
+.THIS .slds-align_absolute-center{
+    color:#4f81bd;
+}
+
+.THIS .slds-button{
+   position:absolute;
+   top:17%;
+   right:5px;
+}
+
+.THIS .my-icon {
+    --sds-c-icon-color-foreground-default: #b01c2e;
+    background-color: white;
+     margin-top: 2rem;
+   
+   
+}
+
+.THIS .Top {
+  border-top: 10px solid #b01c2e;
+}
+
+.THIS .slds-modal__container {
+    width: 800px;
+    height: 800px;
+}

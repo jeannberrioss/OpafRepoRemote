@@ -1,0 +1,18 @@
+<template>
+  <h3 class="slds-text-heading_small slds-truncate" title="">
+    Vitamin Supplement
+  </h3>
+  <lightning-layout class="slds-grid slds-col slds-wrap">
+    <lightning-layout-item size="12" padding="around-small">
+      <template for:each={vitamins} for:item="vitamin">
+        <lightning-input 
+          key={vitamin.id} 
+          type="checkbox" 
+          value={vitamin.value} 
+          label={vitamin.label} 
+          checked={vitamin.checked}
+          onchange={handleChange}></lightning-input>
+      </template>
+    </lightning-layout-item>
+  </lightning-layout>
+</template>

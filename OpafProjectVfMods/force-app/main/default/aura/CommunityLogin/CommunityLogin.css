@@ -1,0 +1,131 @@
+/* .THIS {
+    
+}
+.THIS .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.THIS .content1
+{
+    font-family: Lato;
+    color: #032a54;
+    font-weight: 750;
+    font-size: 24px;
+    margin-bottom: 10px;
+    padding: 25px 0px 0px 25px;
+}
+.THIS .content2
+{
+    font-family: Lato;
+    color: #000;
+    font-weight: 790;
+    box-sizing: border-box;
+    display: block;
+    line-height: 1.5;
+    font-size: 0.96rem;
+    margin-bottom: 10px;
+    padding: 0px 0px 0px 25px;
+}
+.THIS .content3
+{
+     font-family: Lato;
+    color: #407cc9;
+    font-weight: 700;
+    font-size: 28px;
+    margin-bottom: 15px;
+    line-height: 1.5;
+    padding: 0px 0px 0px 25px;
+}
+.THIS .content4
+{
+    font-family: Lato;
+    padding: 0px 0px 0px 25px;
+    margin-bottom:15px;
+}
+.THIS .content5
+{
+    font-family: Lato;
+    padding: 0px 0px 0px 25px;
+    font-size: 0.96rem;
+    font-weight: 500;
+    color: #000;
+    margin-bottom:25px;
+    
+}
+.THIS .content6
+{
+    font-family: Lato;
+    padding: 0px 0px 0px 25px;
+    
+    margin-bottom:50px;
+    
+}
+.THIS .contentbutton {
+    color: #fff ;
+    background-color: #aa1a30;
+    height: 40px;
+    font-weight: 600;
+    font-size: 14px;
+    font-family: inherit;
+    border: 0;
+    padding-left: 4%;
+    padding-right: 4%;
+    cursor: pointer;
+    outline: 0!important; 
+    margin-bottom:10px;
+}
+.THIS .contentbutton:hover {  
+     color: #aa1a30; 
+    background-color: #b7b7b7;
+}
+.THIS .errortext
+{
+    font-family: Lato;
+    font-size: 1rem;
+    color:#FF0000;
+}
+.THIS .userinputtext{
+    margin-bottom:10px;
+    margin-top: -12px;
+}
+.THIS .userPasswordtext{
+    margin-bottom:10px;
+    margin-top: -12px;
+}
+.THIS .username
+{
+    font-family: Lato;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #000;
+    line-height: 1.5;
+}
+
+
+.THIS .userPassword
+{
+    font-family: Lato;
+    font-weight: 500;
+    font-size: 1rem;
+    color: #000;
+}
+.THIS .iconClass{
+    position: relative;
+    height: 110px;
+    top: -15px;
+    display: inline-block;
+    width: 58px;
+    cursor: pointer;
+}
+.THIS .linkClass{
+    padding-left: 20px;
+    margin-left: -24px;
+    border: 1px solid #e83e8c;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    padding-right: 5px;
+    cursor: pointer;
+    display: inline-block;
+} */

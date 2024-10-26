@@ -1,0 +1,12 @@
+
+.slds-path__nav .slds-is-complete:before, .slds-path__nav .slds-is-complete:after{
+    background-color: rgb(10, 82, 155) !important;
+background-repeat: repeat !important;
+}
+
+.slds-tabs--path .slds-is-complete{
+    background-color: rgb(10, 82, 155) !important;
+}
+.slds-path__nav .slds-is-complete{
+background-color: rgb(10, 82, 155) !important;
+}

@@ -1,0 +1,14 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" access="global">
+
+<lightning:listView aura:id="listViewAccounts"
+    objectApiName="Case"
+    listName="Due_For_Re_Enrollment"
+    rows="5"
+    showSearchBar="true"
+    showActionBar="false"
+    enableInlineEdit="true"
+    showRowLevelActions="false"
+/>
+
+
+</aura:component>

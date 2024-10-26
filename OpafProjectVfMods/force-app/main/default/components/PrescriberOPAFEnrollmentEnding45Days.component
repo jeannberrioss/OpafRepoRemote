@@ -1,0 +1,104 @@
+<apex:component access="global" controller="PatientEmailTempalteController">
+    <apex:attribute name="cid" type="Id" description="Id of the Case" assignTo="{!CaseId}" />
+    <div>
+       <table style="font-family: Muli,sans-serif;">
+           <tr>
+               <td>
+                  <b> Otsuka Patient Assistance Foundation, Inc.</b><br/>
+                    PO Box 3640<br/>
+                    Gaithersburg, MD 20885-3640<br/>
+                    Phone: 1-855-727-6274<br/>
+                    Fax: 1-844-727-6274<br/>
+                    Monday – Friday, 8 AM to 8 PM EDT
+
+               </td>
+           </tr>
+        </table>
+        <br/>
+        <br/>
+        <table style="font-family: Muli,sans-serif;">
+            <tr>
+            <td style="font-size:14px;">
+                Hello {!casereclist[0].prescriber__r.Salutation} &nbsp; {!casereclist[0].prescriber__r.lastname},
+              </td>
+            </tr>
+            <tr><td></td></tr>
+            
+            
+            <tr>
+                <td>
+                    <p style="font-family: Muli,sans-serif;font-size:14px;">
+                      <b>You have a patient that is enrolled in the Otsuka Patient Assistance Foundation, Inc. (OPAF) and the patient’s enrollment is ending in 45 days.</b> If your patient needs continued assistance with their Otsuka branded medication, you may re-apply for assistance, on behalf of your patient. There are several ways to re-apply for assistance:
+                    </p>
+                </td>
+            </tr>
+            
+             
+            <tr>
+                <td style="font-family: Muli,sans-serif;font-size:14px;">
+                   
+                       <ul>
+                          <li>You can apply online via the OPAF Care Connect portal at  <a href="{!$Label.Prescriber_URL}" >OPAF Care Connect Portal</a>.</li>
+                           <li>You can download a paper form via the OPAF website <a href="www.otsukapatientassistance.com" >www.otsukapatientassistance.com</a> and fax the completed form to 
+								1-844-727-6274.
+							</li>
+                           <li>You can download a paper form via the OPAF website <a href="www.otsukapatientassistance.com" >www.otsukapatientassistance.com</a> and mail the completed form to: <br/>Otsuka Patient Assistance Foundation, Inc.<br/>PO Box 3640, Gaithersburg, MD 20885-3640</li>
+                        	<li>You can contact OPAF directly to begin the application process at 1-855-727-6274.
+							</li>
+                    </ul>
+                  
+                </td>
+            </tr>
+            
+            
+            <tr>
+                <td>
+                    <p style="font-family: Muli,sans-serif;font-size:14px;">
+                     <b>Please remember to include your patient’s proof of income and proof of home address in the United States with their application.</b>
+                    </p>
+                </td>
+            </tr>
+            
+             <tr><td></td></tr>
+             <tr><td style="font-size:14px;">
+                 Thank you,<br/>
+				  Your OPAF Team
+
+                 </td>
+            </tr>
+           
+             <tr><td></td></tr>
+             <tr><td></td></tr>
+             <tr><td></td></tr>
+             <tr><td></td></tr>
+             <tr><td></td></tr>
+             <tr><td></td></tr>
+             <tr><td></td></tr>
+            <tr>
+            <td>
+                <p style="font-size:10px;font-family: Muli,sans-serif;font-style:italic;">
+                    Please note that you have not been subscribed to any email lists, and the details provided by {!casereclist[0].Prescriber__r.Name} are only being used to send this Patient Consent Form request.This email was sent by Otsuka Patient Assistance Foundation, Inc. (OPAF) because {!casereclist[0].Prescriber__r.Name} requested this email to be sent. OPAF holds patient privacy in the highest regard and is committed to protecting the patient’s confidential information. Therefore, we cannot email patient-identifiable and confidential information to you because we cannot assure the security of information sent via email. However, if you have any questions, please contact OPAF at 1-855-727-6274. Please do not reply to this email, as it was sent from an unmonitored email address and we cannot reply to inquiries.
+                </p>
+                
+              </td>
+            </tr> 
+             <tr><td></td></tr>
+           
+        </table>
+        <br/><br/><br/><br/><br/><br/>
+        <table style="width:100%;font-family: Muli,sans-serif;font-size:10px;">
+            <tr>
+            <td style="width:70%;">
+                © 2021 Otsuka Patient Assistance Foundation, Inc. All Rights Reserved. 
+                </td>
+                <td style="width:10%;">
+                April 2021          
+                </td>
+                <td style="width:20%;">
+                PAUS21EUP0011
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+</apex:component>

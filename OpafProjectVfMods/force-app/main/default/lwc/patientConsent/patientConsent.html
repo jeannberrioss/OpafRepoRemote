@@ -1,0 +1,214 @@
+<template>
+    <div class="pageTop">
+    <template if:true={loaded}>
+        <div class="exampleHolder">
+            <lightning-spinner variant="brand" alternativetext="Loading" size="large" style="margin-bottom:50%;"></lightning-spinner>
+        </div>
+    </template>    
+    <template if:true={model1}>
+        <lightning-layout class="slds-m-top_none slds-p-around_small slds-p-top_small slds-p-right_small slds-p-bottom_small slds-p-left_small">
+            <lightning-layout-item size="12">
+                <div class="slds-section__title" dropzone="sectionDynamic summary">
+                    <strong><h2 class="slds-text-heading_medium opaf-red slds-truncate">OPAF Patient Consent</h2></strong>
+                </div> 
+
+                <br/><br/>
+                <span style="font-size: 18px; color: rgb(8, 7, 7);"><strong>Select the type of Consent</strong></span><br/><br/>
+                <span style="font-size: 18px;">You have two options to initiate consent for yourself/the patient:</span><br/>
+                <br/>
+                <div class="slds-form-element">
+                    <lightning-radio-group style="cursor: pointer;" name="Please select the Consent Type:"
+                        label="Please select the Consent Type:"
+                        options={options}
+                        value={consentType}
+                        type="radio"
+                        onchange={handleRadioChange}>
+
+                    </lightning-radio-group>
+                </div>
+
+                <br/><br/><br/>
+                <lightning-layout horizontal-align="spread" class="slds-p-vertical_xx-large" multiple-rows>
+                    <lightning-layout-item size="auto">
+                        <lightning-button class="opaf-lightning-button--brand" variant="brand" icon-name="utility:back" data-name="CANCEL" label="CANCEL" title="CANCEL" onclick={handleClicks}></lightning-button>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="auto">
+                        <lightning-button class="opaf-lightning-button--brand" icon-name="utility:forward" icon-position="right" variant="brand" data-name="NEXTONLINE" label="NEXT" title="NEXT" onclick={handleClicks} disabled={disableOnline}></lightning-button>                 
+                    </lightning-layout-item>
+                </lightning-layout>
+                
+            </lightning-layout-item>
+        </lightning-layout>
+    </template>
+    
+    <template if:true={model2}>
+        <lightning-layout class="slds-m-top_none slds-p-around_small slds-p-top_small slds-p-right_small slds-p-bottom_small slds-p-left_small">
+            <lightning-layout-item size="12">
+               <h2 class="slds-text-heading_medium opaf-red slds-truncate">OPAF Patient Consent</h2>
+                <br/><br/>
+                <!--<span style="font-size: 14px;">If you do not have a patient/caregiver's written consent, you can initiate an eConsent Request. Correspondence will be emailed to the patient/caregiver at the request of the Prescriber and Facility/Practice and will include the Prescriber and Facility/Practice information provided below.</span><br/>-->
+                
+                <br/>
+                <span style="color: rgb(139, 0, 0);"><strong>*</strong></span>
+                Indicates required field.
+
+                <br/>
+            
+                <h3 class="slds-text-heading_small slds-truncate">Patient Information</h3>
+                                            
+                <br/>
+                                    
+                <lightning-layout class="slds-grid slds-col slds-wrap" size="12">
+                    <lightning-layout-item size="6" padding="around-small">
+                        <lightning-input type="text" label="Patient First Name" class="NEXTMODEL3" required data-name="FirstName" value={getData.FirstName} onchange={fieldTracking}></lightning-input>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="6" padding="around-small">
+                        <lightning-input type="email" label="Patient Email Address" class="NEXTMODEL3" required data-name="Email" value={getData.Email} onchange={fieldTracking}></lightning-input>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="6" padding="around-small">
+                        <lightning-input type="text" label="Patient Last Name" class="NEXTMODEL3" required data-name="LastName" value={getData.LastName} onchange={fieldTracking}></lightning-input>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="6" padding="around-small">
+                        <lightning-input type="date" date-style="short" label="Patient Date of Birth" class="NEXTMODEL3" required data-name="Birthdate" value={getData.Birthdate} onchange={fieldTracking}></lightning-input>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="6" padding="around-small">
+                        <lightning-radio-group style="cursor: pointer;" name="Is a Legal Representative signing on behalf of the Patient?"
+                            label="Is a Legal Representative signing on behalf of the Patient?"
+                            options={legalRepresentativeoptions}
+                            value={getData.Legal_Rep_Condition_Check__c}
+                            type="radio"
+                            required
+                            class="NEXTMODEL3"
+                            data-name="Legal_Rep_Condition_Check__c"
+                            onchange={handleLegalRadioChange}>
+                        </lightning-radio-group>
+                    </lightning-layout-item>                                                                                        
+                </lightning-layout>
+
+                <br/>
+
+                <template if:true={openLegalRepresentative}>
+                    <h3 class="slds-text-heading_small slds-truncate">Legal Representative Information</h3>
+                                                                
+                    <lightning-layout class="slds-grid slds-col slds-wrap" size="12">
+                        <lightning-layout-item size="6" padding="around-small">
+                            <lightning-input type="text" label="Legal Representative First Name" class="NEXTMODEL3" required data-name="Legal_Rep_First_Name__c" value={getData.Legal_Rep_First_Name__c} onchange={fieldTracking}></lightning-input>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="6" padding="around-small">
+                            <lightning-combobox
+                                name="Preferred_Communication__c"
+                                label="Type of Legal Representative/Relationship to Patient"
+                                placeholder="Select Progress"
+                                required
+                                class="NEXTMODEL3"
+                                value={getData.Legal_RepRelTypec__c}
+                                options={legalRepresentativePickListoptions}
+                                data-name="Legal_RepRelTypec__c" onchange={fieldTracking} >
+                            </lightning-combobox>
+
+                        </lightning-layout-item>
+                        
+                        <lightning-layout-item size="6" padding="around-small">
+                            <lightning-input type="text" label="Legal Representative Last Name" class="NEXTMODEL3" required data-name="Legal_Rep_Last_Name__c" value={getData.Legal_Rep_Last_Name__c} onchange={fieldTracking}></lightning-input>
+                        </lightning-layout-item>
+
+                        <template if:true={openOtherRelationship}>
+                        <lightning-layout-item size="6" padding="around-small">
+                            <lightning-input type="text" label="Specify Type of Legal Representative/Relationship to Patient" class="NEXTMODEL3" required data-name="Legal_Rep_Rel_Other__c" value={getData.Legal_Rep_Rel_Other__c} onchange={fieldTracking}></lightning-input>
+                        </lightning-layout-item>
+                    </template>
+
+                        <lightning-layout-item size="6" padding="around-small">
+                            <lightning-input type="text" label="Legal Representative Phone Number" class="NEXTMODEL3" required data-name="Legal_Rep_Phone__c" value={getData.Legal_Rep_Phone__c} onchange={fieldTracking}></lightning-input>
+                        </lightning-layout-item>
+                        <br/>
+
+                        
+                    </lightning-layout>
+                </template>
+                <template if:true={pdfAndUploadSectionForPatientPaperConsent}>
+                        <lightning-layout-item size="12" padding="around-small">
+                            <u><span style="font-size:18px;"> <strong>Download Paper Consent Form</strong></span></u>
+                        </lightning-layout-item>
+                        
+                        <br/>
+                        <lightning-layout-item size="12 " padding="around-small">
+                            Click the button below to download the Paper Consent Form.<br/>
+
+                            <a class="">
+
+                            <lightning-button style="width: 260px;" variant="destructive" onclick={downloadConsent} label="CLICK TO DOWNLOAD PAPER CONSENT" title="CLICK TO DOWNLOAD PAPER CONSENT" class="slds-m-left_x-small">
+
+                            </lightning-button></a>
+
+                            <!--div title="" ><a class="slds-text-link"><button type="button" onclick={downloadConsent} style="height: 30px; width: 260px; background-color: #BA0517; color: rgb(255, 255, 255);">CLICK TO DOWNLOAD PAPER CONSENT</button></a></div>-->
+                        </lightning-layout-item>
+                        
+                        <br/>
+                        <lightning-layout-item size="12" padding="around-small">
+                            <u><span style="font-size:18px;"><strong>Upload Signed Patient Consent here</strong></span></u>
+                            <lightning-input type="file" accept="image/png,image/jpg,.pdf" data-name="patient signed consent" label=" Select the PDF, JPG, or PNG file of the patient's signed consent form to upload" multiple onchange={openfileUpload}></lightning-input>
+                            <div class="slds-text-color_error">{names}</div>
+                            <br/>
+                            <template if:true={patientsignedconsentChecking}>
+                            <table class="slds-table slds-table--bordered tableBordersScreen2">
+                                <thead>
+                                    <tr class="slds-text-heading--label ">
+                                        <th class="" scope="col">Title</th>
+                                        <th class="" scope="col">Action</th>
+                                    </tr>  
+                                </thead>
+                                <tbody>
+                                    <template for:each={patientsignedconsent} for:item="row" for:index="index">
+                                        <tr class="slds-hint-parent" key={row.index}>
+
+                                            <td class="" data-label="Title" >
+                                                <a onclick={downloadAttachment} data-id={row.Id}>{row.ContentDocument.Title}</a> 
+                                            </td>
+                                            <td class="" data-label="Document Type" >
+                                                <lightning-button-icon data-label="pharmacyCardDetails" name={row.ContentDocument.Id} icon-name="utility:delete" size="small" alternative-text="Delete" class="slds-m-left_xx-small" title="Delete" onclick={deleteUploadedFile}></lightning-button-icon>
+                                            </td>
+                                            
+                                            
+                                        </tr>
+                                    </template>
+                                </tbody>
+                            </table> 
+                        </template>
+                        </lightning-layout-item>
+                    </template>
+                <br/>
+                <lightning-layout horizontal-align="spread" class="slds-p-vertical_xx-large" multiple-rows>
+                    <lightning-layout-item size="auto">
+                        <lightning-button class="opaf-lightning-button--brand" variant="brand" icon-name="utility:back" data-name="CANCEL" label="CANCEL" title="CANCEL" onclick={handleClicks}></lightning-button>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="auto">
+                        <lightning-button class="opaf-lightning-button--brand" icon-name="utility:forward" icon-position="right" variant="brand"  data-name="NEXTMODEL3" label="NEXT" title="NEXT" onclick={handleClicks}></lightning-button>
+                    </lightning-layout-item>
+                </lightning-layout>
+
+                </div>
+
+            </lightning-layout-item>
+        </lightning-layout>
+
+    </template>
+
+    <template if:true={model3}>
+        <div>
+            <div>
+                <span style="font-size:24px; text-align: left"><strong>Please Review & Act on these Documents</strong></span><span style="float: right;font-size:24px;"><strong>Docusign</strong></span>
+            </div>
+            <br/>
+            <div><b>OPAF Care Connect</b></div>
+            <br/>
+            <p>Thank you for submitting the Patient Consent. Please Click the red button "PROCEED WITH OPAF APPLICATION" to continue the application process.</p>
+            <!-- <div class="slds-box" style="background:rgb(2, 153, 65);color:#FFFFFF">Docusign has been completed successfully</div> -->
+            <!--<div><lightning-input type="checkbox" label="I agree to use electronic records and signatures."></lightning-input></div>
+            <div><hr style="border: 0 none;border-top: 2px dashed #322f32;background: none;height:0;"/></div>-->
+            
+            <div title="" data-name="redirectiontoOPAFAllicationBoolean" onclick={handleClicks}><button type="button" style="height: 30px; width: 260px; background-color: #BA0517; color: rgb(255, 255, 255);">PROCEED WITH OPAF APPLICATION</button></div>
+        </div>
+    </template>
+</div>
+</template>

@@ -1,0 +1,44 @@
+<aura:component extends="forceCommunity:navigationMenuBase" implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes,force:appHostable,force:lightningQuickAction,forceCommunity:themeLayout" access="global" description="PublicCommTheme">
+    <aura:attribute name="search" type="Aura.Component[]" required="false"/>
+     <aura:attribute name="notifications" type="Aura.Component[]" required="false"/>
+    <aura:attribute name="profileMenu" type="Aura.Component[]" required="false"/>
+    <aura:attribute name="newHeader" type="Aura.Component[]" required="false"/>
+    <aura:attribute name="body" type="Aura.Component[]" required="false"/>
+    <aura:attribute name="footer" type="Aura.Component[]" required="false"/>
+    <aura:attribute name="contentfooter" type="Aura.Component[]" required="false"/>  
+    <aura:attribute name="announcements" type="Aura.Component[]" required="false"/>
+    <aura:attribute name="navBar" type="Aura.Component[]" required="false"/>
+    <aura:handler event="force:refreshView" action="{!c.updateRecord}"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <link href="{!$Resource.CSSOverrides}" rel="stylesheet" type="text/css"/>
+
+    <div>
+        <header class="clsContainer page-header">
+            <div class="logo"><img src="{!$Resource.OtsukaPageHeaderLogo}" alt="otsuka Logo" /></div>
+        
+            <section class="navigation">
+                {!v.newHeader}
+                <!-- <forceCommunity:notifications/> -->
+            </section>
+
+        </header>
+        
+        <div class="slds-is-relative solid-bg-light-blue " >
+            
+            <lightning:layout multipleRows="true" class="clsContainer " >
+                <lightning:layoutItem flexibility="grow" size="12" mediumDeviceSize="12" padding="horizontal-small" >
+                    {!v.body}
+                </lightning:layoutItem>
+            </lightning:layout>
+            
+            <!--FOOTER START-->
+            
+            <!-- FOOTER END-->
+        </div>
+
+        <div class="footer-container rounded-bg-light-blue">
+            {!v.footer}
+        </div>
+    </div>
+    
+</aura:component>

@@ -1,0 +1,233 @@
+<template>
+
+    <template if:true={showMain}>
+   <!-- <div class="canvas-element">
+        <p>Application #: 100001</p>
+        <p>Application Status: Enrolled</p>
+        <p>Enrollment End Date: 12/31/2021</p>
+        <p><br/></p>
+        <p><br/></p>
+    </div>
+<div class="slds-col slds-clearfix slds-size_12-of-12 slds-medium-size_6-of-12" dropzone="grid column 1">
+    <div class="canvas-element">
+        <p>Product: REXULTI</p>
+        <p>Shipment Status: Shipped</p>
+        <p><br/></p>
+        <p><br/></p>
+    </div>
+</div>
+<div class="canvas-element">
+<div class="slds-grid slds-m-bottom_x-small slds-wrap    ">
+<div class="slds-col slds-clearfix slds-size_12-of-12 slds-medium-size_6-of-12" dropzone="grid column 0">
+    <div class="canvas-element">
+        <p>Application #: 100001</p>
+        <p>Application Status: Enrolled</p>
+        <p>Enrollment End Date: <span style="color: rgb(139, 0, 0);"><u><strong>06/30/2021</strong></u></span></p>
+        <p><br/></p>
+        <p><br/></p>
+    </div>
+</div>
+<div class="slds-col slds-clearfix slds-size_12-of-12 slds-medium-size_6-of-12" dropzone="grid column 1">
+    <div class="canvas-element">
+        <p>Product: REXULTI</p>
+        <p>Shipment Status: Shipped</p>
+        <p><br/></p>
+        <p><br/></p>
+    </div>
+</div>
+</div>
+</div>-->
+<lightning-layout class="slds-m-top_none slds-p-around_small slds-p-top_small slds-p-right_small slds-p-bottom_small slds-p-left_small">
+    <lightning-layout-item size="8">
+        <div>
+            <ul class="slds-tabs_default__nav" role="tablist" style="visibility: visible;">
+                <li class="slds-tabs_default__item slds-is-active" title="My Workspace"><a class="slds-tabs_default__link" role="tab"><span>My Workspace</span></a></li>
+            </ul>
+            <div role="tabpanel" class="slds-clearfix slds-tabs_default__content slds-show" dropzone="Tab">
+                <div class="canvas-element">
+                    <div class="slds-accordion slds-is-open">
+                        <div class="slds-accordion__summary slds-clearfix">
+                            <div class="slds-section__title" dropzone="sectionDynamic summary">
+                                <div class="canvas-element--inline">
+                                    <div class="canvas-element"><button class="slds-button slds-theme_base slds-section__title-action   slds-button_base"><span>My OPAF Application</span></button></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-accordion__content slds-clearfix" dropzone="sectionDynamic body">
+                            <div class="canvas-element">
+                                <div class="slds-form slds-clearfix slds-form_stacked" dropzone="formLayout">
+                                    <div class="canvas-element" >
+                                        <div class="slds-grid slds-m-bottom_x-small slds-wrap    ">
+                                            <div class="slds-col slds-clearfix slds-size_12-of-12 slds-medium-size_6-of-12" dropzone="grid column 0">
+                                                <div class="canvas-element">
+                                                    <p>Application #: 100001</p>
+                                                    <p>Application Status: Enrolled</p>
+                                                    <p>Enrollment End Date: 12/31/2021</p>
+                                                    <p><br/></p>
+                                                    <p><br/></p>
+                                                </div>
+                                            </div>
+                                            <div class="slds-col slds-clearfix slds-size_12-of-12 slds-medium-size_6-of-12" dropzone="grid column 1">
+                                                <div class="canvas-element">
+                                                    <p>Product: REXULTI</p>
+                                                    <p>Shipment Status: Shipped</p>
+                                                    <p><br/></p>
+                                                    <p><br/></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="canvas-element">
+                                        <div class="slds-grid slds-m-bottom_x-small slds-wrap    ">
+                                            <div class="slds-col slds-clearfix slds-size_12-of-12 slds-medium-size_6-of-12" dropzone="grid column 0">
+                                                <div class="canvas-element">
+                                                    <p>Application #: 100001</p>
+                                                    <p>Application Status: Enrolled</p>
+                                                    <p>Enrollment End Date: <span style="color: rgb(139, 0, 0);"><u><strong>06/30/2021</strong></u></span></p>
+                                                    <p><br/></p>
+                                                    <p><br/></p>
+                                                </div>
+                                            </div>
+                                            <div class="slds-col slds-clearfix slds-size_12-of-12 slds-medium-size_6-of-12" dropzone="grid column 1">
+                                                <div class="canvas-element">
+                                                    <p>Product: REXULTI</p>
+                                                    <p>Shipment Status: Shipped</p>
+                                                    <p><br/></p>
+                                                    <p><br/></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="canvas-element" >
+                                        <div class="slds-grid slds-m-bottom_x-small slds-wrap    ">
+                                            <div class="slds-col slds-clearfix slds-size_12-of-12 slds-medium-size_6-of-12" dropzone="grid column 0">
+                                                <div class="canvas-element">
+                                                    <p>Application #: 100001</p>
+                                                    <p>Application Status: Not Submitted</p>
+                                                    <p>Enrollment End Date:&amp;nbsp;</p>
+                                                    <p><br/></p>
+                                                    <p><br/></p>
+                                                </div>
+                                            </div>
+                                            <div class="slds-col slds-clearfix slds-size_12-of-12 slds-medium-size_6-of-12" dropzone="grid column 1">
+                                                <div class="canvas-element">
+                                                    <p>Product: REXULTI</p>
+                                                    <p>Shipment Status:&amp;nbsp;</p>
+                                                    <p><br/></p>
+                                                    <p><br/></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="canvas-element">
+                                        <div class="slds-grid slds-m-bottom_x-small slds-wrap    ">
+                                            <div class="slds-col slds-clearfix slds-size_12-of-12 slds-medium-size_6-of-12" dropzone="grid column 0">
+                                                <div class="canvas-element" >
+                                                    <p><br/></p>
+                                                    <p>Application #: 100001</p>
+                                                    <p>Application Status: <strong><span style="color: rgb(139, 0, 0);">Missing Information</span></strong></p>
+                                                    <p>Missing Information:</p>
+                                                    <p><span style="color: rgb(139, 0, 0);"><strong>-Income Documentation</strong></span></p>
+                                                    <p><span style="color: rgb(139, 0, 0);"><strong>-Patient Signature</strong></span></p>
+                                                    <p>Enrollment End Date:&amp;nbsp;</p>
+                                                    <p><br/><span style="color: rgb(139, 0, 0);"><strong>Your Application is missing information. Please contact at OPAF at 1-855-727-6274. OPAF cannot process your application until all missing information has been submitted.</strong></span></p>
+                                                    <p><br/></p>
+                                                </div>
+                                            </div>
+                                            <div class="slds-col slds-clearfix slds-size_12-of-12 slds-medium-size_6-of-12" dropzone="grid column 1">
+                                                <div class="canvas-element">
+                                                    <p>Product: REXULTI</p>
+                                                    <p>Shipment Status:&amp;nbsp;</p>
+                                                    <p><br/></p>
+                                                    <p><br/></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="canvas-element">
+                                        <div class="slds-grid slds-m-bottom_x-small slds-wrap    ">
+                                            <div class="slds-col slds-clearfix slds-size_12-of-12 slds-medium-size_6-of-12" dropzone="grid column 0"></div>
+                                            <div class="slds-col slds-clearfix slds-size_12-of-12 slds-medium-size_6-of-12" dropzone="grid column 1"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="canvas-element">
+                    <div class="slds-accordion slds-is-open">
+                        <div class="slds-accordion__summary slds-clearfix">
+                            <div class="slds-section__title" dropzone="sectionDynamic summary">
+                                <div class="canvas-element--inline">
+                                    <div class="canvas-element"><button class="slds-button slds-theme_base slds-section__title-action   slds-button_base"><span>Portal Resources</span></button></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-accordion__content slds-clearfix" dropzone="sectionDynamic body">
+                            <div class="canvas-element">
+                                <div class="slds-form slds-clearfix slds-form_stacked" dropzone="formLayout">
+                                    <div class="canvas-element">
+                                        <div class="slds-grid slds-m-bottom_x-small slds-wrap    ">
+                                            <div class="slds-col slds-clearfix slds-size_12-of-12 slds-medium-size_6-of-12" dropzone="grid column 0">
+                                                <div class="canvas-element--inline">
+                                                    <div class="canvas-element" ><a class="slds-text-link" href="">User Guide</a></div>
+                                                </div>
+                                            </div>
+                                            <div class="slds-col slds-clearfix slds-size_12-of-12 slds-medium-size_6-of-12" dropzone="grid column 1">
+                                                <div class="canvas-element--inline">
+                                                    <div class="canvas-element"><a class="slds-text-link" href="">Paper Consent</a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="forceCommunityTileMenu">
+                <div class="slds-grid slds-wrap tileMenuItemList"></div>
+            </div>
+        </div>
+    </lightning-layout-item>
+    <lightning-layout-item size="4">
+        <div title="" onclick={handleOnHide}><button class="slds-button slds-button--brand actionButton uiButton" type="button" style="background-color: rgb(176, 28, 46); color: rgb(255, 255, 255);"><span class="label bBody" onclick={handleOnHide}>INITIATE NEW OPAF APPLICATION</span></button></div>
+        <div title=""><button class="slds-button slds-button--brand actionButton uiButton" type="button" style="background-color: rgb(176, 28, 46); color: rgb(255, 255, 255);"><span class="label bBody" onclick={handleOnHide}>FINISH INCOMPLETE APPLICATION</span></button></div>
+    </lightning-layout-item>
+</lightning-layout>
+
+</template>
+
+
+<template if:true={showType}>
+    <div>
+        <p><br/></p>
+        <p><span style="font-size: 18px; color: rgb(0, 25, 112);"><strong>OPAF Patient Consent</strong></span></p>
+        <p><br/></p>
+    </div>
+    <div>
+        <p><br/></p>
+        <p><span style="font-size: 18px; color: rgb(8, 7, 7);"><strong>Select the type of Consent</strong></span></p>
+        <p><br/></p>
+        <p><span style="font-size: 18px;">You have two options to initiate consent for your patient:</span></p>
+        <p><br/></p>
+    </div>
+    <lightning-radio-group label="Please select the Consent Type" options={options} type="radio"></lightning-radio-group>
+    <div>
+        <p>&nbsp; &nbsp;</p>
+        <p>&nbsp;&nbsp;</p>
+        <p>&nbsp;&nbsp;</p>
+        <p>&nbsp;&nbsp;</p>
+        <p><br/></p>
+    </div>
+    <lightning-button class="slds-theme_brand slds-button_outline-brand" variant="brand" label="CANCEL" onclick={handleOnCancel}></lightning-button>
+    <lightning-button class="slds-theme_brand slds-button_outline-brand" variant="brand" label="NEXT" onclick={handleOnNext}></lightning-button>
+   </template> 
+   <template if:true={showPatient}>
+       <c-opaf-patient-consent></c-opaf-patient-consent>
+   </template>
+</template>

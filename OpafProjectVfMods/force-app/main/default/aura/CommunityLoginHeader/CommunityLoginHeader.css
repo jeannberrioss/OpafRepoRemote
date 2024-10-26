@@ -1,0 +1,33 @@
+.THIS .clsContainer
+{
+	width: 100%;
+    margin: auto;
+}
+.THIS .clsdev
+{
+	margin-top: 35px; 
+}
+.THIS .fontsize
+{
+    font-weight: 700 !important;
+    font-family: muli,sans-serif;
+    color: #407cc9;
+    padding-bottom: 5px;
+    font-size:36px;
+    float: right;
+    
+}
+.THIS .sub-header
+{
+    font-family: Muli,sans-serif;
+    font-weight: 540;
+    font-size:1rem;
+    color: #000;
+}
+.THIS .menublock
+{
+    height: 50px;
+    background: #032a54;
+    border-bottom: 4px solid #a3afc2;
+    
+}

@@ -1,0 +1,83 @@
+<aura:component extends="forceCommunity:navigationMenuBase" implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes,force:appHostable,force:lightningQuickAction,forceCommunity:themeLayout" access="global" description="PublicCommTheme">
+    <aura:attribute name="search" type="Aura.Component[]" required="false"/>
+     <aura:attribute name="notifications" type="Aura.Component[]" required="false"/>
+    <aura:attribute name="profileMenu" type="Aura.Component[]" required="false"/>
+    <aura:attribute name="newHeader" type="Aura.Component[]" required="false"/>
+    <aura:attribute name="body" type="Aura.Component[]" required="false"/>
+    <aura:attribute name="footer" type="Aura.Component[]" required="false"/>
+    <aura:attribute name="contentfooter" type="Aura.Component[]" required="false"/>  
+    <aura:attribute name="announcements" type="Aura.Component[]" required="false"/>
+    <aura:attribute name="navBar" type="Aura.Component[]" required="false"/>
+    <aura:handler event="force:refreshView" action="{!c.updateRecord}"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <div class="slds-grid slds-gutters headerBack">
+        <!--
+        <div class="slds-col slds-size_3-of-12 slds-m-top_large slds-m-bottom_large ">
+            <lightning:layoutItem flexibility="grow" size="12" smallDeviceSize="12" mediumDeviceSize="8" largeDeviceSize="6" padding="horizontal-small" class="slds-is-relative slds-text-align_center">
+          <div class="logo"><img src="{!$Resource.otsukalogo}" alt="otsuka Logo" style="padding-left:50px"/></div>
+      </lightning:layoutItem>
+            <div class="cBrandingProfile" data-aura-rendered-by="265:0">
+                <div data-aura-rendered-by="267:0">
+                    <a class="cBrandingLogo" href="javascript:void(0);" title="Plantation Community" data-aura-rendered-by="268:0">
+                        <span class="assistiveText" data-aura-rendered-by="269:0">Plantation Community</span>
+                    </a>
+                </div>
+            </div>
+        </div> -->
+        
+        <div >
+			<div class="notifications">
+            <forceCommunity:notifications/>
+        </div>
+            <!--
+            <div class="notifications" style="size=10px">
+                {!v.notifications}
+            </div> -->
+
+           <!--div class="searchRegion" style="size=10px">
+                {!v.search}
+            </div-->
+          
+        </div>
+        <!--div class="slds-col slds-size_3-of-12 slds-m-top_large slds-m-bottom_large ">
+            <lightning:layout multipleRows="true" class="">
+                <lightning:layoutItem flexibility="grow" size="12" smallDeviceSize="6"  mediumDeviceSize="6" largeDeviceSize="6" padding="around-medium">
+                    {!v.profileMenu}
+                </lightning:layoutItem>
+            </lightning:layout>
+            
+        </div--> 
+        
+    </div>
+    <div>
+        <!--
+        <div class="navigation">
+            {!v.navBar}
+        </div> -->
+        <div class="newHeader">
+            {!v.newHeader}
+        </div>
+        <!--div class="mainContentArea">
+            {!v.body}
+        </div-->
+    </div>
+    
+    <div class="slds-is-relative" >
+        
+        <lightning:layout multipleRows="true" class="clsContainer" >
+            <lightning:layoutItem flexibility="grow" size="12" mediumDeviceSize="12" padding="horizontal-small" >
+                {!v.body}
+            </lightning:layoutItem>
+            
+            
+        </lightning:layout>
+        
+        <!--FOOTER START-->
+        <div class="footer">
+            {!v.footer}
+        </div>
+        <!-- FOOTER END-->
+    </div>
+    
+</aura:component>

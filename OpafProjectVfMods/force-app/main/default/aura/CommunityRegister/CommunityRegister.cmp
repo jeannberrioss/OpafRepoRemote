@@ -1,0 +1,230 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" controller="CustomLightningSelfRegisterController" access="global">
+    <aura:attribute name="accountId" type="String" required="false" description="accountId for creating the user. If not specified, it will create a PersonAccount if possible for B2C scenario. Or otherwise if it's in a community, the community's self-registration accountId will be used." />
+    <aura:attribute name="regConfirmUrl" type="String" required="false" />
+    <aura:attribute name="startUrl" type="String" required="false" description="The url you go to after a successful login" />
+    <aura:attribute name="showError" type="Boolean" required="true" description="" default="false" access="private" />
+    <aura:attribute name="errorMessage" type="String" required="false" description="" access="private" />
+    <aura:attribute name="firstnameLabel" type="String" required="false" default="First Name" />
+    <aura:attribute name="lastnameLabel" type="String" required="false" default="Last Name" />
+    <aura:attribute name="emailLabel" type="String" required="false" default="Email" />
+    <aura:attribute name="npiNumberLabel" type="String" required="false" default="NPI Number" />
+    <aura:attribute name="passwordLabel" type="String" required="false" default="Create Password" />
+    <aura:attribute name="confirmPasswordLabel" type="String" required="false" default="Confirm Password" />
+    <aura:attribute name="submitButtonLabel" type="String" required="false" default="Sign Up" />
+    <aura:attribute name="includePasswordField" type="Boolean" required="false" default="false" description="Whether to include password" />
+    <aura:attribute name="extraFieldsFieldSet" type="String" required="false" description="A field set name whose fields are desired for user registration" />
+    <aura:attribute name="extraFields" type="list" required="false" description="A field set name whose fields are desired for user registration" />
+    <aura:handler name="init" value="{!this}" action="{!c.initialize}" />
+    <aura:attribute name="expid" type="String" required="false" description="The branding experience ID" />
+    <aura:attribute name="options" type="List" access="PRIVATE" />
+    <aura:attribute name="selectedValue" type="String" access="PRIVATE" />
+    <aura:attribute name="suffixOptions" type="List" access="PRIVATE" />
+    <aura:attribute name="suffixSelectedValue" type="String" access="PRIVATE" />
+    <aura:attribute name="contactOptions" type="List" access="PRIVATE" />
+    <aura:attribute name="contactSelectedValue" type="String" access="PRIVATE" />
+    <aura:attribute name="contactTypeOptions" type="List" access="PRIVATE" />
+    <aura:attribute name="contactTypeSelectedValue" type="String" access="PRIVATE" />
+    <aura:attribute name="isPatient" type="Boolean" access="PRIVATE" />
+    <aura:registerevent name="sitePropagatedStartUrl" type="c:setStartUrl" />
+    <aura:handler name="init" value="{!this}" action="{!c.initialize}" />
+    <aura:dependency resource="c:setStartUrl" type="EVENT" />
+    <!-- Please uncomment
+    <aura:dependency resource="siteforce:registerQueryEventMap" type="EVENT"/>
+    -->
+    <aura:handler event="c:setStartUrl" action="{!c.setStartUrl}" />
+    <aura:handler event="c:setExpId" action="{!c.setExpId}" />
+    <aura:dependency resource="c:setExpId" type="EVENT" />
+    <aura:attribute name="Spinner" type="Boolean" />
+
+    <div>
+        <aura:if isTrue="{!v.Spinner}">
+            <div aura:id="spinnerId" class="slds-spinner_container">
+                <div class="slds-spinner--brand slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                    <span class="slds-assistive-text">Loading</span>
+                    <div class="slds-spinner__dot-a"></div>
+                    <div class="slds-spinner__dot-b"></div>
+                </div>
+            </div>
+        </aura:if>
+        <lightning:layout multipleRows="true">
+            <lightning:layoutItem class="content1" size="12" smallDeviceSize="12" mediumDeviceSize="12">
+                Create An Account
+            </lightning:layoutItem>
+            <lightning:layoutItem class="content2" size="12" smallDeviceSize="12" mediumDeviceSize="12">
+                <span style="font-family: Muli,sans-serif;font-size: 16px;color: #000;">
+                    All information will be validated before an enrollment decision can be made or determined.
+                </span>
+            </lightning:layoutItem>
+        </lightning:layout>
+        <aura:renderIf isTrue="{!v.showError}">
+            <div id="error">
+                <ui:outputRichText value="{!v.errorMessage}" />
+            </div>
+        </aura:renderIf>
+        <lightning:layout multipleRows="true">
+            <lightning:layoutItem class="content3" size="6" smallDeviceSize="12" mediumDeviceSize="12">
+                <abbr class="slds-required" title="required">* </abbr>
+                <span style="font-family: Muli,sans-serif;font-size: 16px;color: #000;">
+                    Indicates required field.
+                </span>
+            </lightning:layoutItem>
+            <lightning:layoutItem class="" size="6" smallDeviceSize="12" mediumDeviceSize="12">
+                <label class="slds-form-element__label userfirstname" for="form-element-05">
+                    First Name <abbr class="slds-required" title="required">* </abbr></label>
+            </lightning:layoutItem>
+            <lightning:layoutItem class="content4" size="6" smallDeviceSize="12" mediumDeviceSize="6">
+                <span id="search1-Span" onkeypress="{!c.onKeyUp}">
+                    <lightning:input value="" aura:id="firstname" variant="label-hidden" />
+                </span>
+            </lightning:layoutItem>
+            <lightning:layoutItem class="" size="6" smallDeviceSize="12" mediumDeviceSize="12">
+                <label class="slds-form-element__label userlastname" for="form-element-05">
+                    Last Name <abbr class="slds-required" title="required">* </abbr></label>
+            </lightning:layoutItem>
+            <lightning:layoutItem class="content5" size="6" smallDeviceSize="12" mediumDeviceSize="6">
+                <lightning:input value="" aura:id="lastname" variant="label-hidden" />
+            </lightning:layoutItem>
+            <lightning:layoutItem class="" size="6" smallDeviceSize="12" mediumDeviceSize="12">
+                <label class="slds-form-element__label useremail" for="form-element-05">
+                    Email Address <abbr class="slds-required" title="required">* </abbr></label>
+            </lightning:layoutItem>
+            <lightning:layoutItem class="content6" size="6" smallDeviceSize="12" mediumDeviceSize="6">
+                <lightning:input value="" aura:id="email" variant="label-hidden" />
+            </lightning:layoutItem>
+            <aura:if isTrue="{!!v.isPatient}">
+                <lightning:layoutItem class="" size="6" smallDeviceSize="12" mediumDeviceSize="12">
+                    <label class="slds-form-element__label useremail" for="form-element-05">
+                        NPI Number <abbr class="slds-required" title="required">* </abbr>
+                    </label>
+                </lightning:layoutItem>
+                <lightning:layoutItem class="content6" size="6" smallDeviceSize="12" mediumDeviceSize="6">
+                    <lightning:input value="" aura:id="npiNumber" variant="label-hidden" />
+                </lightning:layoutItem>
+            </aura:if>
+            <aura:renderIf isTrue="{!v.includePasswordField}">
+                <lightning:layoutItem class="" size="6" smallDeviceSize="12" mediumDeviceSize="12">
+                    <label class="slds-form-element__label useremail" for="form-element-05">
+                        Password <abbr class="slds-required" title="required">* </abbr></label>
+                </lightning:layoutItem>
+                <lightning:layoutItem class="content6" size="6" smallDeviceSize="12" mediumDeviceSize="6">
+                    <ui:inputSecret value="" aura:id="password" keyup="{!c.onKeyUp}"
+                        class="input sfdc_passwordinput sfdc" />
+                </lightning:layoutItem>
+                <lightning:layoutItem class="" size="6" smallDeviceSize="12" mediumDeviceSize="12">
+                    <label class="slds-form-element__label useremail" for="form-element-05">
+                        Confirm Password <abbr class="slds-required" title="required">* </abbr></label>
+                </lightning:layoutItem>
+                <lightning:layoutItem class="content6" size="6" smallDeviceSize="12" mediumDeviceSize="6">
+                    <ui:inputSecret value="" aura:id="confirmPassword" keyup="{!c.onKeyUp}"
+                        class="input sfdc_passwordinput sfdc" />
+                </lightning:layoutItem>
+            </aura:renderIf>
+            <aura:if isTrue="{!!v.isPatient}">
+                <lightning:layoutItem class="" size="6" smallDeviceSize="12" mediumDeviceSize="12">
+                    <label class="slds-form-element__label useremail" for="form-element-05">
+                        Contact Type<abbr class="slds-required" title="required">* </abbr></label>
+                </lightning:layoutItem>
+                <lightning:layoutItem class="content6" size="6" smallDeviceSize="12" mediumDeviceSize="6">
+                    <lightning:select class="noAsterisk" required="true" name="contacttype" aura:id="contacttype"
+                        value="" variant="label-hidden" messageWhenValueMissing="Choose one!">
+                        <aura:iteration items="{!v.contactTypeOptions}" var="option">
+                            <option text="{!option.label}" value="{!option.id}" selected="{!option.selected}" />
+                        </aura:iteration>
+                    </lightning:select>
+                </lightning:layoutItem>
+            </aura:if>
+            <lightning:layoutItem class="" size="6" smallDeviceSize="12" mediumDeviceSize="12">
+                <label class="slds-form-element__label useremail" for="form-element-05">
+                    Salutation </label>
+            </lightning:layoutItem>
+            <lightning:layoutItem class="content6" size="6" smallDeviceSize="12" mediumDeviceSize="6">
+                <lightning:select class="noAsterisk" name="salutation" aura:id="salutation" value=""
+                    variant="label-hidden">
+                    <aura:iteration items="{!v.options}" var="option">
+                        <option text="{!option.label}" value="{!option.id}" selected="{!option.selected}" />
+                    </aura:iteration>
+                </lightning:select>
+            </lightning:layoutItem>
+
+            <lightning:layoutItem class="" size="6" smallDeviceSize="12" mediumDeviceSize="12">
+                <label class="slds-form-element__label useremail" for="form-element-05">
+                    Suffix </label>
+            </lightning:layoutItem>
+            <lightning:layoutItem class="content6" size="6" smallDeviceSize="12" mediumDeviceSize="6">
+                <lightning:select class="noAsterisk" name="suffix" aura:id="suffix" value="" variant="label-hidden">
+                    <aura:iteration items="{!v.suffixOptions}" var="option">
+                        <option text="{!option.label}" value="{!option.id}" selected="{!option.selected}" />
+                    </aura:iteration>
+                </lightning:select>
+            </lightning:layoutItem>
+
+            <lightning:layoutItem class="" size="6" smallDeviceSize="12" mediumDeviceSize="12">
+                <label class="slds-form-element__label userfirstname" for="form-element-05">
+                    Work Phone <abbr class="slds-required" title="required">* </abbr></label>
+            </lightning:layoutItem>
+            <lightning:layoutItem class="content6" size="6" smallDeviceSize="12" mediumDeviceSize="6">
+                <lightning:input type="tel" value="" aura:id="workphone" variant="label-hidden" />
+
+            </lightning:layoutItem>
+            <lightning:layoutItem class="" size="6" smallDeviceSize="12" mediumDeviceSize="12">
+                <label class="slds-form-element__label userfirstname" for="form-element-05">
+                    Mobile Phone </label>
+            </lightning:layoutItem>
+            <lightning:layoutItem class="content6" size="6" smallDeviceSize="12" mediumDeviceSize="6">
+                <lightning:input type="tel" value="" aura:id="mobilephone" variant="label-hidden" />
+
+            </lightning:layoutItem>
+
+            <lightning:layoutItem class="" size="6" smallDeviceSize="12" mediumDeviceSize="12">
+                <label class="slds-form-element__label userfirstname" for="form-element-05">
+                    Work Fax </label>
+            </lightning:layoutItem>
+            <lightning:layoutItem class="content6" size="6" smallDeviceSize="12" mediumDeviceSize="6">
+                <lightning:input type="tel" value="" aura:id="workfax" variant="label-hidden" />
+
+            </lightning:layoutItem>
+            <lightning:layoutItem class="" size="6" smallDeviceSize="12" mediumDeviceSize="12">
+                <label class="slds-form-element__label useremail" for="form-element-05">
+                    Preferred Method of Contact </label>
+            </lightning:layoutItem>
+            <lightning:layoutItem class="content6" size="6" smallDeviceSize="12" mediumDeviceSize="6">
+                <lightning:select class="noAsterisk" name="methodOfContact" aura:id="methodOfContact" value=""
+                    variant="label-hidden">
+                    <aura:iteration items="{!v.contactOptions}" var="option">
+                        <option text="{!option.label}" value="{!option.id}" selected="{!option.selected}" />
+                    </aura:iteration>
+                </lightning:select>
+            </lightning:layoutItem>
+
+
+            <aura:iteration aura:id="extraFields" items="{!v.extraFields}" var="curField" indexVar="index">
+                <lightning:layoutItem class="" size="6" smallDeviceSize="12" mediumDeviceSize="12">
+                    <label class="slds-form-element__label useremail" for="form-element-05">
+                        {!curField.label} </label>
+                </lightning:layoutItem>
+                <lightning:layoutItem class="content6" size="6" smallDeviceSize="12" mediumDeviceSize="6">
+
+                    <ui:inputText value="{!curField.value}" aura:id="{!curField.fieldPath}" keyup="{!c.onKeyUp}"
+                        class="slds-input" />
+
+                </lightning:layoutItem>
+            </aura:iteration>
+
+        </lightning:layout>
+        <lightning:layout multipleRows="true">
+
+            <lightning:layoutItem class="content8" size="6" smallDeviceSize="12" mediumDeviceSize="6">
+                <div>
+                    <center>
+                        <lightning:button variant="brand" aura:id="cancelButton" label="Cancel"
+                            onclick="{!c.handleCancel}" class="contentbutton" />
+                        <lightning:button variant="brand" aura:id="submitButton" label="{!v.submitButtonLabel}"
+                            onclick="{!c.handleSelfRegister}" class="contentbutton" />
+                    </center>
+                </div>
+            </lightning:layoutItem>
+            <lightning:layoutItem class="" size="6" smallDeviceSize="12" mediumDeviceSize="6">
+            </lightning:layoutItem>
+        </lightning:layout>
+    </div>
+</aura:component>

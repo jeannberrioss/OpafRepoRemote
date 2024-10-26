@@ -34,7 +34,7 @@
     </types>
  <types>
         <members>*</members>
-        <name>EmailTemplate</name>
+        <name>Email</name>
     </types>
     <version>62.0</version>
 </Package>

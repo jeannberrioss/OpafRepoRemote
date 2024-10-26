@@ -1,0 +1,43 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <!-- Modal popup -->
+    <div aura:id="myModal" role="dialog" tabindex="-1" aria-labelledby="header53" aria-modal="true"
+         class="slds-modal slds-fade-in-open slds-modal_medium ">
+        
+        <div class="slds-modal__container"> 
+            
+            
+            <div class="slds-modal__content slds-p-around_medium Top">
+                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="{!c.closeModal}">
+                    <lightning:icon iconName="utility:close" alternativeText="Close" class="my-icon"  />
+                </button> <br></br>
+                <img class="slds-align_absolute-center" src="{!$Resource.OpafLogo}" width="83" height="56"/>
+                <br/>
+                <h1 id="header53" class="slds-text-heading_medium slds-align_absolute-center"><B><U>IMPORTANT NOTICE: UNDER MAINTENANCE</U></B></h1>
+                <h1 id="header53" class="slds-text-heading_medium1 slds-align_absolute-center"><B>OPAF Care Connect Patient Portal</B></h1>
+                <p class="H1">The OPAF Care Connect Patient Portal is currently under maintenance. At this time, users will NOT be able to register, log in or access information through this platform. This will NOT affect enrollment processing, enrollment status or shipment of medication. </p>
+                <br></br>
+                <p class="H1"> Patients &#38; Prescribers, please use <a class="H2" href="https://www.otsukapatientassistance.com/patient-forms"> OPAF | Patient Forms </a> to download the paper applications.</p>
+                <br></br>
+                <p class="H1">If there are any questions, please contact OPAF at 1-855-727-6274, Monday through Friday from 8am to 8pm ET.</p>
+                <br></br>
+                <p class="H1">We appreciate your patience while we update the OPAF Care Connect Portal.</p>
+            </div>
+            <div class="slds-modal__content slds-p-around_medium">
+                <div class="slds-modal__content slds-p-around_medium">
+                    <div class="slds-grid slds-grid_align-end">
+                        <div class="slds-col">
+                            <p>August 2023</p>
+                        </div>
+                        <div class="slds-col slds-grow-none slds-m-left_small">
+                            <p>PAUS23EUC0124</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Backdrop -->
+    <div aura:id="myModalBackdrop" class="slds-backdrop slds-backdrop_open"></div>
+</aura:component>

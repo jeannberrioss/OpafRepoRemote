@@ -1,0 +1,686 @@
+<apex:component controller="OPAF_NeuroscienceEnrollmentVfComponent" access="global" >
+    <apex:attribute name="CaseRec" type="Id" description="Id of the Case" assignTo="{!CaseRecId}" />
+    <table style="font-family: Muli,sans-serif;margin-top:65px;" width="100%">
+        <tr style="color:#426bba">
+            
+            <td style="font-family: Muli,sans-serif;font-size:20px;">
+                <center>
+                    <span style="font-family: Muli,sans-serif;font-size:20px;">OTSUKA PATIENT ASSISTANCE FOUNDATION, INC.</span><br/>
+                    <span style="font-family: Muli,sans-serif;font-size:20px;">Rx TEMPLATE</span><br/>
+                    <span style="font-family: Muli,sans-serif;font-size:20px;color:#b01c2c;font-weight:500" >FOR ABILIFY MAINTENA® (aripiprazole) </span><br/>
+                </center>
+            </td>
+            
+        </tr>
+    </table>
+    <hr style="size:10px;color:#407cc9;margin-top:-2px;margin-bottom:15px;"/>
+    
+    <table style="font-family: Muli,sans-serif;font-size:9px;margin-top:-5px;font-color:#404040;" width="100%">
+        <tr>
+            <td style="font-size:13px;font-family: Muli,sans-serif;text-align: center;color:white;background-color:#b01c2c;padding:2px 2px 2px 2px;">
+                <b>PRESCRIBER INFORMATION</b>
+            </td>
+            <td style="font-size:13px;font-family: Muli,sans-serif;text-align: center;color:white;background-color:#b01c2c;padding:2px 2px 2px 2px;">
+                <b>PRESCRIPTION INFORMATION</b>
+            </td>
+        </tr>
+        
+        <tr>
+            <!---left side pannel----------------------------->
+            
+            <td style="width:50%;">
+                <table style="width:95%;margin-top:-25px;">
+                    <tr>
+                        <td>
+                            Prescriber First Name
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border:1px solid black;height:20px;width:100%;Padding-left:5px;">
+                            {!caserecord.Prescriber_First_Name2__c}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Prescriber Last Name
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border:1px solid black;height:20px;width:100%;Padding-left:5px;">
+                             {!caserecord.Prescriber_Last_Name2__c} 
+                        </td>
+                    </tr>
+                    
+                    <tr >
+                        <td style="width:90%">
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td   style="width:33%">State License #</td>
+                                    <td   style="width:33%">DEA #</td>
+                                    <td    style="width:34%">NPI #</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td  style="width:90%">
+                            <table class="slds-scope" style="height:18px;border-collapse: collapse;width:100%;">
+                                <tr>
+                                    <td style="width:33%;border:1px solid black;height:18px;padding-left:5px;">
+                                        {!caserecord.Prescriber__r.State_License__c}
+                                    </td>
+                                    <td style="width:33%;border:1px solid black;height:18px;paddding-left:5px;">
+                                        {!caserecord.Prescriber__r.DEA__c}
+                                    </td>
+                                    <td style="width:34%;border:1px solid black;height:18px;padding-left:5px;">
+                                       {!caserecord.Prescriber__r.NPI__c}
+                                    </td>
+                                    
+                                </tr>
+                            </table>   
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <table class="slds-scope" style="width:100%;border-collapse: collapse;height:18px;">
+                                <tr>
+                                    <td style="width:30%;">
+                                        <table style="width:100%"> 
+                                            <tr>
+                                                <td style="width:50%;">Tax ID #</td>
+                                                <td style="width:50%;"> Facility Type</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table class="slds-scope" style="width:100%;height:18px;border-collapse: collapse;">
+                                <tr>
+                                    <td style="width:50%;border:1px solid black;height:18px;border-top:1px solid light black;padding-left:5px;">
+                                         {!caserecord.Prescriber__r.Tax_Id__c}
+                                    </td>
+                                    <td style="width:50%;border:1px solid black;height:18px;border-top:1px solid lightblack;padding-left:5px;">
+                                        {!caserecord.Facility__r.Facility_Type__c}
+                                    </td>
+                                    
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Facility name
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border:1px solid black;height:20px;width:100%;Padding-left:5px;">
+                            {!caserecord.Facility__r.Name}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Address
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border:1px solid black;height:20px;width:100%;Padding-left:5px;">
+                            {!caserecord.Facility__r.Street_Address__c} &nbsp; {!caserecord.Facility__r.Address_Line_2__c}
+                        </td>
+                    </tr>
+                    <tr >
+                        <td style="width:90%">
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td   style="width:50%">City </td>
+                                    <td   style="width:20%">State</td>
+                                    <td    style="width:30%">Zip</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td  style="width:90%">
+                            <table class="slds-scope" style="height:18px;border-collapse: collapse;width:100%;">
+                                <tr>
+                                    <td style="width:50%;border:1px solid black;height:18px;padding-left:5px;">
+                                        {!caserecord.Facility__r.City__c}
+                                    </td>
+                                    <td style="width:20%;border:1px solid black;height:18px;padding-left:5px;">
+                                       {!caserecord.Facility__r.state__c}
+                                    </td>
+                                    <td style="width:30%;border:1px solid black;height:18px;padding-left:5px;">
+                                        {!caserecord.Facility__r.Zip_Code__c }
+                                    </td>
+                                    
+                                </tr>
+                            </table>   
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <table style="width:100%">
+                                <tr>
+                                    <td style="width:50%">
+                                        Phone 
+                                    </td>
+                                    <td style="width:50%">
+                                        Fax
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table class="slds-scope" style="height:18px;border-collapse: collapse;width:100%;margin-top:-5px;">
+                                <tr>
+                                    <td style="width:50%;border:1px solid black;height:18px;padding-left:5px;">
+                                         {!caserecord.Facility__r.phone}
+                                    </td>
+                                    <td style="width:50%;border:1px solid black;height:18px;padding-left:5px;">
+                                        {!caserecord.Facility__r.Fax}
+                                    </td>
+                                </tr>
+                            </table>   
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td style="background-color:#b01c2c;font-size:12px;font-family: Muli,sans-serif;text-align: center;color:white;padding:2px 2px 2px 2px;width:100%;">
+                            <b>PRESCRIPTION SHIPMENT INFORMATION</b>
+                        </td>
+                    </tr>
+                    
+                    
+                    <tr>
+                        <td>
+                            Receiving Facility Name
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border:1px solid black;height:20px;width:100%;Padding-left:5px;">
+                            <apex:outputPanel rendered="{!caserecord.Ship_Type__c != 'Prescribing Provider'}">{!caserecord.Ship_Care_To__c}</apex:outputPanel>
+                            <apex:outputPanel rendered="{!caserecord.Ship_Type__c == 'Prescribing Provider'}">{!caserecord.Facility__r.Name}</apex:outputPanel>
+                            
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Address
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border:1px solid black;height:20px;width:100%;Padding-left:5px;">
+                            <apex:outputPanel rendered="{!caserecord.Ship_Type__c != 'Prescribing Provider'}">{!caserecord.Ship_Street_Address__c}&nbsp;{!caserecord.Ship_Address_Line2__c}</apex:outputPanel>
+                            <apex:outputPanel rendered="{!caserecord.Ship_Type__c == 'Prescribing Provider'}">{!caserecord.Facility__r.Street_Address__c}&nbsp;{!caserecord.Facility__r.Address_Line_2__c}</apex:outputPanel>
+                            
+                        </td>
+                    </tr>
+                    
+                    
+                    <tr >
+                        <td style="width:90%">
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td   style="width:60%">City </td>
+                                    <td   style="width:20%">State</td>
+                                    <td    style="width:20%">Zip</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td  style="width:90%">
+                            <table class="slds-scope" style="height:18px;border-collapse: collapse;width:100%;">
+                                <tr>
+                                    <td style="width:60%;border:1px solid black;height:18px;padding-left:5px;">
+                                        <apex:outputPanel rendered="{!caserecord.Ship_Type__c != 'Prescribing Provider'}">{!caserecord.Ship_City__c}</apex:outputPanel>
+                                        <apex:outputPanel rendered="{!caserecord.Ship_Type__c == 'Prescribing Provider'}">{!caserecord.Facility__r.City__c}</apex:outputPanel>
+                                        
+                                    </td>
+                                    <td style="width:20%;border:1px solid black;height:18px;padding-left:5px;">
+                                        <apex:outputPanel rendered="{!caserecord.Ship_Type__c != 'Prescribing Provider'}">{!caserecord.Ship_State__c}</apex:outputPanel>
+                                        <apex:outputPanel rendered="{!caserecord.Ship_Type__c == 'Prescribing Provider'}">{!caserecord.Facility__r.State__c}</apex:outputPanel>
+                                        
+                                    </td>
+                                    <td style="width:20%;border:1px solid black;height:18px;padding-left:5px;">
+                                        <apex:outputPanel rendered="{!caserecord.Ship_Type__c != 'Prescribing Provider'}"> {!caserecord.Ship_Zip__c}</apex:outputPanel>
+                                        <apex:outputPanel rendered="{!caserecord.Ship_Type__c == 'Prescribing Provider'}">{!caserecord.Facility__r.Zip_Code__c}</apex:outputPanel>
+                                        
+                                    </td>
+                                    
+                                </tr>
+                            </table>   
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <table class="slds-scope" style="width:100%;border-collapse: collapse;height:18px;">
+                                <tr>
+                                    <td style="width:30%;">
+                                        <table style="width:100%"> 
+                                            <tr>
+                                                <td style="width:50%;">
+                                                    Phone
+                                                </td>
+                                                <td style="width:50%;">
+                                                    Fax 
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table class="slds-scope" style="width:100%;height:18px;border-collapse: collapse;">
+                                <tr>
+                                    <td style="width:50%;border:1px solid black;height:18px;border-top:1px solid light black;padding-left:5px;">
+                                         <apex:outputPanel rendered="{!caserecord.Ship_Type__c != 'Prescribing Provider'}">  {!caserecord.Ship_Phone__c}</apex:outputPanel>
+                                        <apex:outputPanel rendered="{!caserecord.Ship_Type__c == 'Prescribing Provider'}">{!caserecord.Facility__r.Phone}</apex:outputPanel>
+                                        
+                                       
+                                    </td>
+                                    <td style="width:50%;border:1px solid black;height:18px;border-top:1px solid lightblack;padding-left:5px;">
+                                         <apex:outputPanel rendered="{!caserecord.Ship_Type__c != 'Prescribing Provider'}">  {!caserecord.Ship_Fax__c}</apex:outputPanel>
+                                        <apex:outputPanel rendered="{!caserecord.Ship_Type__c == 'Prescribing Provider'}">{!caserecord.Facility__r.Fax}</apex:outputPanel>
+                                         
+                                       
+                                    </td>
+                                    
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            &nbsp;
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            
+            <!---right side pannel----------------------------->
+            <td style="width:50%;">
+                
+                <table style="width:100%;margin-top:0px;">
+                    <tr>
+                        <td>
+                            Patient First Name
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border:1px solid black;height:20px;width:100%;Padding-left:5px;">
+                            {!caserecord.Patient__r.Firstname}
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            Patient Last Name
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border:1px solid black;height:20px;width:100%;Padding-left:5px;">
+                             {!caserecord.Patient__r.Lastname}
+                        </td>
+                    </tr>
+                    <!--  <tr>
+<td>
+---------------------------------------
+</td>
+</tr> -->
+                    
+                    <tr>
+                        <td>
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td style="width: 40%;">
+                                        Patient DOB (mm/dd/yyyy):
+                                    </td>
+                                    <td  style="width:50%;border:1px solid black;height:20px;Padding-left:5px;">
+                                         <apex:outputText value=" {0,date, MM/dd/yyyy}"> 
+                                            <apex:param value="{!caserecord.Patient__r.Birthdate}" />
+                                        </apex:outputText>
+                                    </td>
+                                    
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    
+                    <!--  <tr>
+<td>
+----------------------------------------------------
+</td>
+</tr> -->
+                    <tr>
+                        <td>
+                            Address
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border:1px solid black;height:20px;width:100%;Padding-left:5px;">
+                             {!caserecord.Patient__r.Street_Address__c} &nbsp; {!caserecord.Patient__r.Address_Line_2__c}
+                        
+                        </td>
+                    </tr>
+                    
+                    <tr >
+                        <td style="width:90%">
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td   style="width:50%">City </td>
+                                    <td   style="width:20%">State</td>
+                                    <td    style="width:30%">Zip</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td  style="width:90%">
+                            <table class="slds-scope" style="height:18px;border-collapse: collapse;width:100%;">
+                                <tr>
+                                    <td style="width:50%;border:1px solid black;height:18px;Padding-left:5px;">
+                                        {!caserecord.Patient__r.City__c}
+                                    </td>
+                                    <td style="width:20%;border:1px solid black;height:18px;Padding-left:5px;">
+                                       {!caserecord.Patient__r.State__c}
+                                    </td>
+                                    <td style="width:30%;border:1px solid black;height:18px;Padding-left:5px;">
+                                        {!caserecord.Patient__r.Zip_Code__c}
+                                    </td>
+                                    
+                                </tr>
+                            </table>   
+                        </td>
+                    </tr>
+                    <!--   <tr>
+<td>
+------------------------------------------------
+</td>
+</tr> -->
+                    
+                    <tr >
+                        <td style="width:90%">
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td   style="width:45%">Product Name</td>
+                                    <td   style="width:10%"></td>
+                                    <td    style="width:45%">ICD-10 code:</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td  style="width:90%">
+                            <table class="slds-scope" style="height:18px;border-collapse: collapse;width:100%;">
+                                <tr>
+                                    <td style="width:45%;border:1px solid black;height:18px;Padding-left:5px;">
+                                       {!caserecord.Product__c}
+                                    </td>
+                                    <td style="width:10%;height:18px;Padding-left:5px;">
+                                        <span> </span>
+                                    </td>
+                                    <td style="width:45%;border:1px solid black;height:18px;Padding-left:5px;">
+                                       {!caserecord.ICD_10_Diagnosis_Code__c}
+                                    </td>
+                                    
+                                </tr>
+                            </table>   
+                        </td>
+                    </tr>
+                    
+                    <!--   <tr>
+<td>
+------------------------------------------------------------
+</td>
+</tr> -->
+                    <tr>
+                        <td>
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td style="width: 35%;">
+                                        
+                                        Next Date Of Injection (mm/dd/yyy):
+                                    </td>
+                                    <td style="border:1px solid black;height:20px;width:100%;Padding-left:5px;width: 40%;">
+                                        <apex:outputText value=" {0,date, MM/dd/yyyy}"> 
+                                            <apex:param value="{!caserecord.Prescription1__r.Next_Injection__c}" />
+                                        </apex:outputText>
+                                          
+                                    </td>
+                                    
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr >
+                        <td style="width:90%">
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td   style="width:35%">Dosage (mg):</td>
+                                    <td   style="width:5%"></td>
+                                    <td    style="width:25%">Quantity:</td>
+                                    <td   style="width:5%"></td>
+                                    <td    style="width:25%">Number Of Refills:</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td  style="width:90%">
+                            <table class="slds-scope" style="height:18px;border-collapse: collapse;width:100%;">
+                                <tr>
+                                    <td style="width:35%;border:1px solid black;height:18px;padding-left:5px;">
+                                         {!caserecord.Prescription1__r.Dosage__c}
+                                    </td>
+                                    <td style="width:5%;height:18px;">
+                                    </td>
+                                    <td style="width:25%;border:1px solid black;height:18px;padding-left:5px;">
+                                         {!caserecord.Prescription1__r.Quantity__c} 
+                                    </td>
+                                    <td style="width:5%;height:18px;padding-left:5px;">
+                                         
+                                    </td>
+                                    <td style="width:25%;border:1px solid black;height:18px;padding-left:5px;">
+                                       {!caserecord.Prescription1__r.Number_of_Refills__c}
+                                    </td>
+                                </tr>
+                            </table>   
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td>
+                                        Administration Method (check one):
+                                    </td>
+                                    <td>
+                                        <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px" rendered="{!IF(caserecord.Prescription1__r.Administration_Method__c == null,true,false)}"/>
+                                        <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px" rendered="{!IF(CONTAINS(caserecord.Prescription1__r.Administration_Method__c,'Vial kit'),true,false)}"/>
+                                        <apex:image value="{!URLFOR($Resource.OPAFCheckedBox)}" rendered="{!IF(CONTAINS(caserecord.Prescription1__r.Administration_Method__c,'Dual chamber syringe'),true,false)}" width="15px" />
+                                    </td>
+                                    <td>
+                                        Dual-chamber syringe or
+                                    </td>
+                                    <td>
+                                        <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px" rendered="{!IF(caserecord.Prescription1__r.Administration_Method__c == null,true,false)}"/>
+                                      <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px" rendered="{!IF(CONTAINS(caserecord.Prescription1__r.Administration_Method__c,'Dual chamber syringe'),true,false)}"/>
+                                        <apex:image value="{!URLFOR($Resource.OPAFCheckedBox)}" rendered="{!IF(CONTAINS(caserecord.Prescription1__r.Administration_Method__c,'Vial kit'),true,false)}" width="15px" /> 
+                                    </td>
+                                    <td>
+                                        Vial kit
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Directions:
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border:1px solid black;height:28px;width:100%;">
+                             {!caserecord.Prescription1__r.Directions__c}
+                        </td>
+                    </tr>
+                    <tr><td></td></tr>
+                    <tr><td></td></tr>
+                    <tr>
+                        <td>
+                            Titration directions, if needed:
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border:1px solid black;height:28px;width:100%;">
+                            {!caserecord.Prescription1__r.Titration_Directions__c}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td>
+                                        
+                                        <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px" rendered="{!caserecord.Prescription1__r.Dispense_as_Written__c == false}"  /> 
+                                        <apex:image value="{!URLFOR($Resource.OPAFCheckedBox)}" rendered="{!caserecord.Prescription1__r.Dispense_as_Written__c == true}"  width="15px" />
+                                    </td>
+                                    <td>
+                                        Dispense as Written
+                                    </td>
+                                    <td>
+                                        
+                                        <b>This will be the patient's first administration of ABILIFY MAINTENA?</b>
+                                    </td>
+                                    <td>
+                                     <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px" rendered="{!IF(caserecord.ABILIFY_MAINTENA_First_Administration__c == null,true,false)}"/>
+                                        <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px" rendered="{!IF(CONTAINS(caserecord.ABILIFY_MAINTENA_First_Administration__c,'No'),true,false)}"/>
+                                        <apex:image value="{!URLFOR($Resource.OPAFCheckedBox)}" rendered="{!IF(CONTAINS(caserecord.ABILIFY_MAINTENA_First_Administration__c,'Yes'),true,false)}" width="15px" />
+                                 </td>
+                                   <td>
+                                    Yes
+                                   </td>
+                                  <td>
+                                      <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px" rendered="{!IF(caserecord.ABILIFY_MAINTENA_First_Administration__c == null,true,false)}"/>
+                                        <apex:image value="{!URLFOR($Resource.UnCheckBox)}" width="15px" rendered="{!IF(CONTAINS(caserecord.ABILIFY_MAINTENA_First_Administration__c,'Yes'),true,false)}"/>
+                                        <apex:image value="{!URLFOR($Resource.OPAFCheckedBox)}" rendered="{!IF(CONTAINS(caserecord.ABILIFY_MAINTENA_First_Administration__c,'No'),true,false)}" width="15px" />
+                                   
+                                 </td>
+                                 <td>
+                                    No
+                                 </td>
+                                    
+                                </tr>
+                            </table>
+                        </td>
+                        
+                    </tr>  
+                    <tr>
+                        <td>
+                            <p style="text-align:justify;font-size:7px;">I appoint the Otsuka Patient Assistance Foundation, Inc. (hereafter, referred to as OPAF) to convey this prescription
+                                to the dispensing pharmacy. I certify that therapy with the above-mentioned product is medically necessary for
+                                this patient and I have reviewed the current Prescribing Information for the prescribed product. I attest that I am not
+                                on the HHS/OIG List of Excluded Individuals and Entities and that I am presently authorized under state
+                                law to prescribe this medication. I authorize and appoint OPAF to convey on my behalf any prescriptioninformation delivered to the dispensing pharmacy. For the purposes of transmitting this prescription, I authorize
+                                OPAF and its affiliates as my agent for these limited purposes to forward this prescription electronically, or via fax,
+                                or via mail to the dispensing pharmacy. I certify that any medication received will be used only for the patient
+                                named on this application and will not be offered for sale, trade, or barter. I acknowledge that OPAF is a free
+                                goods, non-profit program that assists patients that have been approved for assistance by meeting specific criteria. I
+                                acknowledge, that at any time, I can change or withdraw this prescription on the patient’s behalf due to the medical
+                                needs of the patient by calling 1-855-727-6274 or by sending a written notice to OPAF at Otsuka Patient Assistance
+                                Foundation Inc., PO Box 3640, Gaithersburg, MD 20885-3640. I understand that OPAF may revise, change,
+                                or terminate programs at any time.</p>
+                        </td>  
+                    </tr>
+                </table>                
+            </td>
+            
+        </tr>
+        
+    </table>
+    <br/>
+    <table class="slds-scope" style="width:90%;border-collapse: collapse;font-family: Muli,sans-serif;font-size:9px;">
+        <tr>
+            <td style="width:30%;">
+                
+            </td>
+            <td style="width:50%;">
+              <center>Prescriber signature </center> 
+            </td>
+            <td style="width:20%;">
+                Date (mm/dd/yyyy)
+            </td>
+            
+        </tr>
+    </table>
+    
+    <table class="slds-scope" style="width:90%;border-collapse: collapse;">
+        <tr>
+            <td style="width:30%;padding-right:10px;">
+                <apex:image value="{!URLFOR($Resource.OPAFAbilifySignlogo)}"  height="35px"   style="float:right"   /> 
+            </td>
+            <td style="width:50%;border:1px solid black;height:38px;border-top:1px solid light black;padding-left:5px;">
+                
+            </td>
+            <td style="width:20%;border:1px solid black;height:38px;border-top:1px solid lightblack;padding-left:5px;">
+                
+            </td>
+            
+        </tr>
+       <center> <span style="font-family: Muli,sans-serif;font-size:10px;">Stamps are not allowed, must be original signatur</span></center>
+    </table>
+    <table style="font-family: Muli,sans-serif;" width="100%">
+        <tr><td></td></tr>
+    </table>
+    <table style="font-family: Muli,sans-serif;" width="100%">
+        <tr>
+            <td >
+               <center>   <apex:image value="{!URLFOR($Resource.Abilify1)}"  height="45px"  /> </center>
+            </td>
+        </tr> 
+    </table>
+    <table style="font-family: Muli,sans-serif;font-size:12px;" width="100%" >
+        
+        <tr>
+            <td style="text-align:center;font-size:13px;" colspan="2">
+                <span style="text-align:center;font-size:13px;margin-left:30px;">Please see <a href="https://www.otsuka-us.com/sites/g/files/qhldwo3326/files/media/static/Abilify-M-PI.pdf">FULL PRESCRIBING INFORMATION </a>, including <b>BOXED WARNING</b></span>
+            </td>
+        </tr>
+    </table>
+</apex:component>

@@ -1,0 +1,287 @@
+.THIS .content1
+{   
+    font-family: Muli,sans-serif;
+    padding: 25px 0px 0px 25px;
+    color: #032a54;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 1.5;
+}
+.THIS .content2    
+{
+    font-family: Muli,sans-serif;
+    font-style: italic;
+    font-weight: 500;
+    color: #000;
+    font-size: 1rem;
+    line-height: 1.5;
+    padding: 0px 0px 0px 25px;
+    margin-bottom:15px;
+}
+.THIS .content3
+{
+    font-family: Muli,sans-serif;
+    font-size: 1rem;
+    color: #000;
+    padding: 0px 0px 0px 25px;
+     margin-bottom:15px;
+    font-weight: 500;
+} 
+.THIS .content4
+{
+    
+    font-family: Muli,sans-serif;
+    padding: 0px 0px 0px 25px;
+    margin-bottom:15px;
+}
+.THIS .content5
+{
+font-family: Muli,sans-serif;
+    padding: 0px 0px 0px 25px;
+    margin-bottom:15px;
+	
+}
+.THIS .content6
+{
+font-family: Muli,sans-serif;
+    padding: 0px 0px 0px 25px;
+    margin-bottom:15px;
+}
+
+
+.THIS .userfirstname
+{
+    font-family: Muli,sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #000;
+    padding: 0px 0px 0px 25px;
+    line-height: 1.5;
+    margin-bottom:10px;
+} 
+.THIS .userlastname
+{
+    font-family: Muli,sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #000;
+    padding: 0px 0px 0px 25px;
+    line-height: 1.5;
+    margin-bottom:10px;
+} 
+.THIS .useremail
+{
+    font-family: Muli,sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #000;
+    padding: 0px 0px 0px 25px; 
+    line-height: 1.5;
+    margin-bottom:10px;
+}
+.THIS #sfdc_username_container{
+    margin-bottom:10px;
+    padding: 12px;
+    background-color:white;
+    border: 1px solid #CCC;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+}
+
+.THIS #sfdc_nickname_container{
+    margin-bottom:10px;
+    padding: 12px;
+    background-color:white;
+    border: 1px solid #CCC;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+}
+
+.THIS #sfdc_email_container{
+    margin-bottom:10px;
+    padding: 12px;
+    background-color:white;
+    border: 1px solid #CCC;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+}
+
+.THIS #sfdc_extrafield_container{
+    margin-bottom:10px;
+    padding: 12px;
+    background-color:white;
+    border: 1px solid #CCC;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+}
+
+.THIS #sfdc_user{
+    float:left;
+    width:23px;
+    height:25px;
+    padding-top:1px;
+    padding-left:2px;
+    margin:0px;
+
+}
+
+.THIS #sfdc_lock{
+    float:left;
+    width:23px;
+    height:25px;
+    padding-top:1px;
+    padding-left:2px;
+    margin:0px;
+}
+
+.THIS  .login-icon {
+    color:#ccc;font-size:22px;
+}
+
+.THIS #sfdc_password_container{
+    margin-bottom:10px;
+    padding: 12px;
+    background-color:white;
+    border: 1px solid #CCC;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+}
+
+.THIS #sfdc_confirm_password_container{
+    padding: 12px;
+    background-color:white;
+    border: 1px solid #CCC;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+}
+.THIS .content8{
+    font-family: Muli,sans-serif;
+    
+    padding: 0px 0px 0px 25px;
+    margin-bottom:15px;
+        
+}
+.THIS .contentbutton{
+  
+color: #fff !important;
+    background-color: #aa1a30; 
+    /*background-color:#0070d2;*/
+    height: 40px;
+    font-weight: 800;
+    font-size: 14px;
+    border: 0;
+    padding-left: 4%;
+    padding-right: 4%;
+    cursor: pointer;
+    outline: 0!important;
+}
+
+/*.THIS  button.sfdc_button {
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    color: #fff;
+    background-color: #0070d2;
+    border-color: #357ebd;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 10px 12px;
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.42857143;
+    border-radius: 2px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+*/
+.THIS  button:hover {
+    cursor:pointer;
+    color: #aa1a30;
+    background-color: #b7b7b7;
+
+}
+
+/*.THIS  input {
+    margin-left:10px;
+    margin-top: 3px;
+    border: 0px solid transparent;
+   
+    -webkit-appearance: none;
+    font-size: 14px;
+}*/
+
+.THIS #sfdc_forgot{
+    font-family: Muli,sans-serif;
+    font-weight:300;
+    font-size: 14px;
+    margin-top: 10px
+}
+
+.THIS  #error {
+    font-family: Muli,sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    /*text-align: center;*/
+    color:#FF0000;
+    padding: 0px 0px 0px 25px;
+}
+
+.THIS  a {
+    color:white;
+    text-decoration: none;
+}
+.THIS  a:hover {
+    color:white;
+    text-decoration: none;
+}
+
+.THIS input[type="checkbox"] {
+    appearance: none;
+    border: 1px solid white;
+    height: 22px;
+    width: 22px;
+    vertical-align: middle;
+}
+
+.THIS input[type="checkbox"]:checked {
+    border: 1px solid ;
+}
+
+.THIS input[type="checkbox"]:checked:after {
+    display: block;
+    position: relative;
+    content: '';
+    left: 3px;
+    top: 3px;
+    height: 6px;
+    width: 10px;
+    border-bottom: 4px solid /*#354452*/ white;
+    border-left: 4px solid /*#354452*/ white;
+    transform:rotate(-45deg);
+}
+
+.THIS input[type="checkbox"].disabled {
+    opacity: 0.35;
+}
+
+.THIS input[type="checkbox"] + label {
+    vertical-align: middle;
+}
+.THIS .noAsterisk{
+    margin-top: -20px;
+}
+.THIS .noAsterisk .slds-required {
+    display: none;
+}

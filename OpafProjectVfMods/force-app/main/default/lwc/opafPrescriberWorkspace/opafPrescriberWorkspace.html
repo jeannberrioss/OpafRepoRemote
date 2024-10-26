@@ -1,0 +1,105 @@
+<template>
+    <div class="slds">
+        <h1 class="slds-text-heading_large slds-m-vertical_xx-large">Prescriber Workspace</h1>
+        <div class="slds-col slds-size_12-of-12">
+            <div class="slds-grid slds-wrap slds-grid--pull-padded">
+                <div class="slds-col slds-size_12-of-12 slds-medium-size_8-of-12 slds-p-around_medium">
+                    <div class="slds-section slds-is-open">
+                        <h3 class="slds-section__title slds-text-heading_small">
+                            <span class="slds-truncate slds-p-horizontal_small" title="My OPAF Applications">My OPAF Applications</span>
+                        </h3>
+                        <div aria-hidden="false" class="slds-section__content slds-p-top_x-large"> 
+                            <lightning-layout size="12" multiple-rows="true">
+                                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                                    <a class="slds-button opaf-button--neutral" onclick={handleNavigate}>Initiate Application</a>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                                    <a class="slds-button opaf-button--neutral" onclick={handleNavigateCheckStatus}>Check Application Status</a>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                                    <a class="slds-button opaf-button--neutral" onclick={handleNavigateShipmentList}>Track Product Shipments</a> 
+                                </lightning-layout-item>
+                                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                                    <a class="slds-button opaf-button--neutral" onclick={handleNavigateInComplete}>Finish Incomplete Applications</a>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="12" padding="around-small">
+                                    <a class="slds-button opaf-button--neutral" onclick={handleNavigateReEnrollment}>Applications Due for Re-Enrollment</a>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="slds-section slds-is-open">
+                        <h3 class="slds-section__title slds-text-heading_small">
+                            <span class="slds-truncate slds-p-horizontal_small" title="My Patient Consent">My Patient Consent</span>
+                        </h3>
+                        <div aria-hidden="false" class="slds-section__content slds-p-top_x-large">
+                            <lightning-layout size="12" multiple-rows="true">
+                                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                                    <a class="slds-button opaf-button--neutral" onclick={handleNavigateConsent}>Initiate Patient Consent</a>
+                                </lightning-layout-item>
+                                <lightning-layout-item ssize="12" medium-device-ize="6" padding="around-small">
+                                    <a class="slds-button opaf-button--neutral" onclick={handleNavigateConsentList}>Check My Patient Consent</a>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="slds-section slds-is-open">
+                        <h3 class="slds-section__title slds-text-heading_small">
+                            <span class="slds-truncate slds-p-horizontal_small" title="My Profiles">My Profiles</span>
+                        </h3>
+                        <div aria-hidden="false" class="slds-section__content slds-p-top_x-large">
+                            <lightning-layout size="12" multiple-rows="true">
+                                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                                    <a class="slds-button opaf-button--neutral" onclick={handleNavigatePrescriberList}>My Prescribers</a>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                                    <a class="slds-button opaf-button--neutral" onclick={handleNavigateFacilityList}>My Facilities/Practices</a>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                                    <a class="slds-button opaf-button--neutral" onclick={handleNavigatePatientList}>My Patients</a>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                        </div> 
+                    </div>
+                    <hr>
+                    <div class="slds-section slds-is-open">
+                        <h3 class="slds-section__title slds-text-heading_small">
+                            <span class="slds-truncate slds-p-horizontal_small" title="Portal Resources">Portal Resources</span>
+                        </h3>
+                        <div aria-hidden="false" class="slds-section__content slds-p-top_x-large">
+                            <lightning-layout size="12" multiple-rows="true">
+                                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                                    <a class="slds-button opaf-button--neutral" href={pdfDocument} target="_blank">User Guide</a>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="12" medium-device-size="6" padding="around-small">
+                                    <a class="slds-button opaf-button--neutral" href={paperConsent} target="_blank">Paper Consent</a>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_12-of-12 slds-medium-size_4-of-12 slds-grid slds-grid_align-center slds-wrap">
+                    <div class="slds-col slds-box slds-m-bottom_x-large opaf-box">
+                        <h2 class="slds-text-heading_small slds-m-bottom_xx-large">INCOMPLETE APPLICATIONS</h2>
+                        <div>
+                            <template for:each={lastSevenApplications} for:item="app">
+                                <div class="slds-border_bottom slds-m-bottom_large" key={app.Id}>
+                                    <template if:true={app.Patient__c}>
+                                        <a href="#" data-record={app.Id} data-id={app.Sub_Type__c} onclick={doView}>{app.Patient__r.Name}</a><br/>
+                                    </template>
+                                    <p style="color: #808080">
+                                        {app.CaseNumber} {app.Product__c}
+                                    </p>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                    <div class="slds-button opaf-button--brand opaf-button_small slds-m-bottom_large" onclick={handleNavigate}>INITIATE NEW OPAF APPLICATION</div>
+                    <div class="slds-button opaf-button--brand opaf-button_small slds-m-bottom_large" onclick={handleNavigateConsent}>INITIATE PATIENT CONSENT</div>
+                </div>
+            </div>
+        </div>
+    </div>    
+</template>

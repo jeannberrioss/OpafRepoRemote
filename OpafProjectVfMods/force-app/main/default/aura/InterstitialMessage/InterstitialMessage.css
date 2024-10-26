@@ -1,0 +1,44 @@
+.THIS .slds-modal slds-fade-in-open slds-modal_medium {
+    background-color: white;
+}
+    
+.THIS .H1 {
+    font-size: 12pt;
+}
+    
+.THIS .slds-text-heading_medium{
+        margin-bottom: 1rem;
+        color: #407cc9;
+}
+
+.THIS .H3{
+    color: #3b3bff;
+    font-size: 8pt;
+}
+
+.THIS .slds-align_absolute-center{
+    color:#4f81bd;
+}
+
+.THIS .slds-button{
+   position:absolute;
+   top:18%;
+   right:5px;
+}
+
+.THIS .my-icon {
+    --sds-c-icon-color-foreground-default: #b01c2e;
+    background-color: white;
+   
+   
+}
+
+.THIS .Top {
+  border-top: 10px solid #b01c2e;
+}
+
+.THIS .slds-modal__container {
+    width: 800px;
+    height: 800px;
+    
+}

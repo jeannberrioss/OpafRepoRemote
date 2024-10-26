@@ -1,0 +1,13 @@
+.buttonColor{
+    border: 1px solid #005fb2;
+    border-radius: 6px;
+}
+
+.THIS .spins::after {
+    position: absolute;
+    content: 'Please wait while loading' !important;
+    width: 100%;
+    text-align: center;
+    top: calc(50% + 3em);
+    font-weight: bold;
+}

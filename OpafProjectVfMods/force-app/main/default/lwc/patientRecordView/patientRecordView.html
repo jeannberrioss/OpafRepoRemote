@@ -1,0 +1,78 @@
+<template>
+    <div class={sectionOne} id="prescriptionInfo">
+        <h3 class="slds-text-heading_small slds-truncate" title="Prescription Information for ABILIFY MAINTENA">Patient Information</h3>
+        <lightning-record-view-form record-id={recordId} object-api-name="Contact">
+            <lightning-layout class="slds-grid slds-col slds-wrap" size="12">
+                <lightning-layout-item size="6" padding="around-small">
+                    <div class="slds-border_bottom">
+                        <label class="slds-form-element__label">Name</label>
+                        <lightning-output-field field-name="Name" variant="label-hidden"></lightning-output-field>
+                    </div>
+                </lightning-layout-item> 
+                <lightning-layout-item size="6" padding="around-small">
+                    <div class="slds-border_bottom">
+                        <label class="slds-form-element__label">Street Address</label>
+                        <lightning-output-field field-name="Street_Address__c" variant="label-hidden"></lightning-output-field>
+                    </div>
+                </lightning-layout-item> 
+                <lightning-layout-item size="6" padding="around-small">
+                    <div class="slds-border_bottom">
+                        <label class="slds-form-element__label">Email</label>
+                        <lightning-output-field field-name="Email" variant="label-hidden"></lightning-output-field>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item size="6" padding="around-small">
+                    <div class="slds-border_bottom">
+                        <label class="slds-form-element__label">Address Line 2</label>
+                        <lightning-output-field field-name="Address_Line_2__c" variant="label-hidden"></lightning-output-field>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item size="6" padding="around-small">
+                    <div class="slds-border_bottom">
+                        <label class="slds-form-element__label">Birthdate</label>
+                        <lightning-output-field field-name="Birthdate" variant="label-hidden"></lightning-output-field>
+                    </div>
+                </lightning-layout-item> 
+                <lightning-layout-item size="6" padding="around-small">
+                    <div class="slds-border_bottom">
+                        <label class="slds-form-element__label">City</label>
+                        <lightning-output-field field-name="City__c" variant="label-hidden"></lightning-output-field>
+                    </div>
+                </lightning-layout-item> 
+                <lightning-layout-item size="6" padding="around-small">
+                    <div class="slds-border_bottom">
+                        <label class="slds-form-element__label">SSN</label>
+                        <lightning-output-field field-name="SSN__c" variant="label-hidden"></lightning-output-field>
+                    </div>
+                </lightning-layout-item> 
+                <lightning-layout-item size="6" padding="around-small">
+                    <div class="slds-border_bottom">
+                        <label class="slds-form-element__label">State</label>
+                        <lightning-output-field field-name="State__c" variant="label-hidden"></lightning-output-field>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item size="6" padding="around-small">
+                    <div class="slds-border_bottom">
+                        <label class="slds-form-element__label">Gender</label>
+                        <lightning-output-field field-name="Gender__c" variant="label-hidden"></lightning-output-field>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item size="6" padding="around-small">
+                    <div class="slds-border_bottom">
+                        <label class="slds-form-element__label">Zip Code</label>
+                        <lightning-output-field field-name="Zip_Code__c" variant="label-hidden"></lightning-output-field>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item size="6" padding="around-small">
+                    
+                </lightning-layout-item> 
+                <lightning-layout-item size="6" padding="around-small">
+                    <div class="slds-border_bottom">
+                        <label class="slds-form-element__label">Home Phone</label>
+                        <lightning-output-field field-name="HomePhone" variant="label-hidden"></lightning-output-field>
+                    </div>    
+                </lightning-layout-item>   
+            </lightning-layout>
+        </lightning-record-view-form>
+    </div>    
+</template>
