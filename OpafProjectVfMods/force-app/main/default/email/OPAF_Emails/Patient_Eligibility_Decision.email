@@ -1,0 +1,33 @@
+<messaging:emailTemplate subject="Otsuka Patient Assistance Foundation, Inc. ApplicationEligibility Decision" recipientType="Contact" relatedToType="Case">
+<messaging:HtmlEmailBody >
+<head>
+ 
+</head>
+<body>
+<div >
+<table style="width:100%;">
+<tr>
+<td style="width:5%"></td>
+<td style="width:80%">
+<table>
+<tr> <td><c:OtsukaLogoforEmailTempaltes /> </td></tr>
+<tr> 
+<td>
+<apex:outputPanel rendered="{!IF(relatedTo.User_Type__c=='Patient', true, false)}">
+<c:PatientEligibilityDecision cid="{!relatedTo.id}" />
+</apex:outputPanel>
+<apex:outputPanel rendered="{!IF(relatedTo.User_Type__c=='Prescriber', true, false)}">
+<c:PrescriberEligibilityDecision cid="{!relatedTo.id}"></c:PrescriberEligibilityDecision>
+</apex:outputPanel>
+</td>
+</tr>
+</table>
+</td>
+<td style="width:5%"></td>
+</tr>
+
+</table>
+</div>
+</body>
+</messaging:HtmlEmailBody>
+</messaging:emailTemplate>
