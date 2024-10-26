@@ -32,7 +32,7 @@
         <members>*</members>
         <name>StaticResource</name>
     </types>
- <types>
+    <types>
         <members>*</members>
         <name>EmailTemplate</name>
     </types>
