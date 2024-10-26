@@ -1,0 +1,16 @@
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
+<tr valign="top" height="400" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[<table><tbody><tr><td><table style="font-family: Muli, sans-serif;"><tbody><tr><td><font face="Arial, sans-serif"><b>Otsuka Patient Assistance Foundation, Inc.</b><br>PO Box 3640<br>Gaithersburg, MD 20885-3640<br>Phone: 1-855-727-6274<br>Fax: 1-844-727-6274<br>Monday – Friday, 8 AM to 8 PM EDT</font></td></tr></tbody></table><font face="Arial, sans-serif"><br><br></font><table style="font-family: Muli, sans-serif;"><tbody><tr><td style=""><font face="Arial, sans-serif" size="3" style="">Hello&nbsp;{!Receiving_User.FirstName}&nbsp;</font>{!Receiving_User.LastName},</td></tr><tr><td></td></tr><tr><td><p style="font-size: 14px;"><font face="Arial, sans-serif" size="3">You have registered on the Otsuka Patient Assistance Foundation, Inc. (OPAF) Care Connect Prescriber Portal. To finish the registration, please follow the link below to set up your password:</font></p><p style="font-size: 14px;"><span style="background-color: rgb(255, 255, 255);"><font face="Arial, sans-serif" size="3">{!Community_Url}</font></span></p></td></tr><tr><td><p style="font-size: 14px;"><font face="Arial, sans-serif" size="3">If you have any questions or would like to speak to an OPAF Dedicated Patient Case Coordinator about the application decision, please call OPAF at 1-855-727-6274, Monday–Friday, 8 AM–8 PM EDT.</font></p></td></tr><tr><td><p style="font-size: 14px;"><font face="Arial, sans-serif" size="3">Thank you,</font></p><p style="font-size: 14px;"><font face="Arial, sans-serif" size="3">Your OPAF Team</font></p></td></tr></tbody></table><font face="Arial, sans-serif"><font size="2"><br></font></font><p class="MsoNormal" style="margin-top:0in;margin-right:14.5pt;margin-bottom:
+0in;margin-left:9.0pt;margin-bottom:.0001pt"><i><span style="font-size:9.0pt">Please note that you have not been
+subscribed to any email lists, and the details provided by you are only being
+used to send this welcome notification. This email was sent by Otsuka Patient
+Assistance Foundation, Inc. OPAF holds patient privacy in the highest regard
+and is committed to protecting the patient’s confidential information.
+Therefore, we cannot email patient-identifiable and confidential information to
+you because we cannot assure the security of information sent via email.
+However, if you have any questions, please contact OPAF at 1-855-727-6274.
+Please do not reply to this email, as it was sent from an unmonitored email
+address and we cannot reply to inquiries.<o:p></o:p></span></i></p><font face="Arial, sans-serif"><font size="2"><br></font><font size="1">©2021 Otsuka Patient Assistance Foundation, Inc. All Rights Reserved. &nbsp;&nbsp;&nbsp; September 2021&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;PAUS21EUP0017</font></font></td></tr></tbody></table>]]></td>
+</tr>
+</table>

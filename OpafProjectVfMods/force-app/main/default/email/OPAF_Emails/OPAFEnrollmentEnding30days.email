@@ -1,0 +1,34 @@
+<messaging:emailTemplate subject="Otsuka Patient Assistance Foundation, Inc. Enrollment Ending" recipientType="Contact" relatedToType="Case">
+<messaging:HtmlEmailBody >
+<head>
+ 
+</head>
+<body>
+<div >
+<table style="width:100%;">
+<tr>
+<td style="width:5%"></td>
+<td style="width:80%">
+<table>
+<tr> <td><c:OtsukaLogoforEmailTempaltes /> </td></tr>
+<tr> 
+<td>
+<apex:outputPanel rendered="{!IF(relatedTo.User_Type__c=='Patient', true, false)}">
+<c:PatientOPAFEnrollmentEnding30Days cid="{!relatedTo.id}"></c:PatientOPAFEnrollmentEnding30Days> 
+</apex:outputPanel>
+<apex:outputPanel rendered="{!IF(relatedTo.User_Type__c=='Prescriber', true, false)}">
+<c:PrescriberOPAFEnrollmentEnding30Days cid="{!relatedTo.id}"></c:PrescriberOPAFEnrollmentEnding30Days> 
+
+</apex:outputPanel>
+</td>
+</tr>
+</table>
+</td>
+<td style="width:5%"></td>
+</tr>
+
+</table>
+</div>
+</body>
+</messaging:HtmlEmailBody>
+</messaging:emailTemplate>
