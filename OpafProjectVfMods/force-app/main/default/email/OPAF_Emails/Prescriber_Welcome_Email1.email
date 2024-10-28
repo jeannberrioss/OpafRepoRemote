@@ -1,5 +1,0 @@
-<messaging:emailTemplate subject="Taco Bueno Welcomes You!" recipientType="Contact" relatedToType="Network">
-<messaging:htmlEmailBody >
-<p>Welcome to the community</p>
-</messaging:htmlEmailBody>
-</messaging:emailTemplate>
