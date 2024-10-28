@@ -1,5 +1,5 @@
-<messaging:emailTemplate subject="Otsuka Patient Assistance Foundation, Inc. Welcome" recipientType="Contact" relatedToType="Network">
-<messaging:HtmlEmailBody >
+<messaging:emailTemplate subject="Otsuka Patient Assistance Foundation, Inc. (OPAF) Welcome" recipientType="Contact" relatedToType="Network">
+<messaging:HtmlEmailBody > 
 <head>
  
 </head>
@@ -18,11 +18,11 @@
            <tr>
                <td>
                   <b> Otsuka Patient Assistance Foundation, Inc.</b><br/>
-                    PO Box 3640<br/>
-                    Gaithersburg, MD 20885-3640<br/>
+                    PO Box 4530<br/>
+                    Chesterfield, MO 63006<br/>
                     Phone: 1-855-727-6274<br/>
                     Fax: 1-844-727-6274<br/>
-                    Monday – Friday, 8 AM to 8 PM EDT 
+                    Monday – Friday, 8AM-8PM ET 
 
                </td>
            </tr>
@@ -50,29 +50,24 @@ up your password:
 <tr>
                 <td>
                     <p style="font-family: Muli,sans-serif;font-size:14px;">
-If you have any questions or would like to speak to an OPAF Dedicated Patient Case
-Coordinator about the application decision, please call OPAF at 1-855-727-6274,
-Monday–Friday, 8 AM–8 PM EDT.
+If you have any questions or would like to speak with OPAF about an application decision, please contact us at 1-855-727-6274,
+Monday–Friday, 8 AM–8 PM ET.
 </p>
                 </td>
             </tr>
 <tr>
                 <td>
                     <p style="font-family: Muli,sans-serif;font-size:14px;">
-Thank you,
-Your OPAF Team
+Sincerely,
+The Otsuka Patient Assistance Foundation, Inc. (OPAF)
 </p>
 </td>
 </tr>
   </table>
-Please note that you have not been subscribed to any email lists, and the details provided by {!recipient.name}
-are only being used to send this Patient Consent Form request. This email was sent by Otsuka Patient Assistance
-Foundation, Inc. (OPAF) because {!recipient.name} requested this email to be sent. OPAF holds patient privacy
-in the highest regard and is committed to protecting the patient’s confidential information. Therefore, we cannot
-email patient-identifiable and confidential information to you because we cannot assure the security of information
-sent via email. However, if you have any questions, please contact OPAF at 1-855-727-6274. Please do not reply
-to this email, as it was sent from an unmonitored email address and we cannot reply to inquiries.
-
+Please note that you have not been subscribed to any email lists, and the details provided by you are only being used to send this welcome registration email.
+This email was sent by Otsuka Patient Assistance Foundation, Inc. (OPAF). OPAF holds patient privacy in the highest regard and is committed to protecting the patient’s confidential information.
+Therefore, we cannot email patient-identifiable and confidential information to you because we cannot assure the security of information sent via email.
+However, if you have any questions, please contact OPAF at 1-855-727-6274. Please do not reply to this email, as it was sent from an unmonitored email address and we cannot reply to inquiries.
 </td>
 </tr>
 </table>
