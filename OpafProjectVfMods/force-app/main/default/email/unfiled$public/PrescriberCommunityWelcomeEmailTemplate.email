@@ -1,0 +1,8 @@
+Hi {!Receiving_User.FirstName},
+
+            Welcome to Prescriber OPAF Care Connect. To get started, go to {!Community_Url}
+
+            Username: {!Receiving_User.Username}
+
+            Thanks,
+            {!Organization.Name}

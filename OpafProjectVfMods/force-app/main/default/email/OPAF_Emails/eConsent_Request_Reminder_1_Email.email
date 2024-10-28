@@ -1,0 +1,29 @@
+<messaging:emailTemplate subject="Reminder: Sign Your Otsuka Patient Assistance Foundation, Inc eConsent Request" recipientType="Contact" relatedToType="Consent__c">
+<messaging:HtmlEmailBody >
+<head>
+ 
+</head>
+<body>
+<div >
+<table style="width:100%;">
+<tr>
+<td style="width:5%"></td>
+<td style="width:80%">
+<table>
+<tr> <td><c:OtsukaLogoforEmailTempaltes /> </td></tr>
+<tr> 
+<td>
+<c:eConsentRequestReminder1Email cid="{!relatedTo.id}"></c:eConsentRequestReminder1Email> 
+
+</td>
+</tr>
+</table>
+</td>
+<td style="width:5%"></td>
+</tr>
+
+</table>
+</div>
+</body>
+</messaging:HtmlEmailBody>
+</messaging:emailTemplate>
