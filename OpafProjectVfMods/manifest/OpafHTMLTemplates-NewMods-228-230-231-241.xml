@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>PatientOPAFEnrollmentEnding45Days</members>
+        <members>PrescriberOPAFEnrollmentEnding45Days</members>
+        <name>ApexComponent</name>
+    </types>
+    <types>
+        <members>OPAF_Emails/OPAFEnrollmentEnding45days</members>
+        <members>OPAF_Emails/Pprescriber_Welcome_Email_HTML</members>
+        <members>OPAF_Emails/Prescriber_Password_Reset_Email_HTML</members>
+        <name>EmailTemplate</name>
+    </types>
+    <version>62.0</version>
+</Package>

@@ -1,34 +1,49 @@
-<messaging:emailTemplate subject="Otsuka Patient Assistance Foundation, Inc. Enrollment Ending" recipientType="Contact" relatedToType="Case">
-<messaging:HtmlEmailBody >
-<head>
- 
-</head>
-<body>
-<div >
-<table style="width:100%;">
-<tr>
-<td style="width:5%"></td>
-<td style="width:80%">
-<table>
-<tr> <td><c:OtsukaLogoforEmailTempaltes /> </td></tr>
-<tr> 
-<td>
-<apex:outputPanel rendered="{!IF(relatedTo.User_Type__c=='Patient', true, false)}">
-<c:PatientOPAFEnrollmentEnding45Days cid="{!relatedTo.id}"></c:PatientOPAFEnrollmentEnding45Days> 
-</apex:outputPanel>
-<apex:outputPanel rendered="{!IF(relatedTo.User_Type__c=='Prescriber', true, false)}">
-<c:PrescriberOPAFEnrollmentEnding45Days cid="{!relatedTo.id}"></c:PrescriberOPAFEnrollmentEnding45Days> 
+<messaging:emailTemplate subject="Otsuka Patient Assistance Foundation, Inc. Enrollment Ending" 
+                         recipientType="Contact" 
+                         relatedToType="Case">
+    <messaging:HtmlEmailBody>
+        <head>
+            <!-- Email Head Content (Add CSS or Meta Tags if needed) -->
+        </head>
+        
+        <body>
+            <div>
+                <!-- Outer Table Wrapper for Alignment and Layout -->
+                <table style="width:100%;">
+                    <tr>
+                        <td style="width:5%;"></td>
+                        <td style="width:90%;">
 
-</apex:outputPanel>
-</td>
-</tr>
-</table>
-</td>
-<td style="width:5%"></td>
-</tr>
+                            <!-- Inner Table for Content Layout -->
+                            <table>
+                                
+                                <!-- Logo Component (Commented Out as per Request) -->
+                                <!-- <tr><td><c:OtsukaLogoforEmailTempaltes /></td></tr> -->
 
-</table>
-</div>
-</body>
-</messaging:HtmlEmailBody>
+                                <!-- Dynamic Content Based on User Type -->
+                                <tr>
+                                    <td>
+                                        <!-- Display if User_Type__c is Patient -->
+                                        <apex:outputPanel rendered="{!IF(relatedTo.User_Type__c=='Patient', true, false)}">
+                                            <c:PatientOPAFEnrollmentEnding45Days cid="{!relatedTo.id}"></c:PatientOPAFEnrollmentEnding45Days>
+                                        </apex:outputPanel>
+
+                                        <!-- Display if User_Type__c is Prescriber -->
+                                        <apex:outputPanel rendered="{!IF(relatedTo.User_Type__c=='Prescriber', true, false)}">
+                                            <c:PrescriberOPAFEnrollmentEnding45Days cid="{!relatedTo.id}"></c:PrescriberOPAFEnrollmentEnding45Days>
+                                        </apex:outputPanel>
+                                    </td>
+                                </tr>
+                                
+                            </table>
+                            <!-- End Inner Content Table -->
+
+                        </td>
+                        <td style="width:5%;"></td>
+                    </tr>
+                </table>
+                <!-- End Outer Table Wrapper -->
+            </div>
+        </body>
+    </messaging:HtmlEmailBody>
 </messaging:emailTemplate>
