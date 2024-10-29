@@ -4,13 +4,12 @@
        <table style="font-family: Muli,sans-serif;">
            <tr>
                <td>
-                  <b> Otsuka Patient Assistance Foundation, Inc.</b><br/>
-                    PO Box 3640<br/>
-                    Gaithersburg, MD 20885-3640<br/>
-                    Phone: 1-855-727-6274<br/>
-                    Fax: 1-844-727-6274<br/>
-                    Monday – Friday, 8 AM to 8 PM EDT
-
+                <b>Otsuka Patient Assistance Foundation, Inc.</b><br/>
+                PO Box 4530<br/>
+                Chesterfield, MO 63006<br/>
+                Phone: 1-855-727-6274<br/>
+                Fax: 1-844-727-6274<br/>
+                Monday – Friday, 8 AM to 8 PM ET
                </td>
            </tr>
         </table>
@@ -30,12 +29,10 @@
                     <p style="font-family: Muli,sans-serif;font-size:14px;">
                         On  <apex:outputText value=" {0,date, MM/dd/yyyy}"> 
                              <apex:param value="{!today()}" />
-                             </apex:outputText>,you started an application, for one of your patients, with the Otsuka Patient Assistance Foundation, Inc. (OPAF) free goods program via the OPAF Care Connect Prescriber Portal. Currently, the application is still pending and has not been submitted. Please log into the <a href="{!$Label.Prescriber_URL}" >OPAF Care Connect Prescriber Portal</a> to submit the application. OPAF cannot provide an approval decision without the submitted application.
+                             </apex:outputText>,you started an application, for one of your patients, with the Otsuka Patient Assistance Foundation, Inc. (OPAF) free goods program via the OPAF Care Connect Prescriber Portal. Currently, the application is still pending and has not been submitted. Please access the OPAF Care Connect Prescriber Portal at https://www.otsukapatientassistance.com/apply-for-your-patients to log in and submit the application. OPAF cannot provide an approval decision without the submitted application.
                     </p>
                 </td>
             </tr>
-            
-             
             <tr>
                 <td>
                     <p style="font-family: Muli,sans-serif;font-size:14px;">
@@ -48,9 +45,8 @@
            
              <tr><td></td></tr>
              <tr><td style="font-size:14px;">
-                 Thank you,<br/>
-                  Your OPAF Team
-
+                 Sincerely,<br/>
+                 The Otsuka Patient Assistance Foundation, Inc. (OPAF)
                  </td>
             </tr>
            
@@ -64,7 +60,7 @@
             <tr>
             <td>
                 <p style="font-size:10px;font-family: Muli,sans-serif;font-style:italic;">
-                    Please note that you have not been subscribed to any email lists, and the details provided by you are only being used to send this application status notification. This email was sent by Otsuka Patient Assistance Foundation, Inc. (OPAF). OPAF holds patient privacy in the highest regard and is committed to protecting the patient’s confidential information. Therefore, we cannot email patient-identifiable and confidential information to you because we cannot assure the security of information sent via email. However, if you have any questions, please contact OPAF at 1-855-727-6274. Please do not reply to this email, as it was sent from an unmonitored email address and we cannot reply to inquiries.
+                    The content of this email is intended for the person or entity to which it is addressed only. This email is being sent by the Otsuka Patient Assistance Foundation, Inc. (OPAF). OPAF holds patient privacy in the highest regard and is committed to protecting the patient’s confidential information. Therefore, we cannot email patient-identifiable and confidential information to you because we cannot assure the security of information sent via email. However, if you have any questions, please contact OPAF at 1-855-727-6274, Monday to Friday 8am to 8pm ET. Please do not reply to this email, as it was sent from an unmonitored email address. To manage your email preferences or to opt-out from receiving email communications, please click <here>. 
                 </p>
                 
               </td>
@@ -76,13 +72,13 @@
         <table style="width:100%;font-family: Muli,sans-serif;font-size:10px;">
             <tr>
             <td style="width:70%;">
-                © 2021 Otsuka Patient Assistance Foundation, Inc. All Rights Reserved. 
+                © 2024 Otsuka Patient Assistance Foundation, Inc. All Rights Reserved. 
                 </td>
                 <td style="width:10%;">
-                September 2021          
+                October 2024          
                 </td>
                 <td style="width:20%;">
-                PAUS21EUP0010 
+                PAUS24EUP0008 
                 </td>
             </tr>
         </table>
