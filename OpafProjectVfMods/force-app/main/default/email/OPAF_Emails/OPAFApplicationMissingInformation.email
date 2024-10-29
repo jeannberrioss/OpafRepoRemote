@@ -1,116 +1,57 @@
-<messaging:emailTemplate subject="Otsuka Patient Assistance Foundation, Inc. OPAF Application Missing Information" recipientType="Contact" relatedToType="Case">
+<messaging:emailTemplate subject="Otsuka Patient Assistance Foundation, Inc. OPAF Application Missing Information" 
+                         recipientType="Contact" 
+                         relatedToType="Case">
     <messaging:HtmlEmailBody>
         <head>
             <!-- Additional head content (if needed) -->
         </head>
         <body>
             <div>
-                <!-- Main Table for Email Layout -->
+                <!-- Main Table for full-width email content -->
                 <table style="width:100%; border-collapse:collapse;">
                     <tr>
-                        <td style="width:5%;"></td> <!-- Left Margin -->
+                        <!-- Spacer column for left margin -->
+                        <td style="width:5%;"></td>
                         
-                        <!-- Main Content Section -->
+                        <!-- Main content section -->
                         <td style="width:90%;">
+
+                            <!-- Inner table for content alignment and layout -->
                             <table style="width:100%; border-collapse:collapse;">
-                                
-                                <!-- Logo Row -->
+
+                                <!-- Logo Row (currently commented out) -->
+                                <!--
                                 <tr>
                                     <td>
                                         <c:OtsukaLogoforEmailTempaltes />
                                     </td>
                                 </tr>
+                                -->
                                 
-                                <!-- User Type-Specific Content Panels -->
+                                <!-- Content Row with conditional panels based on User_Type__c -->
                                 <tr>
                                     <td>
-                                        <!-- Patient-specific content -->
+                                        <!-- Displayed if User_Type__c is 'Patient' -->
                                         <apex:outputPanel rendered="{!relatedTo.User_Type__c == 'Patient'}">
                                             <c:PatientOPAFApplicationMissing cid="{!relatedTo.id}" />
                                         </apex:outputPanel>
-                                        
-                                        <!-- Prescriber-specific content -->
+
+                                        <!-- Displayed if User_Type__c is 'Prescriber' -->
                                         <apex:outputPanel rendered="{!relatedTo.User_Type__c == 'Prescriber'}">
                                             <c:PrescriberOPAFApplicationMissing cid="{!relatedTo.id}" />
                                         </apex:outputPanel>
                                     </td>
                                 </tr>
                                 
-                                <!-- Foundation Address and Contact Information -->
-                                <tr>
-                                    <td style="padding-top: 20px;">
-                                        <b>Otsuka Patient Assistance Foundation, Inc.</b><br />
-                                        PO Box 4530<br />
-                                        Chesterfield, MO 63006<br />
-                                        Phone: 1-855-727-6274<br />
-                                        Fax: 1-844-727-6274<br />
-                                        Monday – Friday, 8AM-8PM ET
-                                    </td>
-                                </tr>
-                                
-                                <!-- Greeting to Recipient -->
-                                <tr>
-                                    <td style="padding-top: 20px; font-size:14px;">
-                                        Hello {!recipient.FirstName} {!recipient.LastName},
-                                    </td>
-                                </tr>
-                                
-                                <!-- Main Informational Content -->
-                                <tr>
-                                    <td>
-                                        <p style="font-size:14px;">
-                                            On <b>{!relatedTo.CreatedDate}</b>, one of your patients submitted an Otsuka Patient Assistance Foundation, Inc. (OPAF) application via the OPAF Care Connect Portal. This communication is to inform you that, to complete the application and begin processing, a Prescription along with Provider Consent is required.
-                                        </p>
-                                        <p style="font-size:14px;">
-                                            Please log into the <a href="https://www.otsukapatientassistance.com/apply-for-your-patients">OPAF Care Connect Prescriber Portal</a> to see the options available for submitting the Provider sections and Consent of the OPAF Application.
-                                        </p>
-                                        <p style="font-size:14px;">
-                                            Alternatively, if you prefer not to use the portal, you may contact OPAF at 1-855-727-6274, Monday to Friday, 8am to 8pm ET, to discuss the additional information needed to process the application.
-                                        </p>
-                                    </td>
-                                </tr>
-                                
-                                <!-- Additional Contact Instructions -->
-                                <tr>
-                                    <td>
-                                        <p style="font-size:14px;">
-                                            If you have any questions or need further assistance with submitting the application, please contact OPAF at 1-855-727-6274, Monday to Friday, 8am to 8pm ET.
-                                        </p>
-                                    </td>
-                                </tr>
-                                
-                                <!-- Closing and Confidentiality Notice -->
-                                <tr>
-                                    <td>
-                                        <p style="font-size:14px;">
-                                            Sincerely,<br />
-                                            The Otsuka Patient Assistance Foundation, Inc. (OPAF)
-                                        </p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="font-size:12px; color:#555;">
-                                        <p>
-                                            This email is intended for the person or entity to which it is addressed only. Sent by the Otsuka Patient Assistance Foundation, Inc. (OPAF), which is committed to patient privacy. Please contact OPAF at 1-855-727-6274 for any questions. Do not reply to this email, as it was sent from an unmonitored address.
-                                        </p>
-                                        <p>
-                                            To manage your email preferences or to opt out of email communications, please click <a href="[Insert Opt-out Link Here]">here</a>.
-                                        </p>
-                                    </td>
-                                </tr>
-                                
-                                <!-- Footer Section -->
-                                <tr>
-                                    <td style="padding-top: 10px; font-size:12px; color:#555;">
-                                        <p>©2024 Otsuka Patient Assistance Foundation, Inc. All Rights Reserved. September 2024 PAUS24EUCxxxx</p>
-                                    </td>
-                                </tr>
-                                
                             </table>
+                            <!-- End of Inner Table for content panels -->
+
                         </td>
-                        <td style="width:5%;"></td> <!-- Right Margin -->
+                        <!-- Spacer column for right margin -->
+                        <td style="width:5%;"></td>
                     </tr>
                 </table>
+                <!-- End of Main Table -->
             </div>
         </body>
     </messaging:HtmlEmailBody>

@@ -4,105 +4,51 @@
     <messaging:HtmlEmailBody>
         <body>
             <div>
-                <!-- Outer Table for email content -->
+                <!-- Outer Table for full-width content -->
                 <table style="width:100%;">
                     <tr>
+                        <!-- Spacer column for left margin -->
                         <td style="width:5%;"></td>
+
+                        <!-- Main content area -->
                         <td style="width:90%;">
 
-                            <!-- Inner Table for logo and content -->
+                            <!-- Inner table containing logo and content panels -->
                             <table style="width:100%; font-family: Muli, sans-serif;">
-                                <!-- Logo Row -->
+
+                                <!-- Optional Logo Row (currently commented) -->
+                                <!-- 
                                 <tr>
                                     <td><c:OtsukaLogoforEmailTempaltes /></td>
-                                </tr>
+                                </tr> 
+                                -->
 
-                                <!-- Content based on User_Type__c -->
+                                <!-- Main Content Row with conditional panels based on User_Type__c -->
                                 <tr>
                                     <td>
-                                        <!-- Conditional panels based on User_Type__c -->
+                                        <!-- Displayed if User_Type__c is 'Patient' -->
                                         <apex:outputPanel rendered="{!relatedTo.User_Type__c == 'Patient'}">
                                             <c:PatientApplicationNotsubmittedin24hours cid="{!relatedTo.id}" />
                                         </apex:outputPanel>
+
+                                        <!-- Displayed if User_Type__c is 'Prescriber' -->
                                         <apex:outputPanel rendered="{!relatedTo.User_Type__c == 'Prescriber'}">
                                             <c:PrescriberApplicationNotsubmittedin24hrs cid="{!relatedTo.id}" />
                                         </apex:outputPanel>
                                     </td>
                                 </tr>
-
-                                <!-- Address and Contact Information -->
-                                <tr>
-                                    <td style="padding-top: 20px;">
-                                        <b>Otsuka Patient Assistance Foundation, Inc.</b><br />
-                                        PO Box 4530<br />
-                                        Chesterfield, MO 63006<br />
-                                        Phone: 1-855-727-6274<br />
-                                        Fax: 1-844-727-6274<br />
-                                        Monday – Friday, 8AM-8PM ET
-                                    </td>
-                                </tr>
-
-                                <!-- Main Content -->
-                                <tr>
-                                    <td style="padding-top: 20px; font-size:14px;">
-                                        Hello {!recipient.FirstName} {!recipient.LastName},
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <p style="font-size:14px;">
-                                            On <b>{!relatedTo.CreatedDate}</b>, you started an application with the Otsuka Patient Assistance Foundation, Inc. (OPAF) free goods program via the OPAF Care Connect Portal.
-                                            Currently, the application is still pending and has not been submitted. Please access the OPAF Care Connect Patient Portal at
-                                            <a href="https://www.otsukapatientassistance.com/apply-for-yourself">https://www.otsukapatientassistance.com/apply-for-yourself</a> 
-                                            to log in and submit the application. OPAF cannot provide an eligibility determination without the submitted application.
-                                        </p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <p style="font-size:14px;">
-                                            If you have any questions or need further assistance with submitting the application, please contact OPAF at 1-855-727-6274, Monday to Friday, 8am to 8pm ET.
-                                        </p>
-                                    </td>
-                                </tr>
-
-                                <!-- Closing and Confidentiality Notice -->
-                                <tr>
-                                    <td>
-                                        <p style="font-size:14px;">
-                                            Sincerely,<br />
-                                            The Otsuka Patient Assistance Foundation, Inc. (OPAF)
-                                        </p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="font-size:12px; color:#555;">
-                                        <p>
-                                            The content of this email is intended for the person or entity to which it is addressed only. This email is being sent by the Otsuka Patient Assistance Foundation, Inc. (OPAF).
-                                            OPAF holds patient privacy in the highest regard and is committed to protecting the patient’s confidential information. Therefore, we cannot email patient-identifiable and confidential information 
-                                            to you because we cannot assure the security of information sent via email. However, if you have any questions, please contact OPAF at 1-855-727-6274, Monday to Friday 8am to 8pm ET. 
-                                            Please do not reply to this email, as it was sent from an unmonitored email address.
-                                        </p>
-                                        <p>
-                                            To manage your email preferences or to opt-out from receiving email communications, please click 
-                                            <a href="[Insert Opt-out Link Here]">here</a>.
-                                        </p>
-                                    </td>
-                                </tr>
-
-                                <!-- Footer with Copyright and Compliance Info -->
-                                <tr>
-                                    <td style="padding-top: 10px; font-size:12px; color:#555;">
-                                        <p>
-                                            ©2024 Otsuka Patient Assistance Foundation, Inc. All Rights Reserved. October 2024 PAUS24EUC0073
-                                        </p>
-                                    </td>
-                                </tr>
+                                
                             </table>
+                            <!-- End of Inner Table for content panels -->
+                            
                         </td>
+
+                        <!-- Spacer column for right margin -->
                         <td style="width:5%;"></td>
                     </tr>
                 </table>
+                <!-- End of Outer Table -->
+                
             </div>
         </body>
     </messaging:HtmlEmailBody>

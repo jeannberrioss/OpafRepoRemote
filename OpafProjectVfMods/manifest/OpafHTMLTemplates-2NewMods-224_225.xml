@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
-        <members>OPAF_Emails/OPAFApplicationMissingInformation</members>
+        <members>PatientApplicationNotsubmittedin24hours</members>
+        <members>PatientOPAFApplicationMissing</members>
+        <name>ApexComponent</name>
+    </types>
+    <types>
         <members>OPAF_Emails/ApplicationNotSubmittedin24hours</members>
+        <members>OPAF_Emails/OPAFApplicationMissingInformation</members>
         <name>EmailTemplate</name>
     </types>
     <version>62.0</version>
