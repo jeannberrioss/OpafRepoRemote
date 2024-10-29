@@ -3,11 +3,14 @@
     <types>
         <members>PatientApplicationNotsubmittedin24hours</members>
         <members>PatientOPAFApplicationMissing</members>
+        <members>PrescriberShipmentTracking</members>
+        <members>PatientShipmentTracking</members>
         <name>ApexComponent</name>
     </types>
     <types>
         <members>OPAF_Emails/ApplicationNotSubmittedin24hours</members>
         <members>OPAF_Emails/OPAFApplicationMissingInformation</members>
+        <members>OPAF_Emails/Shipment_Tracking_Email</members>
         <name>EmailTemplate</name>
     </types>
     <version>62.0</version>

@@ -1,33 +1,56 @@
-<messaging:emailTemplate subject="Otsuka Patient Assistance Foundation, Inc. OPAF Shipment Notification" recipientType="Contact" relatedToType="Shipment__c">
-<messaging:HtmlEmailBody >
-<head>
- 
-</head>
-<body>
-<div >
-<table style="width:100%;">
-<tr>
-<td style="width:5%"></td>
-<td style="width:80%">
-<table>
-<tr> <td><c:OtsukaLogoforEmailTempaltes /> </td></tr>
-<tr> 
-<td>
-<apex:outputPanel rendered="{!IF(relatedTo.User_Type__c=='Patient', true, false)}">
-<c:PatientShipmentTracking sid="{!relatedTo.id}" />
-</apex:outputPanel>
-<apex:outputPanel rendered="{!IF(relatedTo.User_Type__c=='Prescriber', true, false)}">
-<c:PrescriberShipmentTracking sid="{!relatedTo.id}"></c:PrescriberShipmentTracking>
-</apex:outputPanel>
-</td>
-</tr>
-</table>
-</td>
-<td style="width:5%"></td>
-</tr>
+<messaging:emailTemplate subject="Otsuka Patient Assistance Foundation, Inc. OPAF Shipment Notification" 
+                         recipientType="Contact" 
+                         relatedToType="Shipment__c">
+    <messaging:HtmlEmailBody>
+        <head>
+            <!-- Head section (reserved for additional styles or scripts if needed) -->
+        </head>
+        <body>
+            <div>
+                <!-- Main Table for full-width email content layout -->
+                <table style="width:100%;">
+                    <tr>
+                        <!-- Spacer column for left margin -->
+                        <td style="width:5%;"></td>
 
-</table>
-</div>
-</body>
-</messaging:HtmlEmailBody>
+                        <!-- Main content section -->
+                        <td style="width:90%;">
+                            <table style="width:100%;">
+
+                                <!-- Logo Row (currently commented out) -->
+                                <!--
+                                <tr>
+                                    <td>
+                                        <c:OtsukaLogoforEmailTempaltes />
+                                    </td>
+                                </tr>
+                                -->
+
+                                <!-- User Type-Specific Content Panels for Shipment Tracking -->
+                                <tr>
+                                    <td>
+                                        <!-- Patient-specific shipment tracking -->
+                                        <apex:outputPanel rendered="{!IF(relatedTo.User_Type__c=='Patient', true, false)}">
+                                            <c:PatientShipmentTracking sid="{!relatedTo.id}" />
+                                        </apex:outputPanel>
+
+                                        <!-- Prescriber-specific shipment tracking -->
+                                        <apex:outputPanel rendered="{!IF(relatedTo.User_Type__c=='Prescriber', true, false)}">
+                                            <c:PrescriberShipmentTracking sid="{!relatedTo.id}" />
+                                        </apex:outputPanel>
+                                    </td>
+                                </tr>
+                                
+                            </table>
+                            <!-- End of Inner Table for content panels -->
+
+                        </td>
+                        <!-- Spacer column for right margin -->
+                        <td style="width:5%;"></td>
+                    </tr>
+                </table>
+                <!-- End of Main Table -->
+            </div>
+        </body>
+    </messaging:HtmlEmailBody>
 </messaging:emailTemplate>

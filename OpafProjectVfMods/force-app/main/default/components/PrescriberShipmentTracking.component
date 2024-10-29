@@ -5,12 +5,12 @@
        <table style="font-family: Muli,sans-serif;">
            <tr>
                <td>
-                  <b> Otsuka Patient Assistance Foundation, Inc.</b><br/>
-                    PO Box 3640<br/>
-                    Gaithersburg, MD 20885-3640<br/>
+                  <b>Otsuka Patient Assistance Foundation, Inc.</b><br/>
+                    PO Box 4530<br/>
+                    Chesterfield, MO 63006<br/>
                     Phone: 1-855-727-6274<br/>
                     Fax: 1-844-727-6274<br/>
-                    Monday – Friday, 8 AM to 8 PM EDT
+                    Monday – Friday, 8 AM to 8 PM ET
 
                </td>
            </tr>
@@ -29,7 +29,7 @@
             <tr>
                 <td>
                     <p style="font-family: Muli,sans-serif;font-size:14px;">
-                        Your patient’s prescription has been shipped to the indicated address on the application. You can track the shipment via the link below or by logging into the OPAF Care Connect portal. 
+                        Your patient’s prescription has been shipped to the indicated address on the application. You can track the shipment via the link below or by logging into the OPAF Care Connect Prescriber Portal. 
                     </p>
                 </td>
             </tr>
@@ -37,33 +37,36 @@
             <tr>
                 <td>
                     <p style="font-family: Muli,sans-serif;font-size:14px;">
-                       Track your FedEx product shipment here: <a href="https://www.fedex.com/fedextrack/no-results-found?trknbr={!Shipment.Tracking_Number__c}">{!Shipment.Tracking_Number__c}</a>
-
-
+                       Track your product shipment here: <a href="https://www.fedex.com/fedextrack/no-results-found?trknbr={!Shipment.Tracking_Number__c}">{!Shipment.Tracking_Number__c}</a>
                     </p>
                 </td>
             </tr>
             <tr>
                 <td>
                     <p style="font-family: Muli,sans-serif;font-size:14px;">
-                       Please log into the <a href="{!$Label.Prescriber_URL}" >OPAF Care Connect Portal</a> to review the decision outcome of your application.
+                    OR
                     </p>
                 </td>
             </tr>
-            
-            
             <tr>
                 <td>
                     <p style="font-family: Muli,sans-serif;font-size:14px;">
-                       If you have any questions or would like to speak to an OPAF Dedicated Patient Case Coordinator about the application decision, please call OPAF at 1-855-727-6274, Monday–Friday, 8 AM–8 PM EDT. 
+                    Log into the OPAF Care Connect Portal here via <a href="{!$Label.Prescriber_URL}" >OPAF Care Connect Portal</a>. Click “Log In” and you will be directed to the portal site.
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p style="font-family: Muli,sans-serif;font-size:14px;">
+                        If you have any questions regarding this shipment, please contact OPAF at 1-855-727-6274, Monday to Friday, 8am to 8pm ET. 
                     </p>
                 </td>
             </tr>
             
              <tr><td></td></tr>
              <tr><td style="font-size:14px;">
-                 Thank you,<br/>
-				  Your OPAF Team
+                 Sincerely,<br/>
+                 The Otsuka Patient Assistance Foundation, Inc. (OPAF)
 
                  </td>
             </tr>
@@ -78,7 +81,7 @@
             <tr>
             <td>
                 <p style="font-size:10px;font-family: Muli,sans-serif;font-style:italic;">
-                    Please note that you have not been subscribed to any email lists, and the details provided by {!Shipment.Case__r.Prescriber__r.Name} are only being used to send this Patient Consent Form request.This email was sent by Otsuka Patient Assistance Foundation, Inc. (OPAF) because {!Shipment.Case__r.Prescriber__r.Name} requested this email to be sent. OPAF holds patient privacy in the highest regard and is committed to protecting the patient’s confidential information. Therefore, we cannot email patient-identifiable and confidential information to you because we cannot assure the security of information sent via email. However, if you have any questions, please contact OPAF at 1-855-727-6274. Please do not reply to this email, as it was sent from an unmonitored email address and we cannot reply to inquiries
+                    The content of this email is intended for the person or entity to which it is addressed only. This email is being sent by the Otsuka Patient Assistance Foundation, Inc. (OPAF). OPAF holds patient privacy in the highest regard and is committed to protecting the patient’s confidential information. Therefore, we cannot email patient-identifiable and confidential information to you because we cannot assure the security of information sent via email. However, if you have any questions, please contact OPAF at 1-855-727-6274, Monday to Friday 8am to 8pm ET. Please do not reply to this email, as it was sent from an unmonitored email address. To manage your email preferences or to opt-out from receiving email communications, please click <here>. 
                 </p>
                 
               </td>
@@ -90,13 +93,13 @@
         <table style="width:100%;font-family: Muli,sans-serif;font-size:10px;">
             <tr>
             <td style="width:70%;">
-                © 2021 Otsuka Patient Assistance Foundation, Inc. All Rights Reserved. 
+                © 2024 Otsuka Patient Assistance Foundation, Inc. All Rights Reserved. 
                 </td>
                 <td style="width:10%;">
-                April 2021          
+                April 2024          
                 </td>
                 <td style="width:20%;">
-                PAUS21EUP0006 
+                PAUS24EUP0016 
                 </td>
             </tr>
         </table>
