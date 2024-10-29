@@ -37,7 +37,7 @@
             <tr>
                 <td>
                     <p style="font-family: Muli,sans-serif;font-size:14px;">
-                    <The following items are missing from the OPAF application: Insert Missing Information>
+                    The following items are missing from the OPAF application: Insert Missing Information:
                     </p>
                 </td>
             </tr>
@@ -81,7 +81,7 @@
             <tr>
             <td>
                 <p style="font-size:10px;font-family: Muli,sans-serif;font-style:italic;">
-                    The content of this email is intended for the person or entity to which it is addressed only. This email is being sent by the Otsuka Patient Assistance Foundation, Inc. (OPAF). OPAF holds patient privacy in the highest regard and is committed to protecting the patient’s confidential information. Therefore, we cannot email patient-identifiable and confidential information to you because we cannot assure the security of information sent via email. However, if you have any questions, please contact OPAF at 1-855-727-6274, Monday to Friday 8am to 8pm ET. Please do not reply to this email, as it was sent from an unmonitored email address. To manage your email preferences or to opt-out from receiving email communications, please click <here>. 
+                    The content of this email is intended for the person or entity to which it is addressed only. This email is being sent by the Otsuka Patient Assistance Foundation, Inc. (OPAF). OPAF holds patient privacy in the highest regard and is committed to protecting the patient’s confidential information. Therefore, we cannot email patient-identifiable and confidential information to you because we cannot assure the security of information sent via email. However, if you have any questions, please contact OPAF at 1-855-727-6274, Monday to Friday 8am to 8pm ET. Please do not reply to this email, as it was sent from an unmonitored email address. To manage your email preferences or to opt-out from receiving email communications, please click <here></here>. 
                 </p>
                 
               </td>
