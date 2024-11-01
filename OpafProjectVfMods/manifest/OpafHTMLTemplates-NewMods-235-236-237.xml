@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>eConsentRequestReminder1Email</members>
+        <members>eConsentRequestReminder2Email</members>
+        <members>eConsentRequestReminder3Email</members>
+        <name>ApexComponent</name>
+    </types>
+    <types>
+        <members>OPAF_Emails/eConsent_Request_Reminder_1_Email</members>
+        <members>OPAF_Emails/eConsent_Request_Reminder_2_Email</members>
+        <members>OPAF_Emails/eConsent_Request_Reminder_3_Email</members>
+        <name>EmailTemplate</name>
+    </types>
+    <version>62.0</version>
+</Package>
