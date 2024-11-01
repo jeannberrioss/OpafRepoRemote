@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>eConsentStatusUpdateSuccessful</members>
+        <members>eConsentStatusUpdateUnsuccessful</members>
+        <name>ApexComponent</name>
+    </types>
+    <types>
+        <members>OPAF_Emails/eConsent_Status_Update_Successful</members>
+        <members>OPAF_Emails/eConsent_Status_Update_Unsuccessful</members>
+        <name>EmailTemplate</name>
+    </types>
+    <version>62.0</version>
+</Package>

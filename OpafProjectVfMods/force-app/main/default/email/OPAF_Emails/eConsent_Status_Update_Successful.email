@@ -1,29 +1,43 @@
-<messaging:emailTemplate subject="Otsuka Patient Assistance Foundation, Inc. Patient eConsent Update" recipientType="Contact" relatedToType="Consent__c">
-<messaging:HtmlEmailBody >
-<head>
- 
-</head>
-<body>
-<div >
-<table style="width:100%;">
-<tr>
-<td style="width:5%"></td>
-<td style="width:80%">
-<table>
-<tr> <td><c:OtsukaLogoforEmailTempaltes /> </td></tr>
-<tr> 
-<td>
-<c:eConsentStatusUpdateSuccessful cid="{!relatedTo.id}"></c:eConsentStatusUpdateSuccessful> 
+<!-- Email Template for Patient eConsent Update Notification -->
+<messaging:emailTemplate 
+    subject="Otsuka Patient Assistance Foundation, Inc. Patient eConsent Update" 
+    recipientType="Contact" 
+    relatedToType="Consent__c">
 
-</td>
-</tr>
-</table>
-</td>
-<td style="width:5%"></td>
-</tr>
-
-</table>
-</div>
-</body>
-</messaging:HtmlEmailBody>
+    <messaging:HtmlEmailBody>
+        <head>
+            <!-- Head section for meta tags or additional styles (if needed in the future) -->
+        </head>
+        <body>
+            <div>
+                <!-- Main Table to Structure Email Layout -->
+                <table style="width:100%;">
+                    <tr>
+                        <!-- Left Margin Column for Spacing -->
+                        <td style="width:5%;"></td>
+                        <!-- Center Content Column -->
+                        <td style="width:90%;">
+                            <table style="width:100%;">
+                                <!-- Logo Section - COMMENTED OUT (Retained for potential future use) -->
+                                <!--<tr>
+                                    <td>
+                                        <c:OtsukaLogoforEmailTempaltes />
+                                    </td>
+                                </tr>-->
+                                <!-- eConsent Status Update Section for Patient -->
+                                <tr>
+                                    <td>
+                                        <!-- Component displaying eConsent status update details -->
+                                        <c:eConsentStatusUpdateSuccessful cid="{!relatedTo.id}" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <!-- Right Margin Column for Spacing -->
+                        <td style="width:5%;"></td>
+                    </tr>
+                </table>
+            </div>
+        </body>
+    </messaging:HtmlEmailBody>
 </messaging:emailTemplate>

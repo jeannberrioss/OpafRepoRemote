@@ -1,31 +1,43 @@
-<messaging:emailTemplate subject="Otsuka Patient Assistance Foundation, Inc. Patient eConsent Update" recipientType="Contact" relatedToType="Consent__c">
-<messaging:HtmlEmailBody >
-<head>
- 
-</head>
-<body>
-<div >
-<table style="width:100%;">
-<tr>
-<td style="width:5%"></td>
-<td style="width:80%">
-<table>
-<tr> <td><c:OtsukaLogoforEmailTempaltes /> </td></tr>
-<tr> 
-<td>
-
-<c:eConsentStatusUpdateUnsuccessful cid="{!relatedTo.id}"></c:eConsentStatusUpdateUnsuccessful>
-
-
-</td>
-</tr>
-</table>
-</td>
-<td style="width:5%"></td>
-</tr>
-
-</table>
-</div>
-</body>
-</messaging:HtmlEmailBody>
+<!-- Email Template for Patient eConsent Update Notification -->
+<messaging:emailTemplate 
+    subject="Otsuka Patient Assistance Foundation, Inc. Patient eConsent Update" 
+    recipientType="Contact" 
+    relatedToType="Consent__c">
+    
+    <messaging:HtmlEmailBody>
+        <head>
+            <!-- Head section for additional meta tags or styles if needed in future -->
+        </head>
+        <body>
+            <div>
+                <!-- Main Table to Structure Email Layout -->
+                <table style="width:100%;">
+                    <tr>
+                        <!-- Left Margin Column -->
+                        <td style="width:5%;"></td>
+                        <!-- Center Content Column -->
+                        <td style="width:90%;">
+                            <table style="width:100%;">
+                                <!-- Logo Section - COMMENTED OUT (Not used but retained for future reference) -->
+                                <!--<tr>
+                                    <td>
+                                        <c:OtsukaLogoforEmailTempaltes />
+                                    </td>
+                                </tr>-->
+                                <!-- eConsent Status Update Component -->
+                                <tr>
+                                    <td>
+                                        <!-- Component to Display Unsuccessful eConsent Status Update -->
+                                        <c:eConsentStatusUpdateUnsuccessful cid="{!relatedTo.id}" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <!-- Right Margin Column -->
+                        <td style="width:5%;"></td>
+                    </tr>
+                </table>
+            </div>
+        </body>
+    </messaging:HtmlEmailBody>
 </messaging:emailTemplate>
