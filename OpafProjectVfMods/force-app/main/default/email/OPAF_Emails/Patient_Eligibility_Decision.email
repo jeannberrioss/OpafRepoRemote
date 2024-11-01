@@ -1,33 +1,52 @@
-<messaging:emailTemplate subject="Otsuka Patient Assistance Foundation, Inc. ApplicationEligibility Decision" recipientType="Contact" relatedToType="Case">
-<messaging:HtmlEmailBody >
-<head>
- 
-</head>
-<body>
-<div >
-<table style="width:100%;">
-<tr>
-<td style="width:5%"></td>
-<td style="width:80%">
-<table>
-<tr> <td><c:OtsukaLogoforEmailTempaltes /> </td></tr>
-<tr> 
-<td>
-<apex:outputPanel rendered="{!IF(relatedTo.User_Type__c=='Patient', true, false)}">
-<c:PatientEligibilityDecision cid="{!relatedTo.id}" />
-</apex:outputPanel>
-<apex:outputPanel rendered="{!IF(relatedTo.User_Type__c=='Prescriber', true, false)}">
-<c:PrescriberEligibilityDecision cid="{!relatedTo.id}"></c:PrescriberEligibilityDecision>
-</apex:outputPanel>
-</td>
-</tr>
-</table>
-</td>
-<td style="width:5%"></td>
-</tr>
+<!-- Email Template for Application Eligibility Decision Notification -->
+<messaging:emailTemplate 
+    subject="Otsuka Patient Assistance Foundation, Inc. Application Eligibility Decision" 
+    recipientType="Contact" 
+    relatedToType="Case">
 
-</table>
-</div>
-</body>
-</messaging:HtmlEmailBody>
+    <messaging:HtmlEmailBody>
+        <head>
+            <!-- Head section available for future meta tags or styling -->
+        </head>
+        <body>
+            <div>
+                <!-- Main Table Structure for Email Content -->
+                <table style="width:100%;">
+                    <tr>
+                        <!-- Left Margin Column -->
+                        <td style="width:5%;"></td>
+                        <!-- Center Content Column -->
+                        <td style="width:90%;">
+                            <table style="width:100%;">
+                                <!-- Logo Section (COMMENTED OUT) -->
+                                <!-- The logo is commented out but retained for future reference -->
+                                <!--<tr>
+                                    <td>
+                                        <c:OtsukaLogoforEmailTempaltes />
+                                    </td>
+                                </tr>-->
+                                
+                                <!-- Conditional Content Based on User Type -->
+                                <tr>
+                                    <td>
+                                        <!-- Display content for "Patient" type -->
+                                        <apex:outputPanel rendered="{!relatedTo.User_Type__c == 'Patient'}">
+                                            <c:PatientEligibilityDecision cid="{!relatedTo.id}" />
+                                        </apex:outputPanel>
+                                        
+                                        <!-- Display content for "Prescriber" type -->
+                                        <apex:outputPanel rendered="{!relatedTo.User_Type__c == 'Prescriber'}">
+                                            <c:PrescriberEligibilityDecision cid="{!relatedTo.id}" />
+                                        </apex:outputPanel>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <!-- Right Margin Column -->
+                        <td style="width:5%;"></td>
+                    </tr>
+                </table>
+            </div>
+        </body>
+    </messaging:HtmlEmailBody>
 </messaging:emailTemplate>
