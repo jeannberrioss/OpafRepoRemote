@@ -3,15 +3,14 @@
     <div>
            <table style="font-family: Muli,sans-serif;">
                <tr>
-                   <td>
-                      <b> Otsuka Patient Assistance Foundation, Inc.</b><br/>
-                        PO Box 3640<br/>
-                        Gaithersburg, MD 20885-3640<br/>
-                        Phone: 1-855-727-6274<br/>
-                        Fax: 1-844-727-6274<br/>
-                        Monday – Friday, 8 AM to 8 PM EDT 
-    
-                   </td>
+                <td>
+                    <b>Otsuka Patient Assistance Foundation, Inc.</b><br/>
+                      PO Box 4530<br/>
+                      Chesterfield, MO 63006 <br/>
+                      Phone: 1-855-727-6274<br/>
+                      Fax: 1-844-727-6274<br/>
+                      Monday – Friday, 8 AM to 8 PM ET
+                 </td>
                </tr>
             </table>
         <br/>
@@ -23,19 +22,15 @@
               </td>
             </tr>
             <tr><td></td></tr>
-            
-            
             <tr>
                 <td>
                     <p style="font-family: Muli,sans-serif;font-size:14px;">
                         On  <apex:outputText value=" {0,date, MM/dd/yyyy}"> 
                              <apex:param value="{!today()}" />
-                             </apex:outputText>,{!Consentreclist[0].provider__r.Name} at <!--{!casereclist[0].Facility__r.Name}--> submitted an Otsuka Patient Assistance Foundation, Inc. (OPAF) application via the OPAF Care Connect Portal, on your behalf. This is your final reminder that {!Consentreclist[0].provider__r.Name} requested an electronic consent (eConsent) for your OPAF application.
+                             </apex:outputText>,{!Consentreclist[0].provider__r.Name} at <!--{!casereclist[0].Facility__r.Name}--> submitted an Otsuka Patient Assistance Foundation, Inc. (OPAF) application via the OPAF Care Connect Prescriber Portal, on your behalf. This is your final reminder that {!Consentreclist[0].provider__r.Name} requested an electronic consent (eConsent) for your OPAF application.
                     </p>
                 </td>
             </tr>
-            
-             
             <tr>
                 <td>
                     <p style="font-family: Muli,sans-serif;font-size:14px;">
@@ -43,32 +38,29 @@
                     </p>
                 </td>
             </tr>
-            
 			<tr>
             <td>
                 <p style="font-family: Muli,sans-serif;font-size:14px;">
                    <b> This link is valid for 4 days. Without your consent, OPAF cannot process your application and your application will be denied.</b>
                 </p>
               </td>
-            </tr> 
-            
-            <tr><td>Click here to Sign the OPAF eConsent </td></tr>
+            </tr>
+            <tr>
+                <td>Click here to Sign the OPAF eConsent.</td></tr>
             <tr>
                 <td>
                     <p style="font-family: Muli,sans-serif;font-size:14px;">
-                       If you are having difficulty accessing the eConsent link or would like to speak to an OPAF Dedicated Patient Case Coordinator, please call OPAF at 1-855-727-6274, Monday–Friday, 8 AM–8 PM EDT.
+                    If you are having difficulty accessing the eConsent link or would like to speak with OPAF, please call us at 1-855-727-6274, Monday to Friday, 8am to 8pm ET. 
                     </p>
                 </td>
             </tr>
-            
              <tr><td></td></tr>
-             <tr><td style="font-size:14px;">
-                 Thank you,<br/>
-				  Your OPAF Team
-
+             <tr>
+                <td style="font-size:14px;">
+                 Sincerely,<br/>
+                 The Otsuka Patient Assistance Foundation, Inc. (OPAF)
                  </td>
             </tr>
-           
              <tr><td></td></tr>
              <tr><td></td></tr>
              <tr><td></td></tr>
@@ -79,13 +71,11 @@
             <tr>
             <td>
                 <p style="font-size:10px;font-family: Muli,sans-serif;font-style:italic;">
-                    Please note that you have not been subscribed to any email lists, and the details provided by {!Consentreclist[0].provider__r.Name} are only being used to send this Patient Consent Form request.This email was sent by Otsuka Patient Assistance Foundation, Inc. (OPAF) because {!Consentreclist[0].provider__r.Name} requested this email to be sent. OPAF holds patient privacy in the highest regard and is committed to protecting the patient’s confidential information. Therefore, we cannot email patient-identifiable and confidential information to you because we cannot assure the security of information sent via email. However, if you have any questions, please contact OPAF at 1-855-727-6274. Please do not reply to this email, as it was sent from an unmonitored email address and we cannot reply to inquiries
+                Please note that you have not been subscribed to any email lists, and the details provided by <Prescriber Name></Prescriber> are only being used to send this Patient Consent Form request. This email was sent by Otsuka Patient Assistance Foundation, Inc. (OPAF) because <Prescriber Name></Prescriber> requested this email to be sent. OPAF holds patient privacy in the highest regard and is committed to protecting the patient’s confidential information. Therefore, we cannot email patient-identifiable and confidential information to you because we cannot assure the security of information sent via email. However, if you have any questions, please contact OPAF at 1-855-727-6274. Please do not reply to this email, as it was sent from an unmonitored email address, and we cannot reply to inquiries. 
                 </p>
-                
               </td>
             </tr> 
              <tr><td></td></tr>
-           
         </table>
         <br/><br/><br/><br/><br/><br/>
         <table style="width:100%;font-family: Muli,sans-serif;font-size:10px;">
@@ -94,13 +84,12 @@
               <!--  © 2021 Otsuka Patient Assistance Foundation, Inc. All Rights Reserved. -->
                 </td>
                 <td style="width:10%;">
-                April 2021          
+                June 2024
                 </td>
                 <td style="width:20%;">
-                PAUS21EUC0007
+                PAUS24EUC0076
                 </td>
             </tr>
         </table>
     </div>
-    
 </apex:component>

@@ -1,29 +1,49 @@
-<messaging:emailTemplate subject="Second Reminder: Sign Your Otsuka Patient Assistance Foundation, Inc eConsent Request" recipientType="Contact" relatedToType="Consent__c">
-<messaging:HtmlEmailBody >
-<head>
- 
-</head>
-<body>
-<div >
-<table style="width:100%;">
-<tr>
-<td style="width:5%"></td>
-<td style="width:80%">
-<table>
-<tr> <td><c:OtsukaLogoforEmailTempaltes /> </td></tr>
-<tr> 
-<td>
-<c:eConsentRequestReminder2Email cid="{!relatedTo.id}"></c:eConsentRequestReminder2Email> 
+<!-- Email Template for eConsent Request Reminder -->
+<messaging:emailTemplate 
+    subject="Second Reminder: Sign Your Otsuka Patient Assistance Foundation, Inc eConsent Request" 
+    recipientType="Contact" 
+    relatedToType="Consent__c">
 
-</td>
-</tr>
-</table>
-</td>
-<td style="width:5%"></td>
-</tr>
-
-</table>
-</div>
-</body>
-</messaging:HtmlEmailBody>
+    <messaging:HtmlEmailBody>
+        <head>
+            <!-- Head section for future styles or meta tags if needed -->
+        </head>
+        
+        <body>
+            <div>
+                <!-- Outer Table for Email Structure and Centering Content -->
+                <table style="width:100%;">
+                    <tr>
+                        <!-- Left Margin Column -->
+                        <td style="width:5%;"></td>
+                        
+                        <!-- Main Content Column (Center) -->
+                        <td style="width:90%;">
+                            <table style="width:100%;">
+                                
+                                <!-- Logo Section - COMMENTED OUT (No longer in use but retained for reference) -->
+                                <!--<tr>
+                                    <td>
+                                        <c:OtsukaLogoforEmailTempaltes />
+                                    </td>
+                                </tr>-->
+                                
+                                <!-- eConsent Reminder Content Component -->
+                                <tr>
+                                    <td>
+                                        <!-- Displays the eConsent request reminder for the related Consent record -->
+                                        <c:eConsentRequestReminder2Email cid="{!relatedTo.id}" />
+                                    </td>
+                                </tr>
+                                
+                            </table>
+                        </td>
+                        
+                        <!-- Right Margin Column -->
+                        <td style="width:5%;"></td>
+                    </tr>
+                </table>
+            </div>
+        </body>
+    </messaging:HtmlEmailBody>
 </messaging:emailTemplate>
