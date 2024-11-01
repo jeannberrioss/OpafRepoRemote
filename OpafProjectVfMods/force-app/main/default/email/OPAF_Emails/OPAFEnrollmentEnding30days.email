@@ -1,34 +1,56 @@
-<messaging:emailTemplate subject="Otsuka Patient Assistance Foundation, Inc. Enrollment Ending" recipientType="Contact" relatedToType="Case">
-<messaging:HtmlEmailBody >
-<head>
- 
-</head>
-<body>
-<div >
-<table style="width:100%;">
-<tr>
-<td style="width:5%"></td>
-<td style="width:80%">
-<table>
-<tr> <td><c:OtsukaLogoforEmailTempaltes /> </td></tr>
-<tr> 
-<td>
-<apex:outputPanel rendered="{!IF(relatedTo.User_Type__c=='Patient', true, false)}">
-<c:PatientOPAFEnrollmentEnding30Days cid="{!relatedTo.id}"></c:PatientOPAFEnrollmentEnding30Days> 
-</apex:outputPanel>
-<apex:outputPanel rendered="{!IF(relatedTo.User_Type__c=='Prescriber', true, false)}">
-<c:PrescriberOPAFEnrollmentEnding30Days cid="{!relatedTo.id}"></c:PrescriberOPAFEnrollmentEnding30Days> 
+<!-- Email Template for Enrollment Ending Notification -->
+<messaging:emailTemplate 
+    subject="Otsuka Patient Assistance Foundation, Inc. Enrollment Ending" 
+    recipientType="Contact" 
+    relatedToType="Case">
 
-</apex:outputPanel>
-</td>
-</tr>
-</table>
-</td>
-<td style="width:5%"></td>
-</tr>
-
-</table>
-</div>
-</body>
-</messaging:HtmlEmailBody>
+    <messaging:HtmlEmailBody>
+        <head>
+            <!-- Head section for potential future meta tags or styles if needed -->
+        </head>
+        
+        <body>
+            <div>
+                <!-- Main Table to Structure the Email Layout -->
+                <table style="width:100%;">
+                    <tr>
+                        <!-- Left Margin Column -->
+                        <td style="width:5%;"></td>
+                        
+                        <!-- Center Content Column -->
+                        <td style="width:90%;">
+                            <table style="width:100%;">
+                                
+                                <!-- Logo Section - COMMENTED OUT (No longer in use but retained for reference) -->
+                                <!--<tr>
+                                    <td>
+                                        <c:OtsukaLogoforEmailTempaltes />
+                                    </td>
+                                </tr>-->
+                                
+                                <!-- Dynamic Content Based on User Type (Patient or Prescriber) -->
+                                <tr>
+                                    <td>
+                                        <!-- Display content specific to "Patient" user type -->
+                                        <apex:outputPanel rendered="{!relatedTo.User_Type__c == 'Patient'}">
+                                            <c:PatientOPAFEnrollmentEnding30Days cid="{!relatedTo.id}" />
+                                        </apex:outputPanel>
+                                        
+                                        <!-- Display content specific to "Prescriber" user type -->
+                                        <apex:outputPanel rendered="{!relatedTo.User_Type__c == 'Prescriber'}">
+                                            <c:PrescriberOPAFEnrollmentEnding30Days cid="{!relatedTo.id}" />
+                                        </apex:outputPanel>
+                                    </td>
+                                </tr>
+                                
+                            </table>
+                        </td>
+                        
+                        <!-- Right Margin Column -->
+                        <td style="width:5%;"></td>
+                    </tr>
+                </table>
+            </div>
+        </body>
+    </messaging:HtmlEmailBody>
 </messaging:emailTemplate>
